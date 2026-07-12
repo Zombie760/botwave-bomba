@@ -622,6 +622,26 @@
     <div class="ptr-spinner"></div>
   </div>
 
+  <!-- ── Bias Breakdown Modal ── -->
+  <div class="bwb-bias-modal" id="bwb-bias-modal">
+    <div class="bwb-bias-modal-content">
+      <div class="bwb-bias-modal-header">
+        <h2 class="bwb-bias-modal-title">Bias Breakdown</h2>
+        <button class="bwb-bias-modal-close" id="bwb-bias-modal-close">&times;</button>
+      </div>
+      <div class="bwb-bias-modal-section">
+        <h3 class="bwb-bias-modal-section-title">Bloc Mix</h3>
+        <div class="bwb-bias-modal-blocs" id="bwb-bias-modal-blocs">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+      <div class="bwb-bias-modal-section">
+        <h3 class="bwb-bias-modal-section-title">Funding Transparency</h3>
+        <p id="bwb-bias-modal-funding">Funding information is derived from public records and may not be exhaustive.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- ── MAIN FEED ── -->
   <main class="bwb-main" id="main-feed">
     <div id="story-feed" class="bwb-feed">
@@ -818,6 +838,51 @@
         }
       }
 
+      // ── Show Bias Breakdown Modal ──
+      function showBiasBreakdown(storyId) {
+        const story = feedData.stories.find(s => s.id === storyId);
+        if (!story) return;
+        
+        const modal = document.getElementById('bwb-bias-modal');
+        const blocsEl = document.getElementById('bwb-bias-modal-blocs');
+        
+        // Calculate bloc percentages
+        const total = story.sources.reduce((sum, source) => sum + source.count, 0);
+        const blocs = {};
+        story.sources.forEach(source => {
+          blocs[source.bloc] = (blocs[source.bloc] || 0) + source.count;
+        });
+        
+        // Render blocs
+        blocsEl.innerHTML = '';
+        for (const [bloc, count] of Object.entries(blocs)) {
+          const percentage = Math.round((count / total) * 100);
+          const blocEl = document.createElement('div');
+          blocEl.className = 'bwb-bias-modal-bloc';
+          blocEl.innerHTML = `
+            <div class="bwb-bias-modal-bloc-dot ${bloc}"></div>
+            <span class="bwb-bias-modal-bloc-label">${bloc.charAt(0).toUpperCase() + bloc.slice(1)}</span>
+            <span class="bwb-bias-modal-bloc-percentage">(${percentage}%)</span>
+          `;
+          blocsEl.appendChild(blocEl);
+        }
+        
+        // Show modal
+        modal.style.display = 'flex';
+      }
+      
+      // ── Close Bias Breakdown Modal ──
+      document.getElementById('bwb-bias-modal-close').addEventListener('click', () => {
+        document.getElementById('bwb-bias-modal').style.display = 'none';
+      });
+      
+      // Close modal when clicking outside
+      document.getElementById('bwb-bias-modal').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('bwb-bias-modal')) {
+          document.getElementById('bwb-bias-modal').style.display = 'none';
+        }
+      });
+
       // ── Lazy Load Story Cards ──
       function lazyLoadStories() {
         const storyCards = document.querySelectorAll('.bwb-story-card');
@@ -865,6 +930,7 @@
                 <img data-src="/botwavebomba/assets/logos/${story.sources[0].domain}.png" alt="${story.sources[0].name}" class="bwb-story-source-logo" onerror="this.src='/botwavebomba/assets/logos/default.png';">
                 <div class="bwb-story-bias-dot ${story.sources[0].bloc}" title="${story.sources[0].bloc.charAt(0).toUpperCase() + story.sources[0].bloc.slice(1)} Bias"></div>
                 <span class="bwb-story-source-name">${story.sources[0].name}</span>
+                <button class="bwb-bias-breakdown-btn" title="Bias Breakdown" onclick="event.stopPropagation(); showBiasBreakdown('${story.id}');">ℹ️</button>
               </div>
               <h3 class="bwb-story-card-title">${story.consensus_headline}</h3>
               <p class="bwb-story-card-snippet">${story.consensus_snippet}</p>

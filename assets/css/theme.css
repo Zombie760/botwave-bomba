@@ -255,6 +255,122 @@
   margin-left: 8px;
 }
 
+/* ── Bias Breakdown Button ── */
+.bwb-bias-breakdown-btn {
+  background: none;
+  border: none;
+  color: var(--fg-dim);
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: auto;
+  padding: 0 4px;
+}
+
+.bwb-bias-breakdown-btn:hover {
+  color: var(--primary);
+}
+
+/* ── Bias Breakdown Modal ── */
+.bwb-bias-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+.bwb-bias-modal-content {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.bwb-bias-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.bwb-bias-modal-close {
+  background: none;
+  border: none;
+  color: var(--fg-dim);
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.bwb-bias-modal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.bwb-bias-modal-section {
+  margin-bottom: 16px;
+}
+
+.bwb-bias-modal-section-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg);
+  margin-bottom: 8px;
+}
+
+.bwb-bias-modal-blocs {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.bwb-bias-modal-bloc {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bwb-bias-modal-bloc-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.bwb-bias-modal-bloc-dot.western {
+  background-color: #BF3B2D;
+}
+
+.bwb-bias-modal-bloc-dot.non-aligned {
+  background-color: #4A90E2;
+}
+
+.bwb-bias-modal-bloc-dot.adversarial {
+  background-color: #2E8B57;
+}
+
+.bwb-bias-modal-bloc-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: var(--fg);
+}
+
+.bwb-bias-modal-bloc-percentage {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--fg-dim);
+}
+
 .bwb-story-card-blindspot.blindspot {
   background-color: #BF3B2D;
   color: white;
