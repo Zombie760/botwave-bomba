@@ -221,6 +221,12 @@
   overflow-x: auto;
   padding: 8px 0;
   margin: 8px 0;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--card-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 12px 0;
 }
 
 .bwb-filters button {

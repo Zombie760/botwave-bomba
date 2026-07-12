@@ -683,10 +683,49 @@
       let manifestData = null;
       let blindspotsData = null;
       let activeFilters = {
-        section: 'all',
-        signal: 'all',
-        geo: 'all'
+        section: new Set(['all']),
+        signal: new Set(['all']),
+        geo: new Set(['all'])
       };
+
+      // ── Parse URL Parameters ──
+      function parseUrlParams() {
+        const params = new URLSearchParams(window.location.search);
+        const section = params.get('section');
+        const signal = params.get('signal');
+        const geo = params.get('geo');
+        
+        if (section) {
+          activeFilters.section = new Set(section.split(','));
+          if (!activeFilters.section.has('all')) activeFilters.section.add('all');
+        }
+        if (signal) {
+          activeFilters.signal = new Set(signal.split(','));
+          if (!activeFilters.signal.has('all')) activeFilters.signal.add('all');
+        }
+        if (geo) {
+          activeFilters.geo = new Set(geo.split(','));
+          if (!activeFilters.geo.has('all')) activeFilters.geo.add('all');
+        }
+      }
+
+      // ── Update URL Parameters ──
+      function updateUrlParams() {
+        const params = new URLSearchParams();
+        
+        if (activeFilters.section.size > 1 || !activeFilters.section.has('all')) {
+          params.set('section', Array.from(activeFilters.section).filter(f => f !== 'all').join(','));
+        }
+        if (activeFilters.signal.size > 1 || !activeFilters.signal.has('all')) {
+          params.set('signal', Array.from(activeFilters.signal).filter(f => f !== 'all').join(','));
+        }
+        if (activeFilters.geo.size > 1 || !activeFilters.geo.has('all')) {
+          params.set('geo', Array.from(activeFilters.geo).filter(f => f !== 'all').join(','));
+        }
+        
+        const newUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ''}`;
+        window.history.replaceState({}, '', newUrl);
+      }
       
       // ── DOM References ──
       const storyFeedEl = document.getElementById('story-feed');
@@ -715,6 +754,7 @@
       
       // ── Fetch Data ──
       async function fetchData() {
+        parseUrlParams();
         try {
           // GitHub Pages serves from /botwavebomba/, so ensure BASE_PATH is set
           const basePath = window.BWB_BASE || '/botwavebomba';
@@ -757,6 +797,7 @@
         renderSectionPills();
         renderCoverageGap();
         updateFrameStats();
+        bindFilterEvents();
       }
       
       // ── Format Time (e.g., "2h ago") ──
@@ -787,9 +828,9 @@
         // Filter stories
         const filteredStories = feedData.stories.filter(story => {
           return (
-            (activeFilters.section === 'all' || story.section === activeFilters.section) &&
-            (activeFilters.signal === 'all' || story.signals.includes(activeFilters.signal)) &&
-            (activeFilters.geo === 'all' || story.geo_scope === activeFilters.geo)
+            (activeFilters.section.has('all') || activeFilters.section.has(story.section)) &&
+            (activeFilters.signal.has('all') || story.signals.some(s => activeFilters.signal.has(s))) &&
+            (activeFilters.geo.has('all') || activeFilters.geo.has(story.geo_scope))
           );
         });
         
@@ -833,10 +874,27 @@
         // Bind events
         sectionNavEl.querySelectorAll('button').forEach(btn => {
           btn.addEventListener('click', () => {
-            sectionNavEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            activeFilters.section = btn.dataset.filter;
+            if (btn.dataset.filter === 'all') {
+              activeFilters.section = new Set(['all']);
+            } else {
+              activeFilters.section.delete('all');
+              if (activeFilters.section.has(btn.dataset.filter)) {
+                activeFilters.section.delete(btn.dataset.filter);
+              } else {
+                activeFilters.section.add(btn.dataset.filter);
+              }
+              if (activeFilters.section.size === 0) {
+                activeFilters.section.add('all');
+              }
+            }
+            
+            // Update active class
+            sectionNavEl.querySelectorAll('button').forEach(b => {
+              b.classList.toggle('active', activeFilters.section.has(b.dataset.filter));
+            });
+            
             renderStoryFeed();
+            updateUrlParams();
           });
         });
       }
@@ -980,20 +1038,54 @@
         // Signal filters
         filterNavEl.querySelectorAll('button').forEach(btn => {
           btn.addEventListener('click', () => {
-            filterNavEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            activeFilters.signal = btn.dataset.filter;
+            if (btn.dataset.filter === 'all') {
+              activeFilters.signal = new Set(['all']);
+            } else {
+              activeFilters.signal.delete('all');
+              if (activeFilters.signal.has(btn.dataset.filter)) {
+                activeFilters.signal.delete(btn.dataset.filter);
+              } else {
+                activeFilters.signal.add(btn.dataset.filter);
+              }
+              if (activeFilters.signal.size === 0) {
+                activeFilters.signal.add('all');
+              }
+            }
+            
+            // Update active class
+            filterNavEl.querySelectorAll('button').forEach(b => {
+              b.classList.toggle('active', activeFilters.signal.has(b.dataset.filter));
+            });
+            
             renderStoryFeed();
+            updateUrlParams();
           });
         });
         
         // Geo filters
         geoNavEl.querySelectorAll('button').forEach(btn => {
           btn.addEventListener('click', () => {
-            geoNavEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            activeFilters.geo = btn.dataset.filter;
+            if (btn.dataset.filter === 'all') {
+              activeFilters.geo = new Set(['all']);
+            } else {
+              activeFilters.geo.delete('all');
+              if (activeFilters.geo.has(btn.dataset.filter)) {
+                activeFilters.geo.delete(btn.dataset.filter);
+              } else {
+                activeFilters.geo.add(btn.dataset.filter);
+              }
+              if (activeFilters.geo.size === 0) {
+                activeFilters.geo.add('all');
+              }
+            }
+            
+            // Update active class
+            geoNavEl.querySelectorAll('button').forEach(b => {
+              b.classList.toggle('active', activeFilters.geo.has(b.dataset.filter));
+            });
+            
             renderStoryFeed();
+            updateUrlParams();
           });
         });
       }
