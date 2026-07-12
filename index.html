@@ -445,7 +445,7 @@
   {"prerender":[{"where":{"href_matches":"/"},"eagerness":"moderate"}]}
   </script>
   <!-- Base path support for GitHub Pages subpath + root deployments -->
-  <script src="/botwavebomba/assets/js/theme.js?v=2" defer></script>
+  <script src="/botwavebomba/assets/js/main.js" defer></script>
 </head>
 <body>
     <button class="bwb-theme-toggle" id="theme-toggle" aria-label="Switch to dark theme">
@@ -818,6 +818,27 @@
         }
       }
 
+      // ── Lazy Load Story Cards ──
+      function lazyLoadStories() {
+        const storyCards = document.querySelectorAll('.bwb-story-card');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const img = entry.target.querySelector('.bwb-story-source-logo');
+              if (img && img.dataset.src) {
+                img.src = img.dataset.src;
+                delete img.dataset.src;
+              }
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        
+        storyCards.forEach(card => {
+          observer.observe(card);
+        });
+      }
+
       // ── Render Story Feed ──
       function renderStoryFeed() {
         if (!feedData.stories) return;
@@ -841,7 +862,7 @@
           storyEl.innerHTML = `
             <a href="/story.html?id=${story.id}" class="bwb-story-card-link">
               <div class="bwb-story-card-header">
-                <img src="/botwavebomba/assets/logos/${story.sources[0].domain}.png" alt="${story.sources[0].name}" class="bwb-story-source-logo" onerror="this.src='/botwavebomba/assets/logos/default.png';">
+                <img data-src="/botwavebomba/assets/logos/${story.sources[0].domain}.png" alt="${story.sources[0].name}" class="bwb-story-source-logo" onerror="this.src='/botwavebomba/assets/logos/default.png';">
                 <div class="bwb-story-bias-dot ${story.sources[0].bloc}" title="${story.sources[0].bloc.charAt(0).toUpperCase() + story.sources[0].bloc.slice(1)} Bias"></div>
                 <span class="bwb-story-source-name">${story.sources[0].name}</span>
               </div>
@@ -857,6 +878,8 @@
           `;
           storyFeedEl.appendChild(storyEl);
         });
+        
+        lazyLoadStories();
       }
       
       // ── Render Section Tabs ──
@@ -1170,7 +1193,7 @@
   <!-- ── FOOTER (injected by /assets/js/site-chrome.js) ── -->
   <footer data-bwb-chrome="default"></footer>
 
-  <script src="/botwavebomba/assets/js/article-analyzer.js?v=2"></script>
+
   <script>
     // Hydrate the editorial-frame banner with live counts from latest_slim.json
     (function () {
