@@ -1,0 +1,254 @@
+/* ── CSS Variables ── */
+:root {
+  --fg: #000000;
+  --fg-dim: #666666;
+  --bg: #ffffff;
+  --card-bg: #ffffff;
+  --card-border: #e0e0e0;
+  --primary: #4A90E2;
+  --primary-hover: #357ABD;
+  --skeleton-bg: #f0f0f0;
+  --skeleton-shimmer: #e0e0e0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg: #ffffff;
+    --fg-dim: #aaaaaa;
+    --bg: #121212;
+    --card-bg: #1e1e1e;
+    --card-border: #333333;
+    --skeleton-bg: #2d2d2d;
+    --skeleton-shimmer: #3d3d3d;
+  }
+}
+
+/* ── Dark/Light Mode Toggle ── */
+.bwb-theme-toggle {
+  background: none;
+  border: none;
+  color: var(--fg);
+  cursor: pointer;
+  font-size: 20px;
+  padding: 8px;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+}
+
+/* ── Mobile-First Design ── */
+@media (max-width: 768px) {
+  .bwb-story-card {
+    padding: 12px;
+  }
+
+  .bwb-story-card-title {
+    font-size: 16px;
+  }
+
+  .bwb-story-card-snippet {
+    font-size: 13px;
+  }
+
+  .bwb-filters button {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .bwb-coverage-gap {
+    padding: 12px;
+  }
+}
+
+/* ── Animations ── */
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--skeleton-bg) 25%, var(--skeleton-shimmer) 50%, var(--skeleton-bg) 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+.bwb-story-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.bwb-story-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* ── Loading States ── */
+.ptr-indicator {
+  display: none;
+  justify-content: center;
+  padding: 16px;
+}
+
+.ptr-spinner {
+  border: 3px solid var(--fg-dim);
+  border-top: 3px solid var(--primary);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ── Coverage Gap ── */
+.bwb-coverage-gap {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.bwb-cg-bar {
+  display: flex;
+  height: 24px;
+  margin: 8px 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.bwb-cg-seg {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bwb-cg-seg span {
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+}
+
+.bwb-cg-region-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.bwb-cg-region-cell {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+}
+
+/* ── Story Cards ── */
+.bwb-story-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 8px 0;
+}
+
+.bwb-story-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bwb-story-source-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.bwb-story-bias-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.bwb-story-bias-dot.western {
+  background-color: #BF3B2D;
+}
+
+.bwb-story-bias-dot.non-aligned {
+  background-color: #4A90E2;
+}
+
+.bwb-story-bias-dot.adversarial {
+  background-color: #2E8B57;
+}
+
+.bwb-story-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.bwb-story-card-snippet {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--fg-dim);
+}
+
+/* ── Filters ── */
+.bwb-filters {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 0;
+  margin: 8px 0;
+}
+
+.bwb-filters button {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.bwb-filters button.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* ── Blindspot Badges ── */
+.bwb-story-card-blindspot {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+
+.bwb-story-card-blindspot.blindspot {
+  background-color: #BF3B2D;
+  color: white;
+}
+
+.bwb-story-card-blindspot.mono-frame {
+  background-color: #4A90E2;
+  color: white;
+}
+
+.bwb-story-card-blindspot.blackout {
+  background-color: #2E8B57;
+  color: white;
+}

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>BOTWAVEBOMBA — Not Left/Right. Who Owns The Story.</title>
   <meta name="description" content="1,651 sources deep-fingerprinted across 5 bias axes. Western (80%) / Non-Aligned (13%) / Adversarial (4%) — see the gap, name the funding. Powered by TELOS+PAI substrate.">
+  <meta name="theme-color" content="#FAFAF7">
   <link rel="canonical" href="https://botwavebomba.pages.dev/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,8 +24,8 @@
     }
     
     .bwb-story-card {
-      background: var(--card-bg, #ffffff);
-      border: 1px solid var(--card-border, #e0e0e0);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
       border-radius: 12px;
       padding: 16px;
       display: flex;
@@ -74,7 +75,7 @@
     .bwb-story-source-name {
       font-family: 'DM Mono', monospace;
       font-size: 12px;
-      color: var(--fg-dim, #666);
+      color: var(--fg-dim);
       flex-grow: 1;
     }
     
@@ -83,7 +84,7 @@
       font-size: 18px;
       font-weight: 700;
       line-height: 1.3;
-      color: var(--fg, #000);
+      color: var(--fg);
       margin: 0;
     }
     
@@ -91,7 +92,7 @@
       font-family: 'DM Sans', sans-serif;
       font-size: 14px;
       line-height: 1.5;
-      color: var(--fg-dim, #444);
+      color: var(--fg-dim);
       margin: 0;
     }
     
@@ -447,6 +448,9 @@
   <script src="/botwavebomba/assets/js/theme.js?v=2" defer></script>
 </head>
 <body>
+    <button class="bwb-theme-toggle" id="theme-toggle" aria-label="Switch to dark theme">
+      <span class="theme-toggle-label">☀ LIGHT</span>
+    </button>
 
   <!-- ── HEADER (injected by /assets/js/site-chrome.js) ── -->
   <header data-bwb-chrome="full"></header>
