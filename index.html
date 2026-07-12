@@ -528,11 +528,20 @@
       <div class="bwb-cg-bar-wrap">
         <div class="bwb-cg-bar-lbl">BLOC MIX</div>
         <div class="bwb-cg-bar" id="bwb-cg-bar">
-          <div class="bwb-cg-seg western" id="bwb-cg-seg-w" style="width:0%"><span>Western</span></div>
-          <div class="bwb-cg-seg non-aligned" id="bwb-cg-seg-n" style="width:0%"><span>Non-Aligned</span></div>
-          <div class="bwb-cg-seg adversarial" id="bwb-cg-seg-a" style="width:0%"><span>Adversarial</span></div>
+          <div class="bwb-cg-seg western" id="bwb-cg-seg-w" style="width:0%" title="Western: 0%">
+            <span>Western</span>
+          </div>
+          <div class="bwb-cg-seg non-aligned" id="bwb-cg-seg-n" style="width:0%" title="Non-Aligned: 0%">
+            <span>Non-Aligned</span>
+          </div>
+          <div class="bwb-cg-seg adversarial" id="bwb-cg-seg-a" style="width:0%" title="Adversarial: 0%">
+            <span>Adversarial</span>
+          </div>
         </div>
         <div class="bwb-cg-bar-legend" id="bwb-cg-bar-legend">—</div>
+        <div class="bwb-cg-diversity-tooltip" id="bwb-cg-diversity-tooltip" title="Diversity Score: Higher = More Diverse Sources">
+          <span>ℹ️</span>
+        </div>
       </div>
       <div class="bwb-cg-stat">
         <span class="bwb-cg-num" id="bwb-cg-diversity">—</span>
@@ -859,7 +868,10 @@
         cgSegWEl.style.width = `${wPct}%`;
         cgSegNEl.style.width = `${nPct}%`;
         cgSegAEl.style.width = `${aPct}%`;
-        cgBarLegendEl.textContent = `${wPct}% Western / ${nPct}% Non-Aligned / ${aPct}% Adversarial`;
+        cgSegWEl.title = `Western: ${wPct}%`;
+        cgSegNEl.title = `Non-Aligned: ${nPct}%`;
+        cgSegAEl.title = `Adversarial: ${aPct}%`;
+        cgBarLegendEl.textContent = `Western: ${wPct}% | Non-Aligned: ${nPct}% | Adversarial: ${aPct}%`;
         
         // Regional gap
         const regions = [
@@ -869,7 +881,16 @@
         
         regions.forEach(region => {
           const valEl = document.getElementById(`bwb-cg-region-${region}`);
-          if (valEl) valEl.textContent = coverage.regional_gap[region] || '0';
+          if (valEl) {
+            const val = coverage.regional_gap[region] || '0';
+            valEl.textContent = `${val}%`;
+            valEl.parentElement.title = `${region.toUpperCase()}: ${val}%`;
+            if (parseInt(val) < 5) {
+              valEl.parentElement.classList.add('bwb-cg-region-low');
+            } else {
+              valEl.parentElement.classList.remove('bwb-cg-region-low');
+            }
+          }
         });
         
         // Delta

@@ -112,6 +112,17 @@
   margin: 16px 0;
 }
 
+.bwb-cg-region-low {
+  border: 1px solid #BF3B2D;
+  background-color: rgba(191, 59, 45, 0.1);
+}
+
+.bwb-cg-diversity-tooltip {
+  display: inline-block;
+  margin-left: 8px;
+  cursor: help;
+}
+
 .bwb-cg-bar {
   display: flex;
   height: 24px;
