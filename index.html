@@ -805,6 +805,9 @@
         } catch (err) {
           console.error('Failed to fetch data:', err);
           updatePipelineStatus('ERROR');
+          
+          // Fallback: Render skeleton with error message
+          storyFeedEl.innerHTML = '<div class="bwb-error-message">Failed to load stories. Please try again later.</div>';
         }
       }
       

@@ -270,6 +270,18 @@
   color: var(--primary);
 }
 
+/* ── Error Message ── */
+.bwb-error-message {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px 0;
+  text-align: center;
+  color: var(--fg-dim);
+  font-family: 'DM Sans', sans-serif;
+}
+
 /* ── Bias Breakdown Modal ── */
 .bwb-bias-modal {
   display: none;
