@@ -1,14 +1,17 @@
 /* ── CSS Variables ── */
 :root {
-  --fg: #000000;
-  --fg-dim: #666666;
-  --bg: #ffffff;
+  --fg: #222222;
+  --fg-dim: #6b7280;
+  --bg: #f9fafb;
   --card-bg: #ffffff;
-  --card-border: #e0e0e0;
-  --primary: #4A90E2;
-  --primary-hover: #357ABD;
-  --skeleton-bg: #f0f0f0;
-  --skeleton-shimmer: #e0e0e0;
+  --card-border: #e5e7eb;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --skeleton-bg: #f3f4f6;
+  --skeleton-shimmer: #e5e7eb;
+  --bias-western: #ef4444;
+  --bias-non-aligned: #3b82f6;
+  --bias-adversarial: #10b981;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,6 +24,28 @@
     --skeleton-bg: #2d2d2d;
     --skeleton-shimmer: #3d3d3d;
   }
+}
+
+/* ── Font Size Toggle ── */
+[data-font-size="small"] {
+  font-size: 14px;
+}
+
+[data-font-size="large"] {
+  font-size: 18px;
+}
+
+.bwb-font-size-toggle {
+  background: none;
+  border: none;
+  color: var(--fg);
+  cursor: pointer;
+  font-size: 20px;
+  padding: 8px;
+  position: fixed;
+  top: 16px;
+  right: 60px;
+  z-index: 1000;
 }
 
 /* ── Dark/Light Mode Toggle ── */
@@ -74,12 +99,26 @@
 }
 
 .bwb-story-card {
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .bwb-story-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.bwb-filters button {
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.bwb-filters button:hover {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--primary);
+}
+
+.bwb-filters button.active {
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 /* ── Loading States ── */
@@ -190,15 +229,15 @@
 }
 
 .bwb-story-bias-dot.western {
-  background-color: #BF3B2D;
+  background-color: var(--bias-western);
 }
 
 .bwb-story-bias-dot.non-aligned {
-  background-color: #4A90E2;
+  background-color: var(--bias-non-aligned);
 }
 
 .bwb-story-bias-dot.adversarial {
-  background-color: #2E8B57;
+  background-color: var(--bias-adversarial);
 }
 
 .bwb-story-card-title {
@@ -209,7 +248,7 @@
 }
 
 .bwb-story-card-snippet {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   color: var(--fg-dim);
 }

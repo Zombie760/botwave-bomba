@@ -77,7 +77,36 @@ document.addEventListener('DOMContentLoaded', function () {
     if (mq.addEventListener) mq.addEventListener('change', handler);
     else if (mq.addListener) mq.addListener(handler);
   }
+  
+  // Wire font size toggle
+  document.getElementById('font-size-toggle').addEventListener('click', toggleFontSize);
 });
 
+// Font Size Toggle
+function toggleFontSize() {
+  const currentSize = document.documentElement.getAttribute('data-font-size') || 'medium';
+  const sizes = ['small', 'medium', 'large'];
+  const currentIndex = sizes.indexOf(currentSize);
+  const nextIndex = (currentIndex + 1) % sizes.length;
+  const nextSize = sizes[nextIndex];
+  
+  document.documentElement.setAttribute('data-font-size', nextSize);
+  localStorage.setItem('fontSize', nextSize);
+}
+
+// Apply saved font size
+function applyFontSize() {
+  const savedSize = localStorage.getItem('fontSize') || 'medium';
+  document.documentElement.setAttribute('data-font-size', savedSize);
+}
+
 // Expose for inline scripts
-window.BWB_Theme = { set: setTheme, get: () => document.documentElement.getAttribute('data-theme'), toggle: toggleTheme };
+window.BWB_Theme = {
+  set: setTheme,
+  get: () => document.documentElement.getAttribute('data-theme'),
+  toggle: toggleTheme,
+  toggleFontSize
+};
+
+// Initialize font size
+applyFontSize();
