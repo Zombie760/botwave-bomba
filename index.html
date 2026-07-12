@@ -661,6 +661,8 @@
   <script>
     // ── Ground News-Aligned Feed Renderer ──
     (function() {
+      // Explicitly set base path for GitHub Pages
+      window.BWB_BASE = '/botwavebomba';
       const BASE_PATH = window.BWB_BASE || '';
       const FEED_URL = BASE_PATH + '/api/latest.json';
       const MANIFEST_URL = BASE_PATH + '/api/latest_slim.json';
