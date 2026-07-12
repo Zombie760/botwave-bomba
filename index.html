@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/botwavebomba/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>BOTWAVEBOMBA — Not Left/Right. Who Owns The Story.</title>
+  <meta name="description" content="1,651 sources deep-fingerprinted across 5 bias axes. Western (80%) / Non-Aligned (13%) / Adversarial (4%) — see the gap, name the funding. Powered by TELOS+PAI substrate.">
+  <link rel="canonical" href="https://botwavebomba.pages.dev/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/botwavebomba/assets/css/main.css">
+  <link rel="stylesheet" href="/botwavebomba/assets/css/mobile.css">
+  <link rel="manifest" href="/botwavebomba/manifest.json">
+  <style>
+    /* ── Story Cards (Ground News Alignment) ── */
+    .bwb-feed {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .bwb-story-card {
+      background: var(--card-bg, #ffffff);
+      border: 1px solid var(--card-border, #e0e0e0);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    .bwb-story-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .bwb-story-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .bwb-story-source-logo {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+    
+    .bwb-story-bias-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    
+    .bwb-story-bias-dot.western {
+      background-color: #BF3B2D;
+    }
+    
+    .bwb-story-bias-dot.non-aligned {
+      background-color: #4A90E2;
+    }
+    
+    .bwb-story-bias-dot.adversarial {
+      background-color: #2E8B57;
+    }
+    
+    .bwb-story-source-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--fg-dim, #666);
+      flex-grow: 1;
+    }
+    
+    .bwb-story-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--fg, #000);
+      margin: 0;
+    }
+    
+    .bwb-story-card-snippet {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--fg-dim, #444);
+      margin: 0;
+    }
+    
+    .bwb-story-card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--fg-mute, #888);
+    }
+    
+    .bwb-story-card-time {
+      color: var(--fg-faint, #aaa);
+    }
+    
+    .bwb-story-card-blindspot {
+      background: var(--blindspot-bg, #f0f0f0);
+      color: var(--blindspot-fg, #333);
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .bwb-story-card-blindspot.blindspot {
+      background: #BF3B2D;
+      color: white;
+    }
+    
+    .bwb-story-card-blindspot.mono-frame {
+      background: #4A90E2;
+      color: white;
+    }
+    
+    .bwb-story-card-blindspot.blackout {
+      background: #2E8B57;
+      color: white;
+    }
+    
+    /* ── Skeleton Loaders ── */
+    .skeleton {
+      background: var(--skeleton-bg, #e0e0e0);
+      border-radius: 4px;
+      margin: 4px 0;
+      height: 16px;
+      animation: skeleton-pulse 1.5s infinite ease-in-out;
+    }
+    
+    .skeleton-card {
+      background: var(--skeleton-card-bg, #f5f5f5);
+      border: 1px solid var(--skeleton-card-border, #e0e0e0);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .skeleton-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .skeleton-source-logo {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+    }
+    
+    .skeleton-bias-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    
+    .skeleton-source-name {
+      width: 120px;
+      height: 16px;
+    }
+    
+    .skeleton-card-title {
+      width: 100%;
+      height: 20px;
+    }
+    
+    .skeleton-card-snippet {
+      width: 100%;
+      height: 16px;
+    }
+    
+    .skeleton-card-snippet + .skeleton-card-snippet {
+      width: 80%;
+    }
+    
+    .skeleton-card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .skeleton-card-time {
+      width: 60px;
+      height: 14px;
+    }
+    
+    .skeleton-card-blindspot {
+      width: 80px;
+      height: 14px;
+    }
+    
+    @keyframes skeleton-pulse {
+      0%, 100% {
+        opacity: 0.6;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+    
+    /* ── Mobile Responsiveness ── */
+    @media (max-width: 768px) {
+      .bwb-feed {
+        gap: 12px;
+      }
+      
+      .bwb-story-card, .skeleton-card {
+        padding: 12px;
+      }
+      
+      .bwb-story-card-title {
+        font-size: 16px;
+      }
+      
+      .bwb-story-card-snippet {
+        font-size: 13px;
+      }
+    }
+    
+    /* ── Coverage Gap (Enhanced) ── */
+    .bwb-coverage-gap {
+      background: var(--card-bg, #ffffff);
+      border: 1px solid var(--card-border, #e0e0e0);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 24px 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    .bwb-cg-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--fg-mute, #888);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    
+    .bwb-cg-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 16px;
+      align-items: center;
+    }
+    
+    .bwb-cg-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    .bwb-cg-num {
+      font-family: 'Anton', sans-serif;
+      font-size: 24px;
+      color: var(--fg, #000);
+    }
+    
+    .bwb-cg-lbl {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--fg-dim, #666);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .bwb-cg-bar-wrap {
+      grid-column: 1 / -1;
+      margin: 16px 0;
+    }
+    
+    .bwb-cg-bar-lbl {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--fg-mute, #888);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    
+    .bwb-cg-bar {
+      display: flex;
+      height: 24px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--skeleton-bg, #e0e0e0);
+    }
+    
+    .bwb-cg-seg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      transition: width 0.3s ease;
+    }
+    
+    .bwb-cg-seg span {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: white;
+      text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    }
+    
+    .bwb-cg-seg.western {
+      background: #BF3B2D;
+    }
+    
+    .bwb-cg-seg.non-aligned {
+      background: #4A90E2;
+    }
+    
+    .bwb-cg-seg.adversarial {
+      background: #2E8B57;
+    }
+    
+    .bwb-cg-bar-legend {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--fg-mute, #888);
+      text-align: center;
+      margin-top: 4px;
+    }
+    
+    .bwb-cg-region-row {
+      margin-top: 20px;
+    }
+    
+    .bwb-cg-region-lbl {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--fg-mute, #888);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    
+    .bwb-cg-region-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      gap: 12px;
+    }
+    
+    .bwb-cg-region-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    .bwb-cg-region-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--fg-dim, #666);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .bwb-cg-region-val {
+      font-family: 'Anton', sans-serif;
+      font-size: 16px;
+      color: var(--fg, #000);
+    }
+    
+    .bwb-cg-delta {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--fg-mute, #888);
+      text-align: center;
+      margin-top: 12px;
+    }
+    
+    /* ── Sidebar (Enhanced) ── */
+    .bwb-sidebar {
+      background: var(--card-bg, #ffffff);
+      border: 1px solid var(--card-border, #e0e0e0);
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 24px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    .bwb-sidebar-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--fg-mute, #888);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    
+    .bwb-pipeline-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .bwb-live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #BF3B2D;
+      animation: live-pulse 2s infinite;
+    }
+    
+    @keyframes live-pulse {
+      0%, 100% {
+        opacity: 0.6;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+    
+    .bwb-live-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--fg-dim, #666);
+    }
+  </style>
+  <link rel="apple-touch-icon" href="/botwavebomba/assets/icons/icon-192.png">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="bwb-default-theme" content="light">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="BOTWAVEBOMBA">
+  <meta name="view-transition" content="same-origin">
+  <script type="speculationrules">
+  {"prerender":[{"where":{"href_matches":"/"},"eagerness":"moderate"}]}
+  </script>
+  <!-- Base path support for GitHub Pages subpath + root deployments -->
+  <script src="/botwavebomba/assets/js/base-path.js"></script>
+  <script src="/botwavebomba/assets/js/theme-switcher.js" defer></script>
+  <script src="/botwavebomba/assets/js/pwa.js" defer></script>
+</head>
+<body>
+
+  <!-- ── HEADER (injected by /assets/js/site-chrome.js) ── -->
+  <header data-bwb-chrome="full"></header>
+
+  <!-- ── BLOC LEGEND ── -->
+  <div class="bwb-legend-bar">
+    <div class="bwb-legend-item">
+      <div class="bwb-legend-dot western"></div>
+      <span>Western — high atlanticist/interventionist score (US/NATO/Israel-aligned press)</span>
+    </div>
+    <div class="bwb-legend-item">
+      <div class="bwb-legend-dot neutral"></div>
+      <span>Non-Aligned — regional press, Global South, independent outlets</span>
+    </div>
+    <div class="bwb-legend-item">
+      <div class="bwb-legend-dot adversarial"></div>
+      <span>Adversarial — multipolar/anti-intervention framing (RT, IRNA, CGTN, Sputnik)</span>
+    </div>
+    <div class="bwb-legend-item">
+      <div class="bwb-legend-dot verified"></div>
+      <span>BE UNDENIABLE — every claim filed, every source named</span>
+    </div>
+  </div>
+
+  <!-- ── TODAY'S FRAME — DREAM OUTCOME + BRIEF CTA ── -->
+  <aside class="bwb-editorial-frame" aria-label="Daily Blindspot Brief signup">
+    <div class="bwb-editorial-frame-label">DAILY BLINDSPOT BRIEF</div>
+    <p class="bwb-editorial-frame-body" id="bwb-editorial-frame-body">
+      See who covers a story and who doesn't — without trusting a US-partisan axis.
+    </p>
+    <div class="bwb-editorial-frame-cta">
+      <a href="/signup.html" class="bwb-editorial-frame-cta-btn">Subscribe — $49/mo or $499/yr</a>
+      <a href="/brief.html" class="bwb-editorial-frame-cta-link">or read today's brief free →</a>
+    </div>
+    <div class="bwb-editorial-frame-meta">
+      <span class="bwb-editorial-frame-stat" id="bwb-frame-story-count">— stories indexed</span>
+      <span class="bwb-editorial-frame-sep">·</span>
+      <span class="bwb-editorial-frame-stat" id="bwb-frame-source-count">— sources live</span>
+      <span class="bwb-editorial-frame-sep">·</span>
+      <span class="bwb-editorial-frame-stat" id="bwb-frame-bloc-count">3 blocs</span>
+      <span class="bwb-editorial-frame-sep">·</span>
+      <span class="bwb-editorial-frame-stat bwb-corpus-age" id="bwb-frame-corpus-age" title="When the feed corpus was last generated">Corpus updated: —</span>
+      <span class="bwb-editorial-frame-sep">·</span>
+      <a href="/methodology.html" class="bwb-editorial-frame-stat bwb-editorial-frame-link" title="What the bias bar measures, where the data comes from, and what it doesn't tell you">methodology ↗</a>
+    </div>
+    <div class="bwb-editorial-frame-live" id="bwb-frame-live">
+      <span class="bwb-live-dot" id="bwb-live-dot"></span>
+      <span class="bwb-live-text" id="bwb-live-text">pipeline —</span>
+    </div>
+  </aside>
+
+  <!-- ── SECTION TABS (populated dynamically from feed manifest) ── -->
+  <nav class="bwb-filters bwb-section-tabs" id="section-nav">
+    <button class="active" data-filter="all">All</button>
+    <!-- additional section buttons injected by feed.js -->
+  </nav>
+
+  <!-- ── TODAY'S COVERAGE GAP (renders after data load) ── -->
+  <!-- The BWB differentiator: a clear, data-driven breakdown of the bloc and regional gaps in today's coverage. -->
+  <aside class="bwb-coverage-gap" id="bwb-coverage-gap" aria-label="Today's coverage gap">
+    <div class="bwb-cg-eyebrow">TODAY'S COVERAGE GAP</div>
+    <div class="bwb-cg-row" id="bwb-cg-row">
+      <div class="bwb-cg-stat">
+        <span class="bwb-cg-num" id="bwb-cg-stories">—</span>
+        <span class="bwb-cg-lbl">stories</span>
+      </div>
+      <div class="bwb-cg-stat">
+        <span class="bwb-cg-num" id="bwb-cg-sources">—</span>
+        <span class="bwb-cg-lbl">sources</span>
+      </div>
+      <div class="bwb-cg-stat">
+        <span class="bwb-cg-num" id="bwb-cg-countries">—</span>
+        <span class="bwb-cg-lbl">countries</span>
+      </div>
+      <div class="bwb-cg-bar-wrap">
+        <div class="bwb-cg-bar-lbl">BLOC MIX</div>
+        <div class="bwb-cg-bar" id="bwb-cg-bar">
+          <div class="bwb-cg-seg western" id="bwb-cg-seg-w" style="width:0%"><span>Western</span></div>
+          <div class="bwb-cg-seg non-aligned" id="bwb-cg-seg-n" style="width:0%"><span>Non-Aligned</span></div>
+          <div class="bwb-cg-seg adversarial" id="bwb-cg-seg-a" style="width:0%"><span>Adversarial</span></div>
+        </div>
+        <div class="bwb-cg-bar-legend" id="bwb-cg-bar-legend">—</div>
+      </div>
+      <div class="bwb-cg-stat">
+        <span class="bwb-cg-num" id="bwb-cg-diversity">—</span>
+        <span class="bwb-cg-label">Diversity Score</span>
+      </div>
+      <div class="bwb-cg-headline" id="bwb-cg-headline">—</div>
+    </div>
+    <div class="bwb-cg-region-row" id="bwb-cg-region-row" aria-label="Regional coverage gap">
+      <div class="bwb-cg-region-lbl">REGIONAL GAP — target ≥5% per non-Western region</div>
+      <div class="bwb-cg-region-grid" id="bwb-cg-region-grid">
+        <div class="bwb-cg-region-cell" data-region="mena">
+          <span class="bwb-cg-region-name">MENA</span>
+          <span class="bwb-cg-region-val" id="bwb-cg-region-mena">—</span>
+        </div>
+        <div class="bwb-cg-region-cell" data-region="latam">
+          <span class="bwb-cg-region-name">LATAM</span>
+          <span class="bwb-cg-region-val" id="bwb-cg-region-latam">—</span>
+        </div>
+        <div class="bwb-cg-region-cell" data-region="subsaharan">
+          <span class="bwb-cg-region-name">Sub-Saharan</span>
+          <span class="bwb-cg-region-val" id="bwb-cg-region-subsaharan">—</span>
+        </div>
+        <div class="bwb-cg-region-cell" data-region="south_asia">
+          <span class="bwb-cg-region-name">South Asia</span>
+          <span class="bwb-cg-region-val" id="bwb-cg-region-south_asia">—</span>
+        </div>
+        <div class="bwb-cg-region-cell" data-region="east_asia">
+          <span class="bwb-cg-region-name">East Asia</span>
+          <span class="bwb-cg-region-val" id="bwb-cg-region-east_asia">—</span>
+        </div>
+        <div class="bwb-cg-region-cell" data-region="se_asia">
+          <span class="bwb-cg-region-name">SE Asia</span>
+          <span class="bwb-cg-region-val" id="bwb-cg-region-se_asia">—</span>
+        </div>
+        <div class="bwb-cg-region-cell" data-region="eastern_europe">
+          <span class="bwb-cg-region-name">E. Europe</span>
+          <span class="bwb-cg-region-val" id="bwb-cg-region-eastern_europe">—</span>
+        </div>
+        <div class="bwb-cg-region-cell" data-region="central_asia">
+          <span class="bwb-cg-region-name">Central Asia</span>
+          <span class="bwb-cg-region-val" id="bwb-cg-region-central_asia">—</span>
+        </div>
+      </div>
+      <div class="bwb-cg-delta" id="bwb-cg-delta">—</div>
+    </div>
+  </aside>
+
+  <!-- ── SIGNAL FILTERS ── -->
+  <nav class="bwb-filters bwb-signal-filters" id="filter-nav">
+    <button data-filter="blindspot">BLINDSPOT</button>
+    <button data-filter="mono-frame">MONO-FRAME</button>
+    <button data-filter="blackout">W.BLACKOUT</button>
+    <button data-filter="has-video">Has Video</button>
+    <button data-filter="left-heavy">Left-Heavy</button>
+    <button data-filter="right-heavy">Right-Heavy</button>
+    <button data-filter="western-vs-non-western">WESTERN vs NON-WESTERN</button>
+    <button data-filter="fact-high" class="bwb-filter-fact">FACT HIGH</button>
+    <button data-filter="fact-mixed" class="bwb-filter-fact">FACT MIXED</button>
+    <button data-filter="fact-low" class="bwb-filter-fact">FACT LOW</button>
+  </nav>
+
+  <!-- ── GEO SCOPE FILTERS (local / regional / national / global) ── -->
+  <nav class="bwb-filters bwb-geo-filters" id="geo-nav">
+    <button class="active" data-filter="all">All</button>
+    <button data-filter="local">📍 Local</button>
+    <button data-filter="regional">🌍 Regional</button>
+    <button data-filter="national">🏛️ National</button>
+    <button data-filter="global">🌐 Global</button>
+  </nav>
+
+  <!-- ── SECTION PILLS (live count per section, injected by feed.js) ── -->
+  <div class="bwb-section-pills bwb-filters" id="section-pills">
+    <!-- pills injected by feed.js from latest_slim.json sections manifest -->
+  </div>
+
+  <!-- ── PULL TO REFRESH INDICATOR ── -->
+  <div class="ptr-indicator" id="ptr-indicator">
+    <div class="ptr-spinner"></div>
+  </div>
+
+  <!-- ── MAIN FEED ── -->
+  <main class="bwb-main" id="main-feed">
+    <div id="story-feed" class="bwb-feed">
+      <!-- Skeleton loaders for perceived performance -->
+      <div class="skeleton skeleton-card">
+        <div class="skeleton skeleton-card-header">
+          <div class="skeleton skeleton-source-logo"></div>
+          <div class="skeleton skeleton-bias-dot"></div>
+          <div class="skeleton skeleton-source-name"></div>
+        </div>
+        <div class="skeleton skeleton-card-title"></div>
+        <div class="skeleton skeleton-card-snippet"></div>
+        <div class="skeleton skeleton-card-meta">
+          <div class="skeleton skeleton-card-time"></div>
+          <div class="skeleton skeleton-card-blindspot"></div>
+        </div>
+      </div>
+      <div class="skeleton skeleton-card">
+        <div class="skeleton skeleton-card-header">
+          <div class="skeleton skeleton-source-logo"></div>
+          <div class="skeleton skeleton-bias-dot"></div>
+          <div class="skeleton skeleton-source-name"></div>
+        </div>
+        <div class="skeleton skeleton-card-title"></div>
+        <div class="skeleton skeleton-card-snippet"></div>
+        <div class="skeleton skeleton-card-meta">
+          <div class="skeleton skeleton-card-time"></div>
+          <div class="skeleton skeleton-card-blindspot"></div>
+        </div>
+      </div>
+      <div class="skeleton skeleton-card">
+        <div class="skeleton skeleton-card-header">
+          <div class="skeleton skeleton-source-logo"></div>
+          <div class="skeleton skeleton-bias-dot"></div>
+          <div class="skeleton skeleton-source-name"></div>
+        </div>
+        <div class="skeleton skeleton-card-title"></div>
+        <div class="skeleton skeleton-card-snippet"></div>
+        <div class="skeleton skeleton-card-meta">
+          <div class="skeleton skeleton-card-time"></div>
+          <div class="skeleton skeleton-card-blindspot"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // ── Ground News-Aligned Feed Renderer ──
+    (function() {
+      const BASE_PATH = window.BWB_BASE || '';
+      const FEED_URL = BASE_PATH + '/api/latest.json';
+      const MANIFEST_URL = BASE_PATH + '/api/latest_slim.json';
+      const BLINDSPOTS_URL = BASE_PATH + '/api/blindspots.json';
+      
+      // ── State ──
+      let feedData = null;
+      let manifestData = null;
+      let blindspotsData = null;
+      let activeFilters = {
+        section: 'all',
+        signal: 'all',
+        geo: 'all'
+      };
+      
+      // ── DOM References ──
+      const storyFeedEl = document.getElementById('story-feed');
+      const sectionNavEl = document.getElementById('section-nav');
+      const filterNavEl = document.getElementById('filter-nav');
+      const geoNavEl = document.getElementById('geo-nav');
+      const sectionPillsEl = document.getElementById('section-pills');
+      const coverageGapEl = document.getElementById('bwb-coverage-gap');
+      const cgStoriesEl = document.getElementById('bwb-cg-stories');
+      const cgSourcesEl = document.getElementById('bwb-cg-sources');
+      const cgCountriesEl = document.getElementById('bwb-cg-countries');
+      const cgSegWEl = document.getElementById('bwb-cg-seg-w');
+      const cgSegNEl = document.getElementById('bwb-cg-seg-n');
+      const cgSegAEl = document.getElementById('bwb-cg-seg-a');
+      const cgBarLegendEl = document.getElementById('bwb-cg-bar-legend');
+      const cgDiversityEl = document.getElementById('bwb-cg-diversity');
+      const cgHeadlineEl = document.getElementById('bwb-cg-headline');
+      const cgRegionGridEl = document.getElementById('bwb-cg-region-grid');
+      const cgDeltaEl = document.getElementById('bwb-cg-delta');
+      const frameStoryCountEl = document.getElementById('bwb-frame-story-count');
+      const frameSourceCountEl = document.getElementById('bwb-frame-source-count');
+      const frameCorpusAgeEl = document.getElementById('bwb-frame-corpus-age');
+      const pipelineStatusEl = document.getElementById('bwb-pipeline-status');
+      const liveDotEl = document.getElementById('bwb-live-dot');
+      const liveTextEl = document.getElementById('bwb-live-text');
+      
+      // ── Fetch Data ──
+      async function fetchData() {
+        try {
+          // GitHub Pages serves from /botwavebomba/, so ensure BASE_PATH is set
+          const basePath = window.BWB_BASE || '/botwavebomba';
+          const feedUrl = `${basePath}/api/latest.json`;
+          const manifestUrl = `${basePath}/api/latest_slim.json`;
+          const blindspotsUrl = `${basePath}/api/blindspots.json`;
+          
+          console.log('Fetching data from:', { feedUrl, manifestUrl, blindspotsUrl });
+          
+          const [feedRes, manifestRes, blindspotsRes] = await Promise.all([
+            fetch(feedUrl),
+            fetch(manifestUrl),
+            fetch(blindspotsUrl)
+          ]);
+          
+          if (!feedRes.ok) throw new Error(`Feed fetch failed: HTTP ${feedRes.status}`);
+          if (!manifestRes.ok) throw new Error(`Manifest fetch failed: HTTP ${manifestRes.status}`);
+          if (!blindspotsRes.ok) throw new Error(`Blindspots fetch failed: HTTP ${blindspotsRes.status}`);
+          
+          feedData = await feedRes.json();
+          manifestData = await manifestRes.json();
+          blindspotsData = await blindspotsRes.json();
+          
+          console.log('Data fetched successfully:', { feedData, manifestData, blindspotsData });
+          
+          renderAll();
+          updatePipelineStatus('LIVE');
+        } catch (err) {
+          console.error('Failed to fetch data:', err);
+          updatePipelineStatus('ERROR');
+        }
+      }
+      
+      // ── Render All ──
+      function renderAll() {
+        if (!feedData || !manifestData || !blindspotsData) return;
+        
+        renderStoryFeed();
+        renderSectionTabs();
+        renderSectionPills();
+        renderCoverageGap();
+        updateFrameStats();
+      }
+      
+      // ── Render Story Feed ──
+      function renderStoryFeed() {
+        if (!feedData.stories) return;
+        
+        // Clear skeleton loaders
+        storyFeedEl.innerHTML = '';
+        
+        // Filter stories
+        const filteredStories = feedData.stories.filter(story => {
+          return (
+            (activeFilters.section === 'all' || story.section === activeFilters.section) &&
+            (activeFilters.signal === 'all' || story.signals.includes(activeFilters.signal)) &&
+            (activeFilters.geo === 'all' || story.geo_scope === activeFilters.geo)
+          );
+        });
+        
+        // Render each story
+        filteredStories.forEach(story => {
+          const storyEl = document.createElement('div');
+          storyEl.className = 'bwb-story-card';
+          storyEl.innerHTML = `
+            <a href="/story.html?id=${story.id}" class="bwb-story-card-link">
+              <div class="bwb-story-card-header">
+                <img src="/assets/logos/${story.sources[0].domain}.png" alt="${story.sources[0].name}" class="bwb-story-source-logo" onerror="this.src='/assets/logos/default.png';">
+                <div class="bwb-story-bias-dot ${story.sources[0].bloc}"></div>
+                <span class="bwb-story-source-name">${story.sources[0].name}</span>
+              </div>
+              <h3 class="bwb-story-card-title">${story.consensus_headline}</h3>
+              <p class="bwb-story-card-snippet">${story.consensus_snippet}</p>
+              <div class="bwb-story-card-meta">
+                <span class="bwb-story-card-time">${formatTime(story.published_at)}</span>
+                ${story.signals.includes('blindspot') ? '<span class="bwb-story-card-blindspot blindspot">BLINDSPOT</span>' : ''}
+                ${story.signals.includes('mono-frame') ? '<span class="bwb-story-card-blindspot mono-frame">MONO-FRAME</span>' : ''}
+                ${story.signals.includes('blackout') ? '<span class="bwb-story-card-blindspot blackout">BLACKOUT</span>' : ''}
+              </div>
+            </a>
+          `;
+          storyFeedEl.appendChild(storyEl);
+        });
+      }
+      
+      // ── Render Section Tabs ──
+      function renderSectionTabs() {
+        if (!manifestData.sections) return;
+        
+        sectionNavEl.innerHTML = '<button class="active" data-filter="all">All</button>';
+        manifestData.sections.forEach(section => {
+          const btn = document.createElement('button');
+          btn.textContent = section.name;
+          btn.dataset.filter = section.id;
+          sectionNavEl.appendChild(btn);
+        });
+        
+        // Bind events
+        sectionNavEl.querySelectorAll('button').forEach(btn => {
+          btn.addEventListener('click', () => {
+            sectionNavEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeFilters.section = btn.dataset.filter;
+            renderStoryFeed();
+          });
+        });
+      }
+      
+      // ── Render Section Pills ──
+      function renderSectionPills() {
+        if (!manifestData.sections) return;
+        
+        sectionPillsEl.innerHTML = '';
+        manifestData.sections.forEach(section => {
+          const pill = document.createElement('button');
+          pill.textContent = `${section.name} (${section.count})`;
+          pill.dataset.filter = section.id;
+          sectionPillsEl.appendChild(pill);
+        });
+        
+        // Bind events
+        sectionPillsEl.querySelectorAll('button').forEach(btn => {
+          btn.addEventListener('click', () => {
+            activeFilters.section = btn.dataset.filter;
+            renderStoryFeed();
+            // Update active tab
+            sectionNavEl.querySelectorAll('button').forEach(b => {
+              b.classList.toggle('active', b.dataset.filter === activeFilters.section);
+            });
+          });
+        });
+      }
+      
+      // ── Render Coverage Gap ──
+      function renderCoverageGap() {
+        if (!blindspotsData.coverage) return;
+        
+        const coverage = blindspotsData.coverage;
+        cgStoriesEl.textContent = coverage.story_count;
+        cgSourcesEl.textContent = coverage.source_count;
+        cgCountriesEl.textContent = coverage.country_count;
+        cgDiversityEl.textContent = coverage.diversity_score;
+        cgHeadlineEl.textContent = coverage.headline;
+        
+        // Bloc mix
+        const total = coverage.bloc_mix.western + coverage.bloc_mix.non_aligned + coverage.bloc_mix.adversarial;
+        const wPct = Math.round((coverage.bloc_mix.western / total) * 100);
+        const nPct = Math.round((coverage.bloc_mix.non_aligned / total) * 100);
+        const aPct = Math.round((coverage.bloc_mix.adversarial / total) * 100);
+        
+        cgSegWEl.style.width = `${wPct}%`;
+        cgSegNEl.style.width = `${nPct}%`;
+        cgSegAEl.style.width = `${aPct}%`;
+        cgBarLegendEl.textContent = `${wPct}% Western / ${nPct}% Non-Aligned / ${aPct}% Adversarial`;
+        
+        // Regional gap
+        const regions = [
+          'mena', 'latam', 'subsaharan', 'south_asia', 
+          'east_asia', 'se_asia', 'eastern_europe', 'central_asia'
+        ];
+        
+        regions.forEach(region => {
+          const valEl = document.getElementById(`bwb-cg-region-${region}`);
+          if (valEl) valEl.textContent = coverage.regional_gap[region] || '0';
+        });
+        
+        // Delta
+        cgDeltaEl.textContent = coverage.delta || 'No significant regional gap';
+      }
+      
+      // ── Update Frame Stats ──
+      function updateFrameStats() {
+        if (!feedData.stats) return;
+        
+        frameStoryCountEl.textContent = `${feedData.stats.story_count} stories indexed`;
+        frameSourceCountEl.textContent = `${feedData.stats.source_count} sources live`;
+        frameCorpusAgeEl.textContent = `Corpus updated: ${formatDate(feedData.stats.generated_at)}`;
+      }
+      
+      // ── Update Pipeline Status ──
+      function updatePipelineStatus(status) {
+        const statusMap = {
+          'LIVE': { text: 'Pipeline live', dot: 'live' },
+          'ERROR': { text: 'Pipeline error', dot: 'error' }
+        };
+        
+        const state = statusMap[status] || statusMap['ERROR'];
+        liveTextEl.textContent = state.text;
+        liveDotEl.className = 'bwb-live-dot ' + state.dot;
+        
+        if (status === 'LIVE') {
+          pipelineStatusEl.innerHTML += `
+            <div class="bwb-pipeline-info">
+              <div class="bwb-pipe-row">
+                <span>Ingestor</span>
+                <span class="bwb-pipe-status live">LIVE</span>
+              </div>
+              <div class="bwb-pipe-row">
+                <span>Bias Scorer</span>
+                <span class="bwb-pipe-status live">LIVE</span>
+              </div>
+              <div class="bwb-pipe-row">
+                <span>Blindspot Detector</span>
+                <span class="bwb-pipe-status live">LIVE</span>
+              </div>
+              <div class="bwb-pipe-row">
+                <span>Framing Differ</span>
+                <span class="bwb-pipe-status live">LIVE</span>
+              </div>
+              <div class="bwb-pipe-row">
+                <span>Coverage Mapper</span>
+                <span class="bwb-pipe-status live">LIVE</span>
+              </div>
+            </div>
+          `;
+        }
+      }
+      
+      // ── Helper: Format Time ──
+      function formatTime(timestamp) {
+        const date = new Date(timestamp);
+        return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      }
+      
+      // ── Helper: Format Date ──
+      function formatDate(timestamp) {
+        const date = new Date(timestamp);
+        return date.toLocaleDateString([], { year: 'numeric', month: 'short', day: 'numeric' });
+      }
+      
+      // ── Bind Filter Events ──
+      function bindFilterEvents() {
+        // Signal filters
+        filterNavEl.querySelectorAll('button').forEach(btn => {
+          btn.addEventListener('click', () => {
+            filterNavEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeFilters.signal = btn.dataset.filter;
+            renderStoryFeed();
+          });
+        });
+        
+        // Geo filters
+        geoNavEl.querySelectorAll('button').forEach(btn => {
+          btn.addEventListener('click', () => {
+            geoNavEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeFilters.geo = btn.dataset.filter;
+            renderStoryFeed();
+          });
+        });
+      }
+      
+      // ── Initialize ──
+      function init() {
+        fetchData();
+        bindFilterEvents();
+      }
+      
+      init();
+    })();
+  </script>
+</body>
+</html>
+          <div class="bwb-axis-row">
+            <span class="axis-name">zionist</span>
+            <span class="axis-desc">pro-Israel vs critical</span>
+          </div>
+          <div class="bwb-axis-row">
+            <span class="axis-name">atlanticist</span>
+            <span class="axis-desc">US-led order vs multipolar</span>
+          </div>
+          <div class="bwb-axis-row">
+            <span class="axis-name">statist</span>
+            <span class="axis-desc">pro-state vs anti-state</span>
+          </div>
+          <div class="bwb-axis-row">
+            <span class="axis-name">financialized</span>
+            <span class="axis-desc">pro-market vs critical</span>
+          </div>
+        </div>
+        <a href="/about.html" class="bwb-sidebar-link">Read methodology →</a>
+      </div>
+
+      <div class="bwb-sidebar-block">
+        <div class="bwb-sidebar-title">WHAT IS A BLINDSPOT?</div>
+        <p class="bwb-sidebar-body">A story covered heavily by one bloc — and ignored by another. The gap is the story.</p>
+        <a href="/blindspots.html" class="bwb-sidebar-link">View all blindspots →</a>
+      </div>
+
+      <div class="bwb-sidebar-block">
+        <div class="bwb-sidebar-title">PIPELINE LIVE
+          <span class="bwb-sidebar-title-pulse" id="bwb-sidebar-pipeline-dot" title="poller pipeline status"></span>
+        </div>
+        <div class="bwb-domain-grid" id="bwb-domain-grid">
+          <!-- injected by pipeline-live.js — 12 region pills, green/amber/red -->
+        </div>
+        <div class="bwb-sidebar-foot" id="bwb-sidebar-pipeline-foot">
+          loading…
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <!-- ── MOBILE BOTTOM NAV ── -->
+  <nav class="bwb-bottom-nav safe-bottom">
+    <a href="/" class="active">Feed</a>
+    <a href="/cartel_watch.html">Cartel</a>
+    <a href="/blindspots.html">Blindspots</a>
+    <a href="/sources.html">Sources</a>
+    <a href="/trades.html">Trades</a>
+    <a href="/books.html">Books</a>
+    <a href="/corkboard/">Corkboard</a>
+    <a href="/corruption.html">Corruption</a>
+    <a href="/about.html">Method</a>
+    <a href="/funnies.html">Funnies</a>
+  </nav>
+
+  <!-- ── PWA INSTALL PROMPT ── -->
+  <div id="pwa-install-prompt" class="pwa-install-prompt" style="display: none;">
+    <div class="pwa-install-content">
+      <p>Install BOTWAVEBOMBA for instant access and blindspot alerts.</p>
+      <div class="pwa-install-actions">
+        <button id="pwa-install-btn" class="touch-target">Install</button>
+        <button id="pwa-dismiss-btn" class="touch-target">Not now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER (injected by /assets/js/site-chrome.js) ── -->
+  <footer data-bwb-chrome="default"></footer>
+
+  <script src="/botwavebomba/assets/js/site-chrome.js" defer></script>
+  <script src="/botwavebomba/assets/js/api.js"></script>
+  <script src="/botwavebomba/assets/js/article-analyzer.js"></script>
+  <script src="/botwavebomba/assets/js/heatmap.js"></script>
+  <script src="/botwavebomba/assets/js/status-badge.js"></script>
+  <script src="/botwavebomba/assets/js/entitlements.js"></script>
+  <script src="/botwavebomba/assets/js/feed.js"></script>
+  <script src="/botwavebomba/assets/js/identity-modal.js" defer></script>
+  <script>
+    // Hydrate the editorial-frame banner with live counts from latest_slim.json
+    (function () {
+      var url = (window.BWB_BASE || '') + '/api/latest_slim.json';
+      fetch(url, { cache: 'no-store' }).then(function (r) {
+        return r.ok ? r.json() : null;
+      }).then(function (d) {
+        if (!d) return;
+        var stories = d.story_count || (d.stories || []).length || 0;
+        var articles = d.article_count || 0;
+        var a = document.getElementById('bwb-frame-story-count');
+        var b = document.getElementById('bwb-frame-source-count');
+        var c = document.getElementById('bwb-frame-corpus-age');
+        if (a) a.textContent = stories + ' stories indexed';
+        if (b) b.textContent = articles.toLocaleString() + ' source articles';
+        // Corpus age: visible receipt for the operator that generate_feed.py
+        // needs to run when this number is in days, not minutes.
+        if (c && d.generated_at) {
+          var t = Date.parse(d.generated_at);
+          if (!isNaN(t)) {
+            var ageMs = Date.now() - t;
+            var ageH = ageMs / 3600000;
+            var label, tier;
+            if (ageH < 1)         { label = Math.floor(ageMs / 60000) + 'm ago'; tier = 'live'; }
+            else if (ageH < 24)   { label = Math.floor(ageH) + 'h ago';          tier = 'fresh'; }
+            else if (ageH < 168)  { label = Math.floor(ageH / 24) + 'd ago';      tier = 'recent'; }
+            else                  { label = Math.floor(ageH / 24) + 'd ago — STALE'; tier = 'stale'; }
+            c.textContent = 'corpus ' + label;
+            c.className = 'bwb-editorial-frame-stat bwb-corpus-age bwb-corpus-age--' + tier;
+            c.title = 'Corpus generated ' + new Date(t).toUTCString();
+          }
+        }
+
+        // ── TODAY'S COVERAGE GAP (the front-page differentiator) ──
+        // Single panel that names the gap the corpus has right now.
+        // Operator-visible differentiator vs Ground News: we name the gap
+        // (e.g. "12 of 20 stories are covered only by Latin-American press")
+        // and we cite the country + bloc mix, not just the percent.
+        if (d.stories && d.stories.length) {
+          var stories  = d.stories;
+          var allSrcs  = [];
+          stories.forEach(function (s) {
+            (s.sources || []).forEach(function (src) { allSrcs.push(src); });
+          });
+          var storiesN = stories.length;
+          var srcN     = allSrcs.length;
+          var countries = {};
+          allSrcs.forEach(function (src) {
+            var c = (src.country || '').toUpperCase();
+            if (c && c.length === 2) countries[c] = true;
+          });
+          var countryN = Object.keys(countries).length;
+
+          var bloc = { western: 0, 'non-aligned': 0, adversarial: 0, other: 0 };
+          allSrcs.forEach(function (src) {
+            var b = (src.bloc || 'other').toLowerCase();
+            if (b === 'western') bloc.western++;
+            else if (b === 'non-aligned' || b === 'neutral' || b === 'non_aligned') bloc['non-aligned']++;
+            else if (b === 'adversarial') bloc.adversarial++;
+            else bloc.other++;
+          });
+          var totalBloc = bloc.western + bloc['non-aligned'] + bloc.adversarial + bloc.other || 1;
+          var wPct = (bloc.western      / totalBloc) * 100;
+          var nPct = (bloc['non-aligned'] / totalBloc) * 100;
+          var aPct = (bloc.adversarial  / totalBloc) * 100;
+          var oPct = (bloc.other        / totalBloc) * 100;
+
+          var fmt = function (n) { return Math.round(n).toLocaleString(); };
+          document.getElementById('bwb-cg-stories').textContent  = fmt(storiesN);
+          document.getElementById('bwb-cg-sources').textContent  = fmt(srcN);
+          document.getElementById('bwb-cg-countries').textContent = fmt(countryN);
+          document.getElementById('bwb-cg-seg-w').style.width = wPct + '%';
+          document.getElementById('bwb-cg-seg-n').style.width = nPct + '%';
+          document.getElementById('bwb-cg-seg-a').style.width = aPct + '%';
+          document.getElementById('bwb-cg-seg-o').style.width = oPct + '%';
+
+          // Legend
+          document.getElementById('bwb-cg-bar-legend').innerHTML =
+            '<span class="bwb-bloc-bullet western"></span>Western ' + Math.round(wPct) + '%' +
+            '<span class="bwb-bloc-bullet non-aligned"></span>Non-Aligned ' + Math.round(nPct) + '%' +
+            '<span class="bwb-bloc-bullet adversarial"></span>Adversarial ' + Math.round(aPct) + '%' +
+            (bloc.other ? '<span class="bwb-bloc-bullet other"></span>Untagged ' + Math.round(oPct) + '%' : '');
+
+          // Headline gap: the largest bloc (and the largest bloc that is *missing*).
+          var biggestBloc = bloc.western, biggestName = 'Western';
+          if (bloc['non-aligned'] > biggestBloc) { biggestBloc = bloc['non-aligned']; biggestName = 'Non-Aligned'; }
+          if (bloc.adversarial  > biggestBloc) { biggestBloc = bloc.adversarial;  biggestName = 'Adversarial'; }
+          var smallestPct = Math.min(wPct, nPct, aPct);
+          var smallestName = smallestPct === wPct ? 'Western' : smallestPct === nPct ? 'Non-Aligned' : 'Adversarial';
+          var head = '<b>Today\'s coverage gap:</b> ' + biggestName + ' press leads the corpus at '
+                   + Math.round(Math.max(wPct, nPct, aPct)) + '%. '
+                   + smallestName + ' press trails at ' + Math.round(smallestPct) + '%. '
+                   + (countryN >= 10
+                       ? '<b>' + countryN + ' countries</b> represented in ' + storiesN + ' stories.'
+                       : '<b>Only ' + countryN + ' countries</b> in ' + storiesN + ' stories — narrow geo spread.');
+          document.getElementById('bwb-cg-headline').innerHTML = head;
+        }
+
+        // ── G17: REGION GRID + BLOC DELTA FROM TARGET ──
+        // Pulls from /api/coverage_gap.json (built from sources.json at
+        // pipeline time). Region cells are color-coded by gap severity:
+        // green ≥5%, amber 1-4.9%, red <1% (the editorial floor). The delta
+        // line reports the bloc-mix distance from the 40/40/20 target.
+        var gapUrl = (window.BWB_BASE || '') + '/api/coverage_gap.json';
+        var row = document.getElementById('bwb-cg-region-row');
+        fetch(gapUrl, { cache: 'no-store' }).then(function (r) {
+          return r.ok ? r.json() : null;
+        }).then(function (g) {
+          if (!g || !g.region) {
+            if (row) row.setAttribute('data-gap-state', 'no-data');
+            return;
+          }
+          var hit = 0, miss = 0;
+          Object.keys(g.region).forEach(function (rk) {
+            var el = document.getElementById('bwb-cg-region-' + rk);
+            if (!el) { miss++; return; }
+            hit++;
+            var v = g.region[rk];
+            el.textContent = v.pct + '%';
+            el.parentElement.classList.remove('bwb-cg-region-cell--green',
+                                              'bwb-cg-region-cell--amber',
+                                              'bwb-cg-region-cell--red');
+            if (v.pct >= 5)        el.parentElement.classList.add('bwb-cg-region-cell--green');
+            else if (v.pct >= 1)   el.parentElement.classList.add('bwb-cg-region-cell--amber');
+            else                   el.parentElement.classList.add('bwb-cg-region-cell--red');
+          });
+          if (row) row.setAttribute('data-gap-state', 'live');
+          if (row) row.setAttribute('data-gap-hit', String(hit));
+          if (row) row.setAttribute('data-gap-miss', String(miss));
+          if (g.gap) {
+            var dEl = document.getElementById('bwb-cg-delta');
+            if (dEl) {
+              var wd = g.gap.western_delta, nd = g.gap.non_aligned_delta, ad = g.gap.adversarial_delta;
+              var sign = function (n) { return n > 0 ? '+' + n : '' + n; };
+              dEl.innerHTML =
+                '<b>BLOC DELTA from 40/40/20 target:</b> ' +
+                'Western ' + sign(wd) + 'pt · ' +
+                'Non-Aligned ' + sign(nd) + 'pt · ' +
+                'Adversarial ' + sign(ad) + 'pt.';
+            }
+          }
+        }).catch(function () {
+          if (row) row.setAttribute('data-gap-state', 'fetch-failed');
+        });
+      }).catch(function () { /* keep em-dashes */ });
+    })();
+  </script>
+  <script>
+    // Hydrate the live pipeline ticker from api/pipeline_live.json.
+    // The poller runs every 15 min; this receipt is regenerated by
+    // scripts/build_pipeline_live.py. Tier: live (green pulse) / degraded
+    // (amber) / dead (red). The editorial frame dot pulses if any domain
+    // is alive; the sidebar block shows all 12 domain cells.
+    (function () {
+      var url = (window.BWB_BASE || '') + '/api/pipeline_live.json';
+      var ageLabel = function(ts) {
+        if (!ts) return '—';
+        var t = Date.parse(ts);
+        if (isNaN(t)) return '—';
+        var ageMs = Date.now() - t;
+        var ageMin = Math.floor(ageMs / 60000);
+        if (ageMin < 1)   return 'just now';
+        if (ageMin < 60)  return ageMin + 'm ago';
+        var ageH = Math.floor(ageMin / 60);
+        if (ageH < 24)    return ageH + 'h ago';
+        return Math.floor(ageH / 24) + 'd ago';
+      };
+      var plural = function(n, one, many) { return n + ' ' + (n === 1 ? one : many); };
+      fetch(url, { cache: 'no-store' }).then(function (r) {
+        return r.ok ? r.json() : null;
+      }).then(function (d) {
+        if (!d) return;
+        var p = d.poller || {};
+        var b = d.bridge || {};
+        // Editorial frame: "poller live · 138 new in last 15m · bridge 2m ago"
+        var liveEl = document.getElementById('bwb-live-text');
+        var dotEl  = document.getElementById('bwb-live-dot');
+        var lastRun = ageLabel(p.last_run_ts);
+        var bridgeAge = ageLabel(b.last_bridge_ts);
+        var alive = p.domains_alive_24h || 0;
+        var total = (d.domains || []).length || 12;
+        var tier = alive === total ? 'live'
+                 : alive === 0     ? 'dead'
+                 : 'degraded';
+        if (liveEl) {
+          liveEl.textContent =
+            'poller ' + tier + ' · ' + alive + '/' + total + ' regions · '
+            + plural(p.total_runs_24h || 0, 'run', 'runs') + ' in 24h · '
+            + (b.articles_new || 0) + ' new in last 15m · bridge ' + bridgeAge;
+        }
+        if (dotEl) {
+          dotEl.className = 'bwb-live-dot bwb-live-dot--' + tier;
+          dotEl.title = 'Last poller run: ' + (p.last_run_ts || '—')
+                      + '\nLast bridge: ' + (b.last_bridge_ts || '—');
+        }
+        // Sidebar dot mirrors the same tier
+        var sidebarDot = document.getElementById('bwb-sidebar-pipeline-dot');
+        if (sidebarDot) {
+          sidebarDot.className = 'bwb-sidebar-title-pulse bwb-sidebar-title-pulse--' + tier;
+        }
+        // Sidebar domain grid: render 12 region cells, each with its status
+        var grid = document.getElementById('bwb-domain-grid');
+        var foot = document.getElementById('bwb-sidebar-pipeline-foot');
+        if (grid) {
+          grid.innerHTML = '';
+          (d.domains || []).forEach(function(dom) {
+            var cell = document.createElement('div');
+            cell.className = 'bwb-domain-cell bwb-domain-cell--' + (dom.status || 'dead');
+            cell.title = dom.name
+              + '\nlast run: ' + (dom.last_run_ts || '—')
+              + '\nnew articles: ' + (dom.last_new_articles || 0)
+              + '\nfeeds: ' + (dom.polled_ok || 0) + '/' + (dom.feeds_in_domain || 0) + ' ok';
+            cell.innerHTML = ''
+              + '<span class="bwb-domain-cell-dot"></span>'
+              + '<span class="bwb-domain-cell-name">' + dom.name.replace(/_/g, ' ') + '</span>'
+              + '<span class="bwb-domain-cell-num">'
+              +   (dom.last_new_articles != null ? dom.last_new_articles : '·')
+              + '</span>';
+            grid.appendChild(cell);
+          });
+        }
+        if (foot) {
+          var failTotal = (d.domains || []).reduce(function(s, x) { return s + (x.polled_failed || 0); }, 0);
+          foot.textContent = 'last cycle ' + lastRun
+            + ' · ' + failTotal + ' feed' + (failTotal === 1 ? '' : 's') + ' failing'
+            + ' · ' + alive + '/' + total + ' regions live';
+        }
+      }).catch(function () { /* keep loading */ });
+    })();
+  </script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      var swPath = (window.BWB_BASE || '') + '/service-worker.js';
+      navigator.serviceWorker.register(swPath);
+    }
+  </script>
+</body>
+</html>
