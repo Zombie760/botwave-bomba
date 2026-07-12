@@ -613,6 +613,16 @@
     <button data-filter="global">🌐 Global</button>
   </nav>
 
+  <!-- ── BIAS FILTERS (five-point scale) ── -->
+  <nav class="bwb-filters bwb-bias-filters" id="bias-nav">
+    <button class="active" data-filter="all">All</button>
+    <button data-filter="left">Left</button>
+    <button data-filter="lean-left">Lean Left</button>
+    <button data-filter="center">Center</button>
+    <button data-filter="lean-right">Lean Right</button>
+    <button data-filter="right">Right</button>
+  </nav>
+
   <!-- ── SECTION PILLS (live count per section, injected by feed.js) ── -->
   <div class="bwb-section-pills bwb-filters" id="section-pills">
     <!-- pills injected by feed.js from latest_slim.json sections manifest -->
@@ -621,6 +631,20 @@
   <!-- ── PULL TO REFRESH INDICATOR ── -->
   <div class="ptr-indicator" id="ptr-indicator">
     <div class="ptr-spinner"></div>
+  </div>
+
+  <!-- ── Funding Modal ── -->
+  <div class="bwb-bias-modal" id="bwb-funding-modal">
+    <div class="bwb-bias-modal-content">
+      <div class="bwb-bias-modal-header">
+        <h2 class="bwb-bias-modal-title">Who Funds This Source?</h2>
+        <button class="bwb-bias-modal-close" id="bwb-funding-modal-close">&times;</button>
+      </div>
+      <div class="bwb-bias-modal-section">
+        <h3 class="bwb-bias-modal-section-title" id="bwb-funding-modal-domain"></h3>
+        <p id="bwb-funding-modal-content">Funding information is derived from public records and may not be exhaustive.</p>
+      </div>
+    </div>
   </div>
 
   <!-- ── Bias Breakdown Modal ── -->
@@ -706,7 +730,8 @@
       let activeFilters = {
         section: new Set(['all']),
         signal: new Set(['all']),
-        geo: new Set(['all'])
+        geo: new Set(['all']),
+        bias: new Set(['all'])
       };
 
       // ── Parse URL Parameters ──
@@ -715,6 +740,7 @@
         const section = params.get('section');
         const signal = params.get('signal');
         const geo = params.get('geo');
+        const bias = params.get('bias');
         
         if (section) {
           activeFilters.section = new Set(section.split(','));
@@ -727,6 +753,10 @@
         if (geo) {
           activeFilters.geo = new Set(geo.split(','));
           if (!activeFilters.geo.has('all')) activeFilters.geo.add('all');
+        }
+        if (bias) {
+          activeFilters.bias = new Set(bias.split(','));
+          if (!activeFilters.bias.has('all')) activeFilters.bias.add('all');
         }
       }
 
@@ -742,6 +772,9 @@
         }
         if (activeFilters.geo.size > 1 || !activeFilters.geo.has('all')) {
           params.set('geo', Array.from(activeFilters.geo).filter(f => f !== 'all').join(','));
+        }
+        if (activeFilters.bias.size > 1 || !activeFilters.bias.has('all')) {
+          params.set('bias', Array.from(activeFilters.bias).filter(f => f !== 'all').join(','));
         }
         
         const newUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ''}`;
@@ -875,6 +908,27 @@
         modal.style.display = 'flex';
       }
       
+      // ── Show Funding Modal ──
+      function showFundingModal(domain) {
+        const modal = document.getElementById('bwb-funding-modal');
+        const domainEl = document.getElementById('bwb-funding-modal-domain');
+        
+        domainEl.textContent = domain;
+        modal.style.display = 'flex';
+      }
+      
+      // ── Close Funding Modal ──
+      document.getElementById('bwb-funding-modal-close').addEventListener('click', () => {
+        document.getElementById('bwb-funding-modal').style.display = 'none';
+      });
+      
+      // Close modal when clicking outside
+      document.getElementById('bwb-funding-modal').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('bwb-funding-modal')) {
+          document.getElementById('bwb-funding-modal').style.display = 'none';
+        }
+      });
+      
       // ── Close Bias Breakdown Modal ──
       document.getElementById('bwb-bias-modal-close').addEventListener('click', () => {
         document.getElementById('bwb-bias-modal').style.display = 'none';
@@ -920,7 +974,8 @@
           return (
             (activeFilters.section.has('all') || activeFilters.section.has(story.section)) &&
             (activeFilters.signal.has('all') || story.signals.some(s => activeFilters.signal.has(s))) &&
-            (activeFilters.geo.has('all') || activeFilters.geo.has(story.geo_scope))
+            (activeFilters.geo.has('all') || activeFilters.geo.has(story.geo_scope)) &&
+            (activeFilters.bias.has('all') || activeFilters.bias.has(story.bias))
           );
         });
         
@@ -935,6 +990,7 @@
                 <div class="bwb-story-bias-dot ${story.sources[0].bloc}" title="${story.sources[0].bloc.charAt(0).toUpperCase() + story.sources[0].bloc.slice(1)} Bias"></div>
                 <span class="bwb-story-source-name">${story.sources[0].name}</span>
                 <button class="bwb-bias-breakdown-btn" title="Bias Breakdown" onclick="event.stopPropagation(); showBiasBreakdown('${story.id}');">ℹ️</button>
+                <button class="bwb-funding-btn" title="Who Funds This Source?" onclick="event.stopPropagation(); showFundingModal('${story.sources[0].domain}');">💰</button>
               </div>
               <h3 class="bwb-story-card-title">${story.consensus_headline}</h3>
               <p class="bwb-story-card-snippet">${story.consensus_snippet}</p>
@@ -1041,6 +1097,16 @@
         cgSegNEl.title = `Non-Aligned: ${nPct}%`;
         cgSegAEl.title = `Adversarial: ${aPct}%`;
         cgBarLegendEl.textContent = `Western: ${wPct}% | Non-Aligned: ${nPct}% | Adversarial: ${aPct}%`;
+        
+        // Add interactivity to bloc mix
+        [cgSegWEl, cgSegNEl, cgSegAEl].forEach(seg => {
+          seg.addEventListener('mouseenter', () => {
+            seg.style.opacity = '0.8';
+          });
+          seg.addEventListener('mouseleave', () => {
+            seg.style.opacity = '1';
+          });
+        });
         
         // Regional gap
         const regions = [
@@ -1175,6 +1241,34 @@
             // Update active class
             geoNavEl.querySelectorAll('button').forEach(b => {
               b.classList.toggle('active', activeFilters.geo.has(b.dataset.filter));
+            });
+            
+            renderStoryFeed();
+            updateUrlParams();
+          });
+        });
+        
+        // Bias filters
+        const biasNavEl = document.getElementById('bias-nav');
+        biasNavEl.querySelectorAll('button').forEach(btn => {
+          btn.addEventListener('click', () => {
+            if (btn.dataset.filter === 'all') {
+              activeFilters.bias = new Set(['all']);
+            } else {
+              activeFilters.bias.delete('all');
+              if (activeFilters.bias.has(btn.dataset.filter)) {
+                activeFilters.bias.delete(btn.dataset.filter);
+              } else {
+                activeFilters.bias.add(btn.dataset.filter);
+              }
+              if (activeFilters.bias.size === 0) {
+                activeFilters.bias.add('all');
+              }
+            }
+            
+            // Update active class
+            biasNavEl.querySelectorAll('button').forEach(b => {
+              b.classList.toggle('active', activeFilters.bias.has(b.dataset.filter));
             });
             
             renderStoryFeed();

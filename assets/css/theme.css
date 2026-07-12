@@ -309,6 +309,20 @@
   color: var(--primary);
 }
 
+.bwb-funding-btn {
+  background: none;
+  border: none;
+  color: var(--fg-dim);
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 4px;
+  padding: 0 4px;
+}
+
+.bwb-funding-btn:hover {
+  color: var(--primary);
+}
+
 /* ── Error Message ── */
 .bwb-error-message {
   background: var(--card-bg);
