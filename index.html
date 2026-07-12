@@ -759,6 +759,24 @@
         updateFrameStats();
       }
       
+      // ── Format Time (e.g., "2h ago") ──
+      function formatTime(timestamp) {
+        const now = new Date();
+        const published = new Date(timestamp);
+        const diffMs = now - published;
+        const diffMins = Math.floor(diffMs / (1000 * 60));
+        const diffHours = Math.floor(diffMins / 60);
+        const diffDays = Math.floor(diffHours / 24);
+        
+        if (diffMins < 60) {
+          return `${diffMins}m ago`;
+        } else if (diffHours < 24) {
+          return `${diffHours}h ago`;
+        } else {
+          return `${diffDays}d ago`;
+        }
+      }
+
       // ── Render Story Feed ──
       function renderStoryFeed() {
         if (!feedData.stories) return;
@@ -783,13 +801,13 @@
             <a href="/story.html?id=${story.id}" class="bwb-story-card-link">
               <div class="bwb-story-card-header">
                 <img src="/botwavebomba/assets/logos/${story.sources[0].domain}.png" alt="${story.sources[0].name}" class="bwb-story-source-logo" onerror="this.src='/botwavebomba/assets/logos/default.png';">
-                <div class="bwb-story-bias-dot ${story.sources[0].bloc}"></div>
+                <div class="bwb-story-bias-dot ${story.sources[0].bloc}" title="${story.sources[0].bloc.charAt(0).toUpperCase() + story.sources[0].bloc.slice(1)} Bias"></div>
                 <span class="bwb-story-source-name">${story.sources[0].name}</span>
               </div>
               <h3 class="bwb-story-card-title">${story.consensus_headline}</h3>
               <p class="bwb-story-card-snippet">${story.consensus_snippet}</p>
               <div class="bwb-story-card-meta">
-                <span class="bwb-story-card-time">${formatTime(story.published_at)}</span>
+                <span class="bwb-story-card-time" title="Published at: ${new Date(story.published_at).toLocaleString()}">${formatTime(story.published_at)}</span>
                 ${story.signals.includes('blindspot') ? '<span class="bwb-story-card-blindspot blindspot">BLINDSPOT</span>' : ''}
                 ${story.signals.includes('mono-frame') ? '<span class="bwb-story-card-blindspot mono-frame">MONO-FRAME</span>' : ''}
                 ${story.signals.includes('blackout') ? '<span class="bwb-story-card-blindspot blackout">BLACKOUT</span>' : ''}
