@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/botwavebomba/assets/css/theme.css">
+  <link rel="stylesheet" href="/botwavebomba/assets/css/theme.css?v=2">
   <link rel="manifest" href="/botwavebomba/manifest.json">
   <style>
     /* ── Story Cards (Ground News Alignment) ── */
@@ -444,7 +444,7 @@
   {"prerender":[{"where":{"href_matches":"/"},"eagerness":"moderate"}]}
   </script>
   <!-- Base path support for GitHub Pages subpath + root deployments -->
-  <script src="/botwavebomba/assets/js/theme.js" defer></script>
+  <script src="/botwavebomba/assets/js/theme.js?v=2" defer></script>
 </head>
 <body>
 
@@ -769,7 +769,7 @@
           storyEl.innerHTML = `
             <a href="/story.html?id=${story.id}" class="bwb-story-card-link">
               <div class="bwb-story-card-header">
-                <img src="/assets/logos/${story.sources[0].domain}.png" alt="${story.sources[0].name}" class="bwb-story-source-logo" onerror="this.src='/assets/logos/default.png';">
+                <img src="/botwavebomba/assets/logos/${story.sources[0].domain}.png" alt="${story.sources[0].name}" class="bwb-story-source-logo" onerror="this.src='/botwavebomba/assets/logos/default.png';">
                 <div class="bwb-story-bias-dot ${story.sources[0].bloc}"></div>
                 <span class="bwb-story-source-name">${story.sources[0].name}</span>
               </div>
@@ -1035,7 +1035,7 @@
   <!-- ── FOOTER (injected by /assets/js/site-chrome.js) ── -->
   <footer data-bwb-chrome="default"></footer>
 
-  <script src="/botwavebomba/assets/js/article-analyzer.js"></script>
+  <script src="/botwavebomba/assets/js/article-analyzer.js?v=2"></script>
   <script>
     // Hydrate the editorial-frame banner with live counts from latest_slim.json
     (function () {
