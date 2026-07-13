@@ -1,4 +1,4 @@
-// ── Main Entry Point ──
+// ── Main Entry Point v4 ──
 // Loads the site chrome, data adapter, and feed renderer in order.
 (function () {
   const BASE = window.BWB_BASE || '/botwavebomba';
@@ -11,8 +11,8 @@
   }
 
   // Critical path: theme, chrome, data adapter, feed renderer.
-  loadScript('/assets/js/theme.js?v=3');
-  loadScript('/assets/js/min/site-chrome.js?v=3');
-  loadScript('/assets/js/api-adapter.js?v=3');
-  loadScript('/assets/js/feed.js?v=3');
+  loadScript('/assets/js/theme.js?v=4');
+  loadScript('/assets/js/min/site-chrome.js?v=4');
+  loadScript('/assets/js/api-adapter.js?v=4');
+  loadScript('/assets/js/feed.js?v=4');
 })();

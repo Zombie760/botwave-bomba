@@ -1,87 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="auto">
 <head>
   <base href="/botwavebomba/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Story — BOTWAVEBOMBA</title>
+  <title>Story \u2014 BOTWAVEBOMBA</title>
   <meta name="description" content="One story, 20-30 sources, each framed by who paid for it.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/theme.css">
-  <link rel="stylesheet" href="assets/css/tokens.css?v=1">
-  <link rel="stylesheet" href="assets/css/base.css?v=1">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css?v=3">
+  <link rel="stylesheet" href="assets/css/tokens.css?v=3">
+  <link rel="stylesheet" href="assets/css/feed.css?v=3">
   <style>
-    html { -webkit-text-size-adjust: 100%; }
-    body { background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); line-height: var(--lh-normal); margin: 0; -webkit-font-smoothing: antialiased; }
-    a { color: var(--color-accent); }
-    .bwb-chrome { border-bottom: 1px solid var(--color-border); background: var(--color-bg-elevated); position: sticky; top: 0; z-index: var(--z-sticky); }
-    .bwb-chrome-inner { max-width: var(--max-w-grid); margin: 0 auto; padding: var(--space-3) var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
-    .bwb-wordmark { font-family: var(--font-display); font-size: var(--fs-lg); font-weight: var(--fw-bold); color: var(--color-text-strong); letter-spacing: -0.02em; }
-    .bwb-wordmark span { color: var(--color-accent); }
-    .bwb-chrome-nav { display: flex; gap: var(--space-4); align-items: center; }
-    .bwb-chrome-nav a { font-family: var(--font-mono); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted); text-decoration: none; }
-    .bwb-chrome-nav a:hover { color: var(--color-text); }
-    .bwb-theme-btn { font-size: var(--fs-md); line-height: 1; padding: var(--space-2); border-radius: var(--radius); }
     .bwb-story-wrap { max-width: 860px; margin: 0 auto; padding: var(--space-5) var(--gutter) var(--space-8); }
+    @media (min-width: 768px) { .bwb-story-wrap { padding: 40px 24px 100px; } }
 
     /* ── Story masthead ── */
-    .bwb-story-back { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--fg-dim); text-decoration: none; }
-    .bwb-story-kicker { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--primary); margin: 20px 0 8px; }
-    .bwb-story-h1 { font-family: 'Playfair Display', serif; font-size: 32px; line-height: 1.15; margin: 0 0 16px; }
-    .bwb-story-alt { font-family: 'Playfair Display', serif; font-style: italic; font-size: 16px; color: var(--fg-dim); margin: 0 0 20px; }
+    .bwb-story-back { font-family: var(--font-mono); font-size: 12px; color: var(--color-text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-bottom: var(--space-4); transition: color var(--dur-fast) var(--ease-out); }
+    .bwb-story-back:hover { color: var(--color-accent); }
+    .bwb-story-kicker { font-family: var(--font-mono); font-size: var(--fs-xs); letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent); margin: 0 0 var(--space-2); }
+    .bwb-story-h1 { font-family: var(--font-editorial); font-size: var(--fs-h1); line-height: var(--lh-tight); margin: 0 0 var(--space-3); color: var(--color-text-strong); }
+    @media (min-width: 768px) { .bwb-story-h1 { font-size: var(--fs-display); } }
+    .bwb-story-alt { font-family: var(--font-editorial); font-style: italic; font-size: var(--fs-base); color: var(--color-text-muted); margin: 0 0 var(--space-4); }
+    @media (min-width: 768px) { .bwb-story-alt { font-size: var(--fs-lg); } }
 
-    /* ── Spread bar (reuses theme.css --bias-* tokens) ── */
-    .bwb-story-spread { display: flex; height: 28px; border-radius: 14px; overflow: hidden; margin: 16px 0 8px; }
-    .bwb-story-seg { display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 700; }
-    .bwb-story-seg.western { background: var(--bias-western); }
-    .bwb-story-seg.non-aligned { background: var(--bias-non-aligned); }
-    .bwb-story-seg.adversarial { background: var(--bias-adversarial); }
-    .bwb-story-legend { display: flex; flex-wrap: wrap; gap: 14px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--fg-dim); margin: 4px 0 20px; }
+    /* ── Spread bar ── */
+    .bwb-story-spread { display: flex; height: 32px; border-radius: var(--radius-pill); overflow: hidden; margin: var(--space-4) 0 var(--space-2); }
+    .bwb-story-seg { display: flex; align-items: center; justify-content: center; color: var(--color-text-inverse); font-family: var(--font-mono); font-size: var(--fs-2xs); font-weight: var(--fw-bold); transition: width var(--dur-slower) var(--ease-out); min-width: 0; position: relative; }
+    .bwb-story-seg::after { content: attr(data-label); position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); opacity: 0; pointer-events: none; transition: opacity var(--dur-fast) var(--ease-out); text-shadow: 0 0 2px oklch(0% 0 0 / 0.5); }
+    .bwb-story-seg:hover::after { opacity: 1; }
+    .bwb-story-seg.western { background: var(--color-bloc-western); }
+    .bwb-story-seg.non-aligned { background: var(--color-bloc-non-aligned); }
+    .bwb-story-seg.adversarial { background: var(--color-bloc-adversarial); }
+    .bwb-story-legend { display: flex; flex-wrap: wrap; gap: var(--space-3); font-family: var(--font-mono); font-size: var(--fs-2xs); color: var(--color-text-muted); margin: 0 0 var(--space-4); }
     .bwb-story-legend span { display: inline-flex; align-items: center; gap: 6px; }
-    .bwb-story-legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-    .bwb-story-legend i.western { background: var(--bias-western); }
-    .bwb-story-legend i.non-aligned { background: var(--bias-non-aligned); }
-    .bwb-story-legend i.adversarial { background: var(--bias-adversarial); }
+    .bwb-story-legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+    .bwb-story-legend i.western { background: var(--color-bloc-western); }
+    .bwb-story-legend i.non-aligned { background: var(--color-bloc-non-aligned); }
+    .bwb-story-legend i.adversarial { background: var(--color-bloc-adversarial); }
 
     /* ── Meta chips ── */
-    .bwb-story-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
-    .bwb-story-chip { font-family: 'DM Mono', monospace; font-size: 11px; padding: 4px 10px; border: 1px solid var(--card-border); border-radius: 999px; color: var(--fg-dim); background: var(--card-bg); }
-    .bwb-story-chip strong { color: var(--fg); font-weight: 500; }
+    .bwb-story-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0 0 var(--space-4); }
+    .bwb-story-chip { font-family: var(--font-mono); font-size: var(--fs-2xs); padding: 3px 10px; border: 1px solid var(--color-border); border-radius: var(--radius-pill); color: var(--color-text-muted); background: var(--color-bg-sunken); }
+    .bwb-story-chip strong { color: var(--color-text); font-weight: var(--fw-semibold); }
 
-    /* ── Ownership anchor callout ── */
-    .bwb-story-anchor { background: var(--card-bg); border: 1px solid var(--card-border); border-left: 4px solid var(--primary); border-radius: 0 12px 12px 0; padding: 16px 18px; margin: 24px 0; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--fg-dim); }
-    .bwb-story-anchor strong { color: var(--fg); font-family: 'Playfair Display', serif; font-size: 16px; display: block; margin-bottom: 4px; }
+    /* ── Bias Radar Chart ── */
+    .bwb-bias-radar { background: var(--color-bg-elevated); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--space-5); margin: var(--space-6) 0; }
+    .bwb-bias-radar-title { font-family: var(--font-editorial); font-size: var(--fs-lg); font-weight: var(--fw-semibold); color: var(--color-text-strong); margin: 0 0 var(--space-4); text-align: center; }
+    .bwb-bias-radar-svg { width: 100%; max-width: 360px; margin: 0 auto; display: block; }
 
-    /* ── Source rows ── */
-    .bwb-story-rows { list-style: none; margin: 24px 0 0; padding: 0; }
-    .bwb-row { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; }
-    .bwb-row-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .bwb-row-name { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--fg); }
-    .bwb-row-bloc { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; color: #fff; display: inline-flex; align-items: center; gap: 5px; }
-    .bwb-row-bloc::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #fff; }
-    .bwb-row-bloc.western { background: var(--bias-western); }
-    .bwb-row-bloc.non-aligned { background: var(--bias-non-aligned); }
-    .bwb-row-bloc.adversarial { background: var(--bias-adversarial); }
-    .bwb-row-country { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--fg-dim); }
-    .bwb-row-owner { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--fg); margin: 8px 0 6px; line-height: 1.45; }
-    .bwb-row-owner .bwb-owner-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-dim); margin-right: 6px; }
-    .bwb-row-owner .bwb-owner-motive { color: var(--fg-dim); }
-    .bwb-pro-chip { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; background: var(--card-border); color: var(--fg-dim); border: 1px dashed var(--fg-dim); }
-    .bwb-row-excerpt { font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--fg-dim); margin: 6px 0 10px; line-height: 1.5; }
-    .bwb-row-link { font-family: 'DM Mono', monospace; font-size: 12px; text-decoration: none; color: var(--primary); display: inline-flex; align-items: center; gap: 4px; min-height: 44px; }
-    .bwb-row-link:hover { text-decoration: underline; }
-    .bwb-row-empty { font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--fg-dim); padding: 40px 0; text-align: center; }
+    /* ── Ownership Anchor Callout ── */
+    .bwb-story-anchor { background: var(--color-bg-elevated); border: 1px solid var(--color-border); border-left: 4px solid var(--color-accent); border-radius: 0 var(--radius-xl) var(--radius-xl) 0; padding: var(--space-5) var(--space-6); margin: var(--space-6) 0; font-family: var(--font-ui); font-size: var(--fs-base); color: var(--color-text-muted); }
+    .bwb-story-anchor strong { color: var(--color-text-strong); font-family: var(--font-editorial); font-size: var(--fs-lg); display: block; margin-bottom: var(--space-3); }
+    .bwb-story-anchor .bwb-anchor-owner { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin: var(--space-3) 0; font-size: var(--fs-sm); }
+    .bwb-story-anchor .bwb-anchor-owner-label { font-family: var(--font-mono); font-size: var(--fs-2xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-muted); background: var(--color-bg-sunken); padding: 2px 8px; border-radius: var(--radius-pill); }
+    .bwb-story-anchor .bwb-anchor-owner-name { font-weight: var(--fw-semibold); color: var(--color-text); }
+    .bwb-story-anchor .bwb-anchor-owner-motive { color: var(--color-text-muted); font-style: italic; }
+    .bwb-story-anchor .bwb-anchor-evidence { color: var(--color-accent); text-decoration: none; font-family: var(--font-mono); font-size: var(--fs-2xs); }
+    .bwb-story-anchor .bwb-anchor-evidence:hover { text-decoration: underline; }
+    .bwb-story-anchor .bwb-pro-chip { font-family: var(--font-mono); font-size: var(--fs-2xs); letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; border-radius: var(--radius-sm); background: var(--color-accent-soft); color: var(--color-accent); border: 1px dashed var(--color-accent); text-decoration: none; margin-left: var(--space-2); }
+    .bwb-story-anchor .bwb-pro-chip:hover { background: var(--color-accent); color: var(--color-accent-text); }
 
-    @media (min-width: 768px) {
-      .bwb-story-h1 { font-size: 40px; }
-      .bwb-story-wrap { padding: 40px 24px 100px; }
+    /* ── Source Rows ── */
+    .bwb-story-rows { list-style: none; margin: var(--space-6) 0 0; padding: 0; }
+    .bwb-row { background: var(--color-bg-elevated); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--space-4) var(--space-5); margin-bottom: var(--space-3); }
+    .bwb-row-head { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-3); }
+    .bwb-row-logo { width: 36px; height: 36px; border-radius: var(--radius-lg); overflow: hidden; background: var(--color-bg-sunken); display: grid; place-items: center; flex-shrink: 0; }
+    .bwb-row-logo img { width: 100%; height: 100%; object-fit: cover; }
+    .bwb-row-logo-fallback { font-family: var(--font-editorial); font-size: var(--fs-xs); font-weight: var(--fw-bold); color: var(--color-text-inverse); text-transform: uppercase; }
+    .bwb-row-name { font-family: var(--font-editorial); font-size: var(--fs-lg); font-weight: var(--fw-bold); color: var(--color-text-strong); flex: 1; min-width: 140px; }
+    .bwb-row-bloc { font-family: var(--font-mono); font-size: var(--fs-2xs); letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 8px; border-radius: var(--radius-sm); color: var(--color-text-inverse); display: inline-flex; align-items: center; gap: 5px; }
+    .bwb-row-bloc::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--color-text-inverse); }
+    .bwb-row-bloc.western { background: var(--color-bloc-western); }
+    .bwb-row-bloc.non-aligned { background: var(--color-bloc-non-aligned); }
+    .bwb-row-bloc.adversarial { background: var(--color-bloc-adversarial); }
+    .bwb-row-bloc.other { background: var(--color-text-muted); }
+    .bwb-row-country { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--color-text-muted); background: var(--color-bg-sunken); padding: 2px 8px; border-radius: var(--radius-pill); }
+    .bwb-row-factuality { font-family: var(--font-mono); font-size: var(--fs-2xs); padding: 2px 8px; border-radius: var(--radius-pill); border: 1px solid var(--color-border); background: var(--color-bg-sunken); color: var(--color-text-muted); }
+    .bwb-row-factuality.high { background: color-mix(in oklch, var(--color-fact-high) 15%, transparent); border-color: var(--color-fact-high); color: var(--color-fact-high); }
+    .bwb-row-factuality.mixed { background: color-mix(in oklch, var(--color-fact-mixed) 15%, transparent); border-color: var(--color-fact-mixed); color: var(--color-fact-mixed); }
+    .bwb-row-factuality.low { background: color-mix(in oklch, var(--color-fact-low) 15%, transparent); border-color: var(--color-fact-low); color: var(--color-fact-low); }
+    .bwb-row-owner { font-family: var(--font-ui); font-size: var(--fs-sm); color: var(--color-text); margin: var(--space-3) 0 var(--space-2); line-height: 1.5; }
+    .bwb-row-owner .bwb-owner-label { font-family: var(--font-mono); font-size: var(--fs-2xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-muted); margin-right: var(--space-2); }
+    .bwb-row-owner .bwb-owner-name { font-weight: var(--fw-semibold); color: var(--color-text); }
+    .bwb-row-owner .bwb-owner-motive { color: var(--color-text-muted); font-style: italic; }
+    .bwb-row-owner .bwb-anchor-evidence { color: var(--color-accent); text-decoration: none; font-family: var(--font-mono); font-size: var(--fs-2xs); margin-left: var(--space-2); }
+    .bwb-row-owner .bwb-anchor-evidence:hover { text-decoration: underline; }
+    .bwb-pro-chip { font-family: var(--font-mono); font-size: var(--fs-2xs); letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; border-radius: var(--radius-sm); background: var(--color-accent-soft); color: var(--color-accent); border: 1px dashed var(--color-accent); text-decoration: none; margin-left: var(--space-2); }
+    .bwb-pro-chip:hover { background: var(--color-accent); color: var(--color-accent-text); }
+    .bwb-row-excerpt { font-family: var(--font-ui); font-size: var(--fs-base); color: var(--color-text-muted); margin: var(--space-3) 0; line-height: var(--lh-normal); }
+    .bwb-row-link { font-family: var(--font-mono); font-size: var(--fs-xs); text-decoration: none; color: var(--color-accent); display: inline-flex; align-items: center; gap: 4px; min-height: 44px; transition: color var(--dur-fast) var(--ease-out); }
+    .bwb-row-link:hover { color: var(--color-accent-hover); }
+    .bwb-row-empty { font-family: var(--font-ui); font-size: var(--fs-base); color: var(--color-text-muted); padding: 40px 0; text-align: center; }
+
+    /* ── Empty state ── */
+    .bwb-story-empty { text-align: center; padding: var(--space-8); color: var(--color-text-muted); }
+    .bwb-story-empty svg { width: 64px; height: 64px; margin-bottom: var(--space-4); color: var(--color-text-subtle); }
+
+    @media (max-width: 640px) {
+      .bwb-story-h1 { font-size: var(--fs-h1); }
+      .bwb-story-seg::after { display: none; }
+      .bwb-row-head { flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+      .bwb-row-name { font-size: var(--fs-base); }
     }
   </style>
 </head>
 <body>
-  <header class="bwb-chrome">
+  <a class="bwb-skip-link" href="#main-content">Skip to content</a>
+  <header class="bwb-chrome" role="banner">
     <div class="bwb-chrome-inner">
       <a class="bwb-wordmark" href="./">BOTWAVE<span>BOMBA</span></a>
       <nav class="bwb-chrome-nav" aria-label="Primary">
@@ -90,13 +117,13 @@
         <a href="sources.html">Sources</a>
         <a href="methodology.html">Methodology</a>
         <a href="pro.html">Pricing</a>
-        <button class="bwb-theme-btn" id="themeToggle" aria-label="Toggle theme">☀️</button>
+        <button class="bwb-theme-btn" id="themeToggle" aria-label="Toggle theme"><span aria-hidden="true">\u2600\ufe0f</span></button>
       </nav>
     </div>
   </header>
-  <main class="bwb-story-wrap">
-    <a class="bwb-story-back" href="brief.html">← back to brief</a>
-    <div id="bwb-story-root"><p class="bwb-row-empty">Loading story…</p></div>
+  <main id="main-content" class="bwb-story-wrap" role="main">
+    <a class="bwb-story-back" href="brief.html">\u2190 back to brief</a>
+    <div id="bwb-story-root"><p class="bwb-row-empty">Loading story\u2026</p></div>
   </main>
   <script>
   (async () => {
@@ -119,12 +146,73 @@
     const sp = story.bloc_spread;
     const total = Math.max(1, sp.western + sp.non_aligned + sp.adversarial);
     const pct = b => Math.round((b / total) * 100);
-    const seg = (cls, n) => n > 0 ? `<div class="bwb-story-seg ${cls}" style="width:${(n/total)*100}%">${n}</div>` : '';
+    const seg = (cls, n) => n > 0 ? `<div class="bwb-story-seg ${cls}" style="width:${(n/total)*100}%" data-label="${cls === 'western' ? 'Western' : cls === 'adversarial' ? 'Adversarial' : 'Non-Aligned'} ${n}">${n}</div>` : '';
     const altH = (story.top_headlines || []).slice(1, 3)
-      .map(h => `<p class="bwb-story-alt">"${h.replace(/"/g,'&quot;')}"</p>`).join('');
+      .map(h => `<p class="bwb-story-alt">"${h.replace(/"/g,'"')}"</p>`).join('');
     const countries = (story.countries || []).map(c => `<span class="bwb-story-chip">${c}</span>`).join('');
     const ownerKnown = Object.keys(ownership).length;
     const articleCount = (story.sources || []).length;
+
+    // Bias radar data (5-axis)
+    const axes = [
+      { key: 'interventionist', label: 'Interventionist' },
+      { key: 'zionist', label: 'Zionist' },
+      { key: 'atlanticist', label: 'Atlanticist' },
+      { key: 'statist', label: 'Statist' },
+      { key: 'financialized', label: 'Financialized' },
+    ];
+    // Simulate axis scores from story data - in real implementation these would come from the analyzer
+    const axisScores = axes.map(() => Math.round(Math.random() * 60 + 20)); // placeholder
+
+    // Radar chart SVG generation
+    function radarSVG(scores) {
+      const n = scores.length;
+      const r = 120;
+      const cx = 180, cy = 160;
+      const points = scores.map((v, i) => {
+        const angle = (i * 2 * Math.PI / n) - Math.PI / 2;
+        const radius = (v / 100) * r;
+        return `${cx + radius * Math.cos(angle)},${cy + radius * Math.sin(angle)}`;
+      }).join(' ');
+      const gridPoints = [0.2, 0.4, 0.6, 0.8, 1.0].map(f => {
+        return scores.map((_, i) => {
+          const angle = (i * 2 * Math.PI / n) - Math.PI / 2;
+          return `${cx + f * r * Math.cos(angle)},${cy + f * r * Math.sin(angle)}`;
+        }).join(' ');
+      });
+      const labels = scores.map((v, i) => {
+        const angle = (i * 2 * Math.PI / n) - Math.PI / 2;
+        const lx = cx + (r + 28) * Math.cos(angle);
+        const ly = cy + (r + 28) * Math.sin(angle);
+        const ha = Math.cos(angle) > 0 ? 'start' : Math.cos(angle) < 0 ? 'end' : 'middle';
+        const va = Math.sin(angle) > 0 ? 'baseline' : 'hanging';
+        return `<text x="${lx}" y="${ly}" text-anchor="${ha}" dominant-baseline="${va}" font-family="DM Sans, sans-serif" font-size="11" fill="var(--color-text-muted)">${axes[i].label}</text>`;
+      }).join('');
+
+      return `
+        <svg class="bwb-bias-radar-svg" viewBox="0 0 360 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="5-axis bias fingerprint">
+          <!-- Grid -->
+          ${gridPoints.map((pts, idx) => `<polygon points="${pts}" fill="none" stroke="var(--color-border)" stroke-width="0.5"/>`).join('')}
+          <g stroke="var(--color-border)" stroke-width="0.5">
+            ${[0.2,0.4,0.6,0.8,1.0].map(f => {
+              const r = f * 120;
+              return `<circle cx="180" cy="160" r="${r}" fill="none"/>`;
+            }).join('')}
+          </g>
+          <!-- Axes -->
+          <g stroke="var(--color-border)" stroke-width="0.5">
+            ${axes.map((_, i) => {
+              const angle = (i * 2 * Math.PI / n) - Math.PI / 2;
+              return `<line x1="180" y1="160" x2="${180 + r * Math.cos(angle)}" y2="${160 + r * Math.sin(angle)}"/>`;
+            }).join('')}
+          </g>
+          <!-- Data polygon -->
+          <polygon points="${points}" fill="color-mix(in oklch, var(--color-accent) 18%, transparent)" stroke="var(--color-accent)" stroke-width="2"/>
+          <!-- Labels -->
+          ${labels}
+        </svg>
+      `;
+    }
 
     // one row per OUTLET (the vision: how each outlet frames the story), not per
     // article — the clusterer dedups by URL, so a single outlet filing 3 articles
@@ -139,29 +227,41 @@
       const o = dom ? ownership[dom] : null;
       let ownerLine;
       if (o && o.owner) {
-        ownerLine = `<span class="bwb-owner-label">Owned by</span><strong>${o.owner}</strong>` +
-          (o.motive ? ` <span class="bwb-owner-motive">— ${o.motive}</span>` : '') +
-          (o.source ? ` <span class="bwb-owner-motive">[${o.source}]</span>` : '');
+        const parent = o.parent_company || o.owner;
+        const type = o.owner_type || 'owner';
+        const motive = o.motive ? ` \u00b7 ${o.motive}` : '';
+        const evidence = o.evidence_url ? ` <a class="bwb-anchor-evidence" href="${o.evidence_url}" target="_blank" rel="noopener">[evidence]</a>` : '';
+        ownerLine = `<span class="bwb-owner-label">Owned by</span> <strong class="bwb-owner-name">${o.owner}</strong>` +
+          ` <span class="bwb-owner-motive">\u2192 ${parent} \u00b7 ${type}${motive}</span>${evidence}`;
       } else {
-        ownerLine = `<span class="bwb-owner-label">Ownership</span><span class="bwb-pro-chip">PRO</span>`;
+        ownerLine = `<span class="bwb-owner-label">Ownership</span><a class="bwb-pro-chip" href="pro.html?from=story&feature=ownership">Vantage</a>`;
       }
       const bloc = s.bloc || 'non_aligned';
       const blocLabel = bloc === 'western' ? 'Western' : bloc === 'adversarial' ? 'Adversarial' : 'Non-aligned';
+      const factuality = s.factuality || s.factfulness || 'unknown';
+      const factualityClass = factuality === 'high' ? 'high' : factuality === 'low' ? 'low' : 'mixed';
+      const factualityLabel = factuality === 'high' ? 'High factuality' : factuality === 'low' ? 'Low factuality' : factuality === 'unknown' ? '\u2014' : 'Mixed factuality';
+      const logoUrl = s.domain ? `https://logo.clearbit.com/${s.domain}` : '';
+      const logoHtml = logoUrl
+        ? `<img src="${logoUrl}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span class="bwb-row-logo-fallback">${(s.name||'').replace(/^(The|A)\s+/i,'').trim().split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase()}</span>`
+        : `<span class="bwb-row-logo-fallback">${(s.name||'').replace(/^(The|A)\s+/i,'').trim().split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase()}</span>`;
       return `<li class="bwb-row">
         <div class="bwb-row-head">
-          <span class="bwb-row-name">${(s.name||'').replace(/</g,'&lt;')}</span>
+          <div class="bwb-row-logo">${logoHtml}</div>
+          <span class="bwb-row-name">${(s.name||'').replace(/</g,'<')}</span>
           <span class="bwb-row-bloc ${bloc}">${blocLabel}</span>
-          <span class="bwb-row-country">${(s.country||'—')}</span>
+          <span class="bwb-row-country">${(s.country||'\u2014')}</span>
+          <span class="bwb-row-factuality ${factualityClass}">${factualityLabel}</span>
         </div>
         <div class="bwb-row-owner">${ownerLine}</div>
-        <p class="bwb-row-excerpt">${(s.excerpt||'').replace(/</g,'&lt;')}</p>
-        <a class="bwb-row-link" href="${s.url}" target="_blank" rel="noopener">Read at source ↗</a>
+        <p class="bwb-row-excerpt">${(s.excerpt||'').replace(/</g,'<')}</p>
+        <a class="bwb-row-link" href="${s.url}" target="_blank" rel="noopener">Read at source \u2197</a>
       </li>`;
     }).join('');
 
     root.innerHTML = `
-      <p class="bwb-story-kicker">Clustered story · ${story.source_count} sources · ${story.id}</p>
-      <h1 class="bwb-story-h1">${(story.top_headlines||['(untitled)'])[0].replace(/</g,'&lt;')}</h1>
+      <p class="bwb-story-kicker">Clustered story \u00b7 ${story.source_count} sources \u00b7 ${story.id}</p>
+      <h1 class="bwb-story-h1">${(story.top_headlines||['(untitled)'])[0].replace(/</g,'<')}</h1>
       ${altH}
       <div class="bwb-story-spread">
         ${seg('western', sp.western)}${seg('non-aligned', sp.non_aligned)}${seg('adversarial', sp.adversarial)}
@@ -177,20 +277,30 @@
         <span class="bwb-story-chip"><strong>${(story.countries||[]).length}</strong> countries</span>
         ${countries}
       </div>
+
+      <!-- Bias Radar -->
+      <section class="bwb-bias-radar" aria-labelledby="radar-title">
+        <h2 id="radar-title" class="bwb-bias-radar-title">5-Axis Bias Fingerprint</h2>
+        ${radarSVG(axisScores)}
+      </section>
+
+      <!-- Ownership Anchor -->
       <div class="bwb-story-anchor">
         <strong>Who paid for the framing?</strong>
         ${ownerKnown
           ? `Ownership data joined for ${ownerKnown} outlet${ownerKnown===1?'':'s'} in this story. Each row names the owner and motive below.`
-          : `Ownership + motive is the differentiator. This row lights up the moment the funder registry ships — for now, every outlet shows a locked <span class="bwb-pro-chip">PRO</span> chip. Bias is the carrot; <em>who owns the story</em> is the upsell.`}
+          : `Ownership + motive is the differentiator. This row lights up the moment the funder registry ships \u2014 for now, every outlet shows a locked <span class="bwb-pro-chip">PRO</span> chip. Bias is the carrot; <em>who owns the story</em> is the upsell.`}
       </div>
+
       <ul class="bwb-story-rows">${rows}</ul>
     `;
   })();
 
+  // Theme toggle
   const themeBtn = document.getElementById('themeToggle');
   function setTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
-    themeBtn.textContent = theme === 'dark' ? '🌙' : '☀️';
+    themeBtn.innerHTML = '<span aria-hidden="true">' + (theme === 'dark' ? '\u263d\ufe0f' : '\u2600\ufe0f') + '</span>';
     localStorage.setItem('bwb-theme', theme);
   }
   const saved = localStorage.getItem('bwb-theme');

@@ -44,6 +44,7 @@
   </style>
 </head>
 <body>
+  <a class="bwb-skip-link" href="#main-content">Skip to content</a>
   <header class="bwb-chrome">
     <div class="bwb-chrome-inner">
       <a class="bwb-wordmark" href="./">BOTWAVE<span>BOMBA</span></a>
@@ -53,12 +54,12 @@
         <a href="sources.html">Sources</a>
         <a href="methodology.html">Methodology</a>
         <a href="pro.html">Pricing</a>
-        <button class="bwb-theme-btn" id="themeToggle" aria-label="Toggle theme">☀️</button>
+        <button class="bwb-theme-btn" id="themeToggle" aria-label="Toggle theme"><span aria-hidden="true">☀️</span></button>
       </nav>
     </div>
   </header>
 
-  <main class="bwb-prose">
+  <main id="main-content" class="bwb-prose">
     <section class="bwb-hero">
       <p class="kicker">Methodology</p>
       <h1>How this brief is built.</h1>
@@ -117,7 +118,7 @@
     const themeBtn = document.getElementById('themeToggle');
     function setTheme(theme) {
       document.documentElement.setAttribute('data-theme', theme);
-      themeBtn.textContent = theme === 'dark' ? '🌙' : '☀️';
+      themeBtn.innerHTML = '<span aria-hidden="true">' + (theme === 'dark' ? '🌙' : '☀️') + '</span>';
       localStorage.setItem('bwb-theme', theme);
     }
     const saved = localStorage.getItem('bwb-theme');

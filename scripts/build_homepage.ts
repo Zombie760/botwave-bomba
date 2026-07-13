@@ -30,6 +30,9 @@ type SourceRow = {
   url: string;
   excerpt?: string;
   framing_placeholder?: unknown;
+  domain?: string;
+  bias?: string;
+  factuality?: string;
 };
 
 type Story = {
@@ -42,6 +45,13 @@ type Story = {
   primary_urls: string[];
   sources: SourceRow[];
   generated_at?: string;
+  framing_summary?: string;
+  summary?: string;
+  section?: string;
+  is_blindspot?: boolean;
+  geo_frame?: string;
+  has_video?: boolean;
+  coverage?: { left_pct: number; right_pct: number };
 };
 
 type SeedSource = {
@@ -52,6 +62,8 @@ type SeedSource = {
   bias?: string;
   factfulness?: string;
   tone?: string;
+  verified_at?: string;
+  primary_source_url?: string;
 };
 
 type OwnershipRow = {
@@ -65,10 +77,10 @@ type OwnershipRow = {
 
 function escapeHtml(s: string): string {
   return s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
+    .replace(/&/g, "&")
+    .replace(/</g, "<")
+    .replace(/>/g, ">")
+    .replace(/"/g, "\"")
     .replace(/'/g, "&#039;");
 }
 
@@ -83,6 +95,14 @@ function classForBloc(bloc: string): string {
   return bloc === "non-aligned" ? "non-aligned" : bloc;
 }
 
+function normBloc(bloc: string): string {
+  const b = String(bloc || "other").toLowerCase().replace(/_/g, "-");
+  if (b === "western") return "western";
+  if (b === "non-aligned" || b === "nonaligned" || b === "neutral") return "non-aligned";
+  if (b === "adversarial") return "adversarial";
+  return "other";
+}
+
 function formatTimeAgo(ts: string): string {
   const t = Date.parse(ts);
   if (isNaN(t)) return "";
@@ -94,36 +114,20 @@ function formatTimeAgo(ts: string): string {
   return `${Math.floor(hours / 24)}d ago`;
 }
 
-function diversityScore(sources: SourceRow[]): number {
-  if (sources.length < 2) return 0;
-  const biasBuckets = sources.map((s) => {
-    const b = String(s.bloc || "").toLowerCase();
-    if (b === "western") return "left";
-    if (b === "adversarial") return "right";
-    return "center";
-  });
-  const n = biasBuckets.length;
-  const left = biasBuckets.filter((b) => b === "left").length / n;
-  const right = biasBuckets.filter((b) => b === "right").length / n;
-  const center = biasBuckets.filter((b) => b === "center").length / n;
-  const c = left ** 2 + right ** 2 + center ** 2;
-  const lcr = Math.max(0, Math.min(1, (1 - c) / 0.67)) * 50;
-  const blocs = new Set(sources.map((s) => s.bloc)).size;
-  const blocPart = (blocs / 3) * 50;
-  return Math.round(lcr + blocPart);
+function hashString(str: string): number {
+  let h = 0;
+  for (let i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) >>> 0;
+  return h;
 }
 
-function normBloc(bloc: string): string {
-  const b = String(bloc || 'other').toLowerCase().replace(/_/g, '-');
-  if (b === 'western') return 'western';
-  if (b === 'non-aligned' || b === 'nonaligned' || b === 'neutral') return 'non-aligned';
-  if (b === 'adversarial') return 'adversarial';
-  return 'other';
+function cardGradient(id: string): string {
+  const h = hashString(id);
+  return `linear-gradient(135deg, oklch(50% 0.18 ${h % 360}), oklch(40% 0.15 ${(h * 13) % 360}))`;
 }
 
-function coverageBadge(sources: SourceRow[]): string {
-  const counts: Record<string, number> = {};
-  sources.forEach((s) => { const b = normBloc(s.bloc); counts[b] = (counts[b] || 0) + 1; });
+function coverageBadgeStatic(srcs: SourceRow[]): string {
+  const counts = { western: 0, "non-aligned": 0, adversarial: 0 };
+  srcs.forEach(s => { counts[normBloc(s.bloc)] = (counts[normBloc(s.bloc)] || 0) + 1; });
   const chips: string[] = [];
   if (counts.western) chips.push(`<span class="bwb-bloc-pill western">${counts.western}W</span>`);
   if (counts["non-aligned"]) chips.push(`<span class="bwb-bloc-pill non-aligned">${counts["non-aligned"]}N</span>`);
@@ -131,26 +135,98 @@ function coverageBadge(sources: SourceRow[]): string {
   return chips.length ? chips.join(" ") : '<span class="bwb-bloc-pill other">unmapped</span>';
 }
 
+function factualityBadgeStatic(srcs: SourceRow[]): string {
+  const counts = { high: 0, mostly_factual: 0, medium: 0, mixed: 0, low: 0, unknown: 0 };
+  srcs.forEach(s => {
+    const f = String(s.factuality || s.factfulness || "unknown").toLowerCase();
+    counts[f] = (counts[f] || 0) + 1;
+  });
+  const rated = counts.high + counts.mostly_factual + counts.medium + counts.mixed + counts.low;
+  if (!rated) return '<span class="bwb-story-card-factuality unknown">&mdash;</span>';
+  if (counts.high + counts.mostly_factual >= 0.7 * rated) return '<span class="bwb-story-card-factuality high">High factuality</span>';
+  if (counts.low >= 0.3 * rated) return '<span class="bwb-story-card-factuality low">Low factuality</span>';
+  return '<span class="bwb-story-card-factuality mixed">Mixed factuality</span>';
+}
+
+function signalBadgesStatic(story: Story): string {
+  const badges: string[] = [];
+  if (story.is_blindspot) badges.push('<span class="bwb-signal-badge blindspot">Blindspot</span>');
+  if (story.geo_frame === "mono-frame") badges.push('<span class="bwb-signal-badge mono-frame">Mono-frame</span>');
+  if (story.geo_frame === "blackout") badges.push('<span class="bwb-signal-badge blackout">W. Blackout</span>');
+  return badges.join("");
+}
+
+function blocsBarStatic(srcs: SourceRow[]): string {
+  const counts = { western: 0, "non-aligned": 0, adversarial: 0 };
+  srcs.forEach(s => { counts[normBloc(s.bloc)] = (counts[normBloc(s.bloc)] || 0) + 1; });
+  const total = Math.max(1, counts.western + counts["non-aligned"] + counts.adversarial);
+  return `
+    <div class="bwb-blocs-bar" aria-label="Source bloc mix">
+      <div class="bwb-blocs-seg western" style="width:${(counts.western / total) * 100}%" data-label="Western ${counts.western}"></div>
+      <div class="bwb-blocs-seg non-aligned" style="width:${(counts["non-aligned"] / total) * 100}%" data-label="Non-Aligned ${counts["non-aligned"]}"></div>
+      <div class="bwb-blocs-seg adversarial" style="width:${(counts.adversarial / total) * 100}%" data-label="Adversarial ${counts.adversarial}"></div>
+    </div>
+  `;
+}
+
 function buildStaticCard(story: Story): string {
   const srcs = story.sources || [];
-  const first = srcs[0] || { name: "Unknown source", bloc: "other" };
+  const first = srcs[0] || { name: "Unknown source", bloc: "other", domain: "" };
   const headline = escapeHtml(story.top_headlines?.[0] || "Untitled story");
-  const snippet = "";
+  const countries = new Set(srcs.map(s => s.country).filter(Boolean));
+  const summary = story.framing_summary || story.summary || "";
+
+  const logoUrl = first.domain ? `https://logo.clearbit.com/${first.domain}` : "";
+  const logoHtml = logoUrl
+    ? `<img src="${logoUrl}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span class="bwb-story-card-logo-fallback">${initials(first.name)}</span>`
+    : `<span class="bwb-story-card-logo-fallback">${initials(first.name)}</span>`;
+
   return `
     <article class="bwb-story-card">
-      <a href="${BWB_BASE}/story.html?id=${encodeURIComponent(story.id)}" class="bwb-story-card-link">
+      <a href="${BWB_BASE}/story.html?id=${encodeURIComponent(story.id)}" class="bwb-story-card-link" aria-label="Read full coverage of: ${headline}">
         <div class="bwb-story-card-header">
-          <span class="bwb-story-source-initials ${classForBloc(first.bloc)}">${initials(first.name)}</span>
-          <span class="bwb-story-source-name">${escapeHtml(first.name)}</span>
-          <span class="bwb-story-coverage">${coverageBadge(srcs)}</span>
+          <div class="bwb-story-card-logo">${logoHtml}</div>
+          <span class="bwb-story-card-source-name">${escapeHtml(first.name)}</span>
+          <span class="bwb-story-card-bloc ${classForBloc(normBloc(first.bloc))}">${normBloc(first.bloc) === "western" ? "Western" : normBloc(first.bloc) === "adversarial" ? "Adversarial" : "Non-Aligned"}</span>
+          ${factualityBadgeStatic(srcs)}
         </div>
         <h3 class="bwb-story-card-title">${headline}</h3>
-        ${snippet ? `<p class="bwb-story-card-snippet">${snippet}</p>` : ""}
+        <p class="bwb-story-card-excerpt">${escapeHtml(summary.slice(0, 180) + (summary.length > 180 ? "\u2026" : ""))}</p>
+        <div class="bwb-story-card-blocs">${blocsBarStatic(srcs)}</div>
         <div class="bwb-story-card-meta">
           <span class="bwb-story-card-time">${formatTimeAgo(story.generated_at || "") || "just now"}</span>
-          <span class="bwb-story-card-count">${srcs.length} source${srcs.length === 1 ? "" : "s"}</span>
+          <div class="bwb-story-card-counts">
+            <span class="bwb-story-card-count">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              ${srcs.length} source${srcs.length === 1 ? "" : "s"}
+            </span>
+            <span class="bwb-story-card-count">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              ${countries.size} countr${countries.size === 1 ? "y" : "ies"}
+            </span>
+          </div>
+          <div class="bwb-story-card-badges">${signalBadgesStatic(story)}</div>
         </div>
       </a>
+      <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-${story.id}" data-expand="${story.id}">
+        <span class="bwb-card-expand-label">show ${srcs.length} sources</span>
+      </button>
+      <div class="bwb-card-sources" id="sources-${story.id}" hidden>
+        <ul>
+          ${srcs.map(s => {
+            const o = s.domain && ownershipRows.find((e: any) => e.domain === s.domain);
+            const ownerLine = o?.owner ? `<span class="bwb-card-source-owner" title="${o.owner_type || "owner"}${o.parent_company ? " \u00b7 parent: " + o.parent_company : ""}${o.motive ? " \u00b7 " + o.motive : ""}">${o.owner}</span>` : "";
+            return `
+            <li class="bwb-card-source-row">
+              <span class="bwb-card-source-bloc ${classForBloc(normBloc(s.bloc))}"></span>
+              <span class="bwb-card-source-name">${escapeHtml(s.name || "Unknown")}</span>
+              ${ownerLine}
+              ${s.country ? `<span class="bwb-card-source-country">${escapeHtml(s.country)}</span>` : ""}
+              <a href="${escapeHtml(s.url || "#")}" target="_blank" rel="noopener" class="bwb-card-source-link">\u2197</a>
+            </li>`;
+          }).join("")}
+        </ul>
+      </div>
     </article>
   `;
 }
@@ -169,6 +245,19 @@ function replaceMarker(html: string, marker: string, replacement: string): strin
     return html;
   }
   return html.slice(0, idx + open.length) + "\n" + replacement + "\n" + html.slice(end);
+}
+
+function diversityScore(sources: SourceRow[]): number {
+  if (sources.length < 2) return 0;
+  const left = sources.filter(s => s.bias === "left" || s.bias === "lean-left").length;
+  const right = sources.filter(s => s.bias === "right" || s.bias === "lean-right").length;
+  const center = sources.filter(s => s.bias === "center" || !s.bias).length;
+  const n = sources.length;
+  const c = (left / n) ** 2 + (center / n) ** 2 + (right / n) ** 2;
+  const lcr = Math.max(0, Math.min(1, (1 - c) / 0.67)) * 50;
+  const blocs = new Set(sources.map(s => normBloc(s.bloc))).size;
+  const blocPart = (blocs / 3) * 50;
+  return Math.round(lcr + blocPart);
 }
 
 function main() {
@@ -194,8 +283,8 @@ function main() {
     blocs.western >= blocs["non-aligned"] && blocs.western >= blocs.adversarial
       ? ["Western", wPct]
       : blocs["non-aligned"] >= blocs.adversarial
-      ? ["Non-Aligned", nPct]
-      : ["Adversarial", aPct];
+        ? ["Non-Aligned", nPct]
+        : ["Adversarial", aPct];
   const smallestPct = Math.min(wPct, nPct, aPct);
   const smallestName = smallestPct === wPct ? "Western" : smallestPct === nPct ? "Non-Aligned" : "Adversarial";
 
@@ -234,23 +323,27 @@ function main() {
   const bootstrapJson = Buffer.from(JSON.stringify(bootstrap)).toString("base64");
   const bootstrapScript = `<script type="application/json" id="bwb-bootstrap-data" data-encoding="base64">${bootstrapJson}</script>`;
 
+  // Generate noscript fallback with new card structure
+  const noscriptCards = stories.slice(0, 31).map(buildStaticCard).join("\n");
+
   const noscript = `
 <noscript>
   <style>
     #story-feed { display: none !important; }
     .bwb-empty { display: none !important; }
+    .bwb-skeleton-card { display: none !important; }
   </style>
   <div class="bwb-editorial-frame" aria-label="Daily Blindspot Brief signup">
     <div class="bwb-editorial-frame-meta">
       <span class="bwb-editorial-frame-stat">${meta.story_count} stories indexed</span>
-      <span class="bwb-editorial-frame-sep">·</span>
+      <span class="bwb-editorial-frame-sep">\u00b7</span>
       <span class="bwb-editorial-frame-stat">${meta.source_registry_count} sources live</span>
-      <span class="bwb-editorial-frame-sep">·</span>
+      <span class="bwb-editorial-frame-sep">\u00b7</span>
       <span class="bwb-editorial-frame-stat">3 blocs</span>
-      <span class="bwb-editorial-frame-sep">·</span>
+      <span class="bwb-editorial-frame-sep">\u00b7</span>
       <span class="bwb-editorial-frame-stat bwb-corpus-age">corpus ${formatTimeAgo(generatedAt)}</span>
-      <span class="bwb-editorial-frame-sep">·</span>
-      <a href="${BWB_BASE}/methodology.html" class="bwb-editorial-frame-stat bwb-editorial-frame-link">methodology ↗</a>
+      <span class="bwb-editorial-frame-sep">\u00b7</span>
+      <a href="${BWB_BASE}/methodology.html" class="bwb-editorial-frame-stat bwb-editorial-frame-link">methodology \u2197</a>
     </div>
   </div>
   <aside class="bwb-coverage-gap" aria-label="Today's coverage gap">
@@ -259,12 +352,13 @@ function main() {
       <div class="bwb-cg-stat"><span class="bwb-cg-num">${meta.story_count}</span><span class="bwb-cg-lbl">stories</span></div>
       <div class="bwb-cg-stat"><span class="bwb-cg-num">${meta.source_count_total}</span><span class="bwb-cg-lbl">sources</span></div>
       <div class="bwb-cg-stat"><span class="bwb-cg-num">${meta.country_count}</span><span class="bwb-cg-lbl">countries</span></div>
+      <div class="bwb-cg-stat"><span class="bwb-cg-num">${meta.diversity_score}</span><span class="bwb-cg-lbl">diversity score</span></div>
       <div class="bwb-cg-bar-wrap">
-        <div class="bwb-cg-bar-lbl">BLOC MIX</div>
+        <div class="bwb-cg-bar-lbl">Bloc mix</div>
         <div class="bwb-cg-bar">
-          <div class="bwb-cg-seg western" style="width:${wPct}%" title="Western: ${wPct}%"><span>Western</span></div>
-          <div class="bwb-cg-seg non-aligned" style="width:${nPct}%" title="Non-Aligned: ${nPct}%"><span>Non-Aligned</span></div>
-          <div class="bwb-cg-seg adversarial" style="width:${aPct}%" title="Adversarial: ${aPct}%"><span>Adversarial</span></div>
+          <div class="bwb-cg-seg western" style="width:${wPct}%" title="Western: ${wPct}%" data-label="Western ${wPct}%"><span>Western</span></div>
+          <div class="bwb-cg-seg non-aligned" style="width:${nPct}%" title="Non-Aligned: ${nPct}%" data-label="Non-Aligned ${nPct}%"><span>Non-Aligned</span></div>
+          <div class="bwb-cg-seg adversarial" style="width:${aPct}%" title="Adversarial: ${aPct}%" data-label="Adversarial ${aPct}%"><span>Adversarial</span></div>
         </div>
         <div class="bwb-cg-bar-legend">
           <span class="bwb-bloc-bullet western"></span>Western ${wPct}%
@@ -272,16 +366,20 @@ function main() {
           <span class="bwb-bloc-bullet adversarial"></span>Adversarial ${aPct}%
         </div>
       </div>
-      <div class="bwb-cg-stat"><span class="bwb-cg-num">${meta.diversity_score}</span><span class="bwb-cg-label">Diversity Score</span></div>
       <div class="bwb-cg-headline"><strong>Today's coverage gap:</strong> ${meta.coverage_gap_headline}</div>
     </div>
   </aside>
-  <main class="bwb-main">
-    <div class="bwb-feed">
-      ${stories.slice(0, 31).map(buildStaticCard).join("\n")}
+  <section class="bwb-brief-cta" aria-label="Today's 3 picks">
+    <div class="bwb-brief-cta-inner">
+      <div class="bwb-brief-cta-eyebrow">Today's Blindspot Brief</div>
+      <h2 class="bwb-brief-cta-title">3 picks where the gap is widest</h2>
+      <p class="bwb-brief-cta-body">Enable JavaScript for interactive brief picks.</p>
+      <a class="bwb-brief-cta-link" href="${BWB_BASE}/brief.html">Read the full brief \u2192</a>
     </div>
+  </section>
+  <main class="bwb-feed" aria-label="Story feed" role="feed">
+    ${noscriptCards}
   </main>
-</noscript>
 `;
 
   let html = readFileSync(INDEX_PATH, "utf8");
