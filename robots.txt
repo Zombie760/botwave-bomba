@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /botwavebomba/
+Disallow: /botwavebomba/api/
+Disallow: /botwavebomba/daily/
+Disallow: /botwavebomba/server/
+Disallow: /botwavebomba/scripts/
+Disallow: /botwavebomba/.github/
+Sitemap: https://zombie760.github.io/botwavebomba/sitemap.xml

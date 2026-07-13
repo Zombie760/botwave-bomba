@@ -1,0 +1,23 @@
+{
+  "stories": [
+    {
+      "id": "democracy-now-test",
+      "consensus_headline": "Democracy Now: Test Story",
+      "consensus_snippet": "This is a test story from Democracy Now.",
+      "published_at": "2026-07-12T00:00:00Z",
+      "section": "world",
+      "geo_scope": "global",
+      "bias": "left",
+      "signals": [],
+      "sources": [
+        {
+          "name": "Democracy Now",
+          "domain": "democracynow.org",
+          "bloc": "non-aligned",
+          "count": 1
+        }
+      ],
+      "transcript_url": "https://www.youtube.com/watch?v=test"
+    }
+  ]
+}

@@ -1,0 +1,282 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-07-13T07:18:53.992Z",
+  "count": 25,
+  "entries": [
+    {
+      "domain": "reuters.com",
+      "name": "Reuters",
+      "owner": "Thomson Reuters Corporation",
+      "owner_type": "corporation",
+      "parent_company": "Thomson Reuters Corporation",
+      "motive": "Subscription, terminal, and news-licensing revenue; institutional trust as a commercial asset",
+      "evidence_url": "https://www.thomsonreuters.com/en/about-us.html",
+      "evidence_method": "official corporate about page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "apnews.com",
+      "name": "Associated Press",
+      "owner": "Associated Press (member cooperative)",
+      "owner_type": "nonprofit",
+      "parent_company": null,
+      "motive": "Member-newsroom licensing; cooperative, nonpartisan newswire model",
+      "evidence_url": "https://www.ap.org/about/",
+      "evidence_method": "official about page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "bbc.com",
+      "name": "BBC News",
+      "owner": "British Broadcasting Corporation",
+      "owner_type": "state",
+      "parent_company": "BBC (public corporation, UK government charter)",
+      "motive": "Public-service broadcasting funded by UK licence fee; UK national narrative and global influence",
+      "evidence_url": "https://www.bbc.com/aboutthebbc",
+      "evidence_method": "official corporate about page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "foxnews.com",
+      "name": "Fox News",
+      "owner": "Fox Corporation",
+      "owner_type": "corporation",
+      "parent_company": "Fox Corporation",
+      "motive": "Advertising and carriage revenue from a right-leaning U.S. audience; partisan alignment as product-market fit",
+      "evidence_url": "https://www.foxcorporation.com/about/",
+      "evidence_method": "official corporate about page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "cnn.com",
+      "name": "CNN",
+      "owner": "Warner Bros. Discovery",
+      "owner_type": "corporation",
+      "parent_company": "Warner Bros. Discovery",
+      "motive": "Cable carriage and digital advertising; general-news audience monetization",
+      "evidence_url": "https://wbd.com/our-brands/",
+      "evidence_method": "official corporate brands page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "msnbc.com",
+      "name": "MSNBC",
+      "owner": "NBCUniversal (Comcast)",
+      "owner_type": "corporation",
+      "parent_company": "Comcast Corporation",
+      "motive": "Cable subscription and advertising; progressive-leaning U.S. cable audience",
+      "evidence_url": "https://www.nbcuniversal.com/brands",
+      "evidence_method": "official corporate brands page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "nytimes.com",
+      "name": "The New York Times",
+      "owner": "The New York Times Company",
+      "owner_type": "corporation",
+      "parent_company": "The New York Times Company",
+      "motive": "Subscription and advertising revenue; elite U.S. liberal-national audience",
+      "evidence_url": "https://www.nytco.com/company/",
+      "evidence_method": "official corporate about page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "washingtonpost.com",
+      "name": "The Washington Post",
+      "owner": "Nash Holdings (Jeff Bezos)",
+      "owner_type": "individual",
+      "parent_company": "Nash Holdings",
+      "motive": "Subscription and national influence; owner-aligned national-security and institutional framing",
+      "evidence_url": "https://www.washingtonpost.com/about/",
+      "evidence_method": "official about page + SEC ownership disclosures",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "wsj.com",
+      "name": "The Wall Street Journal",
+      "owner": "Dow Jones & Company",
+      "owner_type": "corporation",
+      "parent_company": "News Corp (Rupert Murdoch)",
+      "motive": "Subscription and advertising; business-elite and conservative-economic audience",
+      "evidence_url": "https://www.newscorp.com/brands/business-news/",
+      "evidence_method": "official corporate brands page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "aljazeera.com",
+      "name": "Al Jazeera English",
+      "owner": "Al Jazeera Media Network",
+      "owner_type": "state",
+      "parent_company": "Qatar Foundation (state of Qatar)",
+      "motive": "State-funded global narrative projection; Qatar-aligned framing of MENA and Muslim-world issues",
+      "evidence_url": "https://www.aljazeera.com/about-us/",
+      "evidence_method": "official about page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "rt.com",
+      "name": "RT",
+      "owner": "ANO TV-Novosti",
+      "owner_type": "state",
+      "parent_company": "Russian state-funded media ( Kremlin-linked )",
+      "motive": "Russian state foreign-policy narrative and counter-Western framing",
+      "evidence_url": "https://www.rt.com/about-us/",
+      "evidence_method": "official about page + U.S. DOJ FARA filings",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "xinhuanet.com",
+      "name": "Xinhua",
+      "owner": "Xinhua News Agency",
+      "owner_type": "state",
+      "parent_company": "People's Republic of China (state council)",
+      "motive": "Chinese state narrative projection and official-diplomatic messaging",
+      "evidence_url": "http://www.xinhuanet.com/english2010/xinhuaabout/",
+      "evidence_method": "official about page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "theguardian.com",
+      "name": "The Guardian",
+      "owner": "Guardian Media Group",
+      "owner_type": "trust",
+      "parent_company": "Guardian Media Group (Scott Trust)",
+      "motive": "Reader-funded journalism; center-left UK/global audience and public-interest framing",
+      "evidence_url": "https://www.theguardian.com/about",
+      "evidence_method": "official about page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "dailymail.co.uk",
+      "name": "Daily Mail",
+      "owner": "Daily Mail and General Trust",
+      "owner_type": "corporation",
+      "parent_company": "Daily Mail and General Trust",
+      "motive": "Advertising and tabloid engagement; populist UK audience",
+      "evidence_url": "https://www.dmgmedia.co.uk/",
+      "evidence_method": "official corporate about page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "lemonde.fr",
+      "name": "Le Monde",
+      "owner": "Le Monde libre (independent journalists and shareholders)",
+      "owner_type": "trust",
+      "parent_company": "Independent (no controlling shareholder)",
+      "motive": "Subscription revenue; French center-left quality-newspaper audience",
+      "evidence_url": "https://www.lemonde.fr/en/about/",
+      "evidence_method": "official about page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "tass.com",
+      "name": "TASS",
+      "owner": "TASS Russian News Agency",
+      "owner_type": "state",
+      "parent_company": "Russian state information agency",
+      "motive": "Official Russian state information dissemination",
+      "evidence_url": "https://tass.com/about",
+      "evidence_method": "official about page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "breitbart.com",
+      "name": "Breitbart News",
+      "owner": "Breitbart News Network",
+      "owner_type": "corporation",
+      "parent_company": "Breitbart News Network (private)",
+      "motive": "Advertising and donation revenue from U.S. nationalist/conservative audience",
+      "evidence_url": "https://en.wikipedia.org/wiki/Breitbart_News",
+      "evidence_method": "Wikipedia ownership section (primary-source citations linked)",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "huffpost.com",
+      "name": "HuffPost",
+      "owner": "BuzzFeed, Inc.",
+      "owner_type": "corporation",
+      "parent_company": "BuzzFeed, Inc.",
+      "motive": "Advertising and social sharing; progressive-leaning general audience",
+      "evidence_url": "https://www.buzzfeed.com/about",
+      "evidence_method": "official corporate about page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "abc.net.au",
+      "name": "ABC News Australia",
+      "owner": "Australian Broadcasting Corporation",
+      "owner_type": "state",
+      "parent_company": "Australian Government (public broadcaster)",
+      "motive": "Public-service broadcasting funded by Australian taxpayer; national and Asia-Pacific narrative",
+      "evidence_url": "https://about.abc.net.au/",
+      "evidence_method": "official corporate about page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "japantimes.co.jp",
+      "name": "The Japan Times",
+      "owner": "The Japan Times, Ltd.",
+      "owner_type": "corporation",
+      "parent_company": "News2u Holdings, Inc.",
+      "motive": "Subscription and advertising; English-speaking Japan-focused audience",
+      "evidence_url": "https://www.japantimes.co.jp/about/",
+      "evidence_method": "official about page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "dawn.com",
+      "name": "Dawn",
+      "owner": "Dawn Media Group",
+      "owner_type": "corporation",
+      "parent_company": "Dawn Media Group (Pakistan)",
+      "motive": "Pakistani elite readership; advertising and subscription revenue; historically liberal-national framing",
+      "evidence_url": "https://www.dawn.com/about/",
+      "evidence_method": "official about page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "dailytrust.com",
+      "name": "Daily Trust",
+      "owner": "Media Trust Group",
+      "owner_type": "corporation",
+      "parent_company": "Media Trust Group (Nigeria)",
+      "motive": "Nigerian mass-market advertising; northern Nigerian audience and political alignment",
+      "evidence_url": "https://dailytrust.com/about-us",
+      "evidence_method": "official about page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "myjoyonline.com",
+      "name": "Joy Online",
+      "owner": "Multimedia Group Limited",
+      "owner_type": "corporation",
+      "parent_company": "Multimedia Group Limited (Ghana)",
+      "motive": "Ghanaian advertising and audience share; mainstream urban Ghanaian framing",
+      "evidence_url": "https://www.myjoyonline.com/about-us/",
+      "evidence_method": "official about page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "borderreport.com",
+      "name": "Border Report",
+      "owner": "Nexstar Media Group",
+      "owner_type": "corporation",
+      "parent_company": "Nexstar Media Group, Inc.",
+      "motive": "Local-market advertising and national border-politics audience; Nexstar scale play",
+      "evidence_url": "https://www.nexstar.tv/stations/",
+      "evidence_method": "official corporate stations page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    },
+    {
+      "domain": "thehindu.com",
+      "name": "The Hindu",
+      "owner": "The Hindu Group",
+      "owner_type": "trust",
+      "parent_company": "Kasturi & Sons Limited (family trust-controlled)",
+      "motive": "Subscription and Indian English-language elite readership; center-left institutional framing",
+      "evidence_url": "https://www.thehindu.com/about-us/",
+      "evidence_method": "official about page",
+      "verified_at": "2026-07-13T06:30:00Z"
+    }
+  ]
+}

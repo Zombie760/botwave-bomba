@@ -1,0 +1,96 @@
+/* ── Legacy theme variables (kept for story.html and chrome) ── */
+:root {
+  --fg: #222222;
+  --fg-dim: #6b7280;
+  --bg: #f9fafb;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --skeleton-bg: #f3f4f6;
+  --skeleton-shimmer: #e5e7eb;
+  --bias-western: #ef4444;
+  --bias-non-aligned: #3b82f6;
+  --bias-adversarial: #10b981;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg: #ffffff;
+    --fg-dim: #aaaaaa;
+    --bg: #121212;
+    --card-bg: #1e1e1e;
+    --card-border: #333333;
+    --skeleton-bg: #2d2d2d;
+    --skeleton-shimmer: #3d3d3d;
+  }
+}
+
+/* ── Font Size Toggle ── */
+[data-font-size="small"] {
+  font-size: 14px;
+}
+
+[data-font-size="large"] {
+  font-size: 18px;
+}
+
+.bwb-font-size-toggle {
+  background: none;
+  border: none;
+  color: var(--fg);
+  cursor: pointer;
+  font-size: 20px;
+  padding: 8px;
+  position: fixed;
+  top: 16px;
+  right: 60px;
+  z-index: 1000;
+}
+
+/* ── Dark/Light Mode Toggle ── */
+.bwb-theme-toggle {
+  background: none;
+  border: none;
+  color: var(--fg);
+  cursor: pointer;
+  font-size: 20px;
+  padding: 8px;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+}
+
+/* ── Animations ── */
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--skeleton-bg) 25%, var(--skeleton-shimmer) 50%, var(--skeleton-bg) 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ── Loading States ── */
+.ptr-indicator {
+  display: none;
+  justify-content: center;
+  padding: 16px;
+}
+
+.ptr-spinner {
+  border: 3px solid var(--fg-dim);
+  border-top: 3px solid var(--primary);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

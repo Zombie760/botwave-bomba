@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-07-13T07:57:53.339Z",
+  "story_count": 31,
+  "source_count_total": 302,
+  "source_registry_count": 104,
+  "country_count": 16,
+  "bloc_spread": {
+    "western": 17,
+    "non-aligned": 65,
+    "adversarial": 18
+  },
+  "diversity_score": 33,
+  "coverage_gap_headline": "Non-Aligned press leads at 65%. Western press trails at 17%. 16 countries represented."
+}

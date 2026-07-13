@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sources · BotwaveBomba</title>
+  <meta name="description" content="Outlet registry and ownership index for BotwaveBomba coverage.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="canonical" href="https://zombie760.github.io/botwavebomba/sources.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="BotwaveBomba">
+  <meta property="og:title" content="Sources · BotwaveBomba">
+  <meta property="og:description" content="Outlet registry and ownership index for BotwaveBomba coverage.">
+  <meta property="og:url" content="https://zombie760.github.io/botwavebomba/sources.html">
+  <meta property="og:image" content="https://zombie760.github.io/botwavebomba/assets/logos/default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sources · BotwaveBomba">
+  <meta name="twitter:description" content="Outlet registry and ownership index for BotwaveBomba coverage.">
+  <meta name="twitter:image" content="https://zombie760.github.io/botwavebomba/assets/logos/default.png">
+  <link rel="manifest" href="/botwavebomba/manifest.json">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "Sources · BotwaveBomba",
+        "url": "https://zombie760.github.io/botwavebomba/sources.html",
+        "description": "Outlet registry and ownership index for BotwaveBomba coverage."
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://zombie760.github.io/botwavebomba/"}, {"@type": "ListItem", "position": 2, "name": "Sources \u00b7 BotwaveBomba"}]
+      }
+    ]
+  }
+  </script>
+
+</head>
+<body>
+  <a class="bwb-skip-link" href="#main-content">Skip to content</a>
+  <header class="bwb-site-header">
+    <div class="bwb-header-inner">
+      <a class="bwb-logo" href="./">BOTWAVEBOMBA</a>
+      <nav class="bwb-chrome-nav" aria-label="Primary">
+        <a href="index.html">Feed</a>
+        <a href="brief.html">Brief</a>
+        <a href="sources.html" aria-current="page">Sources</a>
+        <a href="methodology.html">Methodology</a>
+        <a href="pro.html">Pricing</a>
+      </nav>
+      <button class="bwb-theme-toggle" id="themeToggle" aria-label="Toggle theme"><span aria-hidden="true">🌙</span></button>
+    </div>
+  </header>
+
+  <main id="main-content" class="bwb-page bwb-pad">
+    <section class="bwb-hero-small">
+      <h1>Sources</h1>
+      <p class="bwb-lead">The allow-listed outlets that power the BotwaveBomba feed. Every outlet is tagged by country, ownership type, and geopolitical bloc so you can see who paid for the framing.</p>
+    </section>
+
+    <section class="bwb-card bwb-pad" id="sources-mount">
+      <p class="bwb-empty">Loading outlet registry…</p>
+    </section>
+  </main>
+
+  <footer class="bwb-site-footer" id="siteFooter"></footer>
+
+  <script src="assets/js/main.js" defer></script>
+  <script>
+    (function () {
+      const mount = document.getElementById('sources-mount');
+      if (!mount) return;
+
+      function badgeClass(bloc) {
+        if (bloc === 'western') return 'bwb-badge-western';
+        if (bloc === 'adversarial') return 'bwb-badge-adversarial';
+        return 'bwb-badge-nonaligned';
+      }
+
+      function normBloc(bloc) {
+        if (!bloc) return 'non-aligned';
+        const s = String(bloc).toLowerCase().replace(/[^a-z]/g, '');
+        if (s.includes('west')) return 'western';
+        if (s.includes('advers') || s.includes('eastern') || s.includes('axis')) return 'adversarial';
+        return 'non-aligned';
+      }
+
+      fetch('api/sources_real_seed.json')
+        .then(r => r.json())
+        .then(data => {
+          const list = Array.isArray(data) ? data : (data && data.sources);
+          if (!Array.isArray(list) || !list.length) {
+            mount.innerHTML = '<p class="bwb-empty">No outlets in the registry yet.</p>';
+            return;
+          }
+          const grouped = { western: [], 'non-aligned': [], adversarial: [] };
+          list.forEach(s => {
+            const bloc = normBloc(s.bloc || s.alignment);
+            (grouped[bloc] || grouped['non-aligned']).push(s);
+          });
+
+          const order = ['western', 'non-aligned', 'adversarial'];
+          const names = { western: 'Western-aligned', 'non-aligned': 'Non-aligned / Global South', adversarial: 'Adversarial bloc' };
+          let html = '';
+          order.forEach(bloc => {
+            const items = grouped[bloc];
+            if (!items.length) return;
+            html += '<h2 class="bwb-section-title">' + names[bloc] + ' <span class="bwb-count">' + items.length + '</span></h2>';
+            html += '<ul class="bwb-source-list">';
+            items.forEach(s => {
+              const country = s.country ? ' <span class="bwb-source-country">(' + s.country + ')</span>' : '';
+              const owner = s.owner || s.ownership || (s.is_state_owned ? 'State-owned' : 'Independent / private');
+              const paywall = s.paywall_status ? ' · ' + s.paywall_status : '';
+              html += '<li class="bwb-source-row">' +
+                '<span class="bwb-source-name">' + (s.name || s.outlet || 'Unknown') + '</span>' +
+                '<span class="bwb-badge ' + badgeClass(bloc) + '">' + bloc + '</span>' +
+                country +
+                '<span class="bwb-source-owner">' + owner + paywall + '</span>' +
+                '</li>';
+            });
+            html += '</ul>';
+          });
+          mount.innerHTML = html;
+        })
+        .catch(err => {
+          mount.innerHTML = '<p class="bwb-error">Could not load outlet registry. <a href="index.html">Back to Feed</a></p>';
+          console.warn('Sources page load failed:', err);
+        });
+    })();
+  </script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/botwavebomba/service-worker.js')
+        .then(function (r) { console.log('[bwb] sw registered'); })
+        .catch(function (e) { console.error('[bwb] sw failed', e); });
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pricing · BotwaveBomba</title>
+  <meta name="description" content="BotwaveBomba Pro pricing and access tiers.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <style>
+    .bwb-site-header{border-bottom:1px solid var(--color-border);background:var(--color-bg-elevated);padding:var(--space-3) var(--gutter)}
+    .bwb-header-inner{max-width:var(--max-w-grid);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap}
+    .bwb-logo{font-family:var(--font-mono);font-size:var(--fs-lg);font-weight:var(--fw-bold);color:var(--color-text-strong);text-decoration:none}
+    .bwb-chrome-nav{display:flex;gap:var(--space-4);align-items:center;flex-wrap:wrap}
+    .bwb-chrome-nav a{font-family:var(--font-mono);font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:0.08em;color:var(--color-text-muted);text-decoration:none}
+    .bwb-chrome-nav a:hover{color:var(--color-text)}
+    .bwb-chrome-nav a[aria-current="page"]{color:var(--color-accent)}
+    .bwb-theme-toggle{font-size:var(--fs-md);line-height:1;padding:var(--space-2);border-radius:var(--radius);background:transparent;border:1px solid var(--color-border);color:var(--color-text);cursor:pointer}
+    .bwb-page{max-width:var(--max-w-grid);margin:0 auto;padding:var(--space-6) var(--gutter) var(--space-10)}
+    .bwb-hero-small h1{font-family:var(--font-display);font-size:var(--fs-3xl);line-height:var(--lh-tight);color:var(--color-text-strong);margin:0 0 var(--space-3)}
+    .bwb-lead{font-size:var(--fs-md);color:var(--color-text-muted);max-width:60ch;margin:0 0 var(--space-5)}
+    .bwb-pricing-grid{display:grid;gap:var(--space-4);grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:var(--space-6)}
+    .bwb-pricing-card{border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);background:var(--color-bg-elevated)}
+    .bwb-pricing-card.featured{border-color:var(--color-accent);background:color-mix(in oklch,var(--color-accent) 8%,var(--color-bg-elevated))}
+    .bwb-price{font-family:var(--font-display);font-size:var(--fs-3xl);font-weight:var(--fw-bold);color:var(--color-text-strong);margin:0}
+    .bwb-price span{font-size:var(--fs-base);font-weight:var(--fw-regular);color:var(--color-text-muted)}
+    .bwb-price-note{font-size:var(--fs-sm);color:var(--color-text-muted);margin:var(--space-1) 0 var(--space-3)}
+    .bwb-features{list-style:none;margin-top:var(--space-4);font-size:var(--fs-md);color:var(--color-text)}
+    .bwb-features li{padding:var(--space-2) 0;border-bottom:1px solid var(--color-border)}
+    .bwb-features li:last-child{border-bottom:none}
+    .bwb-cta{display:inline-block;margin-top:var(--space-4);padding:var(--space-3) var(--space-5);border-radius:var(--radius-md);background:var(--color-accent);color:var(--color-accent-text);font-weight:var(--fw-semibold);text-decoration:none}
+    .bwb-cta:hover{background:var(--color-accent-hover);color:var(--color-accent-text)}
+    .bwb-site-footer{border-top:1px solid var(--color-border);padding:var(--space-6) var(--gutter);text-align:center;font-family:var(--font-mono);font-size:var(--fs-xs);color:var(--color-text-muted);margin-top:var(--space-8)}
+  </style>
+  <link rel="canonical" href="https://zombie760.github.io/botwavebomba/pro.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="BotwaveBomba">
+  <meta property="og:title" content="Pricing · BotwaveBomba">
+  <meta property="og:description" content="BotwaveBomba Pro pricing and access tiers.">
+  <meta property="og:url" content="https://zombie760.github.io/botwavebomba/pro.html">
+  <meta property="og:image" content="https://zombie760.github.io/botwavebomba/assets/logos/default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pricing · BotwaveBomba">
+  <meta name="twitter:description" content="BotwaveBomba Pro pricing and access tiers.">
+  <meta name="twitter:image" content="https://zombie760.github.io/botwavebomba/assets/logos/default.png">
+  <link rel="manifest" href="/botwavebomba/manifest.json">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "Pricing · BotwaveBomba",
+        "url": "https://zombie760.github.io/botwavebomba/pro.html",
+        "description": "BotwaveBomba Pro pricing and access tiers."
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://zombie760.github.io/botwavebomba/"}, {"@type": "ListItem", "position": 2, "name": "Pricing \u00b7 BotwaveBomba"}]
+      }
+    ]
+  }
+  </script>
+
+</head>
+<body>
+  <a class="bwb-skip-link" href="#main-content">Skip to content</a>
+  <header class="bwb-site-header">
+    <div class="bwb-header-inner">
+      <a class="bwb-logo" href="./">BOTWAVEBOMBA</a>
+      <nav class="bwb-chrome-nav" aria-label="Primary">
+        <a href="index.html">Feed</a>
+        <a href="brief.html">Brief</a>
+        <a href="sources.html">Sources</a>
+        <a href="methodology.html">Methodology</a>
+        <a href="pro.html" aria-current="page">Pricing</a>
+      </nav>
+      <button class="bwb-theme-toggle" id="themeToggle" aria-label="Toggle theme"><span aria-hidden="true">🌙</span></button>
+    </div>
+  </header>
+
+  <main id="main-content" class="bwb-page bwb-pad">
+    <section class="bwb-hero-small">
+      <h1>Pricing</h1>
+      <p class="bwb-lead">The feed is free. The brief lands in your inbox. Vantage unlocks the ownership chain behind every source.</p>
+    </section>
+
+    <section class="bwb-pricing-grid">
+      <article class="bwb-pricing-card">
+        <h2>Free</h2>
+        <p class="bwb-price">$0<span> / forever</span></p>
+        <p class="bwb-price-note">No account required.</p>
+        <ul class="bwb-features">
+          <li>Daily clustered feed</li>
+          <li>Brief archive + source list</li>
+          <li>Bloc tags + coverage-gap bars</li>
+          <li>Methodology transparency</li>
+        </ul>
+        <a class="bwb-cta" href="index.html">Read now</a>
+      </article>
+
+      <article class="bwb-pricing-card featured">
+        <h2>Brief</h2>
+        <p class="bwb-price">$49<span> / month</span></p>
+        <p class="bwb-price-note">$499 / year · the daily email product.</p>
+        <ul class="bwb-features">
+          <li>Everything in Free</li>
+          <li>7am daily email brief</li>
+          <li>Blindspot + region alerts</li>
+          <li>PDF / markdown export</li>
+        </ul>
+        <a class="bwb-cta" href="signup.html">Subscribe →</a>
+      </article>
+
+      <article class="bwb-pricing-card">
+        <h2>Vantage</h2>
+        <p class="bwb-price">$99.99<span> / year</span></p>
+        <p class="bwb-price-note">$8.33 / month · the ownership layer.</p>
+        <ul class="bwb-features">
+          <li>Everything in Brief</li>
+          <li>Full owner → parent → motive chain</li>
+          <li>Per-source ownership breakdown</li>
+          <li>Data exports + API rate limit</li>
+        </ul>
+        <a class="bwb-cta" href="mailto:hello@botwavebomba.com?subject=BotwaveBomba+Vantage+signup">Request access</a>
+      </article>
+    </section>
+  </main>
+
+  <footer class="bwb-site-footer" id="siteFooter"></footer>
+  <script src="assets/js/main.js" defer></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/botwavebomba/service-worker.js')
+        .then(function (r) { console.log('[bwb] sw registered'); })
+        .catch(function (e) { console.error('[bwb] sw failed', e); });
+    });
+  }
+</script>
+
+</body>
+</html>

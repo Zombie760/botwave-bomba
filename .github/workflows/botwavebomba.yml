@@ -1,0 +1,85 @@
+name: BotwaveBomba — build and deploy to GitHub Pages
+
+on:
+  schedule:
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "api/**"
+      - "scripts/**"
+      - "assets/js/**"
+      - "server/**"
+      - "index.html"
+      - "package.json"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      BWB_BASE_PATH: /botwavebomba
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+
+      - name: Verify data files
+        run: |
+          test -f api/meta.json
+          test -f api/stories_clustered.json
+          test -f api/sources_real_seed.json
+          test -f api/ownership.json
+
+      - name: Validate JSON inputs
+        run: |
+          bun -e 'const fs="node:fs"; [["api/meta.json"],["api/stories_clustered.json"],["api/sources_real_seed.json"],["api/ownership.json"]].forEach(([p])=>{JSON.parse(fs.readFileSync(p,"utf8"))}); console.log("json ok")'
+
+      - name: Build homepage
+        run: bun run scripts/build_homepage.ts
+
+      - name: Validate asset pipeline
+        run: |
+          test -f server/index.ts
+          test -f assets/js/api-adapter.js
+          test -f package.json
+          test -f README.md
+          test -f SECURITY.md
+          test -f CONTRIBUTING.md
+          test -f 404.html
+          test -f robots.txt
+          test -f sitemap.xml
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: '.'
+          retention-days: 30
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          artifact-name: botwavebomba-pages
+          timeout: 600000
