@@ -12,6 +12,7 @@
       geo: new Set(['all']),
       bias: new Set(['all']),
     },
+    sort: 'newest',
   };
 
   const els = {
@@ -21,6 +22,7 @@
     geoNav: document.getElementById('geo-nav'),
     biasNav: document.getElementById('bias-nav'),
     sectionPills: document.getElementById('section-pills'),
+    sortNav: document.getElementById('sort-nav'),
     frameStoryCount: document.getElementById('bwb-frame-story-count'),
     frameSourceCount: document.getElementById('bwb-frame-source-count'),
     frameCorpusAge: document.getElementById('bwb-frame-corpus-age'),
@@ -67,15 +69,51 @@
     return new Date(t).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   }
 
-  function coverageBadge(story) {
+  function coverageCounts(story) {
     const srcs = story.sources || [];
     const counts = { western: 0, 'non-aligned': 0, adversarial: 0 };
     srcs.forEach(s => { counts[s.bloc] = (counts[s.bloc] || 0) + 1; });
+    return counts;
+  }
+
+  function coverageBadge(story) {
+    const counts = coverageCounts(story);
     const chips = [];
     if (counts.western) chips.push(`<span class="bwb-bloc-pill western">${counts.western}W</span>`);
     if (counts['non-aligned']) chips.push(`<span class="bwb-bloc-pill non-aligned">${counts['non-aligned']}N</span>`);
     if (counts.adversarial) chips.push(`<span class="bwb-bloc-pill adversarial">${counts.adversarial}A</span>`);
     return chips.length ? chips.join(' ') : '<span class="bwb-bloc-pill other">unmapped</span>';
+  }
+
+  function miniBlocBar(story) {
+    const counts = coverageCounts(story);
+    const total = Math.max(1, counts.western + counts['non-aligned'] + counts.adversarial);
+    return `
+      <div class="bwb-mini-bar" aria-label="Source bloc mix">
+        <div class="bwb-mini-seg western" style="width:${(counts.western / total) * 100}%" title="Western ${counts.western}"></div>
+        <div class="bwb-mini-seg non-aligned" style="width:${(counts['non-aligned'] / total) * 100}%" title="Non-Aligned ${counts['non-aligned']}"></div>
+        <div class="bwb-mini-seg adversarial" style="width:${(counts.adversarial / total) * 100}%" title="Adversarial ${counts.adversarial}"></div>
+      </div>
+    `;
+  }
+
+  function sourceListHtml(story) {
+    const srcs = story.sources || [];
+    if (!srcs.length) return '';
+    return `
+      <div class="bwb-card-sources" id="sources-${story.id}" hidden>
+        <ul>
+          ${srcs.map(s => `
+            <li class="bwb-card-source-row">
+              <span class="bwb-story-bias-dot ${classForBloc(s.bloc)}"></span>
+              <span class="bwb-card-source-name">${s.name || 'Unknown'}</span>
+              ${s.country ? `<span class="bwb-card-source-country">${s.country}</span>` : ''}
+              <a href="${s.url || '#'}" target="_blank" rel="noopener" class="bwb-card-source-link">↗</a>
+            </li>
+          `).join('')}
+        </ul>
+      </div>
+    `;
   }
 
   function buildCard(story) {
@@ -95,6 +133,7 @@
             <span class="bwb-story-source-name">${first.name || 'Unknown source'}</span>
             <span class="bwb-story-coverage">${coverageBadge(story)}</span>
           </div>
+          ${miniBlocBar(story)}
           <h3 class="bwb-story-card-title">${story.headline}</h3>
           <p class="bwb-story-card-snippet">${story.summary ? story.summary.slice(0, 180) + (story.summary.length > 180 ? '…' : '') : ''}</p>
           <div class="bwb-story-card-meta">
@@ -103,6 +142,10 @@
             ${badges.join('')}
           </div>
         </a>
+        <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-${story.id}" data-expand="${story.id}">
+          <span class="bwb-card-expand-label">show ${srcs.length} sources</span>
+        </button>
+        ${sourceListHtml(story)}
       </article>
     `;
   }
@@ -159,13 +202,26 @@
   }
 
   function filteredStories() {
-    return state.stories.filter(story => {
+    const list = state.stories.filter(story => {
       const signals = storySignals(story);
       const sectionOk = state.activeFilters.section.has('all') || state.activeFilters.section.has(story.section);
       const signalOk = state.activeFilters.signal.has('all') || signals.some(s => state.activeFilters.signal.has(s));
       const geoOk = state.activeFilters.geo.has('all') || state.activeFilters.geo.has(geoScope(story));
       const biasOk = state.activeFilters.bias.has('all') || state.activeFilters.bias.has(story.coverageBias || 'center');
       return sectionOk && signalOk && geoOk && biasOk;
+    });
+
+    return list.sort((a, b) => {
+      if (state.sort === 'newest') {
+        return new Date(b.published || 0) - new Date(a.published || 0);
+      }
+      if (state.sort === 'sources') {
+        return (b.sources || []).length - (a.sources || []).length;
+      }
+      if (state.sort === 'diversity') {
+        return diversityScore(b) - diversityScore(a);
+      }
+      return 0;
     });
   }
 
@@ -270,6 +326,7 @@
     append('signal', state.activeFilters.signal);
     append('geo', state.activeFilters.geo);
     append('bias', state.activeFilters.bias);
+    if (state.sort && state.sort !== 'newest') params.set('sort', state.sort);
     const newUrl = `${window.location.pathname}${params.toString() ? '?' + params.toString() : ''}`;
     window.history.replaceState({}, '', newUrl);
   }
@@ -285,6 +342,8 @@
     state.activeFilters.signal = parse('signal');
     state.activeFilters.geo = parse('geo');
     state.activeFilters.bias = parse('bias');
+    const sortVal = params.get('sort');
+    state.sort = ['newest', 'sources', 'diversity'].includes(sortVal) ? sortVal : 'newest';
   }
 
   function bindToggle(nav, key, exclusive = true) {
@@ -313,11 +372,47 @@
     });
   }
 
+  function bindSort() {
+    if (!els.sortNav) return;
+    els.sortNav.addEventListener('click', e => {
+      const btn = e.target.closest('button[data-sort]');
+      if (!btn) return;
+      state.sort = btn.dataset.sort;
+      els.sortNav.querySelectorAll('button').forEach(b => {
+        b.classList.toggle('active', b.dataset.sort === state.sort);
+      });
+      renderFeed();
+      updateUrlParams();
+    });
+  }
+
+  function bindCardExpands() {
+    if (!els.storyFeed) return;
+    els.storyFeed.addEventListener('click', e => {
+      const btn = e.target.closest('button[data-expand]');
+      if (!btn) return;
+      const id = btn.dataset.expand;
+      const panel = document.getElementById(`sources-${id}`);
+      if (!panel) return;
+      e.preventDefault();
+      const expanded = panel.hidden;
+      panel.hidden = !expanded;
+      btn.setAttribute('aria-expanded', String(expanded));
+      const label = btn.querySelector('.bwb-card-expand-label');
+      if (label) {
+        const count = (state.stories.find(s => s.id === id)?.sources || []).length;
+        label.textContent = expanded ? `hide ${count} sources` : `show ${count} sources`;
+      }
+    });
+  }
+
   function bindAll() {
     bindToggle(els.sectionNav, 'section', false);
     bindToggle(els.filterNav, 'signal', false);
     bindToggle(els.geoNav, 'geo', true);
     bindToggle(els.biasNav, 'bias', true);
+    bindSort();
+    bindCardExpands();
     if (els.sectionPills) {
       els.sectionPills.addEventListener('click', e => {
         const btn = e.target.closest('button[data-filter]');
@@ -346,6 +441,11 @@
         b.classList.toggle('active', state.activeFilters[key].has(b.dataset.filter));
       });
     });
+    if (els.sortNav) {
+      els.sortNav.querySelectorAll('button').forEach(b => {
+        b.classList.toggle('active', b.dataset.sort === state.sort);
+      });
+    }
   }
 
   async function init() {
