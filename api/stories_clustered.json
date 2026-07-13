@@ -1,0 +1,3409 @@
+{
+  "generated_at": "2026-07-13T07:57:53.339Z",
+  "in_count": 3221,
+  "clustered_count": 808,
+  "unclustered": 2413,
+  "stories_count": 31,
+  "stories": [
+    {
+      "id": "26cb5d81ac87d055",
+      "size": 36,
+      "source_count": 17,
+      "bloc_spread": {
+        "western": 7,
+        "non_aligned": 16,
+        "adversarial": 13
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "AU",
+        "GB",
+        "GH",
+        "IN",
+        "IR",
+        "JP",
+        "KR",
+        "NG",
+        "NZ",
+        "PH",
+        "PK",
+        "QA",
+        "RU",
+        "TW"
+      ],
+      "top_headlines": [
+        "Shipping through Strait of Hormuz declines as US-Iran hostilities resume",
+        "Trump: U.S. has told Iran ceasefire is 'over' despite agreement to continue talks",
+        "Trump says US has ‘agreed’ to continue Iran talks but ceasefire ‘over’",
+        "Trump claims Iran asked US to continue ‘talks,’ declares ceasefire ‘over’",
+        "Iran has asked to continue talks, and the U.S. agreed, Trump says"
+      ],
+      "primary_urls": [
+        "https://www.middleeastmonitor.com/20260710-shipping-through-strait-of-hormuz-declines-as-us-iran-hostilities-resume/",
+        "https://en.yna.co.kr/view/AEN20260711000300315",
+        "https://www.aljazeera.com/news/2026/7/10/trump-says-us-has-agreed-to-continue-iran-talks-but-ceasefire-over?traffic_source=rss",
+        "https://www.middleeastmonitor.com/20260710-trump-claims-iran-asked-us-to-continue-talks-declares-ceasefire-over/",
+        "https://www.thehindu.com/news/international/iran-has-asked-to-continue-talks-and-the-us-agreed-trump-says/article71207807.ece"
+      ],
+      "sources": [
+        {
+          "name": "ABC News Australia",
+          "bloc": "western",
+          "country": "AU",
+          "url": "https://www.abc.net.au/news/2026-07-11/trump-flags-us-iran-talks-but-says-ceasefire-is-over/106904360",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ABC News Australia",
+          "bloc": "western",
+          "country": "AU",
+          "url": "https://www.abc.net.au/news/2026-07-12/iran-revolutionary-guard-closes-strait-hormuz-centcom-us-strikes/106906666",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Al Jazeera English",
+          "bloc": "non_aligned",
+          "country": "QA",
+          "url": "https://www.aljazeera.com/news/2026/7/10/trump-says-us-has-agreed-to-continue-iran-talks-but-ceasefire-over?traffic_source=rss",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Al Jazeera English",
+          "bloc": "non_aligned",
+          "country": "QA",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/7/12/us-centcom-completes-third-round-of-strikes-on-iran?traffic_source=rss",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Daily Trust (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://dailytrust.com/iran-shuts-strait-of-hormuz-amid-fresh-hostilities-with-us/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Dawn (Pakistan)",
+          "bloc": "non_aligned",
+          "country": "PK",
+          "url": "https://www.dawn.com/news/2014807/us-launches-new-strikes-on-iran-after-container-ship-hit-in-hormuz-irgc-announces-closure-of-vital-strait",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "IRNA (Iran)",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://en.irna.ir/news/86205978/Araghchi-arrives-in-Muscat-to-discuss-developments-in-Strait",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "IRNA (Iran)",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://en.irna.ir/news/86206571/Iran-Oman-discuss-proportionate-mechanism-for-Hormuz",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "IRNA (Iran)",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://en.irna.ir/news/86206608/Iran-Oman-to-continue-technical-talks-on-Hormuz-Strait",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "IRNA (Iran)",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://en.irna.ir/news/86206899/Iran-Oman-agree-to-continue-talks-on-Strait-of-Hormuz-shipping",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Japan Times",
+          "bloc": "non_aligned",
+          "country": "JP",
+          "url": "https://www.japantimes.co.jp/news/2026/07/11/world/politics/trump-talks-continue-ceasefire-over/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Japan Times",
+          "bloc": "non_aligned",
+          "country": "JP",
+          "url": "https://www.japantimes.co.jp/news/2026/07/12/world/us-strikes-iran-ship-strait-of-hormuz/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Joy Online (Ghana)",
+          "bloc": "non_aligned",
+          "country": "GH",
+          "url": "https://www.myjoyonline.com/us-wants-iran-to-pledge-to-stop-shooting-at-ships-in-strait-of-hormuz/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Joy Online (Ghana)",
+          "bloc": "non_aligned",
+          "country": "GH",
+          "url": "https://www.myjoyonline.com/us-launches-fresh-strikes-as-iran-closes-strait-of-hormuz/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Middle East Monitor (MEMO)",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.middleeastmonitor.com/20260710-shipping-through-strait-of-hormuz-declines-as-us-iran-hostilities-resume/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Middle East Monitor (Palestinian coverage)",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.middleeastmonitor.com/20260710-trump-claims-iran-asked-us-to-continue-talks-declares-ceasefire-over/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "PressTV",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://presstv.ir/Detail/2026/07/11/772014/Araghchi-arrives-Muscat-Strait-Hormuz,-regional-developments",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "PressTV",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://presstv.ir/Detail/2026/07/11/772058/Iran-Oman-FMs-discuss-safe-Hormuz-passage-under-Islamabad-MoU",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "PressTV",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://presstv.ir/Detail/2026/07/11/772063/Iran-closes-Strait-of-Hormuz-IRGC-warning-United-States",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "PressTV",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://presstv.ir/Detail/2026/07/12/772078/Tehran,-Muscat-to-continue-political,-technical-negotiations-on-Hormuz-Strait-shipping-security",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Rappler (Philippines)",
+          "bloc": "non_aligned",
+          "country": "PH",
+          "url": "https://www.rappler.com/world/us-canada/us-seeks-iranian-pledge-free-strait-hormuz/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Rappler (Philippines)",
+          "bloc": "non_aligned",
+          "country": "PH",
+          "url": "https://www.rappler.com/world/middle-east/us-strikes-iran-strait-hormuz-closed-gulf-states-hit-july-11-2026/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "RT (Russia Today)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://www.rt.com/news/642900-iran-closes-hormuz-again/?utm_source=rss&utm_medium=rss&utm_campaign=RSS",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "RT (Russia Today)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://www.rt.com/news/642902-us-third-night-strikes/?utm_source=rss&utm_medium=rss&utm_campaign=RSS",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/world-news/361005124/us-strikes-iran-after-regime-shuts-strait-hormuz",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/world-news/361005186/us-attacks-iran-over-ship-being-hit-strait-hormuz-tehr",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/world-news/361005234/us-attacks-iran-over-ship-being-hit-strait-hormuz-tehr",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Taipei Times",
+          "bloc": "non_aligned",
+          "country": "TW",
+          "url": "https://www.taipeitimes.com/News/world/archives/2026/07/12/2003860627",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "TASS (Russia)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://tass.com/world/2159029",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "TASS (Russia)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://tass.com/world/2159085",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "TASS (Russia)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://tass.com/world/2159105",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/international/iran-has-asked-to-continue-talks-and-the-us-agreed-trump-says/article71207807.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/international/iran-us-war-donald-trump-washington-tehran-peace-talks-west-asia-conflict-strait-of-hormuz-live-updates-july-11-2026/article71209275.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/international/west-asia-war-iran-us-ceasefire-donald-trump-tehran-attacks-strait-of-hormuz-ships-live-updates-july-12-2026/article71212951.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/international/us-military-says-it-is-striking-iran-in-response-to-attack-on-civilian-vessel-in-strait-of-hormuz/article71212985.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Yonhap (Korea)",
+          "bloc": "non_aligned",
+          "country": "KR",
+          "url": "https://en.yna.co.kr/view/AEN20260711000300315",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "6b029231a42e7279",
+      "size": 60,
+      "source_count": 14,
+      "bloc_spread": {
+        "western": 11,
+        "non_aligned": 41,
+        "adversarial": 8
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "AU",
+        "GH",
+        "IN",
+        "IR",
+        "JP",
+        "NG",
+        "NZ",
+        "PK",
+        "QA",
+        "RU"
+      ],
+      "top_headlines": [
+        "How an Egypt-Argentina World Cup game became a referendum on Palestine",
+        "Pride despite defeat as Morocco’s World Cup run ends",
+        "Ghana assistant coach Roger De Sa opens up about Black Stars challenges at World Cup 2026",
+        "South African coach steps down after historic World Cup run",
+        "FIFA's embrace of technology backfires in controversy-riven World Cup"
+      ],
+      "primary_urls": [
+        "https://www.aljazeera.com/opinions/2026/7/10/how-an-egypt-argentina-world-cup-game-became-a-referendum-on-palestine?traffic_source=rss",
+        "https://www.aljazeera.com/video/newsfeed/2026/7/10/pride-despite-defeat-as-moroccos-world-cup-run-ends?traffic_source=rss",
+        "https://www.myjoyonline.com/ghana-assistant-coach-roger-de-sa-opens-up-about-black-stars-challenges-at-world-cup-2026/",
+        "https://www.rt.com/africa/642852-south-african-coach-steps-down/?utm_source=rss&utm_medium=rss&utm_campaign=RSS",
+        "https://www.dawn.com/news/2014407/fifas-embrace-of-technology-backfires-in-controversy-riven-world-cup"
+      ],
+      "sources": [
+        {
+          "name": "ABC News Australia",
+          "bloc": "western",
+          "country": "AU",
+          "url": "https://www.abc.net.au/news/2026-07-11/spain-vs-belgium-world-cup-quarterfinal-live-blog/106900918",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ABC News Australia",
+          "bloc": "western",
+          "country": "AU",
+          "url": "https://www.abc.net.au/news/2026-07-11/world-cup-england-norway-fans-head-to-miami-spring-break/106905020",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ABC News Australia",
+          "bloc": "western",
+          "country": "AU",
+          "url": "https://www.abc.net.au/news/2026-07-12/south-africa-world-cup-player-jayden-adams-dies/106906444",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Al Jazeera English",
+          "bloc": "non_aligned",
+          "country": "QA",
+          "url": "https://www.aljazeera.com/opinions/2026/7/10/how-an-egypt-argentina-world-cup-game-became-a-referendum-on-palestine?traffic_source=rss",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Al Jazeera English",
+          "bloc": "non_aligned",
+          "country": "QA",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/7/10/pride-despite-defeat-as-moroccos-world-cup-run-ends?traffic_source=rss",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Al Jazeera English",
+          "bloc": "non_aligned",
+          "country": "QA",
+          "url": "https://www.aljazeera.com/sports/2026/7/10/hundreds-give-heros-welcome-to-egypt-after-best-world-cup-run?traffic_source=rss",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Al Jazeera English",
+          "bloc": "non_aligned",
+          "country": "QA",
+          "url": "https://www.aljazeera.com/sports/2026/7/11/yamal-does-not-mind-lack-of-goals-if-spain-win-world-cup-2026?traffic_source=rss",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Al Jazeera English",
+          "bloc": "non_aligned",
+          "country": "QA",
+          "url": "https://www.aljazeera.com/sports/2026/7/11/kane-vs-haaland-in-england-vs-norway-world-cup-quarterfinal-of-strikers?traffic_source=rss",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Al Jazeera English",
+          "bloc": "non_aligned",
+          "country": "QA",
+          "url": "https://www.aljazeera.com/sports/2026/7/11/argentina-switzerland-fifa-world-cup-quarterfinal-messi-prediction-news?traffic_source=rss",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Al Jazeera English",
+          "bloc": "non_aligned",
+          "country": "QA",
+          "url": "https://www.aljazeera.com/sports/liveblog/2026/7/11/england-vs-norway-live-fifa-world-cup-2026-quarterfinal?traffic_source=rss",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Al Jazeera English",
+          "bloc": "non_aligned",
+          "country": "QA",
+          "url": "https://www.aljazeera.com/sports/2026/7/12/argentina-defeat-switzerland-to-set-up-england-semifinal-at-world-cup-2026?traffic_source=rss",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Daily Trust (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://dailytrust.com/world-cup-merino-winner-sends-spain-to-semi-final/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Daily Trust (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://dailytrust.com/flamingos-qualify-for-u17-womens-world-cup/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Daily Trust (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://dailytrust.com/south-african-world-cup-star-found-dead/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Daily Trust (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://dailytrust.com/world-cup-bellingham-brace-sends-england-to-semi-final/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Daily Trust (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://dailytrust.com/argentina-survive-swiss-scare-to-reach-world-cup-last-four/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Dawn (Pakistan)",
+          "bloc": "non_aligned",
+          "country": "PK",
+          "url": "https://www.dawn.com/news/2014407/fifas-embrace-of-technology-backfires-in-controversy-riven-world-cup",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Dawn (Pakistan)",
+          "bloc": "non_aligned",
+          "country": "PK",
+          "url": "https://www.dawn.com/news/2014466/merino-strikes-late-as-spain-beat-belgium-to-set-up-france-fifa-world-cup-semi",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Dawn (Pakistan)",
+          "bloc": "non_aligned",
+          "country": "PK",
+          "url": "https://www.dawn.com/news/2014629/england-battle-norway-as-argentina-face-swiss-in-world-cup-last-eight",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Dawn (Pakistan)",
+          "bloc": "non_aligned",
+          "country": "PK",
+          "url": "https://www.dawn.com/news/2014628/african-results-justify-world-cup-slots-increase-amid-criticism",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Dawn (Pakistan)",
+          "bloc": "non_aligned",
+          "country": "PK",
+          "url": "https://www.dawn.com/news/2014797/bellingham-double-fires-england-past-norway-into-world-cup-semis",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Dawn (Pakistan)",
+          "bloc": "non_aligned",
+          "country": "PK",
+          "url": "https://www.dawn.com/news/2014832/argentina-sink-10-man-swiss-to-set-up-blockbuster-fifa-world-cup-semi-final-against-england",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "IRNA (Iran)",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://en.irna.ir/news/86206383/England-vs-Norway-Team-news-predicted-lineups-World-Cup",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Japan Times",
+          "bloc": "non_aligned",
+          "country": "JP",
+          "url": "https://www.japantimes.co.jp/sports/2026/07/12/soccer/world-cup/bellingham-england-norway-world-cup-semis/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Japan Times",
+          "bloc": "non_aligned",
+          "country": "JP",
+          "url": "https://www.japantimes.co.jp/sports/2026/07/12/soccer/world-cup/argentina-extra-time-swiss-world-cup-semis/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Joy Online (Ghana)",
+          "bloc": "non_aligned",
+          "country": "GH",
+          "url": "https://www.myjoyonline.com/ghana-assistant-coach-roger-de-sa-opens-up-about-black-stars-challenges-at-world-cup-2026/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Joy Online (Ghana)",
+          "bloc": "non_aligned",
+          "country": "GH",
+          "url": "https://www.myjoyonline.com/mikel-merinos-late-winner-against-belgium-sends-spain-into-the-semi-finals-of-the-world-cup/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Joy Online (Ghana)",
+          "bloc": "non_aligned",
+          "country": "GH",
+          "url": "https://www.myjoyonline.com/south-africa-world-cup-midfielder-adams-dies-aged-25/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Joy Online (Ghana)",
+          "bloc": "non_aligned",
+          "country": "GH",
+          "url": "https://www.myjoyonline.com/black-maidens-seal-u-17-womens-world-cup-qualification-after-shootout-win-over-senegal/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Joy Online (Ghana)",
+          "bloc": "non_aligned",
+          "country": "GH",
+          "url": "https://www.myjoyonline.com/2026-world-cup-england-come-from-behind-to-beat-norway-and-reach-semi-final/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Premium Times (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.premiumtimesng.com/sports/football/894458-world-cup-merinos-late-winner-sends-spain-past-belgium-into-semi-finals.html",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Premium Times (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.premiumtimesng.com/foreign/894616-south-africa-world-cup-star-jayden-adams-dies-at-25.html",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Premium Times (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.premiumtimesng.com/sports/football/894648-nigerias-flamingos-beat-benin-to-qualify-for-2026-fifa-u17-womens-world-cup.html",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Premium Times (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.premiumtimesng.com/sports/football/894678-world-cup-bellinghams-brace-fires-england-into-semi-finals-as-haaland-crashes-out-with-norway.html",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Premium Times (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.premiumtimesng.com/news/more-news/894690-world-cup-alvarez-and-lautaro-seal-argentinas-extra-time-win-over-switzerland.html",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Premium Times (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.premiumtimesng.com/features-and-interviews/894730-fifa-world-cup-variables-politics-and-africa.html",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Punch (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://punchng.com/south-africa-midfielder-jayden-adams-dies-at-25-after-world-cup-appearance/?utm_source=rss.punchng.com&utm_medium=web",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "RT (Russia Today)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://www.rt.com/africa/642852-south-african-coach-steps-down/?utm_source=rss&utm_medium=rss&utm_campaign=RSS",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/sport/361003302/live-spain-v-belgium-fifa-world-cup",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/sport/361003302/goalkeeper-howler-gifts-spain-late-winner-against-belgium-world-cup-quarterfinal",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/sport/361005061/south-africa-world-cup-midfielder-jayden-adams-dies",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/sport/361003280/live-england-v-norway-fifa-world-cup",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/sport/361004269/tell-us-cringiest-moment-fifa-world-cup-so-far",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/sport/361003747/live-spain-v-belgium-fifa-world-cup",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/sport/361003747/live-argentina-v-switzerland-fifa-world-cup",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/sport/361005221/switzerland-fumes-after-breel-embolo-red-card-world-cup-q",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "TASS (Russia)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://tass.com/sports/2158921",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "TASS (Russia)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://tass.com/sports/2159071",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "TASS (Russia)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://tass.com/sports/2159111",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "TASS (Russia)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://tass.com/sports/2159113",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "TASS (Russia)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://tass.com/sports/2159133",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "TASS (Russia)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://tass.com/sports/2159135",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/morning-digest-july-11-2026/article71208367.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/sport/football/england-vs-norway-fifa-world-cup-2026-quarterfinal-live-updates/article71211741.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/sport/football/argentina-vs-switzerland-fifa-world-cup-2026-quarterfinal-live-updates/article71212615.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/morning-digest-july-12-2026/article71212896.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/sport/football/fifa-world-cup-2026-alvarezs-112th-minute-goal-helps-lift-argentina-past-switzerland-3-1-and-into-semis/article71213137.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ThisDay (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.thisdaylive.com/2026/07/11/world-cup-2026-why-france-advanced-and-morocco-left-with-their-heads-held-high/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ThisDay (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.thisdaylive.com/2026/07/11/trump-fifa-and-world-cup-2026/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ThisDay (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.thisdaylive.com/2026/07/12/south-africa-world-cup-hero-adams-dies-at-25/",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "3fd9b77adb3fde98",
+      "size": 12,
+      "source_count": 12,
+      "bloc_spread": {
+        "western": 2,
+        "non_aligned": 7,
+        "adversarial": 3
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "AU",
+        "GH",
+        "IN",
+        "IR",
+        "JP",
+        "NG",
+        "PH",
+        "PK",
+        "QA",
+        "RU",
+        "US"
+      ],
+      "top_headlines": [
+        "US Senator Lindsey Graham passes away",
+        "Warhawk US Senator Lindsey Graham dies",
+        "Breaking: Lindsey Graham, 71, dies from 'brief and ‌sudden ⁠illness'",
+        "Lindsey Graham dies after brief, unexpected illness, senator's office says",
+        "Trump's critic-turned-ally US Senator Lindsey Graham dies at 71"
+      ],
+      "primary_urls": [
+        "https://www.aljazeera.com/news/2026/7/12/us-senator-lindsey-graham-passes-away?traffic_source=rss",
+        "https://www.rt.com/news/642907-warhawk-us-senator-lindsey-graham/?utm_source=rss&utm_medium=rss&utm_campaign=RSS",
+        "https://www.abc.net.au/news/2026-07-12/lindsey-graham-dies/106907306",
+        "https://www.borderreport.com/news/us-senator-lindsey-graham-has-died-after-a-brief-and-unexpected-illness-his-office-says-in-a-statement/",
+        "https://www.dawn.com/news/2014843/trumps-critic-turned-ally-us-senator-lindsey-graham-dies-at-71"
+      ],
+      "sources": [
+        {
+          "name": "ABC News Australia",
+          "bloc": "western",
+          "country": "AU",
+          "url": "https://www.abc.net.au/news/2026-07-12/lindsey-graham-dies/106907306",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Al Jazeera English",
+          "bloc": "non_aligned",
+          "country": "QA",
+          "url": "https://www.aljazeera.com/news/2026/7/12/us-senator-lindsey-graham-passes-away?traffic_source=rss",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Border Report",
+          "bloc": "western",
+          "country": "US",
+          "url": "https://www.borderreport.com/news/us-senator-lindsey-graham-has-died-after-a-brief-and-unexpected-illness-his-office-says-in-a-statement/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Dawn (Pakistan)",
+          "bloc": "non_aligned",
+          "country": "PK",
+          "url": "https://www.dawn.com/news/2014843/trumps-critic-turned-ally-us-senator-lindsey-graham-dies-at-71",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Japan Times",
+          "bloc": "non_aligned",
+          "country": "JP",
+          "url": "https://www.japantimes.co.jp/news/2026/07/12/world/politics/us-senator-lindsey-graham-dies/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Joy Online (Ghana)",
+          "bloc": "non_aligned",
+          "country": "GH",
+          "url": "https://www.myjoyonline.com/us-senator-lindsey-graham-dies-after-brief-and-sudden-illness-his-office-says/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Premium Times (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.premiumtimesng.com/foreign/894704-just-in-lindsey-graham-war-mongering-us-senator-is-dead.html",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "PressTV",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://presstv.ir/Detail/2026/07/12/772081/Senator-Graham-key-Trump-aide-hawkish-pro-war-voice-dies-after-brief-sudden-illness",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Rappler (Philippines)",
+          "bloc": "non_aligned",
+          "country": "PH",
+          "url": "https://www.rappler.com/people/obituary/senator-lindsey-graham-dies/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "RT (Russia Today)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://www.rt.com/news/642907-warhawk-us-senator-lindsey-graham/?utm_source=rss&utm_medium=rss&utm_campaign=RSS",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "TASS (Russia)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://tass.com/world/2159139",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/international/us-senator-lindsey-graham-passes-away-july-12-2026/article71213307.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "f8b3b175c123edbf",
+      "size": 13,
+      "source_count": 11,
+      "bloc_spread": {
+        "western": 2,
+        "non_aligned": 6,
+        "adversarial": 5
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "AU",
+        "GB",
+        "GH",
+        "IN",
+        "IR",
+        "JP",
+        "NG",
+        "PK",
+        "RU"
+      ],
+      "top_headlines": [
+        "How the absence of Iran’s new supreme leader is becoming a liability for Tehran",
+        "Ayatollah Khamenei hails ‘historic’ funeral turnout, vows revenge for martyred Leader",
+        "Leader vows to avenge martyr Ayatollah Khamenei’s blood",
+        "Iran's Supreme Leader vows to avenge death of Ali Khamenei, other Iranians",
+        "Iran's supreme leader pledges revenge for father's death"
+      ],
+      "primary_urls": [
+        "https://www.japantimes.co.jp/news/2026/07/11/world/politics/iran-supreme-leader-absence-analysis/",
+        "https://presstv.ir/Detail/2026/07/11/772030/Ayatollah-Khamenei-hails-historic-turnout-funeral-vows-revenge-martyred-Leader",
+        "https://en.irna.ir/photo/86206352/Leader-vows-to-avenge-martyr-Ayatollah-Khamenei-s-blood",
+        "https://tass.com/world/2158995",
+        "https://www.abc.net.au/news/2026-07-11/iran-s-supreme-leader-pledges-revenge-for-father-s-death/106905744"
+      ],
+      "sources": [
+        {
+          "name": "ABC News Australia",
+          "bloc": "western",
+          "country": "AU",
+          "url": "https://www.abc.net.au/news/2026-07-11/iran-s-supreme-leader-pledges-revenge-for-father-s-death/106905744",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Dawn (Pakistan)",
+          "bloc": "non_aligned",
+          "country": "PK",
+          "url": "https://www.dawn.com/news/2014642/irans-supreme-leader-mojtaba-khamenei-vows-revenge-for-assassinated-father",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "IRNA (Iran)",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://en.irna.ir/photo/86206352/Leader-vows-to-avenge-martyr-Ayatollah-Khamenei-s-blood",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "IRNA (Iran)",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://en.irna.ir/news/86206352/Leader-vows-to-avenge-martyr-Ayatollah-Khamenei-s-blood",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Japan Times",
+          "bloc": "non_aligned",
+          "country": "JP",
+          "url": "https://www.japantimes.co.jp/news/2026/07/11/world/politics/iran-supreme-leader-absence-analysis/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Joy Online (Ghana)",
+          "bloc": "non_aligned",
+          "country": "GH",
+          "url": "https://www.myjoyonline.com/iran-supreme-leader-calls-for-revenge-for-fathers-killing/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Middle East Monitor (Palestinian coverage)",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.middleeastmonitor.com/20260711-irans-supreme-leader-vows-to-avenge-slain-predecessor-ali-khamenei/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "PressTV",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://presstv.ir/Detail/2026/07/11/772030/Ayatollah-Khamenei-hails-historic-turnout-funeral-vows-revenge-martyred-Leader",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Punch (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://punchng.com/iran-supreme-leader-vows-revenge-for-fathers-killing/?utm_source=rss.punchng.com&utm_medium=web",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "RT (Russia Today)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://www.rt.com/news/642901-irans-supreme-leader-vows-revenge/?utm_source=rss&utm_medium=rss&utm_campaign=RSS",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "TASS (Russia)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://tass.com/world/2158995",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/international/irans-supreme-leader-pledges-revenge-for-slain-father-and-predecessor/article71210345.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/shorts/irans-supreme-leader-vows-revenge-for-fathers-killing/article71210726.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "8901e063660a0309",
+      "size": 26,
+      "source_count": 8,
+      "bloc_spread": {
+        "western": 1,
+        "non_aligned": 25,
+        "adversarial": 0
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "GH",
+        "IN",
+        "JP",
+        "NZ",
+        "PK",
+        "QA",
+        "TW"
+      ],
+      "top_headlines": [
+        "PM Modi in New Zealand LIVE: India, New Zealand elevate ties to strategic partnership",
+        "New Zealand and India form ‘strategic partnership’",
+        "New Zealand, India strike 'milestone' strategic partnership encompassing defence and security",
+        "Boat carrying several Indian tourists capsizes in Vietnam; rescue efforts under way",
+        "Boat carrying several Indian tourists capsizes in Vietnam; rescue ops under way"
+      ],
+      "primary_urls": [
+        "https://www.thehindu.com/news/national/prime-minister-narendra-modi-new-zealand-visit-live-updates-on-july-11-2026/article71209319.ece",
+        "https://www.japantimes.co.jp/news/2026/07/11/asia-pacific/politics/new-zealand-india-strategic-partnership/",
+        "https://www.dawn.com/news/2014582/new-zealand-india-strike-milestone-strategic-partnership-encompassing-defence-and-security",
+        "https://www.thehindu.com/news/international/boat-with-indian-tourists-capsizes-vietnam-phu-quoc-island-rescue-efforts-updates/article71209943.ece",
+        "https://timesofindia.indiatimes.com/india/boat-carrying-several-indian-tourists-capsizes-in-vietnam-rescue-ops-underway/articleshow/132328107.cms"
+      ],
+      "sources": [
+        {
+          "name": "Al Jazeera English",
+          "bloc": "non_aligned",
+          "country": "QA",
+          "url": "https://www.aljazeera.com/news/2026/7/11/speedboat-accident-in-southern-vietnam-kills-15-indian-tourists?traffic_source=rss",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Al Jazeera English",
+          "bloc": "non_aligned",
+          "country": "QA",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/7/11/indian-tourists-killed-after-speedboat-capsizes-in-vietnam?traffic_source=rss",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Dawn (Pakistan)",
+          "bloc": "non_aligned",
+          "country": "PK",
+          "url": "https://www.dawn.com/news/2014582/new-zealand-india-strike-milestone-strategic-partnership-encompassing-defence-and-security",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Dawn (Pakistan)",
+          "bloc": "non_aligned",
+          "country": "PK",
+          "url": "https://www.dawn.com/news/2014632/speedboat-accident-in-southern-vietnam-kills-15-indian-tourists",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Japan Times",
+          "bloc": "non_aligned",
+          "country": "JP",
+          "url": "https://www.japantimes.co.jp/news/2026/07/11/asia-pacific/politics/new-zealand-india-strategic-partnership/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Joy Online (Ghana)",
+          "bloc": "non_aligned",
+          "country": "GH",
+          "url": "https://www.myjoyonline.com/indian-tourists-among-15-killed-as-speedboat-capsizes-in-vietnam/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/world-news/361005235/vietnam-police-detain-captain-after-speedboat-capsizing-kill",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Taipei Times",
+          "bloc": "non_aligned",
+          "country": "TW",
+          "url": "https://www.taipeitimes.com/News/front/archives/2026/07/12/2003860605",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/national/prime-minister-narendra-modi-new-zealand-visit-live-updates-on-july-11-2026/article71209319.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/international/boat-with-indian-tourists-capsizes-vietnam-phu-quoc-island-rescue-efforts-updates/article71209943.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/national/andhra-pradesh/vietnam-boat-accident-andhra-pradesh-updates-july-11-2026/article71210132.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/videos/watch-boat-carrying-indians-capsizes-in-vietnam-search-under-way/article71210320.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/top-news-of-the-day-on-july-11-2026/article71210338.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/national/andhra-pradesh/jagan-expresses-shock-over-death-of-telugu-tourists-in-vietnam-boat-accident/article71210279.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/shorts/watch-at-least-15-indians-dead-after-boat-capsizes-in-vietnam/article71211129.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/national/andhra-pradesh/three-andhra-pradesh-tourists-among-15-indians-killed-in-vietnam-boat-tragedy/article71211090.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/national/andhra-pradesh/kadapa-mobile-phone-retailer-killed-in-vietnam-boat-accident/article71211053.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/national/kerala/vietnam-boat-tragedy-kottarakkara-couple-among-15-indian-tourists-dead/article71211084.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/national/andhra-pradesh/vietnam-boat-accident-andhra-pradesh-cm-directs-expedited-return-of-affected-tourists-mortal-remains/article71213095.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/national/andhra-pradesh//article71213062.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/cities/Tiruchirapalli/tiruchi-residents-among-those-killed-in-vietnam-boat-accident/article71211034.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Times of India",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://timesofindia.indiatimes.com/india/boat-carrying-several-indian-tourists-capsizes-in-vietnam-rescue-ops-underway/articleshow/132328107.cms",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Times of India",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://timesofindia.indiatimes.com/india/15-indians-killed-in-vietnam-boat-accident-10-from-tamil-nadu-3-from-andhra-embassy-releases-list-of-victims/articleshow/132332203.cms",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Times of India",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://timesofindia.indiatimes.com/india/15-indian-tourists-killed-as-boat-capsizes-in-vietnam/articleshow/132337668.cms",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Times of India",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://timesofindia.indiatimes.com/india/vietnam-boat-tragedy-embassy-begins-repatriation-of-15-indians-killed/articleshow/132342394.cms",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Times of India",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://timesofindia.indiatimes.com/india/boat-overturned-within-seconds-indian-survivor-recalls-horror-of-vietnam-boat-tragedy/articleshow/132343057.cms",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "dbc0873265dd476e",
+      "size": 9,
+      "source_count": 8,
+      "bloc_spread": {
+        "western": 1,
+        "non_aligned": 7,
+        "adversarial": 1
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "IN",
+        "NG",
+        "NZ",
+        "PH",
+        "PK",
+        "QA",
+        "RU"
+      ],
+      "top_headlines": [
+        "Former emir of Qatar, Sheikh Hamad bin Khalifa Al Thani, dies at 74",
+        "Sheikh Hamad bin Khalifa Al Thani, architect of modern Qatar",
+        "Qatar's former ruler Sheikh Hamad bin Khalifa Al Thani has died at age 74",
+        "Former emir of Qatar, Sheikh Hamad bin Khalifa Al Thani, dies at 74",
+        "Qatar’s former ruler Sheikh Hamad bin Khalifa Al Thani has died at age 74, state news agency says"
+      ],
+      "primary_urls": [
+        "https://www.aljazeera.com/news/2026/7/12/former-emir-of-qatar-sheikh-hamad-bin-khalifa-al-thani-dies-at-74?traffic_source=rss",
+        "https://www.aljazeera.com/news/2026/7/12/sheikh-hamad-bin-khalifa-al-thani-architect-of-modern-qatar?traffic_source=rss",
+        "https://www.stuff.co.nz/world-news/361005200/qatars-former-ruler-sheikh-hamad-bin-khalifa-al-thani-has-di",
+        "https://www.dawn.com/news/2014840/former-emir-of-qatar-sheikh-hamad-bin-khalifa-al-thani-dies-at-74",
+        "https://www.thehindu.com/news/international/qatars-former-ruler-sheikh-hamad-bin-khalifa-al-thani-has-died-at-age-74-state-news-agency-says/article71213310.ece"
+      ],
+      "sources": [
+        {
+          "name": "Al Jazeera English",
+          "bloc": "non_aligned",
+          "country": "QA",
+          "url": "https://www.aljazeera.com/news/2026/7/12/former-emir-of-qatar-sheikh-hamad-bin-khalifa-al-thani-dies-at-74?traffic_source=rss",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Al Jazeera English",
+          "bloc": "non_aligned",
+          "country": "QA",
+          "url": "https://www.aljazeera.com/news/2026/7/12/sheikh-hamad-bin-khalifa-al-thani-architect-of-modern-qatar?traffic_source=rss",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Dawn (Pakistan)",
+          "bloc": "non_aligned",
+          "country": "PK",
+          "url": "https://www.dawn.com/news/2014840/former-emir-of-qatar-sheikh-hamad-bin-khalifa-al-thani-dies-at-74",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Premium Times (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.premiumtimesng.com/foreign/894716-qatars-former-ruler-hamad-al-thani-is-dead.html",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Rappler (Philippines)",
+          "bloc": "non_aligned",
+          "country": "PH",
+          "url": "https://www.rappler.com/people/obituary/former-qatar-ruler-sheikh-hamad-dies/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/world-news/361005200/qatars-former-ruler-sheikh-hamad-bin-khalifa-al-thani-has-di",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "TASS (Russia)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://tass.com/world/2159141",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/international/qatars-former-ruler-sheikh-hamad-bin-khalifa-al-thani-has-died-at-age-74-state-news-agency-says/article71213310.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Times of India",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://timesofindia.indiatimes.com/india/a-visionary-leader-pm-modi-pays-tribute-to-former-qatari-emir-sheikh-hamad-bin-khalifa-al-thani/articleshow/132341999.cms",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "8fc9601df0fd2c5d",
+      "size": 14,
+      "source_count": 7,
+      "bloc_spread": {
+        "western": 4,
+        "non_aligned": 9,
+        "adversarial": 1
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "AU",
+        "GH",
+        "IN",
+        "NG",
+        "NZ",
+        "QA",
+        "RU"
+      ],
+      "top_headlines": [
+        "Former Tory minister Ann Widdecombe dies at 78",
+        "Markapuram police arrest habitual offender",
+        "UK police launch murder investigation after death of former minister",
+        "Man duped of ₹19 lakh with a promise of iridium; Dindigul district police arrest suspect in Dharapuram",
+        "Man arrested for murder of son"
+      ],
+      "primary_urls": [
+        "https://www.myjoyonline.com/former-tory-minister-ann-widdecombe-dies-at-78/",
+        "https://www.thehindu.com/news/national/andhra-pradesh/markapuram-police-arrest-habitual-offender/article71206780.ece",
+        "https://www.abc.net.au/news/2026-07-11/murder-investigation-ann-widdecombe/106904350",
+        "https://www.thehindu.com/news/cities/Madurai/man-duped-of-19-lakh-with-a-promise-of-iridium-dindigul-district-police-arrest-suspect-in-dharapuram/article71207620.ece",
+        "https://www.thehindu.com/news/cities/Madurai/man-arrested-for-murder-of-son/article71207703.ece"
+      ],
+      "sources": [
+        {
+          "name": "ABC News Australia",
+          "bloc": "western",
+          "country": "AU",
+          "url": "https://www.abc.net.au/news/2026-07-11/murder-investigation-ann-widdecombe/106904350",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ABC News Australia",
+          "bloc": "western",
+          "country": "AU",
+          "url": "https://www.abc.net.au/news/2026-07-11/ann-widdecombe-murder-suspect-released/106905454",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ABC News Australia",
+          "bloc": "western",
+          "country": "AU",
+          "url": "https://www.abc.net.au/news/2026-07-12/man-arrested-ann-widdecombe-murder-investigation/106906592",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Al Jazeera English",
+          "bloc": "non_aligned",
+          "country": "QA",
+          "url": "https://www.aljazeera.com/news/2026/7/11/uk-police-free-suspect-in-ex-mp-ann-widdecombe-murder-investigation?traffic_source=rss",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Joy Online (Ghana)",
+          "bloc": "non_aligned",
+          "country": "GH",
+          "url": "https://www.myjoyonline.com/former-tory-minister-ann-widdecombe-dies-at-78/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Joy Online (Ghana)",
+          "bloc": "non_aligned",
+          "country": "GH",
+          "url": "https://www.myjoyonline.com/man-arrested-on-suspicion-of-murder-after-death-of-ann-widdecombe/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Joy Online (Ghana)",
+          "bloc": "non_aligned",
+          "country": "GH",
+          "url": "https://www.myjoyonline.com/man-arrested-on-suspicion-of-murder-of-ann-widdecombe-police-say/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Punch (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://punchng.com/man-arrested-in-ex-uk-minister-murder-released-from-custody/?utm_source=rss.punchng.com&utm_medium=web",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "RT (Russia Today)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://www.rt.com/news/642888-widdecombe-uk-reform-farage/?utm_source=rss&utm_medium=rss&utm_campaign=RSS",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/world-news/361004805/murder-probe-launched-suspicious-death-former-britis",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/national/andhra-pradesh/markapuram-police-arrest-habitual-offender/article71206780.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/cities/Madurai/man-duped-of-19-lakh-with-a-promise-of-iridium-dindigul-district-police-arrest-suspect-in-dharapuram/article71207620.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/cities/Madurai/man-arrested-for-murder-of-son/article71207703.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/international/police-in-uk-arrest-suspect-in-former-mps-murder/article71209462.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "01ef7709578f190c",
+      "size": 30,
+      "source_count": 7,
+      "bloc_spread": {
+        "western": 0,
+        "non_aligned": 30,
+        "adversarial": 0
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "GH",
+        "NG",
+        "QA",
+        "TW"
+      ],
+      "top_headlines": [
+        "Breaking: All Kidnapped Oyo School Children, Teachers Rescued",
+        "BREAKING: Kidnapped Oyo pupils, teachers regain freedom",
+        "BREAKING: Kidnapped Oyo pupils, teachers freed",
+        "Free At Last: Presidency Confirms Rescue of Kidnapped Oyo Pupils, Teachers",
+        "Police speak on release of kidnapped Oyo pupils, teachers"
+      ],
+      "primary_urls": [
+        "https://www.thisdaylive.com/2026/07/10/breaking-all-kidnapped-oyo-school-children-teachers-rescued/",
+        "https://dailytrust.com/breaking-kidnapped-oyo-pupils-teachers-regain-freedom/",
+        "https://www.premiumtimesng.com/news/headlines/894385-breaking-kidnapped-oyo-pupils-teachers-freed.html",
+        "https://www.thisdaylive.com/2026/07/10/free-at-last-presidency-confirms-rescue-of-kidnapped-oyo-pupils-teachers/",
+        "https://www.premiumtimesng.com/news/headlines/894415-police-speak-on-release-of-kidnapped-oyo-pupils-teachers.html"
+      ],
+      "sources": [
+        {
+          "name": "Al Jazeera English",
+          "bloc": "non_aligned",
+          "country": "QA",
+          "url": "https://www.aljazeera.com/news/2026/7/10/dozens-of-abducted-schoolchildren-and-teachers-rescued-in-nigeria?traffic_source=rss",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Daily Trust (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://dailytrust.com/breaking-kidnapped-oyo-pupils-teachers-regain-freedom/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Daily Trust (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://dailytrust.com/presidency-abductors-of-oyo-pupils-teachers-in-dss-custody/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Daily Trust (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://dailytrust.com/photos-the-operation-that-rescued-oyo-pupils-teachers/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Daily Trust (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://dailytrust.com/oyc-commends-makinde-security-agencies-over-release-of-oyo-pupils-teachers/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Daily Trust (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://dailytrust.com/kidnappers-arrested-as-abducted-oyo-pupils-rescued/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Joy Online (Ghana)",
+          "bloc": "non_aligned",
+          "country": "GH",
+          "url": "https://www.myjoyonline.com/more-than-40-kidnapped-children-and-teachers-freed-after-nigerian-army-operation/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Premium Times (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.premiumtimesng.com/news/headlines/894385-breaking-kidnapped-oyo-pupils-teachers-freed.html",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Premium Times (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.premiumtimesng.com/news/headlines/894415-police-speak-on-release-of-kidnapped-oyo-pupils-teachers.html",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Premium Times (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.premiumtimesng.com/news/headlines/894528-how-we-secured-release-of-kidnapped-oyo-students-nigerian-army.html",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Punch (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://punchng.com/oyebamiji-lauds-tinubu-nsa-over-rescue-of-oyo-pupils-teachers/?utm_source=rss.punchng.com&utm_medium=web",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Punch (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://punchng.com/video-moment-security-operatives-rescued-abducted-oyo-schoolchildren-teachers/?utm_source=rss.punchng.com&utm_medium=web",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Punch (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://punchng.com/photos-rescued-oyo-pupils-teachers-to-remain-under-medical-observation-for-48-hours-makinde/?utm_source=rss.punchng.com&utm_medium=web",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Punch (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://punchng.com/ngf-hails-rescue-of-abducted-oyo-schoolchildren-teachers/?utm_source=rss.punchng.com&utm_medium=web",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Punch (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://punchng.com/adc-urges-fg-to-rescue-borno-kwara-kidnap-victims-after-oyo-operation/?utm_source=rss.punchng.com&utm_medium=web",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Punch (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://punchng.com/igboho-commends-tinubu-over-rescue-of-oyo-pupils-teachers/?utm_source=rss.punchng.com&utm_medium=web",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Punch (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://punchng.com/video-makinde-visits-rescued-oyo-pupils-teachers-at-military-hospital/?utm_source=rss.punchng.com&utm_medium=web",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Punch (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://punchng.com/ipcr-lauds-tinubu-security-chiefs-over-rescue-of-abducted-oyo-pupils/?utm_source=rss.punchng.com&utm_medium=web",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Punch (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://punchng.com/god-answered-prayers-over-oyo-pupils-rescue-says-rccg/?utm_source=rss.punchng.com&utm_medium=web",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Punch (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://punchng.com/apc-chieftain-hails-tinubu-over-oyo-pupils-rescue-wants-safer-schools/?utm_source=rss.punchng.com&utm_medium=web",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Taipei Times",
+          "bloc": "non_aligned",
+          "country": "TW",
+          "url": "https://www.taipeitimes.com/News/world/archives/2026/07/12/2003860631",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ThisDay (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.thisdaylive.com/2026/07/10/breaking-all-kidnapped-oyo-school-children-teachers-rescued/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ThisDay (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.thisdaylive.com/2026/07/10/free-at-last-presidency-confirms-rescue-of-kidnapped-oyo-pupils-teachers/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ThisDay (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.thisdaylive.com/2026/07/10/makinde-release-of-abducted-pupils-teachers-a-big-relief/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ThisDay (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.thisdaylive.com/2026/07/11/after-57-days-kidnapped-oyo-children-teachers-freed/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ThisDay (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.thisdaylive.com/2026/07/11/inside-the-joint-security-operation-that-freed-kidnapped-oyo-pupils-teachers/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ThisDay (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.thisdaylive.com/2026/07/11/makinde-soun-visit-rescued-oriire-pupils-teachers-in-military-hospital/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ThisDay (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.thisdaylive.com/2026/07/11/presidency-flays-atikus-silence-hours-after-release-of-abducted-oyo-pupils-teachers/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ThisDay (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.thisdaylive.com/2026/07/12/army-how-we-rescued-44-abducted-pupils-teachers/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ThisDay (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.thisdaylive.com/2026/07/12/after-oyo-schoolchildren-teachers-regain-freedom-adc-demands-rescue-of-borno-kwara-kidnap-victims/",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "80b69e26a423fdbd",
+      "size": 10,
+      "source_count": 6,
+      "bloc_spread": {
+        "western": 2,
+        "non_aligned": 4,
+        "adversarial": 4
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "GB",
+        "IN",
+        "IR",
+        "NG",
+        "PK",
+        "RU"
+      ],
+      "top_headlines": [
+        "10 Palestinians injured in Israeli occupier, army attacks in occupied West Bank",
+        "US Democrat Ro Khanna detained by Israeli settlers during West Bank visit",
+        "Israeli occupiers attack workers, destroy farm in occupied West Bank",
+        "'Our land, our sky:' West Bank Palestinians fly kites in defiance of Israeli settlers",
+        "Illegal Israeli settlers assault Palestinian workers, destroy farm in West Bank"
+      ],
+      "primary_urls": [
+        "https://www.middleeastmonitor.com/20260711-10-palestinians-injured-in-israeli-occupier-army-attacks-in-occupied-west-bank/",
+        "https://www.dawn.com/news/2014620/us-democrat-ro-khanna-detained-by-israeli-settlers-during-west-bank-visit",
+        "https://www.middleeastmonitor.com/20260711-israeli-occupiers-attack-workers-destroy-farm-in-occupied-west-bank/",
+        "https://www.dawn.com/news/2014636/our-land-our-sky-west-bank-palestinians-fly-kites-in-defiance-of-israeli-settlers",
+        "https://presstv.ir/Detail/2026/07/11/772049/Illegal-Israeli-settlers-assault-Palestinian-workers,-destroy-farm-in-occupied-West-Bank"
+      ],
+      "sources": [
+        {
+          "name": "Dawn (Pakistan)",
+          "bloc": "non_aligned",
+          "country": "PK",
+          "url": "https://www.dawn.com/news/2014620/us-democrat-ro-khanna-detained-by-israeli-settlers-during-west-bank-visit",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Dawn (Pakistan)",
+          "bloc": "non_aligned",
+          "country": "PK",
+          "url": "https://www.dawn.com/news/2014636/our-land-our-sky-west-bank-palestinians-fly-kites-in-defiance-of-israeli-settlers",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Middle East Monitor (Palestinian coverage)",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.middleeastmonitor.com/20260711-10-palestinians-injured-in-israeli-occupier-army-attacks-in-occupied-west-bank/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Middle East Monitor (Palestinian coverage)",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.middleeastmonitor.com/20260711-israeli-occupiers-attack-workers-destroy-farm-in-occupied-west-bank/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "PressTV",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://presstv.ir/Detail/2026/07/11/772049/Illegal-Israeli-settlers-assault-Palestinian-workers,-destroy-farm-in-occupied-West-Bank",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "PressTV",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://presstv.ir/Detail/2026/07/11/772055/Illegal-Jewish-settlers-US-rifles-detained-US-congressman--Ro-Khanna-occupied-West-Bank-Israeli-occupation-",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "PressTV",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://presstv.ir/Detail/2026/07/12/772075/Four-Israeli-settlers-arrested-for-attacking-CNN-crew-in-West-Bank",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Punch (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://punchng.com/us-lawmaker-says-armed-israeli-settlers-detained-him-in-west-bank/?utm_source=rss.punchng.com&utm_medium=web",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "RT (Russia Today)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://www.rt.com/news/642904-us-congressman-detained-israeli-settlers/?utm_source=rss&utm_medium=rss&utm_campaign=RSS",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/international/us-democrat-ro-khanna-detained-briefly-by-israeli-settlers-in-palestine/article71211591.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "8b8f7408081fc453",
+      "size": 5,
+      "source_count": 5,
+      "bloc_spread": {
+        "western": 1,
+        "non_aligned": 4,
+        "adversarial": 0
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "GH",
+        "JP",
+        "NZ",
+        "PH",
+        "TW"
+      ],
+      "top_headlines": [
+        "At least 11 dead and 19 missing in wildfire in southern Spain",
+        "Eleven dead, 19 missing as Spain wildfire roars through village",
+        "Wildfire in Spain kills 11 as it roars through village",
+        "13 dead, 8 missing in Mindanao landslides",
+        "Hundreds of firefighters battle wildfire in southern Spain that killed at least 12"
+      ],
+      "primary_urls": [
+        "https://www.myjoyonline.com/at-least-11-dead-and-19-missing-in-wildfire-in-southern-spain/",
+        "https://www.japantimes.co.jp/news/2026/07/10/world/spain-wildfire-dead-missing/",
+        "https://www.taipeitimes.com/News/world/archives/2026/07/11/2003860589",
+        "https://newsinfo.inquirer.net/2261614/13-dead-8-missing-in-mindanao-landslides",
+        "https://www.stuff.co.nz/world-news/361005047/hundreds-firefighters-battle-wildfire-southern-spain-t"
+      ],
+      "sources": [
+        {
+          "name": "Japan Times",
+          "bloc": "non_aligned",
+          "country": "JP",
+          "url": "https://www.japantimes.co.jp/news/2026/07/10/world/spain-wildfire-dead-missing/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Joy Online (Ghana)",
+          "bloc": "non_aligned",
+          "country": "GH",
+          "url": "https://www.myjoyonline.com/at-least-11-dead-and-19-missing-in-wildfire-in-southern-spain/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Philippine Daily Inquirer",
+          "bloc": "non_aligned",
+          "country": "PH",
+          "url": "https://newsinfo.inquirer.net/2261614/13-dead-8-missing-in-mindanao-landslides",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/world-news/361005047/hundreds-firefighters-battle-wildfire-southern-spain-t",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Taipei Times",
+          "bloc": "non_aligned",
+          "country": "TW",
+          "url": "https://www.taipeitimes.com/News/world/archives/2026/07/11/2003860589",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "b272704d6ba223c5",
+      "size": 6,
+      "source_count": 5,
+      "bloc_spread": {
+        "western": 3,
+        "non_aligned": 2,
+        "adversarial": 1
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "AU",
+        "GH",
+        "IR",
+        "NZ",
+        "QA"
+      ],
+      "top_headlines": [
+        "New York Times journalists issued subpoenas over Air Force One reporting",
+        "NYT reporters subpoenaed over Air Force One security concerns stories",
+        "Trump administration subpoenas New York Times reporters over coverage",
+        "Trump administration subpoenas New York Times journalists over Air Force One reporting",
+        "Trump administration subpoenas New York Times journalists over Air Force One reporting"
+      ],
+      "primary_urls": [
+        "https://www.stuff.co.nz/world-news/361005011/multiple-new-york-times-reporters-issued-subpoenas-over-air",
+        "https://www.abc.net.au/news/2026-07-11/nyt-journalists-issued-subpoenas-over-air-force-one-reporting/106905722",
+        "https://www.aljazeera.com/news/2026/7/11/trump-administration-subpoenas-new-york-times-reporters-over-coverage?traffic_source=rss",
+        "https://www.myjoyonline.com/trump-administration-subpoenas-new-york-times-journalists-over-air-force-one-reporting/",
+        "https://presstv.ir/Detail/2026/07/11/772062/United-States-Trump-Air-Force-One-Qatar-New-York-Times"
+      ],
+      "sources": [
+        {
+          "name": "ABC News Australia",
+          "bloc": "western",
+          "country": "AU",
+          "url": "https://www.abc.net.au/news/2026-07-11/nyt-journalists-issued-subpoenas-over-air-force-one-reporting/106905722",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Al Jazeera English",
+          "bloc": "non_aligned",
+          "country": "QA",
+          "url": "https://www.aljazeera.com/news/2026/7/11/trump-administration-subpoenas-new-york-times-reporters-over-coverage?traffic_source=rss",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Joy Online (Ghana)",
+          "bloc": "non_aligned",
+          "country": "GH",
+          "url": "https://www.myjoyonline.com/trump-administration-subpoenas-new-york-times-journalists-over-air-force-one-reporting/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "PressTV",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://presstv.ir/Detail/2026/07/11/772062/United-States-Trump-Air-Force-One-Qatar-New-York-Times",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/world-news/361005011/multiple-new-york-times-reporters-issued-subpoenas-over-air",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/world-news/361005208/new-york-times-reporters-are-subpoenaed-after-air-force-one",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "983c332e05666567",
+      "size": 4,
+      "source_count": 4,
+      "bloc_spread": {
+        "western": 1,
+        "non_aligned": 3,
+        "adversarial": 0
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "GH",
+        "IN",
+        "MZ",
+        "NZ"
+      ],
+      "top_headlines": [
+        "One of Spain's deadliest wildfires has killed at least 11 people, with 19 others missing",
+        "One of Spain's deadliest wildfires has killed at least 12 people, with 23 others missing",
+        "Twelve killed, 23 missing in one of Spain’s deadliest wildfires",
+        "Spain battles to contain one of its deadliest wildfires as at least 12 killed"
+      ],
+      "primary_urls": [
+        "https://www.stuff.co.nz/world-news/361004773/one-spains-deadliest-wildfires-has-killed-least-11-peo",
+        "https://www.thehindu.com/news/international/one-of-spains-deadliest-wildfires-has-killed-at-least-12-people-with-23-others-missing/article71206655.ece",
+        "https://clubofmozambique.com/news/twelve-killed-23-missing-in-one-of-spains-deadliest-wildfires/",
+        "https://www.myjoyonline.com/spain-battles-to-contain-one-of-its-deadliest-wildfires-as-at-least-12-killed/"
+      ],
+      "sources": [
+        {
+          "name": "Club of Mozambique",
+          "bloc": "non_aligned",
+          "country": "MZ",
+          "url": "https://clubofmozambique.com/news/twelve-killed-23-missing-in-one-of-spains-deadliest-wildfires/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Joy Online (Ghana)",
+          "bloc": "non_aligned",
+          "country": "GH",
+          "url": "https://www.myjoyonline.com/spain-battles-to-contain-one-of-its-deadliest-wildfires-as-at-least-12-killed/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/world-news/361004773/one-spains-deadliest-wildfires-has-killed-least-11-peo",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/international/one-of-spains-deadliest-wildfires-has-killed-at-least-12-people-with-23-others-missing/article71206655.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "6efc4d76959d2d58",
+      "size": 4,
+      "source_count": 4,
+      "bloc_spread": {
+        "western": 1,
+        "non_aligned": 0,
+        "adversarial": 3
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "GB",
+        "IR",
+        "RU"
+      ],
+      "top_headlines": [
+        "Iran will respond in kind to attack on its infrastructure: Security official",
+        "Iran’s security chief warns any attack on infrastructure will be retaliated",
+        "Iran warns US it will retaliate to its attacks — senior security official",
+        "Iran security chief warns Israel ‘will not be safe from response’"
+      ],
+      "primary_urls": [
+        "https://presstv.ir/Detail/2026/07/10/771971/Iran-US-Zoqadr-Trump",
+        "https://en.irna.ir/news/86205574/Iran-s-security-chief-warns-any-attack-on-infrastructure-will",
+        "https://tass.com/world/2158769",
+        "https://www.middleeastmonitor.com/20260710-iran-security-chief-warns-israel-will-not-be-safe-from-response/"
+      ],
+      "sources": [
+        {
+          "name": "IRNA (Iran)",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://en.irna.ir/news/86205574/Iran-s-security-chief-warns-any-attack-on-infrastructure-will",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Middle East Monitor (Palestinian coverage)",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.middleeastmonitor.com/20260710-iran-security-chief-warns-israel-will-not-be-safe-from-response/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "PressTV",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://presstv.ir/Detail/2026/07/10/771971/Iran-US-Zoqadr-Trump",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "TASS (Russia)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://tass.com/world/2158769",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "b5351104b63c6a90",
+      "size": 6,
+      "source_count": 4,
+      "bloc_spread": {
+        "western": 0,
+        "non_aligned": 6,
+        "adversarial": 0
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "NG"
+      ],
+      "top_headlines": [
+        "JUST IN: APC retains Shettima as Tinubu’s running mate ahead of 2027 election",
+        "2027: Tinubu retains Shettima as running mate",
+        "APC Unveils Shettima As Tinubu’s Running Mate",
+        "2027: APC Confirms Shettima as Tinubu’s Running Mate",
+        "2027: Tinubu to run with Shettima"
+      ],
+      "primary_urls": [
+        "https://www.premiumtimesng.com/news/headlines/894409-just-in-apc-retains-shettima-as-tinubus-running-mate-ahead-of-2027-election.html",
+        "https://dailytrust.com/breaking-tinubu-retains-shettima-as-2027-running-mate/",
+        "https://www.thisdaylive.com/2026/07/10/apc-unveils-shettima-as-tinubus-running-mate/",
+        "https://www.thisdaylive.com/2026/07/11/2027-apc-confirms-shettima-as-tinubus-running-mate/",
+        "https://dailytrust.com/2027-tinubu-to-run-with-shettima/"
+      ],
+      "sources": [
+        {
+          "name": "Daily Trust (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://dailytrust.com/breaking-tinubu-retains-shettima-as-2027-running-mate/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Daily Trust (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://dailytrust.com/2027-tinubu-to-run-with-shettima/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Premium Times (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.premiumtimesng.com/news/headlines/894409-just-in-apc-retains-shettima-as-tinubus-running-mate-ahead-of-2027-election.html",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Punch (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://punchng.com/neast-apc-hails-tinubu-for-shettimas-retention-as-running-mate/?utm_source=rss.punchng.com&utm_medium=web",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ThisDay (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.thisdaylive.com/2026/07/10/apc-unveils-shettima-as-tinubus-running-mate/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ThisDay (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.thisdaylive.com/2026/07/11/2027-apc-confirms-shettima-as-tinubus-running-mate/",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "d77cee07c01c13e8",
+      "size": 7,
+      "source_count": 4,
+      "bloc_spread": {
+        "western": 6,
+        "non_aligned": 1,
+        "adversarial": 0
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "AU",
+        "IN",
+        "NZ"
+      ],
+      "top_headlines": [
+        "Teen arrested after remains found in search for missing 13-year-old girl",
+        "Teen boy charged with murder after missing 13-year-old girl found dead in Australia",
+        "Boy, 16, charged with murder after police discover body of 13-year-old Layla Jeffery in Victorian bushland",
+        "Body of 7-year-old girl found at under-construction mall in Ghaziabad; police detain suspects",
+        "Man charged with the murder of missing mum Jana Armstrong after body found"
+      ],
+      "primary_urls": [
+        "https://www.stuff.co.nz/world-news/361004841/teen-arrested-after-remains-found-search-13-year-old-girl-victoria-country-community",
+        "https://www.stuff.co.nz/world-news/361005007/teen-boy-charged-murder-family-shares-heartbreaking-details-young-layla-left-behind",
+        "https://www.theguardian.com/australia-news/2026/jul/11/layla-jeffery-boy-16-charged-with-murder-after-police-discover-body-of-teenage-girl-in-victorian-bushland-ntwnfb",
+        "https://www.thehindu.com/news/national/uttar-pradesh/body-of-7-year-old-girl-found-at-under-construction-mall-in-ghaziabad-police-detain-suspects/article71210339.ece",
+        "https://www.abc.net.au/news/2026-07-12/qld-woman-found/106906516"
+      ],
+      "sources": [
+        {
+          "name": "ABC News Australia",
+          "bloc": "western",
+          "country": "AU",
+          "url": "https://www.abc.net.au/news/2026-07-12/qld-woman-found/106906516",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/world-news/361004841/teen-arrested-after-remains-found-search-13-year-old-girl-victoria-country-community",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/world-news/361005007/teen-boy-charged-murder-family-shares-heartbreaking-details-young-layla-left-behind",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Guardian Australia",
+          "bloc": "western",
+          "country": "AU",
+          "url": "https://www.theguardian.com/australia-news/2026/jul/11/layla-jeffery-boy-16-charged-with-murder-after-police-discover-body-of-teenage-girl-in-victorian-bushland-ntwnfb",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Guardian Australia",
+          "bloc": "western",
+          "country": "AU",
+          "url": "https://www.theguardian.com/australia-news/live/2026/jul/12/anthony-albanese-pat-conroy-labor-liberal-angus-taylor-one-nation-ntwnfb",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Guardian Australia",
+          "bloc": "western",
+          "country": "AU",
+          "url": "https://www.theguardian.com/australia-news/2026/jul/12/missing-woman-jana-armstrong-queensland-man-charged-murder-ntwnfb",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/national/uttar-pradesh/body-of-7-year-old-girl-found-at-under-construction-mall-in-ghaziabad-police-detain-suspects/article71210339.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "12665d1b8f12fc7d",
+      "size": 4,
+      "source_count": 4,
+      "bloc_spread": {
+        "western": 1,
+        "non_aligned": 1,
+        "adversarial": 2
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "IN",
+        "NZ",
+        "RU"
+      ],
+      "top_headlines": [
+        "US demands Iran publicly state the Strait of Hormuz is open, and ships won’t be attacked, officials say",
+        "US demands Iran publicly announce intention against attacking vessels in Strait of Hormuz",
+        "US gives Iran deadline to declare Strait of Hormuz fully open – Axios",
+        "Publicly declare Strait of Hormuz open, won't attack ships: U.S. demand to Iran"
+      ],
+      "primary_urls": [
+        "https://www.stuff.co.nz/world-news/361004874/us-demands-iran-publicly-state-strait-hormuz-open-and-ships-wont-be-attacked-officials-say",
+        "https://tass.com/world/2158931",
+        "https://www.rt.com/news/642878-iran-hormuz-reopen-deadline/?utm_source=rss&utm_medium=rss&utm_campaign=RSS",
+        "https://www.thehindu.com/news/international/publicly-declare-hormuz-open-wont-attack-ships-us-demand-to-iran/article71209260.ece"
+      ],
+      "sources": [
+        {
+          "name": "RT (Russia Today)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://www.rt.com/news/642878-iran-hormuz-reopen-deadline/?utm_source=rss&utm_medium=rss&utm_campaign=RSS",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/world-news/361004874/us-demands-iran-publicly-state-strait-hormuz-open-and-ships-wont-be-attacked-officials-say",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "TASS (Russia)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://tass.com/world/2158931",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/international/publicly-declare-hormuz-open-wont-attack-ships-us-demand-to-iran/article71209260.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "6b6452126096058d",
+      "size": 4,
+      "source_count": 4,
+      "bloc_spread": {
+        "western": 0,
+        "non_aligned": 3,
+        "adversarial": 1
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "IN",
+        "NG",
+        "QA",
+        "RU"
+      ],
+      "top_headlines": [
+        "Trump threatens to ‘destroy’ Iran over assassination fears",
+        "Trump threatens Iran after Ayatollah Ali Khamenei's funeral saw open calls for his killing",
+        "Trump threatens Iran after chants for his death erupted at Khamenei funeral",
+        "Trump Threatens to Completely Decimate Iran Over Assassination Plot"
+      ],
+      "primary_urls": [
+        "https://www.rt.com/news/642880-trump-iran-threat-1000-missiles/?utm_source=rss&utm_medium=rss&utm_campaign=RSS",
+        "https://www.thehindu.com/news/international/trump-threatens-iran-after-ayatollah-ali-khameneis-funeral-saw-open-calls-for-his-killing/article71209403.ece",
+        "https://www.aljazeera.com/news/2026/7/11/trump-threatens-iran-after-chants-for-his-death-erupted-at-khamenei-funeral?traffic_source=rss",
+        "https://www.thisdaylive.com/2026/07/12/trump-threatens-to-completely-decimate-iran-over-assassination-plot/"
+      ],
+      "sources": [
+        {
+          "name": "Al Jazeera English",
+          "bloc": "non_aligned",
+          "country": "QA",
+          "url": "https://www.aljazeera.com/news/2026/7/11/trump-threatens-iran-after-chants-for-his-death-erupted-at-khamenei-funeral?traffic_source=rss",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "RT (Russia Today)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://www.rt.com/news/642880-trump-iran-threat-1000-missiles/?utm_source=rss&utm_medium=rss&utm_campaign=RSS",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/international/trump-threatens-iran-after-ayatollah-ali-khameneis-funeral-saw-open-calls-for-his-killing/article71209403.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ThisDay (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.thisdaylive.com/2026/07/12/trump-threatens-to-completely-decimate-iran-over-assassination-plot/",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "0a6240317c2d38c6",
+      "size": 7,
+      "source_count": 3,
+      "bloc_spread": {
+        "western": 0,
+        "non_aligned": 0,
+        "adversarial": 7
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "IR"
+      ],
+      "top_headlines": [
+        "IRGC chief vows justice for martyred Leader, says resistance path will endure",
+        "Iran will continue on martyred Leader’s path of steadfastness: Army chief",
+        "Martyred Leader's legacy for Iran's scientific development",
+        "Millions of Indonesians admire Iran’s martyred Leader: Foreign minister",
+        "Commemoration ceremony held in New Delhi for Iran’s martyred Leader"
+      ],
+      "primary_urls": [
+        "https://presstv.ir/Detail/2026/07/10/771956/IRGC-chief-justice-for-Leader-resistance-continue",
+        "https://presstv.ir/Detail/2026/07/10/771959/Iran-continue-Leader-path-Army-chief--",
+        "https://www.tehrantimes.com/news/528005/Martyred-Leader-s-legacy-for-Iran-s-scientific-development",
+        "https://en.irna.ir/news/86205584/Millions-of-Indonesians-admire-Iran-s-martyred-Leader-Foreign",
+        "https://presstv.ir/Detail/2026/07/10/771980/commemoration-ceremony-held-in-New-Delhi-for-Iran%E2%80%99s-martyred-leader"
+      ],
+      "sources": [
+        {
+          "name": "IRNA (Iran)",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://en.irna.ir/news/86205584/Millions-of-Indonesians-admire-Iran-s-martyred-Leader-Foreign",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "IRNA (Iran)",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://en.irna.ir/photo/86206200/Commemoration-ceremony-for-martyr-Leader-held-in-Imam-Reza-Holy",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "PressTV",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://presstv.ir/Detail/2026/07/10/771956/IRGC-chief-justice-for-Leader-resistance-continue",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "PressTV",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://presstv.ir/Detail/2026/07/10/771959/Iran-continue-Leader-path-Army-chief--",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "PressTV",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://presstv.ir/Detail/2026/07/10/771980/commemoration-ceremony-held-in-New-Delhi-for-Iran%E2%80%99s-martyred-leader",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "PressTV",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://presstv.ir/Detail/2026/07/11/772028/Iraqi-Kata%E2%80%99ib-Hezbollah-chief-vows-to-carry-on-resistance-path,-rejects-threats",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Tehran Times",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://www.tehrantimes.com/news/528005/Martyred-Leader-s-legacy-for-Iran-s-scientific-development",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "81a2b2206531f405",
+      "size": 3,
+      "source_count": 3,
+      "bloc_spread": {
+        "western": 0,
+        "non_aligned": 3,
+        "adversarial": 0
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "JP",
+        "PK",
+        "TW"
+      ],
+      "top_headlines": [
+        "China successfully tests sea-based rocket booster recovery system",
+        "China successfully tests sea-based rocket booster recovery system",
+        "China successfully retrieves rocket booster system"
+      ],
+      "primary_urls": [
+        "https://www.japantimes.co.jp/news/2026/07/10/world/china-rocket-booster-recovery/",
+        "https://www.dawn.com/news/2014393/china-successfully-tests-sea-based-rocket-booster-recovery-system",
+        "https://www.taipeitimes.com/News/front/archives/2026/07/11/2003860566"
+      ],
+      "sources": [
+        {
+          "name": "Dawn (Pakistan)",
+          "bloc": "non_aligned",
+          "country": "PK",
+          "url": "https://www.dawn.com/news/2014393/china-successfully-tests-sea-based-rocket-booster-recovery-system",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Japan Times",
+          "bloc": "non_aligned",
+          "country": "JP",
+          "url": "https://www.japantimes.co.jp/news/2026/07/10/world/china-rocket-booster-recovery/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Taipei Times",
+          "bloc": "non_aligned",
+          "country": "TW",
+          "url": "https://www.taipeitimes.com/News/front/archives/2026/07/11/2003860566",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "e7ab54652c1c8db9",
+      "size": 3,
+      "source_count": 3,
+      "bloc_spread": {
+        "western": 1,
+        "non_aligned": 1,
+        "adversarial": 1
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "GB",
+        "IR",
+        "QA"
+      ],
+      "top_headlines": [
+        "Israel bans Jerusalem’s grand mufti from Al-Aqsa Mosque for one week",
+        "Israel detains Jerusalem grand mufti, bars him from Al-Aqsa Mosque for 1 week",
+        "Israeli regime bars Palestinian mufti from al-Aqsa Mosque after abducting him"
+      ],
+      "primary_urls": [
+        "https://www.aljazeera.com/news/2026/7/10/israel-bans-jerusalems-grand-mufti-from-al-aqsa-mosque-for-one-week?traffic_source=rss",
+        "https://www.middleeastmonitor.com/20260710-israel-detains-jerusalem-grand-mufti-bars-him-from-al-aqsa-mosque-for-1-week/",
+        "https://presstv.ir/Detail/2026/07/11/772008/Israeli-regime-abducts-top-Palestinian-mufti,-bars-him-from-al-Aqsa-Mosque"
+      ],
+      "sources": [
+        {
+          "name": "Al Jazeera English",
+          "bloc": "non_aligned",
+          "country": "QA",
+          "url": "https://www.aljazeera.com/news/2026/7/10/israel-bans-jerusalems-grand-mufti-from-al-aqsa-mosque-for-one-week?traffic_source=rss",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Middle East Monitor (Palestinian coverage)",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.middleeastmonitor.com/20260710-israel-detains-jerusalem-grand-mufti-bars-him-from-al-aqsa-mosque-for-1-week/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "PressTV",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://presstv.ir/Detail/2026/07/11/772008/Israeli-regime-abducts-top-Palestinian-mufti,-bars-him-from-al-Aqsa-Mosque",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "32e54ae9d49b837d",
+      "size": 3,
+      "source_count": 3,
+      "bloc_spread": {
+        "western": 0,
+        "non_aligned": 3,
+        "adversarial": 0
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "NG"
+      ],
+      "top_headlines": [
+        "Fubara Presents N1.85trn 2026 Budget to Rivers Assembly",
+        "Fubara Presents N1.854trn 2026 Appropriation Bill to Rivers Assembly",
+        "Fubara presents N1.85 trillion budget for 2026 fiscal year"
+      ],
+      "primary_urls": [
+        "https://dailytrust.com/fubara-presents-n1-85trn-2026-budget-to-rivers-assembly/",
+        "https://www.thisdaylive.com/2026/07/11/fubara-presents-n1-854trn-2026-appropriation-bill-to-rivers-assembly/",
+        "https://www.premiumtimesng.com/regional/south-south-regional/894580-fubara-presents-n1-85-trillion-budget-for-2026-fiscal-year.html"
+      ],
+      "sources": [
+        {
+          "name": "Daily Trust (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://dailytrust.com/fubara-presents-n1-85trn-2026-budget-to-rivers-assembly/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Premium Times (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.premiumtimesng.com/regional/south-south-regional/894580-fubara-presents-n1-85-trillion-budget-for-2026-fiscal-year.html",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ThisDay (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.thisdaylive.com/2026/07/11/fubara-presents-n1-854trn-2026-appropriation-bill-to-rivers-assembly/",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "f349dfa9f774f60c",
+      "size": 4,
+      "source_count": 3,
+      "bloc_spread": {
+        "western": 0,
+        "non_aligned": 4,
+        "adversarial": 0
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "NG"
+      ],
+      "top_headlines": [
+        "SSS releases journalist linked to Sowore from detention",
+        "DSS releases journalist carrying drone after IPI Nigeria’s intervention",
+        "SSS releases journalist carrying drone after IPI Nigeria’s intervention",
+        "After IPI Nigeria’s Intervention, DSS Releases Journalist Arrested for Possession of Drone"
+      ],
+      "primary_urls": [
+        "https://www.premiumtimesng.com/news/top-news/894451-sss-releases-journalist-linked-to-sowore-from-detention.html",
+        "https://dailytrust.com/dss-releases-journalist-carrying-drone-after-ipi-nigerias-intervention/",
+        "https://www.premiumtimesng.com/news/top-news/894582-sss-releases-journalist-carrying-drone-after-ipi-nigerias-intervention.html",
+        "https://www.thisdaylive.com/2026/07/12/after-ipi-nigerias-intervention-dss-releases-journalist-arrested-for-possession-of-drone/"
+      ],
+      "sources": [
+        {
+          "name": "Daily Trust (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://dailytrust.com/dss-releases-journalist-carrying-drone-after-ipi-nigerias-intervention/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Premium Times (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.premiumtimesng.com/news/top-news/894451-sss-releases-journalist-linked-to-sowore-from-detention.html",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Premium Times (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.premiumtimesng.com/news/top-news/894582-sss-releases-journalist-carrying-drone-after-ipi-nigerias-intervention.html",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ThisDay (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.thisdaylive.com/2026/07/12/after-ipi-nigerias-intervention-dss-releases-journalist-arrested-for-possession-of-drone/",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "c97a4b41467efc91",
+      "size": 3,
+      "source_count": 3,
+      "bloc_spread": {
+        "western": 0,
+        "non_aligned": 3,
+        "adversarial": 0
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "JP",
+        "PH",
+        "TW"
+      ],
+      "top_headlines": [
+        "Apple sues OpenAI for trade secret theft in pivotal case",
+        "Apple accuses OpenAI \nof stealing trade secrets",
+        "Apple sues OpenAI, two former employees for trade secrets theft"
+      ],
+      "primary_urls": [
+        "https://www.japantimes.co.jp/business/2026/07/11/tech/apple-sues-openai-secret-theft/",
+        "https://www.taipeitimes.com/News/biz/archives/2026/07/12/2003860593",
+        "https://www.rappler.com/technology/apple-sues-openai-former-employees-trade-secrets-theft/"
+      ],
+      "sources": [
+        {
+          "name": "Japan Times",
+          "bloc": "non_aligned",
+          "country": "JP",
+          "url": "https://www.japantimes.co.jp/business/2026/07/11/tech/apple-sues-openai-secret-theft/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Rappler (Philippines)",
+          "bloc": "non_aligned",
+          "country": "PH",
+          "url": "https://www.rappler.com/technology/apple-sues-openai-former-employees-trade-secrets-theft/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Taipei Times",
+          "bloc": "non_aligned",
+          "country": "TW",
+          "url": "https://www.taipeitimes.com/News/biz/archives/2026/07/12/2003860593",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "3b5312d85766e81c",
+      "size": 3,
+      "source_count": 3,
+      "bloc_spread": {
+        "western": 0,
+        "non_aligned": 3,
+        "adversarial": 0
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "IN",
+        "JP",
+        "TW"
+      ],
+      "top_headlines": [
+        "Japan successfully launches and lands reusable rocket",
+        "Japan’s JAXA successfully launches, lands reusable rocket",
+        "Japan conducts first test flight for reusable rocket"
+      ],
+      "primary_urls": [
+        "https://www.japantimes.co.jp/news/2026/07/11/japan/science-health/japan-launches-lands-reusable-rocket/",
+        "https://www.thehindu.com/news/international/japans-jaxa-successfully-launches-lands-reusable-rocket/article71209481.ece",
+        "https://www.taipeitimes.com/News/world/archives/2026/07/12/2003860628"
+      ],
+      "sources": [
+        {
+          "name": "Japan Times",
+          "bloc": "non_aligned",
+          "country": "JP",
+          "url": "https://www.japantimes.co.jp/news/2026/07/11/japan/science-health/japan-launches-lands-reusable-rocket/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Taipei Times",
+          "bloc": "non_aligned",
+          "country": "TW",
+          "url": "https://www.taipeitimes.com/News/world/archives/2026/07/12/2003860628",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/international/japans-jaxa-successfully-launches-lands-reusable-rocket/article71209481.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "3fd2e0dfcc4ae73a",
+      "size": 6,
+      "source_count": 3,
+      "bloc_spread": {
+        "western": 5,
+        "non_aligned": 1,
+        "adversarial": 0
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "AU",
+        "JP",
+        "NZ"
+      ],
+      "top_headlines": [
+        "Live: Wallabies aiming to rebound against France in Nations Championship",
+        "Wallabies v France — Nations Championship",
+        "Live: Japan v Ireland - Nations Championship",
+        "Argentina v Wales - Nations Championship",
+        "Springboks withstand Scotland in Nations Championship thriller"
+      ],
+      "primary_urls": [
+        "https://www.abc.net.au/news/2026-07-11/rugby-union-wallabies-france-nations-championship-blog-updates/106905422",
+        "https://www.stuff.co.nz/sport/361001696/live-wallabies-v-france-nations-championship",
+        "https://www.stuff.co.nz/sport/361001718/live-japan-v-ireland-nations-championship",
+        "https://www.stuff.co.nz/sport/361001723/live-argentina-v-wales-nations-championship",
+        "https://www.stuff.co.nz/sport/361005029/springboks-withstand-scotland-42-28-nations-championship-thriller"
+      ],
+      "sources": [
+        {
+          "name": "ABC News Australia",
+          "bloc": "western",
+          "country": "AU",
+          "url": "https://www.abc.net.au/news/2026-07-11/rugby-union-wallabies-france-nations-championship-blog-updates/106905422",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Japan Times",
+          "bloc": "non_aligned",
+          "country": "JP",
+          "url": "https://www.japantimes.co.jp/sports/2026/07/12/more-sports/japan-rugby-ireland-loss/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/sport/361001696/live-wallabies-v-france-nations-championship",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/sport/361001718/live-japan-v-ireland-nations-championship",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/sport/361001723/live-argentina-v-wales-nations-championship",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/sport/361005029/springboks-withstand-scotland-42-28-nations-championship-thriller",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "8ab7ed87059c5707",
+      "size": 5,
+      "source_count": 3,
+      "bloc_spread": {
+        "western": 0,
+        "non_aligned": 5,
+        "adversarial": 0
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "NG"
+      ],
+      "top_headlines": [
+        "Federation Cup Final PREVIEW: Ikorodu City chase history, El-Kanemi eye fourth title",
+        "President Federation Cup: El-Kanemi Warriors edge Ikorodu City to win fourth title",
+        "Nasarawa Amazons Beat Heartland Queens to Win 2026 President Federation Cup",
+        "El-Kanemi defeat Ikorodu City to win 4th President’s Federation Cup title",
+        "Nasarawa Amazons, El-Kanemi Warriors Win 2026 Federation Cup"
+      ],
+      "primary_urls": [
+        "https://www.premiumtimesng.com/news/headlines/894529-federation-cup-final-preview-ikorodu-city-chase-history-el-kanemi-eye-fourth-title.html",
+        "https://www.premiumtimesng.com/sports/football/894645-president-federation-cup-el-kanemi-warriors-edge-ikorodu-city-to-win-fourth-title.html",
+        "https://dailytrust.com/nasarawa-amazons-beat-heartland-queens-to-win-2026-president-federation-cup/",
+        "https://dailytrust.com/el-kanemi-defeat-ikorodu-city-to-win-4th-presidents-federation-cup-title/",
+        "https://www.thisdaylive.com/2026/07/12/nasarawa-amazons-el-kanemi-warriors-win-2026-federation-cup/"
+      ],
+      "sources": [
+        {
+          "name": "Daily Trust (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://dailytrust.com/nasarawa-amazons-beat-heartland-queens-to-win-2026-president-federation-cup/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Daily Trust (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://dailytrust.com/el-kanemi-defeat-ikorodu-city-to-win-4th-presidents-federation-cup-title/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Premium Times (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.premiumtimesng.com/news/headlines/894529-federation-cup-final-preview-ikorodu-city-chase-history-el-kanemi-eye-fourth-title.html",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Premium Times (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.premiumtimesng.com/sports/football/894645-president-federation-cup-el-kanemi-warriors-edge-ikorodu-city-to-win-fourth-title.html",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ThisDay (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.thisdaylive.com/2026/07/12/nasarawa-amazons-el-kanemi-warriors-win-2026-federation-cup/",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "aff3eb114bececaa",
+      "size": 3,
+      "source_count": 3,
+      "bloc_spread": {
+        "western": 0,
+        "non_aligned": 3,
+        "adversarial": 0
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "IN",
+        "NG",
+        "PK"
+      ],
+      "top_headlines": [
+        "On World Population Day, govt pledges 'responsible' planning to tackle alarming demographic boom",
+        "Andhra University observes World Population Day",
+        "World Population Day: Radda pledges data-driven development in Katsina"
+      ],
+      "primary_urls": [
+        "https://www.dawn.com/news/2014604/on-world-population-day-govt-pledges-responsible-planning-to-tackle-alarming-demographic-boom",
+        "https://www.thehindu.com/news/national/andhra-pradesh/andhra-university-observes-world-population-day/article71211045.ece",
+        "https://punchng.com/world-population-day-radda-pledges-data-driven-development-in-katsina/?utm_source=rss.punchng.com&utm_medium=web"
+      ],
+      "sources": [
+        {
+          "name": "Dawn (Pakistan)",
+          "bloc": "non_aligned",
+          "country": "PK",
+          "url": "https://www.dawn.com/news/2014604/on-world-population-day-govt-pledges-responsible-planning-to-tackle-alarming-demographic-boom",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Punch (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://punchng.com/world-population-day-radda-pledges-data-driven-development-in-katsina/?utm_source=rss.punchng.com&utm_medium=web",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/national/andhra-pradesh/andhra-university-observes-world-population-day/article71211045.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "3cb9045bc431e9a4",
+      "size": 3,
+      "source_count": 3,
+      "bloc_spread": {
+        "western": 0,
+        "non_aligned": 0,
+        "adversarial": 3
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "IR"
+      ],
+      "top_headlines": [
+        "Iran tripled drone production output during US–Israeli aggression: Caretaker Defense Minister",
+        "Iran: Production of drones tripled during US-Israeli war of aggression",
+        "Iran tripled drone production during US-Israeli war: caretaker defense minister"
+      ],
+      "primary_urls": [
+        "https://en.irna.ir/news/86206425/Iran-tripled-drone-production-output-during-US-Israeli-aggression",
+        "https://presstv.ir/Detail/2026/07/11/772039/Production-of-drones-tripled-in-war-of-aggression-against-Iran--Caretaker-defense-minister",
+        "https://www.tehrantimes.com/news/528063/Iran-tripled-drone-production-during-US-Israeli-war-caretaker"
+      ],
+      "sources": [
+        {
+          "name": "IRNA (Iran)",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://en.irna.ir/news/86206425/Iran-tripled-drone-production-output-during-US-Israeli-aggression",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "PressTV",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://presstv.ir/Detail/2026/07/11/772039/Production-of-drones-tripled-in-war-of-aggression-against-Iran--Caretaker-defense-minister",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Tehran Times",
+          "bloc": "adversarial",
+          "country": "IR",
+          "url": "https://www.tehrantimes.com/news/528063/Iran-tripled-drone-production-during-US-Israeli-war-caretaker",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "478977e350346a7b",
+      "size": 3,
+      "source_count": 3,
+      "bloc_spread": {
+        "western": 1,
+        "non_aligned": 2,
+        "adversarial": 0
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "AU",
+        "NG",
+        "PH"
+      ],
+      "top_headlines": [
+        "Linda Noskova survives Karolina Muchova fightback to win Wimbledon",
+        "Noskova Holds off Muchova’s Fightback to Win Maiden Grand Slam",
+        "‘I’m taking the big one’: How Linda Noskova stared down heartbreak to win Wimbledon"
+      ],
+      "primary_urls": [
+        "https://www.abc.net.au/news/2026-07-12/wimbledon-womens-final-linda-noskova-victory/106906416",
+        "https://www.thisdaylive.com/2026/07/12/noskova-holds-off-muchovas-fightback-to-win-maiden-grand-slam/",
+        "https://www.rappler.com/sports/how-linda-noskova-stared-down-heartbreak-wimbledon/"
+      ],
+      "sources": [
+        {
+          "name": "ABC News Australia",
+          "bloc": "western",
+          "country": "AU",
+          "url": "https://www.abc.net.au/news/2026-07-12/wimbledon-womens-final-linda-noskova-victory/106906416",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Rappler (Philippines)",
+          "bloc": "non_aligned",
+          "country": "PH",
+          "url": "https://www.rappler.com/sports/how-linda-noskova-stared-down-heartbreak-wimbledon/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "ThisDay (Nigeria)",
+          "bloc": "non_aligned",
+          "country": "NG",
+          "url": "https://www.thisdaylive.com/2026/07/12/noskova-holds-off-muchovas-fightback-to-win-maiden-grand-slam/",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "30aba64603c873af",
+      "size": 3,
+      "source_count": 3,
+      "bloc_spread": {
+        "western": 1,
+        "non_aligned": 2,
+        "adversarial": 0
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "IN",
+        "NZ",
+        "PH"
+      ],
+      "top_headlines": [
+        "PH, 13 countries urge Beijing: Abide by 2016 South China Sea Arbitral award",
+        "U.S., U.K., and 12 other nations reaffirm 2016 ruling invalidating China’s claims in South China Sea",
+        "13 nations, the EU and NZ reaffirm ruling invalidating China's claims in South China Sea"
+      ],
+      "primary_urls": [
+        "https://www.rappler.com/philippines/joint-statement-2016-south-china-sea-arbitral-award-anniversary/",
+        "https://www.thehindu.com/news/international/us-uk-and-12-other-nations-reaffirm-2016-ruling-invalidating-chinas-claims-in-south-china-sea/article71213215.ece",
+        "https://www.stuff.co.nz/world-news/361005233/14-nations-and-eu-reaffirm-2016-ruling-invalidating-chin"
+      ],
+      "sources": [
+        {
+          "name": "Rappler (Philippines)",
+          "bloc": "non_aligned",
+          "country": "PH",
+          "url": "https://www.rappler.com/philippines/joint-statement-2016-south-china-sea-arbitral-award-anniversary/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "Stuff (New Zealand)",
+          "bloc": "western",
+          "country": "NZ",
+          "url": "https://www.stuff.co.nz/world-news/361005233/14-nations-and-eu-reaffirm-2016-ruling-invalidating-chin",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/international/us-uk-and-12-other-nations-reaffirm-2016-ruling-invalidating-chinas-claims-in-south-china-sea/article71213215.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "ba8582f5b9ac4a60",
+      "size": 3,
+      "source_count": 3,
+      "bloc_spread": {
+        "western": 0,
+        "non_aligned": 2,
+        "adversarial": 1
+      },
+      "bloc_source": "heuristic",
+      "countries": [
+        "GH",
+        "IN",
+        "RU"
+      ],
+      "top_headlines": [
+        "2 dead and 3 wounded in shooting near Toronto street festival, police say",
+        "At least two killed in Toronto street festival shooting",
+        "Two dead, six wounded in shooting at Toronto salsa festival (VIDEOS)"
+      ],
+      "primary_urls": [
+        "https://www.thehindu.com/news/international/toronto-salsa-street-festival-shooting-death-injuries-july-2026/article71212979.ece",
+        "https://www.myjoyonline.com/at-least-two-killed-in-toronto-street-festival-shooting/",
+        "https://www.rt.com/news/642903-toronto-salsa-event-shooting/?utm_source=rss&utm_medium=rss&utm_campaign=RSS"
+      ],
+      "sources": [
+        {
+          "name": "Joy Online (Ghana)",
+          "bloc": "non_aligned",
+          "country": "GH",
+          "url": "https://www.myjoyonline.com/at-least-two-killed-in-toronto-street-festival-shooting/",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "RT (Russia Today)",
+          "bloc": "adversarial",
+          "country": "RU",
+          "url": "https://www.rt.com/news/642903-toronto-salsa-event-shooting/?utm_source=rss&utm_medium=rss&utm_campaign=RSS",
+          "excerpt": "",
+          "framing_placeholder": null
+        },
+        {
+          "name": "The Hindu (India)",
+          "bloc": "non_aligned",
+          "country": "IN",
+          "url": "https://www.thehindu.com/news/international/toronto-salsa-street-festival-shooting-death-injuries-july-2026/article71212979.ece",
+          "excerpt": "",
+          "framing_placeholder": null
+        }
+      ]
+    }
+  ]
+}

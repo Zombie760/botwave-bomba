@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/botwavebomba/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Story — BOTWAVEBOMBA</title>
+  <meta name="description" content="One story, 20-30 sources, each framed by who paid for it.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/tokens.css?v=1">
+  <link rel="stylesheet" href="assets/css/base.css?v=1">
+  <style>
+    html { -webkit-text-size-adjust: 100%; }
+    body { background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); line-height: var(--lh-normal); margin: 0; -webkit-font-smoothing: antialiased; }
+    a { color: var(--color-accent); }
+    .bwb-chrome { border-bottom: 1px solid var(--color-border); background: var(--color-bg-elevated); position: sticky; top: 0; z-index: var(--z-sticky); }
+    .bwb-chrome-inner { max-width: var(--max-w-grid); margin: 0 auto; padding: var(--space-3) var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
+    .bwb-wordmark { font-family: var(--font-display); font-size: var(--fs-lg); font-weight: var(--fw-bold); color: var(--color-text-strong); letter-spacing: -0.02em; }
+    .bwb-wordmark span { color: var(--color-accent); }
+    .bwb-chrome-nav { display: flex; gap: var(--space-4); align-items: center; }
+    .bwb-chrome-nav a { font-family: var(--font-mono); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted); text-decoration: none; }
+    .bwb-chrome-nav a:hover { color: var(--color-text); }
+    .bwb-theme-btn { font-size: var(--fs-md); line-height: 1; padding: var(--space-2); border-radius: var(--radius); }
+    .bwb-story-wrap { max-width: 860px; margin: 0 auto; padding: var(--space-5) var(--gutter) var(--space-8); }
+
+    /* ── Story masthead ── */
+    .bwb-story-back { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--fg-dim); text-decoration: none; }
+    .bwb-story-kicker { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--primary); margin: 20px 0 8px; }
+    .bwb-story-h1 { font-family: 'Playfair Display', serif; font-size: 32px; line-height: 1.15; margin: 0 0 16px; }
+    .bwb-story-alt { font-family: 'Playfair Display', serif; font-style: italic; font-size: 16px; color: var(--fg-dim); margin: 0 0 20px; }
+
+    /* ── Spread bar (reuses theme.css --bias-* tokens) ── */
+    .bwb-story-spread { display: flex; height: 28px; border-radius: 14px; overflow: hidden; margin: 16px 0 8px; }
+    .bwb-story-seg { display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 700; }
+    .bwb-story-seg.western { background: var(--bias-western); }
+    .bwb-story-seg.non-aligned { background: var(--bias-non-aligned); }
+    .bwb-story-seg.adversarial { background: var(--bias-adversarial); }
+    .bwb-story-legend { display: flex; flex-wrap: wrap; gap: 14px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--fg-dim); margin: 4px 0 20px; }
+    .bwb-story-legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .bwb-story-legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+    .bwb-story-legend i.western { background: var(--bias-western); }
+    .bwb-story-legend i.non-aligned { background: var(--bias-non-aligned); }
+    .bwb-story-legend i.adversarial { background: var(--bias-adversarial); }
+
+    /* ── Meta chips ── */
+    .bwb-story-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
+    .bwb-story-chip { font-family: 'DM Mono', monospace; font-size: 11px; padding: 4px 10px; border: 1px solid var(--card-border); border-radius: 999px; color: var(--fg-dim); background: var(--card-bg); }
+    .bwb-story-chip strong { color: var(--fg); font-weight: 500; }
+
+    /* ── Ownership anchor callout ── */
+    .bwb-story-anchor { background: var(--card-bg); border: 1px solid var(--card-border); border-left: 4px solid var(--primary); border-radius: 0 12px 12px 0; padding: 16px 18px; margin: 24px 0; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--fg-dim); }
+    .bwb-story-anchor strong { color: var(--fg); font-family: 'Playfair Display', serif; font-size: 16px; display: block; margin-bottom: 4px; }
+
+    /* ── Source rows ── */
+    .bwb-story-rows { list-style: none; margin: 24px 0 0; padding: 0; }
+    .bwb-row { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; }
+    .bwb-row-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .bwb-row-name { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--fg); }
+    .bwb-row-bloc { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; color: #fff; display: inline-flex; align-items: center; gap: 5px; }
+    .bwb-row-bloc::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #fff; }
+    .bwb-row-bloc.western { background: var(--bias-western); }
+    .bwb-row-bloc.non-aligned { background: var(--bias-non-aligned); }
+    .bwb-row-bloc.adversarial { background: var(--bias-adversarial); }
+    .bwb-row-country { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--fg-dim); }
+    .bwb-row-owner { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--fg); margin: 8px 0 6px; line-height: 1.45; }
+    .bwb-row-owner .bwb-owner-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-dim); margin-right: 6px; }
+    .bwb-row-owner .bwb-owner-motive { color: var(--fg-dim); }
+    .bwb-pro-chip { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; background: var(--card-border); color: var(--fg-dim); border: 1px dashed var(--fg-dim); }
+    .bwb-row-excerpt { font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--fg-dim); margin: 6px 0 10px; line-height: 1.5; }
+    .bwb-row-link { font-family: 'DM Mono', monospace; font-size: 12px; text-decoration: none; color: var(--primary); display: inline-flex; align-items: center; gap: 4px; min-height: 44px; }
+    .bwb-row-link:hover { text-decoration: underline; }
+    .bwb-row-empty { font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--fg-dim); padding: 40px 0; text-align: center; }
+
+    @media (min-width: 768px) {
+      .bwb-story-h1 { font-size: 40px; }
+      .bwb-story-wrap { padding: 40px 24px 100px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="bwb-chrome">
+    <div class="bwb-chrome-inner">
+      <a class="bwb-wordmark" href="./">BOTWAVE<span>BOMBA</span></a>
+      <nav class="bwb-chrome-nav" aria-label="Primary">
+        <a href="index.html">Feed</a>
+        <a href="brief.html">Brief</a>
+        <a href="sources.html">Sources</a>
+        <a href="methodology.html">Methodology</a>
+        <a href="pro.html">Pricing</a>
+        <button class="bwb-theme-btn" id="themeToggle" aria-label="Toggle theme">☀️</button>
+      </nav>
+    </div>
+  </header>
+  <main class="bwb-story-wrap">
+    <a class="bwb-story-back" href="brief.html">← back to brief</a>
+    <div id="bwb-story-root"><p class="bwb-row-empty">Loading story…</p></div>
+  </main>
+  <script>
+  (async () => {
+    const root = document.getElementById('bwb-story-root');
+    const id = new URLSearchParams(location.search).get('id') || '';
+    if (!id) { root.innerHTML = '<p class="bwb-row-empty">No story id.</p>'; return; }
+    let story, ownership = {};
+    try {
+      const [sRes, oRes] = await Promise.all([
+        fetch('api/stories_clustered.json').then(r => r.json()),
+        fetch('api/ownership.json').then(r => r.ok ? r.json() : null).catch(() => null),
+      ]);
+      story = (sRes.stories || []).find(x => x.id === id);
+      if (oRes && Array.isArray(oRes.entries)) {
+        for (const e of oRes.entries) ownership[e.domain] = e;
+      }
+    } catch (e) { root.innerHTML = '<p class="bwb-row-empty">Failed to load.</p>'; return; }
+    if (!story) { root.innerHTML = '<p class="bwb-row-empty">Story not found.</p>'; return; }
+
+    const sp = story.bloc_spread;
+    const total = Math.max(1, sp.western + sp.non_aligned + sp.adversarial);
+    const pct = b => Math.round((b / total) * 100);
+    const seg = (cls, n) => n > 0 ? `<div class="bwb-story-seg ${cls}" style="width:${(n/total)*100}%">${n}</div>` : '';
+    const altH = (story.top_headlines || []).slice(1, 3)
+      .map(h => `<p class="bwb-story-alt">"${h.replace(/"/g,'&quot;')}"</p>`).join('');
+    const countries = (story.countries || []).map(c => `<span class="bwb-story-chip">${c}</span>`).join('');
+    const ownerKnown = Object.keys(ownership).length;
+    const articleCount = (story.sources || []).length;
+
+    // one row per OUTLET (the vision: how each outlet frames the story), not per
+    // article — the clusterer dedups by URL, so a single outlet filing 3 articles
+    // on the same story would otherwise appear 3×. Keep the first article per outlet.
+    const byOutlet = new Map();
+    for (const s of (story.sources || [])) {
+      const key = s.name || s.url;
+      if (!byOutlet.has(key)) byOutlet.set(key, s);
+    }
+    const rows = [...byOutlet.values()].map(s => {
+      const dom = (() => { try { return new URL(s.url).hostname.replace(/^www\./,''); } catch { return ''; } })();
+      const o = dom ? ownership[dom] : null;
+      let ownerLine;
+      if (o && o.owner) {
+        ownerLine = `<span class="bwb-owner-label">Owned by</span><strong>${o.owner}</strong>` +
+          (o.motive ? ` <span class="bwb-owner-motive">— ${o.motive}</span>` : '') +
+          (o.source ? ` <span class="bwb-owner-motive">[${o.source}]</span>` : '');
+      } else {
+        ownerLine = `<span class="bwb-owner-label">Ownership</span><span class="bwb-pro-chip">PRO</span>`;
+      }
+      const bloc = s.bloc || 'non_aligned';
+      const blocLabel = bloc === 'western' ? 'Western' : bloc === 'adversarial' ? 'Adversarial' : 'Non-aligned';
+      return `<li class="bwb-row">
+        <div class="bwb-row-head">
+          <span class="bwb-row-name">${(s.name||'').replace(/</g,'&lt;')}</span>
+          <span class="bwb-row-bloc ${bloc}">${blocLabel}</span>
+          <span class="bwb-row-country">${(s.country||'—')}</span>
+        </div>
+        <div class="bwb-row-owner">${ownerLine}</div>
+        <p class="bwb-row-excerpt">${(s.excerpt||'').replace(/</g,'&lt;')}</p>
+        <a class="bwb-row-link" href="${s.url}" target="_blank" rel="noopener">Read at source ↗</a>
+      </li>`;
+    }).join('');
+
+    root.innerHTML = `
+      <p class="bwb-story-kicker">Clustered story · ${story.source_count} sources · ${story.id}</p>
+      <h1 class="bwb-story-h1">${(story.top_headlines||['(untitled)'])[0].replace(/</g,'&lt;')}</h1>
+      ${altH}
+      <div class="bwb-story-spread">
+        ${seg('western', sp.western)}${seg('non-aligned', sp.non_aligned)}${seg('adversarial', sp.adversarial)}
+      </div>
+      <div class="bwb-story-legend">
+        <span><i class="western"></i>Western ${pct(sp.western)}%</span>
+        <span><i class="non-aligned"></i>Non-aligned ${pct(sp.non_aligned)}%</span>
+        <span><i class="adversarial"></i>Adversarial ${pct(sp.adversarial)}%</span>
+      </div>
+      <div class="bwb-story-meta">
+        <span class="bwb-story-chip"><strong>${story.source_count}</strong> outlets</span>
+        <span class="bwb-story-chip"><strong>${articleCount}</strong> articles</span>
+        <span class="bwb-story-chip"><strong>${(story.countries||[]).length}</strong> countries</span>
+        ${countries}
+      </div>
+      <div class="bwb-story-anchor">
+        <strong>Who paid for the framing?</strong>
+        ${ownerKnown
+          ? `Ownership data joined for ${ownerKnown} outlet${ownerKnown===1?'':'s'} in this story. Each row names the owner and motive below.`
+          : `Ownership + motive is the differentiator. This row lights up the moment the funder registry ships — for now, every outlet shows a locked <span class="bwb-pro-chip">PRO</span> chip. Bias is the carrot; <em>who owns the story</em> is the upsell.`}
+      </div>
+      <ul class="bwb-story-rows">${rows}</ul>
+    `;
+  })();
+
+  const themeBtn = document.getElementById('themeToggle');
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    themeBtn.textContent = theme === 'dark' ? '🌙' : '☀️';
+    localStorage.setItem('bwb-theme', theme);
+  }
+  const saved = localStorage.getItem('bwb-theme');
+  if (saved) setTheme(saved);
+  else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) setTheme('dark');
+  themeBtn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    setTheme(current === 'dark' ? 'light' : 'dark');
+  });
+  </script>
+</body>
+</html>

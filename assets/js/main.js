@@ -1,25 +1,18 @@
 // ── Main Entry Point ──
-// Load critical JS first, then lazy-load the rest.
-(function() {
-  // Load theme.js first (critical for dark/light mode)
-  const themeScript = document.createElement('script');
-  themeScript.src = '/botwavebomba/assets/js/theme.js?v=2';
-  themeScript.defer = true;
-  document.head.appendChild(themeScript);
+// Loads the site chrome, data adapter, and feed renderer in order.
+(function () {
+  const BASE = window.BWB_BASE || '/botwavebomba';
 
-  // Lazy-load other modules
   function loadScript(src) {
     const script = document.createElement('script');
-    script.src = src;
+    script.src = BASE + src;
     script.defer = true;
     document.head.appendChild(script);
   }
 
-  // Load article-analyzer.js after a short delay
-  setTimeout(() => {
-    loadScript('/botwavebomba/assets/js/article-analyzer.js?v=2');
-  }, 1000);
-
-  // Initialize the feed
-  loadScript('/botwavebomba/assets/js/feed.js?v=2');
+  // Critical path: theme, chrome, data adapter, feed renderer.
+  loadScript('/assets/js/theme.js?v=3');
+  loadScript('/assets/js/min/site-chrome.js?v=3');
+  loadScript('/assets/js/api-adapter.js?v=3');
+  loadScript('/assets/js/feed.js?v=3');
 })();
