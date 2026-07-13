@@ -1,34 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="auto">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Corrections · BotwaveBomba</title>
   <meta name="description" content="BotwaveBomba correction log and methodology updates.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/base.css">
-  <link rel="stylesheet" href="assets/css/tokens.css">
-  <link rel="stylesheet" href="assets/css/theme.css">
-  <style>
-    .bwb-site-header{border-bottom:1px solid var(--color-border);background:var(--color-bg-elevated);padding:var(--space-3) var(--gutter)}
-    .bwb-header-inner{max-width:var(--max-w-grid);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap}
-    .bwb-logo{font-family:var(--font-mono);font-size:var(--fs-lg);font-weight:var(--fw-bold);color:var(--color-text-strong);text-decoration:none}
-    .bwb-chrome-nav{display:flex;gap:var(--space-4);align-items:center;flex-wrap:wrap}
-    .bwb-chrome-nav a{font-family:var(--font-mono);font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:0.08em;color:var(--color-text-muted);text-decoration:none}
-    .bwb-chrome-nav a:hover{color:var(--color-text)}
-    .bwb-chrome-nav a[aria-current="page"]{color:var(--color-accent)}
-    .bwb-theme-toggle{font-size:var(--fs-md);line-height:1;padding:var(--space-2);border-radius:var(--radius);background:transparent;border:1px solid var(--color-border);color:var(--color-text);cursor:pointer}
-    .bwb-page{max-width:var(--max-w-prose);margin:0 auto;padding:var(--space-6) var(--gutter) var(--space-10)}
-    .bwb-hero-small h1{font-family:var(--font-display);font-size:var(--fs-3xl);line-height:var(--lh-tight);color:var(--color-text-strong);margin:0 0 var(--space-3)}
-    .bwb-lead{font-size:var(--fs-md);color:var(--color-text-muted);max-width:60ch;margin:0 0 var(--space-5)}
-    .bwb-correction-list{display:flex;flex-direction:column;gap:var(--space-4)}
-    .bwb-correction{border-left:3px solid var(--color-accent);padding-left:var(--space-4)}
-    .bwb-correction time{font-family:var(--font-mono);font-size:var(--fs-xs);color:var(--color-text-muted);display:block;margin-bottom:var(--space-1)}
-    .bwb-correction p{margin:0;color:var(--color-text)}
-    .bwb-site-footer{border-top:1px solid var(--color-border);padding:var(--space-6) var(--gutter);text-align:center;font-family:var(--font-mono);font-size:var(--fs-xs);color:var(--color-text-muted);margin-top:var(--space-8)}
-  </style>
+  <meta name="theme-color" content="#FAFAF7">
+  <link rel="icon" href="/botwavebomba/assets/logos/default.png">
+  <link rel="apple-touch-icon" href="/botwavebomba/assets/logos/default.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/botwavebomba/assets/css/botwave.css?v=1">
   <link rel="canonical" href="https://zombie760.github.io/botwavebomba/corrections.html">
-  <meta property="og:type" content="article">
+  <meta property="og:type" content="website">
   <meta property="og:site_name" content="BotwaveBomba">
   <meta property="og:title" content="Corrections · BotwaveBomba">
   <meta property="og:description" content="BotwaveBomba correction log and methodology updates.">
@@ -40,92 +25,92 @@
   <meta name="twitter:image" content="https://zombie760.github.io/botwavebomba/assets/logos/default.png">
   <link rel="manifest" href="/botwavebomba/manifest.json">
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "name": "Corrections · BotwaveBomba",
-        "url": "https://zombie760.github.io/botwavebomba/corrections.html",
-        "description": "BotwaveBomba correction log and methodology updates."
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://zombie760.github.io/botwavebomba/"}, {"@type": "ListItem", "position": 2, "name": "Corrections \u00b7 BotwaveBomba"}]
-      }
-    ]
-  }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "Corrections · BotwaveBomba",
+      "url": "https://zombie760.github.io/botwavebomba/corrections.html",
+      "description": "BotwaveBomba correction log and methodology updates."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://zombie760.github.io/botwavebomba/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Corrections · BotwaveBomba"
+        }
+      ]
+    }
+  ]
+}
   </script>
-
 </head>
 <body>
   <a class="bwb-skip-link" href="#main-content">Skip to content</a>
-  <header class="bwb-site-header">
+
+  <header class="bwb-site-header" role="banner">
     <div class="bwb-header-inner">
-      <a class="bwb-logo" href="./">BOTWAVEBOMBA</a>
-      <nav class="bwb-chrome-nav" aria-label="Primary">
-        <a href="index.html">Feed</a>
-        <a href="brief.html">Brief</a>
-        <a href="sources.html">Sources</a>
-        <a href="methodology.html">Methodology</a>
-        <a href="pro.html">Pricing</a>
+      <a class="bwb-wordmark" href="/botwavebomba/">BOTWAVE<span>BOMBA</span></a>
+      <button class="bwb-menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <nav class="bwb-primary-nav" id="primaryNav" aria-label="Primary">
+        <a href="/botwavebomba/" data-nav="home">Home</a><a href="/botwavebomba/for-you.html" data-nav="for-you">For You</a><a href="/botwavebomba/local.html" data-nav="local">Local</a><a href="/botwavebomba/blindspot.html" data-nav="blindspot">Blindspot</a><a href="/botwavebomba/world.html" data-nav="world">World</a><a href="/botwavebomba/politics.html" data-nav="politics">Politics</a><a href="/botwavebomba/conflict.html" data-nav="conflict">Conflict</a><a href="/botwavebomba/business.html" data-nav="business">Business</a><a href="/botwavebomba/tech.html" data-nav="tech">Tech</a><a href="/botwavebomba/sports.html" data-nav="sports">Sports</a><a href="/botwavebomba/corruption.html" data-nav="corruption">Corruption</a>
       </nav>
-      <button class="bwb-theme-toggle" id="themeToggle" aria-label="Toggle theme"><span aria-hidden="true">🌙</span></button>
+      <div class="bwb-header-actions">
+        <button class="bwb-search-btn" id="searchToggle" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </button>
+        <button class="bwb-theme-btn" id="themeToggle" aria-label="Toggle theme"><span aria-hidden="true">🌙</span></button>
+      </div>
     </div>
   </header>
 
-  <main id="main-content" class="bwb-page">
-    <section class="bwb-hero-small">
+  <div class="bwb-trending" aria-label="Trending topics">
+    <span class="bwb-trending-label">Trending</span>
+    <a href="/botwavebomba/world.html?q=Iran">Iran</a><button class="bwb-follow-btn" data-topic="iran" aria-label="Follow Iran">Follow</button><a href="/botwavebomba/world.html?q=Donald%20Trump">Donald Trump</a><button class="bwb-follow-btn" data-topic="trump" aria-label="Follow Donald Trump">Follow</button><a href="/botwavebomba/world.html?q=World%20Cup">World Cup</a><button class="bwb-follow-btn" data-topic="world-cup" aria-label="Follow World Cup">Follow</button><a href="/botwavebomba/world.html?q=Artificial%20Intelligence">Artificial Intelligence</a><button class="bwb-follow-btn" data-topic="ai" aria-label="Follow Artificial Intelligence">Follow</button><a href="/botwavebomba/world.html?q=Heatwaves">Heatwaves</a><button class="bwb-follow-btn" data-topic="heatwaves" aria-label="Follow Heatwaves">Follow</button><a href="/botwavebomba/world.html?q=European%20Union">European Union</a><button class="bwb-follow-btn" data-topic="eu" aria-label="Follow European Union">Follow</button><a href="/botwavebomba/world.html?q=Cryptocurrency">Cryptocurrency</a><button class="bwb-follow-btn" data-topic="crypto" aria-label="Follow Cryptocurrency">Follow</button><a href="/botwavebomba/world.html?q=Ukraine">Ukraine</a><button class="bwb-follow-btn" data-topic="ukraine" aria-label="Follow Ukraine">Follow</button>
+  </div>
+
+  <div class="bwb-search-overlay" id="searchOverlay" hidden>
+    <div class="bwb-search-inner">
+      <input type="search" id="siteSearch" placeholder="Search stories, sources, countries…" autocomplete="off" aria-label="Search stories">
+      <button id="searchClose" aria-label="Close search">Close</button>
+    </div>
+    <div class="bwb-search-results" id="searchResults"></div>
+  </div>
+
+  <main id="main-content"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><section class="bwb-hero-small">
       <h1>Corrections</h1>
       <p class="bwb-lead">When we get the framing wrong, we say so. This log records corrections, methodology changes, and ownership-registry updates that affect published briefs.</p>
     </section>
 
     <section class="bwb-correction-list" id="corrections-mount">
       <p class="bwb-empty" id="corrections-empty">Loading correction log…</p>
-    </section>
-  </main>
+    </section></div></div></div></div></div></div></div></div></div></div></main>
 
-  <footer class="bwb-site-footer">
-    BOTWAVEBOMBA · Not Left/Right. Who Owns The Story. · <a href="methodology.html">Methodology</a>
+  <footer class="bwb-site-footer" role="contentinfo">
+    <div class="bwb-footer-inner">
+      <div class="bwb-footer-brand">BOTWAVEBOMBA</div>
+      <nav aria-label="Footer">
+        <a href="/botwavebomba/brief.html">Daily Brief</a>
+        <a href="/botwavebomba/methodology.html">Methodology</a>
+        <a href="/botwavebomba/sources.html">Sources</a>
+        <a href="/botwavebomba/corrections.html">Corrections</a>
+        <a href="/botwavebomba/pro.html">Pricing</a>
+      </nav>
+      <p class="bwb-footer-tagline">Not Left/Right. Who Owns The Story.</p>
+    </div>
   </footer>
 
-  <script src="assets/js/main.js" defer></script>
-  <script>
-    (function () {
-      const mount = document.getElementById('corrections-mount');
-      const empty = document.getElementById('corrections-empty');
-      if (!mount || !empty) return;
-
-      fetch('/botwavebomba/api/corrections.json')
-        .then(r => r.ok ? r.json() : null)
-        .then(data => {
-          const entries = data?.corrections || [];
-          if (!entries.length) {
-            empty.textContent = 'No corrections logged yet. The first public correction will appear here when issued.';
-            return;
-          }
-          empty.remove();
-          mount.innerHTML = entries.slice(0, 20).map(c => `
-            <article class="bwb-correction">
-              <time datetime="${c.date || ''}">${c.date || 'No date'}</time>
-              <p>${(c.text || 'No details.').replace(/</g, '&lt;')}</p>
-            </article>
-          `).join('');
-        })
-        .catch(() => {
-          empty.textContent = 'No corrections logged yet. The first public correction will appear here when issued.';
-        });
-    })();
-  </script>
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-      navigator.serviceWorker.register('/botwavebomba/service-worker.js')
-        .then(function (r) { console.log('[bwb] sw registered'); })
-        .catch(function (e) { console.error('[bwb] sw failed', e); });
-    });
-  }
-</script>
-
+  <script src="/botwavebomba/assets/js/botwave.js?v=1" defer></script>
 </body>
 </html>

@@ -5,16 +5,10 @@
   "license": "MIT",
   "scripts": {
     "dev": "bun run scripts/dev_server.ts",
-    "build": "bun run scripts/build_homepage.ts",
-    "pipeline": "bun run scripts/run_pipeline.ts",
-    "minify:css": "bun build assets/css/base.css assets/css/tokens.css assets/css/feed.css assets/css/theme.css --outdir=assets/css/min --minify",
-    "minify:js": "bun build assets/js/theme.js assets/js/api-adapter.js assets/js/feed.js --outdir=assets/js/min --minify",
+    "build": "bun run scripts/build_site.ts",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit --skipLibCheck",
     "format:check": "prettier --check .",
-    "format:write": "prettier --write .",
-    "validate": "bun run build && bun run minify:css && bun run minify:js",
-    "prepublishOnly": "bun run validate"
+    "format:write": "prettier --write ."
   },
   "dependencies": {
     "@mozilla/readability": "^0.6.0",

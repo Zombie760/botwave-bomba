@@ -1,29 +1,9 @@
-# BotwaveBomba GitIgnore
-
-# Dependencies
+# Build / deps
 node_modules/
-bun.lockb
-
-# Build outputs that are regenerated
-assets/css/min/
-assets/js/min/
-
-# IDE / system
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-
-# Logs
 *.log
-npm-debug.log*
-bun-debug.log*
-
-# Environment
+.DS_Store
 .env
-.env.local
-.env.*.local
+.env.*
 
-# Backup files
-*.bak
-*.tmp
+# Internal planning artifacts (not public site content)
+ISA.md

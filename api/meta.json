@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-13T07:57:53.339Z",
+  "generated_at": "2026-07-13T19:40:12.677Z",
   "story_count": 31,
   "source_count_total": 302,
   "source_registry_count": 104,
@@ -10,5 +10,28 @@
     "adversarial": 18
   },
   "diversity_score": 33,
-  "coverage_gap_headline": "Non-Aligned press leads at 65%. Western press trails at 17%. 16 countries represented."
+  "coverage_gap_headline": "Non-Aligned press leads at 65%. Western press trails at 17%. 16 countries represented.",
+  "pages": [
+    "index",
+    "for-you",
+    "brief",
+    "world",
+    "politics",
+    "conflict",
+    "business",
+    "tech",
+    "sports",
+    "local",
+    "blindspot",
+    "corruption",
+    "methodology",
+    "pro",
+    "corrections",
+    "offline",
+    "404",
+    "sources",
+    "story"
+  ],
+  "section_count": 11,
+  "total_page_count": 19
 }
