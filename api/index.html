@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bias Dashboard</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; background-color: #f4f4f4; }
+        .container { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 600px; margin: auto; }
+        h1 { color: #333; text-align: center; }
+        .bar-chart { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+        .bar-wrapper { display: flex; align-items: center; }
+        .bar-label { width: 100px; font-weight: bold; color: #555; }
+        .bar { height: 30px; background-color: #4CAF50; color: white; display: flex; align-items: center; justify-content: flex-end; padding-right: 5px; box-sizing: border-box; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bias Summary Dashboard</h1>
+        <div id="chart" class="bar-chart">
+            Loading data...
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/bias')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const chartDiv = document.getElementById('chart');
+                    chartDiv.innerHTML = ''; // Clear loading message
+
+                    for (const key in data) {
+                        if (data.hasOwnProperty(key)) {
+                            const value = data[key];
+
+                            const barWrapper = document.createElement('div');
+                            barWrapper.classList.add('bar-wrapper');
+
+                            const barLabel = document.createElement('div');
+                            barLabel.classList.add('bar-label');
+                            barLabel.textContent = key;
+                            barWrapper.appendChild(barLabel);
+
+                            const bar = document.createElement('div');
+                            bar.classList.add('bar');
+                            bar.style.width = value + '%'; // Assuming values are percentages or relative units
+                            bar.textContent = value + '%';
+                            barWrapper.appendChild(bar);
+
+                            chartDiv.appendChild(barWrapper);
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                    document.getElementById('chart').innerHTML = '<p style="color: red;">Failed to load bias data.</p>';
+                });
+        });
+    </script>
+</body>
+</html>
