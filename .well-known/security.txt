@@ -1,0 +1,6 @@
+#security.txt
+Contact: mailto:security@zombie760.github.io
+Contact: https://github.com/zombie760/botwavebomba/security/advisories
+Expires: 2027-12-31T00:00:00.000Z
+Encryption: https://zombie760.github.io/botwavebomba/.well-known/pgp-key.txt
+Acknowledgments: https://zombie760.github.io/botwavebomba/security/acknowledgments

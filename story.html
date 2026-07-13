@@ -9,9 +9,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/base.css?v=3">
-  <link rel="stylesheet" href="assets/css/tokens.css?v=3">
-  <link rel="stylesheet" href="assets/css/feed.css?v=3">
+  <link rel="stylesheet" href="assets/css/base.css?v=4">
+  <link rel="stylesheet" href="assets/css/tokens.css?v=4">
+  <link rel="stylesheet" href="assets/css/feed.css?v=4">
   <style>
     .bwb-story-wrap { max-width: 860px; margin: 0 auto; padding: var(--space-5) var(--gutter) var(--space-8); }
     @media (min-width: 768px) { .bwb-story-wrap { padding: 40px 24px 100px; } }
@@ -105,6 +105,36 @@
       .bwb-row-name { font-size: var(--fs-base); }
     }
   </style>
+  <link rel="canonical" href="https://zombie760.github.io/botwavebomba/story.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="BotwaveBomba">
+  <meta property="og:title" content="Story \u2014 BOTWAVEBOMBA">
+  <meta property="og:description" content="One story, 20-30 sources, each framed by who paid for it.">
+  <meta property="og:url" content="https://zombie760.github.io/botwavebomba/story.html">
+  <meta property="og:image" content="https://zombie760.github.io/botwavebomba/assets/logos/default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Story \u2014 BOTWAVEBOMBA">
+  <meta name="twitter:description" content="One story, 20-30 sources, each framed by who paid for it.">
+  <meta name="twitter:image" content="https://zombie760.github.io/botwavebomba/assets/logos/default.png">
+  <link rel="manifest" href="/botwavebomba/manifest.json">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "Story \u2014 BOTWAVEBOMBA",
+        "url": "https://zombie760.github.io/botwavebomba/story.html",
+        "description": "One story, 20-30 sources, each framed by who paid for it."
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://zombie760.github.io/botwavebomba/"}, {"@type": "ListItem", "position": 2, "name": "Story \\u2014 BOTWAVEBOMBA"}]
+      }
+    ]
+  }
+  </script>
+
 </head>
 <body>
   <a class="bwb-skip-link" href="#main-content">Skip to content</a>
@@ -311,5 +341,15 @@
     setTheme(current === 'dark' ? 'light' : 'dark');
   });
   </script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/botwavebomba/service-worker.js')
+        .then(function (r) { console.log('[bwb] sw registered'); })
+        .catch(function (e) { console.error('[bwb] sw failed', e); });
+    });
+  }
+</script>
+
 </body>
 </html>

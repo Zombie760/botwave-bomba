@@ -1,1 +1,41 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Offline</title><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><style>body{font-family:sans-serif;padding:2rem;background:#fafafa;color:#333;}</style></head><body><h1>Offline</h1><p>Botwave Bomba is currently offline. Connect to the internet to refresh data.</p></body></html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Offline</title><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><style>body{font-family:sans-serif;padding:2rem;background:#fafafa;color:#333;}</style>
+  <link rel="canonical" href="https://zombie760.github.io/botwavebomba/offline.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="BotwaveBomba">
+  <meta property="og:title" content="Offline">
+  <meta property="og:description" content="BotwaveBomba is currently offline. Connect to the internet to refresh data.">
+  <meta property="og:url" content="https://zombie760.github.io/botwavebomba/offline.html">
+  <meta property="og:image" content="https://zombie760.github.io/botwavebomba/assets/logos/default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Offline">
+  <meta name="twitter:description" content="BotwaveBomba is currently offline. Connect to the internet to refresh data.">
+  <meta name="twitter:image" content="https://zombie760.github.io/botwavebomba/assets/logos/default.png">
+  <link rel="manifest" href="/botwavebomba/manifest.json">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "Offline",
+        "url": "https://zombie760.github.io/botwavebomba/offline.html",
+        "description": "BotwaveBomba is currently offline. Connect to the internet to refresh data."
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://zombie760.github.io/botwavebomba/"}, {"@type": "ListItem", "position": 2, "name": "Offline"}]
+      }
+    ]
+  }
+  </script>
+</head><body><h1>Offline</h1><p>Botwave Bomba is currently offline. Connect to the internet to refresh data.</p>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/botwavebomba/service-worker.js')
+        .then(function (r) { console.log('[bwb] sw registered'); })
+        .catch(function (e) { console.error('[bwb] sw failed', e); });
+    });
+  }
+</script>
+</body></html>

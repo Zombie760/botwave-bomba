@@ -1,0 +1,22 @@
+{
+  "name": "BotwaveBomba",
+  "short_name": "Bomba",
+  "description": "Global coverage gaps, named sources. Five-axis bias fingerprints.",
+  "start_url": "/botwavebomba/",
+  "display": "standalone",
+  "background_color": "#fafafa",
+  "theme_color": "#2563eb",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/botwavebomba/assets/logos/default.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/botwavebomba/assets/logos/default.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -172,6 +172,19 @@
 
   async function load() {
     if (latest) return latest;
+    return loadFromApi();
+  }
+
+  async function loadFromApi() {
+    const bootstrapUrl = url('/api/bootstrap');
+    try {
+      const boot = await fetchJson(bootstrapUrl);
+      if (boot && boot.stories && boot.sources) {
+        return processPipeline(boot, { sources: boot.sources, generated_at: boot.generated_at }, boot.ownership || []);
+      }
+    } catch (e) {
+      console.warn('Bootstrap API failed, falling back:', e);
+    }
     const [storiesJson, sourcesJson, ownershipJson] = await Promise.all([
       fetchJson('/api/stories_clustered.json'),
       fetchJson('/api/sources_real_seed.json'),
@@ -182,17 +195,20 @@
 
   (function readBootstrap() {
     const el = document.getElementById('bwb-bootstrap-data');
-    if (!el) return;
-    try {
-      const raw = el.textContent || '';
-      const decoded = el.dataset.encoding === 'base64' ? atob(raw) : raw;
-      const boot = JSON.parse(decoded);
-      if (boot.stories && Array.isArray(boot.stories) && boot.sources && Array.isArray(boot.sources)) {
-        processPipeline(boot, { sources: boot.sources, generated_at: boot.generated_at }, boot.ownership || []);
+    if (el) {
+      try {
+        const raw = el.textContent || '';
+        const decoded = el.dataset.encoding === 'base64' ? atob(raw) : raw;
+        const boot = JSON.parse(decoded);
+        if (boot.stories && Array.isArray(boot.stories) && boot.sources && Array.isArray(boot.sources)) {
+          processPipeline(boot, { sources: boot.sources, generated_at: boot.generated_at }, boot.ownership || []);
+          return;
+        }
+      } catch (e) {
+        console.warn('BWB bootstrap parse failed:', e);
       }
-    } catch (e) {
-      console.warn('BWB bootstrap parse failed:', e);
     }
+    loadFromApi().catch(() => {});
   })();
 
   window.BWB_API = {
@@ -207,6 +223,13 @@
     async getOwnership() {
       if (!ownership) await load();
       return ownership;
+    },
+    async refresh() {
+      latest = null;
+      sources = null;
+      ownership = null;
+      ownershipByDomain = {};
+      return load();
     },
   };
 })();

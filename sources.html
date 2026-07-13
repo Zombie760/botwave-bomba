@@ -9,6 +9,36 @@
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="canonical" href="https://zombie760.github.io/botwavebomba/sources.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="BotwaveBomba">
+  <meta property="og:title" content="Sources · BotwaveBomba">
+  <meta property="og:description" content="Outlet registry and ownership index for BotwaveBomba coverage.">
+  <meta property="og:url" content="https://zombie760.github.io/botwavebomba/sources.html">
+  <meta property="og:image" content="https://zombie760.github.io/botwavebomba/assets/logos/default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sources · BotwaveBomba">
+  <meta name="twitter:description" content="Outlet registry and ownership index for BotwaveBomba coverage.">
+  <meta name="twitter:image" content="https://zombie760.github.io/botwavebomba/assets/logos/default.png">
+  <link rel="manifest" href="/botwavebomba/manifest.json">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "Sources · BotwaveBomba",
+        "url": "https://zombie760.github.io/botwavebomba/sources.html",
+        "description": "Outlet registry and ownership index for BotwaveBomba coverage."
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://zombie760.github.io/botwavebomba/"}, {"@type": "ListItem", "position": 2, "name": "Sources \u00b7 BotwaveBomba"}]
+      }
+    ]
+  }
+  </script>
+
 </head>
 <body>
   <a class="bwb-skip-link" href="#main-content">Skip to content</a>
@@ -102,5 +132,15 @@
         });
     })();
   </script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/botwavebomba/service-worker.js')
+        .then(function (r) { console.log('[bwb] sw registered'); })
+        .catch(function (e) { console.error('[bwb] sw failed', e); });
+    });
+  }
+</script>
+
 </body>
 </html>
