@@ -1,0 +1,7 @@
+api/*.json
+assets/**/*
+node_modules
+dist
+*.html
+scripts/lib/dispatch.ts
+bun.lock

@@ -12,9 +12,9 @@ export interface Asset {
   factuality?: string;
   owner?: string;
   // Tradecraft fields
-  lean?: 'left' | 'center' | 'right';
-  vetting?: 'high' | 'mixed' | 'low';
-  tone?: 'neutral' | 'sensationalist' | 'opinion';
+  lean?: "left" | "center" | "right";
+  vetting?: "high" | "mixed" | "low";
+  tone?: "neutral" | "sensationalist" | "opinion";
   funding?: string;
   independence?: string;
   paywall?: string;
@@ -167,12 +167,12 @@ export function getMoneyTrail(): MoneyTrailLink[] {
   // Fallback: derive ownership trail from sources if available
   const sources = getAssets();
   return sources
-    .filter(s => s.owner || s.handler)
-    .map(s => ({
+    .filter((s) => s.owner || s.handler)
+    .map((s) => ({
       domain: s.name,
       handler: s.handler || s.owner,
-      handlerType: 'owner',
-      motive: s.funding || 'commercial',
+      handlerType: "owner",
+      motive: s.funding || "commercial",
       evidenceUrl: s.url,
     }));
 }
@@ -184,9 +184,9 @@ export function getMeta(): Meta {
     assetCountTotal: 0,
     assetRegistryCount: 0,
     theaterCount: 0,
-    alignmentSpread: { western: 0, 'non-aligned': 0, adversarial: 0 },
+    alignmentSpread: { western: 0, "non-aligned": 0, adversarial: 0 },
     diversityScore: 0,
-    silentSectorHeadline: "Live coverage summary loading."
+    silentSectorHeadline: "Live coverage summary loading.",
   });
 }
 
@@ -204,19 +204,21 @@ export function getMoneyTrailByDomain(): Record<string, MoneyTrailLink> {
 }
 
 export function normAlignment(alignment?: string): string {
-  const a = String(alignment || 'other').toLowerCase().replace(/_/g, '-');
-  if (a === 'western') return 'western';
-  if (a === 'non-aligned' || a === 'nonaligned' || a === 'neutral') return 'non-aligned';
-  if (a === 'adversarial') return 'adversarial';
-  return 'other';
+  const a = String(alignment || "other")
+    .toLowerCase()
+    .replace(/_/g, "-");
+  if (a === "western") return "western";
+  if (a === "non-aligned" || a === "nonaligned" || a === "neutral") return "non-aligned";
+  if (a === "adversarial") return "adversarial";
+  return "other";
 }
 
 export function getDomain(url?: string): string {
   try {
-    if (!url) return '';
-    return new URL(url).hostname.replace(/^www\./, '');
+    if (!url) return "";
+    return new URL(url).hostname.replace(/^www\./, "");
   } catch {
-    return '';
+    return "";
   }
 }
 
@@ -224,7 +226,7 @@ export function formatTimeAgo(date?: string | Date): string {
   const then = date ? new Date(date).getTime() : Date.now();
   const now = Date.now();
   const seconds = Math.max(0, Math.floor((now - then) / 1000));
-  if (seconds < 60) return 'just now';
+  if (seconds < 60) return "just now";
   const minutes = Math.floor(seconds / 60);
   if (minutes < 60) return `${minutes}m ago`;
   const hours = Math.floor(minutes / 60);
@@ -234,8 +236,17 @@ export function formatTimeAgo(date?: string | Date): string {
   return `${Math.floor(days / 7)}w ago`;
 }
 
-export function pickTopHeadlines(pkg: SigintPackage, n = 3): { asset: string; theater: string; alignment: string; headline: string; url: string }[] {
-  const out: { asset: string; theater: string; alignment: string; headline: string; url: string }[] = [];
+export function pickTopHeadlines(
+  pkg: SigintPackage,
+  n = 3
+): { asset: string; theater: string; alignment: string; headline: string; url: string }[] {
+  const out: {
+    asset: string;
+    theater: string;
+    alignment: string;
+    headline: string;
+    url: string;
+  }[] = [];
   const seen = new Set<string>();
   const topHeadlines = pkg.topHeadlines || pkg.top_headlines || [];
   for (let i = 0; i < Math.min(pkg.sources.length, n * 2); i++) {
@@ -244,12 +255,12 @@ export function pickTopHeadlines(pkg: SigintPackage, n = 3): { asset: string; th
     const key = `${s.name}|${s.country}`;
     if (seen.has(key)) continue;
     seen.add(key);
-    const idx = pkg.sources.findIndex(x => x.name === s.name && x.country === s.country);
+    const idx = pkg.sources.findIndex((x) => x.name === s.name && x.country === s.country);
     out.push({
       asset: s.name,
       theater: s.country,
       alignment: normAlignment(s.alignment),
-      headline: topHeadlines[idx] || topHeadlines[i] || '',
+      headline: topHeadlines[idx] || topHeadlines[i] || "",
       url: s.url,
     });
     if (out.length >= n) break;
@@ -266,7 +277,7 @@ export function sectorUrl(id: string): string {
 }
 
 export function portadaUrl(): string {
-  return '/botwavebomba/';
+  return "/botwavebomba/";
 }
 
 // Backward-compatible aliases used by legacy modules and during migration

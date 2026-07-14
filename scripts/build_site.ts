@@ -1,8 +1,24 @@
 #!/usr/bin/env bun
 // BotwaveBomba static site generator
 import { readFileSync, writeFileSync } from "node:fs";
-import { Story, getStories, getSources, getMeta, getDomain, normBloc, storyUrl, sectionUrl, homeUrl, getOwnershipByDomain } from "./lib/data.ts";
-import { SECTIONS, classifyAlignment, getActiveFrequencies, getStoriesByAlignment } from "./lib/alignment.ts";
+import {
+  Story,
+  getStories,
+  getSources,
+  getMeta,
+  getDomain,
+  normBloc,
+  storyUrl,
+  sectionUrl,
+  homeUrl,
+  getOwnershipByDomain,
+} from "./lib/data.ts";
+import {
+  SECTIONS,
+  classifyAlignment,
+  getActiveFrequencies,
+  getStoriesByAlignment,
+} from "./lib/alignment.ts";
 import { renderSigintCard, sortSigintByBlackSite } from "./lib/sigint-card.ts";
 import { detectBlackSites, getTopBlackSites, formatSilentSector } from "./lib/black-site.ts";
 import { scanRadar, getCountryRadar, normalizeIntensity } from "./lib/radar.ts";
@@ -13,15 +29,25 @@ const ROOT = `${import.meta.dir}/..`;
 const BASE = "/botwavebomba";
 const DOMAIN = "https://zombie760.github.io";
 
-
 // Rewrap existing content pages with shared chrome (skip if not present during local dev)
 const EXISTING_CONTENT: Record<string, { title: string; desc: string; body: string }> = (() => {
   const map: Record<string, { title: string; desc: string; body: string }> = {};
-  for (const page of ["sitrep.html", "asset-registry.html", "tradecraft.html", "pro.html", "errata.html", "sin-senal.html", "perdido.html"]) {
+  for (const page of [
+    "sitrep.html",
+    "asset-registry.html",
+    "tradecraft.html",
+    "pro.html",
+    "errata.html",
+    "sin-senal.html",
+    "perdido.html",
+  ]) {
     try {
       const text = readFileSync(`${ROOT}/${page}`, "utf8");
       const title = (text.match(/<title>([^<]+)<\/title>/i) || ["", page])[1];
-      const desc = (text.match(/<meta[^>]*name=["']description["'][^>]*content=["']([^"']+)/i) || ["", ""])[1];
+      const desc = (text.match(/<meta[^>]*name=["']description["'][^>]*content=["']([^"']+)/i) || [
+        "",
+        "",
+      ])[1];
       const bodyMatch = text.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
       const body = bodyMatch ? bodyMatch[1].trim() : "";
       map[page] = { title, desc, body };
@@ -33,19 +59,27 @@ const EXISTING_CONTENT: Record<string, { title: string; desc: string; body: stri
 function renderExisting(page: string, activeNav: string, jsonLd: object): string {
   const e = EXISTING_CONTENT[page];
   if (!e || !e.body) {
-    return chrome(activeNav, `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main bwb-prose"><h1>${escapeHtml(e?.title || page)}</h1><p>Content coming soon.</p></div></div>`, {
-      title: e?.title || page,
-      description: e?.desc || "BotwaveBomba",
-      canonical: `${DOMAIN}${BASE}/${page}`,
-      jsonLd
-    });
+    return chrome(
+      activeNav,
+      `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main bwb-prose"><h1>${escapeHtml(e?.title || page)}</h1><p>Content coming soon.</p></div></div>`,
+      {
+        title: e?.title || page,
+        description: e?.desc || "BotwaveBomba",
+        canonical: `${DOMAIN}${BASE}/${page}`,
+        jsonLd,
+      }
+    );
   }
-  return chrome(activeNav, `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">${e.body}</div></div>`, {
-    title: e.title,
-    description: e.desc,
-    canonical: `${DOMAIN}${BASE}/${page}`,
-    jsonLd
-  });
+  return chrome(
+    activeNav,
+    `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">${e.body}</div></div>`,
+    {
+      title: e.title,
+      description: e.desc,
+      canonical: `${DOMAIN}${BASE}/${page}`,
+      jsonLd,
+    }
+  );
 }
 
 function escapeHtml(s: string | number | undefined): string {
@@ -53,7 +87,7 @@ function escapeHtml(s: string | number | undefined): string {
     .replace(/&/g, "&")
     .replace(/</g, "<")
     .replace(/>/g, ">")
-    .replace(/"/g, "\"")
+    .replace(/"/g, '"')
     .replace(/'/g, "'");
 }
 
@@ -106,18 +140,24 @@ function headMeta(opts: {
 `;
 }
 
-function chrome(activeNav: string, body: string, opts: {
-  title: string;
-  description: string;
-  canonical: string;
-  ogType?: string;
-  jsonLd?: object;
-}) {
+function chrome(
+  activeNav: string,
+  body: string,
+  opts: {
+    title: string;
+    description: string;
+    canonical: string;
+    ogType?: string;
+    jsonLd?: object;
+  }
+) {
   const activeFrequencies = getActiveFrequencies();
-  const trendingHtml = activeFrequencies.map(t => {
-    const href = sectionUrl("world") + `?q=${encodeURIComponent(t.label)}`;
-    return `<a href="${href}">${escapeHtml(t.label)}</a><button class="bwb-follow-btn" data-topic="${escapeHtml(t.id)}" aria-label="Follow ${escapeHtml(t.label)}">Follow</button>`;
-  }).join("");
+  const trendingHtml = activeFrequencies
+    .map((t) => {
+      const href = sectionUrl("world") + `?q=${encodeURIComponent(t.label)}`;
+      return `<a href="${href}">${escapeHtml(t.label)}</a><button class="bwb-follow-btn" data-topic="${escapeHtml(t.id)}" aria-label="Follow ${escapeHtml(t.label)}">Follow</button>`;
+    })
+    .join("");
 
   const navItems = [
     { id: "home", label: "PORTADA", href: homeUrl() },
@@ -130,10 +170,12 @@ function chrome(activeNav: string, body: string, opts: {
     { id: "tradecraft", label: "TRADECRAFT", href: sectionUrl("tradecraft") },
     { id: "sitrep", label: "SITREP", href: sectionUrl("sitrep") },
   ];
-  const navHtml = navItems.map(n => {
-    const current = n.id === activeNav ? ' aria-current="page"' : "";
-    return `<a href="${n.href}" data-nav="${n.id}"${current}>${escapeHtml(n.label)}</a>`;
-  }).join("");
+  const navHtml = navItems
+    .map((n) => {
+      const current = n.id === activeNav ? ' aria-current="page"' : "";
+      return `<a href="${n.href}" data-nav="${n.id}"${current}>${escapeHtml(n.label)}</a>`;
+    })
+    .join("");
 
   return `<!doctype html>
 <html lang="en" data-theme="auto">
@@ -196,28 +238,40 @@ function chrome(activeNav: string, body: string, opts: {
 function renderAlignmentsBar(counts: Record<string, number>): string {
   const total = Object.values(counts).reduce((a, b) => a + b, 0) || 1;
   const segs = ["western", "non-aligned", "adversarial", "other"]
-    .map(k => {
+    .map((k) => {
       const pct = ((counts[k] || 0) / total) * 100;
       if (!pct) return "";
       return `<div class="bwb-alignments-seg ${k}" style="width:${pct.toFixed(2)}%" data-label="${escapeHtml(k)} ${counts[k]}"></div>`;
-    }).join("");
+    })
+    .join("");
   return `<div class="bwb-alignments-bar" aria-label="Alignment mix">${segs || '<div class="bwb-alignments-seg other" style="width:100%"></div>'}</div>`;
 }
 
 function renderSigintCardHtml(story: Story, extraFilters: string[] = []): string {
   const card = renderSigintCard(story);
   const alignments = classifyAlignment(story).join(" ");
-  const filters = [...extraFilters, ...card.badges.map(b => b.toLowerCase().replace(/\s+/g, "-"))].join(" ");
-  const badgeHtml = card.badges.slice(0, 2).map(b => `<span class="bwb-sigint-card-alignment ${card.topAlignment}">${escapeHtml(b)}</span>`).join("");
-  const sources = story.sources.slice(0, 8).map((s, i) => {
-    const alignment = normBloc(s.bloc);
-    return `<li class="bwb-card-source-row ${alignment}">
+  const filters = [
+    ...extraFilters,
+    ...card.badges.map((b) => b.toLowerCase().replace(/\s+/g, "-")),
+  ].join(" ");
+  const badgeHtml = card.badges
+    .slice(0, 2)
+    .map(
+      (b) => `<span class="bwb-sigint-card-alignment ${card.topAlignment}">${escapeHtml(b)}</span>`
+    )
+    .join("");
+  const sources = story.sources
+    .slice(0, 8)
+    .map((s, i) => {
+      const alignment = normBloc(s.bloc);
+      return `<li class="bwb-card-source-row ${alignment}">
       <span class="bwb-card-source-alignment ${alignment}"></span>
       <span class="bwb-card-source-name">${escapeHtml(s.name)}</span>
       <span class="bwb-card-source-theater">${escapeHtml(s.country)}</span>
       <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener" aria-label="Open ${escapeHtml(s.name)} source">↗</a>
     </li>`;
-  }).join("");
+    })
+    .join("");
 
   return `<article class="bwb-sigint-card" data-alignments="${alignments}" data-filters="${filters}">
   <a class="bwb-sigint-card-link" href="${card.url}" aria-label="Read full intercept of: ${escapeHtml(card.headline)}">
@@ -244,12 +298,16 @@ function renderSigintCardHtml(story: Story, extraFilters: string[] = []): string
 
 function renderHero(story: Story): string {
   const card = renderSigintCard(story);
-  const sources = card.heroAssets.map(h => `
+  const sources = card.heroAssets
+    .map(
+      (h) => `
     <article class="bwb-hero-asset ${h.alignment}">
       <cite>${escapeHtml(h.asset)} · ${escapeHtml(h.theater)}</cite>
       <p>${escapeHtml(h.headline)}</p>
     </article>
-  `).join("");
+  `
+    )
+    .join("");
 
   return `<section class="bwb-hero" aria-labelledby="hero-title">
   <div class="bwb-hero-inner">
@@ -273,16 +331,18 @@ function renderSitrep(stories: Story[]): string {
   const sorted = sortSigintByBlackSite(stories).slice(0, 5);
   const totalAssets = sorted.reduce((a, s) => a + (s.source_count || s.sources.length), 0);
   const readMin = Math.max(1, Math.round(totalAssets * 0.15));
-  const items = sorted.map(s => {
-    const card = renderSigintCard(s);
-    return `<a href="${card.url}" class="bwb-sitrep-item">
+  const items = sorted
+    .map((s) => {
+      const card = renderSigintCard(s);
+      return `<a href="${card.url}" class="bwb-sitrep-item">
       <img src="${asset("/assets/logos/default.png")}" alt="" loading="lazy">
       <div>
         <h3>${escapeHtml(card.headline)}</h3>
         <p>${card.assetCount} assets · ${card.theaterCount} theaters</p>
       </div>
     </a>`;
-  }).join("");
+    })
+    .join("");
 
   return `<section class="bwb-sitrep" aria-labelledby="sitrep-title">
   <h2 id="sitrep-title">SITREP</h2>
@@ -300,10 +360,12 @@ function renderFilters(activeFilter = "all"): string {
     { id: "adversarial-heavy", label: "ADVERSARIAL HEAVY" },
     { id: "global", label: "GLOBAL" },
   ];
-  return filters.map(f => {
-    const cls = f.id === activeFilter ? "active" : "";
-    return `<button class="bwb-filter-btn ${cls}" data-filter="${f.id}">${escapeHtml(f.label)}</button>`;
-  }).join("");
+  return filters
+    .map((f) => {
+      const cls = f.id === activeFilter ? "active" : "";
+      return `<button class="bwb-filter-btn ${cls}" data-filter="${f.id}">${escapeHtml(f.label)}</button>`;
+    })
+    .join("");
 }
 
 function renderSectionHeader(section: { id: string; label: string; description: string }): string {
@@ -321,14 +383,17 @@ function renderSigintGrid(stories: Story[], sectionId: string): string {
       <p>Check the <a href="${homeUrl()}">PORTADA</a> or <a href="${sectionUrl("black-site")}">BLACK SITE</a> feed for the latest packages.</p>
     </div>`;
   }
-  const cards = stories.map(s => renderSigintCardHtml(s, [sectionId])).join("");
+  const cards = stories.map((s) => renderSigintCardHtml(s, [sectionId])).join("");
   return `<div class="bwb-grid">${cards}</div>`;
 }
 
 function renderPortada(stories: Story[]): string {
   const featured = sortSigintByBlackSite(stories)[0] || stories[0];
-  const rest = stories.filter(s => s.id !== featured?.id);
-  const restCards = sortSigintByBlackSite(rest).slice(0, 12).map(s => renderSigintCardHtml(s)).join("");
+  const rest = stories.filter((s) => s.id !== featured?.id);
+  const restCards = sortSigintByBlackSite(rest)
+    .slice(0, 12)
+    .map((s) => renderSigintCardHtml(s))
+    .join("");
   return `${renderHero(featured)}
 <div class="bwb-layout">
   <aside class="bwb-sidebar" aria-label="Filters">
@@ -346,7 +411,7 @@ function renderPortada(stories: Story[]): string {
 }
 
 function renderSectorPage(sectionId: string, stories: Story[], allStories: Story[]): string {
-  const section = SECTIONS.find(s => s.id === sectionId)!;
+  const section = SECTIONS.find((s) => s.id === sectionId)!;
   const sectorStories = getStoriesByAlignment(allStories)[sectionId] || [];
   return `<div class="bwb-layout" style="grid-template-columns:1fr;">
   <div class="bwb-main">
@@ -365,16 +430,39 @@ function generate() {
 
   // Home - PORTADA
   const homeTitle = "BotwaveBomba — Global coverage gaps, named sources";
-  const homeDesc = "Not left/center/right. Five-axis bias fingerprints across Western, Adversarial, and Non-Aligned blocs. The gap IS the story.";
+  const homeDesc =
+    "Not left/center/right. Five-axis bias fingerprints across Western, Adversarial, and Non-Aligned blocs. The gap IS the story.";
   const homeLd = {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "WebSite", "name": "BotwaveBomba", "url": pageUrl("index"), "description": homeDesc },
-      { "@type": "NewsMediaOrganization", "name": "BotwaveBomba", "url": pageUrl("index"), "sameAs": ["https://t.me/botwave_news"], "foundingDate": "2026" },
-      { "@type": "ItemList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"BLACK SITE"}, {"@type":"ListItem", "position":2, "name":"RADAR"}, {"@type":"ListItem", "position":3, "name":"SPOOL"}, {"@type":"ListItem", "position":4, "name":"DEAD DROP"}] }
-    ]
+      { "@type": "WebSite", name: "BotwaveBomba", url: pageUrl("index"), description: homeDesc },
+      {
+        "@type": "NewsMediaOrganization",
+        name: "BotwaveBomba",
+        url: pageUrl("index"),
+        sameAs: ["https://t.me/botwave_news"],
+        foundingDate: "2026",
+      },
+      {
+        "@type": "ItemList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "BLACK SITE" },
+          { "@type": "ListItem", position: 2, name: "RADAR" },
+          { "@type": "ListItem", position: 3, name: "SPOOL" },
+          { "@type": "ListItem", position: 4, name: "DEAD DROP" },
+        ],
+      },
+    ],
   };
-  write("index.html", chrome("home", renderPortada(stories), { title: homeTitle, description: homeDesc, canonical: pageUrl("index"), jsonLd: homeLd }));
+  write(
+    "index.html",
+    chrome("home", renderPortada(stories), {
+      title: homeTitle,
+      description: homeDesc,
+      canonical: pageUrl("index"),
+      jsonLd: homeLd,
+    })
+  );
   publicPages.push({ page: "index", title: homeTitle, desc: homeDesc });
 
   // Sector pages
@@ -384,44 +472,75 @@ function generate() {
     const ld = {
       "@context": "https://schema.org",
       "@graph": [
-        { "@type": "WebPage", "name": title, "url": pageUrl(section.id), "description": desc },
-        { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":section.label}] }
-      ]
+        { "@type": "WebPage", name: title, url: pageUrl(section.id), description: desc },
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "PORTADA", item: pageUrl("index") },
+            { "@type": "ListItem", position: 2, name: section.label },
+          ],
+        },
+      ],
     };
-    write(`${section.id}.html`, chrome(section.id, renderSectorPage(section.id, byAlignment[section.id] || [], stories), { title, description: desc, canonical: pageUrl(section.id), jsonLd: ld }));
+    write(
+      `${section.id}.html`,
+      chrome(section.id, renderSectorPage(section.id, byAlignment[section.id] || [], stories), {
+        title,
+        description: desc,
+        canonical: pageUrl(section.id),
+        jsonLd: ld,
+      })
+    );
     publicPages.push({ page: section.id, title, desc });
   }
 
   // Static / content pages
-  const staticPages = ["tradecraft.html", "pro.html", "errata.html", "sin-senal.html", "perdido.html"];
+  const staticPages = [
+    "tradecraft.html",
+    "pro.html",
+    "errata.html",
+    "sin-senal.html",
+    "perdido.html",
+  ];
   for (const page of staticPages) {
-    const e = EXISTING_CONTENT[page] || { title: page.replace('.html', '').toUpperCase(), desc: "BotwaveBomba", body: "" };
+    const e = EXISTING_CONTENT[page] || {
+      title: page.replace(".html", "").toUpperCase(),
+      desc: "BotwaveBomba",
+      body: "",
+    };
     const id = page.replace(".html", "");
     const navId = id === "perdido" ? "home" : id;
     const ld = {
       "@context": "https://schema.org",
       "@graph": [
-        { "@type": "WebPage", "name": e.title, "url": `${DOMAIN}${BASE}/${page}`, "description": e.desc },
-        { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":e.title}] }
-      ]
+        { "@type": "WebPage", name: e.title, url: `${DOMAIN}${BASE}/${page}`, description: e.desc },
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "PORTADA", item: pageUrl("index") },
+            { "@type": "ListItem", position: 2, name: e.title },
+          ],
+        },
+      ],
     };
     write(page, renderExisting(page, navId, ld));
     publicPages.push({ page: id, title: e.title, desc: e.desc });
   }
 
-
   // Asset Registry page
   function renderAssetRegistry(): string {
     const sources = getSources().slice(0, 120);
-    const rows = sources.map(s => {
-      const alignment = normBloc(s.bloc);
-      return `<tr>
+    const rows = sources
+      .map((s) => {
+        const alignment = normBloc(s.bloc);
+        return `<tr>
         <td><span class="bwb-card-source-alignment ${alignment}"></span> ${escapeHtml(s.name)}</td>
         <td>${escapeHtml(s.country)}</td>
         <td>${escapeHtml(alignment)}</td>
         <td><a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(getDomain(s.url))}</a></td>
       </tr>`;
-    }).join("");
+      })
+      .join("");
     return `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">
       <div class="bwb-section-header"><span class="bwb-section-kicker">REGISTRY</span><h1>ASSET REGISTRY</h1><p>The outlets clustered across Western, Non-Aligned, and Adversarial alignments. Every domain is a known asset, not a hidden algorithm.</p></div>
       <div style="overflow-x:auto;">
@@ -432,27 +551,107 @@ function generate() {
       </div>
     </div></div>`;
   }
-  const assetRegistryLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Asset Registry — BotwaveBomba", "url": pageUrl("asset-registry"), "description": "Named asset registry across alignments." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":"Asset Registry"}] }] };
-  write("asset-registry.html", chrome("asset-registry", renderAssetRegistry(), { title: "Asset Registry — BotwaveBomba", description: "Named asset registry across Western, Non-Aligned, and Adversarial alignments.", canonical: pageUrl("asset-registry"), jsonLd: assetRegistryLd }));
-  publicPages.push({ page: "asset-registry", title: "Asset Registry — BotwaveBomba", desc: "Named asset registry across alignments." });
+  const assetRegistryLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        name: "Asset Registry — BotwaveBomba",
+        url: pageUrl("asset-registry"),
+        description: "Named asset registry across alignments.",
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "PORTADA", item: pageUrl("index") },
+          { "@type": "ListItem", position: 2, name: "Asset Registry" },
+        ],
+      },
+    ],
+  };
+  write(
+    "asset-registry.html",
+    chrome("asset-registry", renderAssetRegistry(), {
+      title: "Asset Registry — BotwaveBomba",
+      description: "Named asset registry across Western, Non-Aligned, and Adversarial alignments.",
+      canonical: pageUrl("asset-registry"),
+      jsonLd: assetRegistryLd,
+    })
+  );
+  publicPages.push({
+    page: "asset-registry",
+    title: "Asset Registry — BotwaveBomba",
+    desc: "Named asset registry across alignments.",
+  });
 
   // Dead Drop page (client-only followed topics)
   const deadDropBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-section-header"><span class="bwb-section-kicker">PERSONALIZED</span><h1>DEAD DROP</h1><p>Signals from frequencies you monitor. Click "Follow" on any active frequency to build your personal feed. Monitored frequencies are stored only in your browser.</p></div><div id="dead-drop-feed" class="bwb-grid"></div></div></div>`;
-  const deadDropLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Dead Drop — BotwaveBomba", "url": pageUrl("dead-drop"), "description": "Your monitored frequencies and personalized intercept feed." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":"Dead Drop"}] }] };
-  write("dead-drop.html", chrome("dead-drop", deadDropBody, { title: "Dead Drop — BotwaveBomba", description: "Your monitored frequencies and personalized intercept feed.", canonical: pageUrl("dead-drop"), jsonLd: deadDropLd }));
+  const deadDropLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        name: "Dead Drop — BotwaveBomba",
+        url: pageUrl("dead-drop"),
+        description: "Your monitored frequencies and personalized intercept feed.",
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "PORTADA", item: pageUrl("index") },
+          { "@type": "ListItem", position: 2, name: "Dead Drop" },
+        ],
+      },
+    ],
+  };
+  write(
+    "dead-drop.html",
+    chrome("dead-drop", deadDropBody, {
+      title: "Dead Drop — BotwaveBomba",
+      description: "Your monitored frequencies and personalized intercept feed.",
+      canonical: pageUrl("dead-drop"),
+      jsonLd: deadDropLd,
+    })
+  );
 
   // SITREP landing page
   const sitrepBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">${renderSitrep(stories)}</div></div>`;
-  const sitrepLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "SITREP — BotwaveBomba", "url": pageUrl("sitrep"), "description": "Top coverage-gap intercepts of the day." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":"SITREP"}] }] };
-  write("sitrep.html", chrome("sitrep", sitrepBody, { title: "SITREP — BotwaveBomba", description: "Top coverage-gap intercepts of the day.", canonical: pageUrl("sitrep"), jsonLd: sitrepLd }));
+  const sitrepLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        name: "SITREP — BotwaveBomba",
+        url: pageUrl("sitrep"),
+        description: "Top coverage-gap intercepts of the day.",
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "PORTADA", item: pageUrl("index") },
+          { "@type": "ListItem", position: 2, name: "SITREP" },
+        ],
+      },
+    ],
+  };
+  write(
+    "sitrep.html",
+    chrome("sitrep", sitrepBody, {
+      title: "SITREP — BotwaveBomba",
+      description: "Top coverage-gap intercepts of the day.",
+      canonical: pageUrl("sitrep"),
+      jsonLd: sitrepLd,
+    })
+  );
 
   // BLACK SITE page
   const blackSiteIntel = getTopBlackSites(stories, 10);
   const blackSiteBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">
     <div class="bwb-section-header"><span class="bwb-section-kicker">BLACK SITE</span><h1>SILENT SECTORS</h1><p>Intercepts where one alignment has zero or near-zero presence. <strong>Western dark</strong> = intercepts Western assets ignore. <strong>Non-Aligned absent</strong> = Global South perspectives missing. <strong>Adversarial suppressed</strong> = narratives blocked in rival media spheres.</p></div>
-    <div class="bwb-grid">${blackSiteIntel.map(b => {
-      const card = renderSigintCard(b.sigintPackage);
-      return `<article class="bwb-sigint-card" data-filters="black-site">
+    <div class="bwb-grid">${blackSiteIntel
+      .map((b) => {
+        const card = renderSigintCard(b.sigintPackage);
+        return `<article class="bwb-sigint-card" data-filters="black-site">
         <a class="bwb-sigint-card-link" href="${card.url}">
           <div class="bwb-sigint-card-header">
             <span class="bwb-sigint-card-alignment ${b.silentSector}">${escapeHtml(formatSilentSector(b.silentSector))}</span>
@@ -470,15 +669,46 @@ function generate() {
           </div>
         </a>
       </article>`;
-    }).join("")}
+      })
+      .join("")}
     </div></div>`;
-  const blackSiteLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Black Site — BotwaveBomba", "url": pageUrl("black-site"), "description": "Intercepts where one media alignment has zero coverage. The gap IS the story." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":"Black Site"}] }] };
-  write("black-site.html", chrome("black-site", blackSiteBody, { title: "Black Site — BotwaveBomba", description: "Intercepts where one media alignment has zero coverage. The gap IS the story.", canonical: pageUrl("black-site"), jsonLd: blackSiteLd }));
-  publicPages.push({ page: "black-site", title: "Black Site — BotwaveBomba", desc: "Intercepts where one media alignment has zero coverage." });
+  const blackSiteLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        name: "Black Site — BotwaveBomba",
+        url: pageUrl("black-site"),
+        description:
+          "Intercepts where one media alignment has zero coverage. The gap IS the story.",
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "PORTADA", item: pageUrl("index") },
+          { "@type": "ListItem", position: 2, name: "Black Site" },
+        ],
+      },
+    ],
+  };
+  write(
+    "black-site.html",
+    chrome("black-site", blackSiteBody, {
+      title: "Black Site — BotwaveBomba",
+      description: "Intercepts where one media alignment has zero coverage. The gap IS the story.",
+      canonical: pageUrl("black-site"),
+      jsonLd: blackSiteLd,
+    })
+  );
+  publicPages.push({
+    page: "black-site",
+    title: "Black Site — BotwaveBomba",
+    desc: "Intercepts where one media alignment has zero coverage.",
+  });
 
   // RADAR page
   const countryRadar = getCountryRadar(stories);
-  const maxCount = Math.max(...Object.values(countryRadar).map(c => c.count), 1);
+  const maxCount = Math.max(...Object.values(countryRadar).map((c) => c.count), 1);
   const radarBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">
     <div class="bwb-section-header"><span class="bwb-section-kicker">RADAR SCAN</span><h1>GLOBAL SIGNAL DENSITY</h1><p>World map showing signal coverage intensity by country. Hotter = more assets covering signals from that theater. Hover for details.</p></div>
     <div id="radar-canvas" style="width:100%; height:500px; background:#f5f5f5; border-radius:8px; margin-top:16px; position:relative;"></div>
@@ -524,20 +754,64 @@ function generate() {
       <table class="bwb-sources-table" style="width:100%; font-size:var(--fs-sm);">
         <thead><tr style="border-bottom:2px solid var(--color-border); text-align:left;"><th>Theater</th><th>Signal Count</th><th>Alignment Mix</th><th>Top Signals</th></tr></thead>
         <tbody>
-          ${Object.entries(countryRadar).sort((a, b) => b[1].count - a[1].count).slice(0, 30).map(([country, info]) => `
+          ${Object.entries(countryRadar)
+            .sort((a, b) => b[1].count - a[1].count)
+            .slice(0, 30)
+            .map(
+              ([country, info]) => `
             <tr>
               <td>${escapeHtml(country)}</td>
               <td>${info.count}</td>
-              <td>${Object.entries(info.blocs).filter(([_, c]) => c > 0).map(([b, c]) => `<span class="bwb-card-source-alignment ${b}"></span>${c} ${b}`).join(' ')}</td>
-              <td>${info.topStories.slice(0, 2).map(id => `<a href="${sectionUrl('world')}?signal=${id}">${id.slice(0, 30)}...</a>`).join(', ')}</td>
-            </tr>`).join('')}
+              <td>${Object.entries(info.blocs)
+                .filter(([_, c]) => c > 0)
+                .map(([b, c]) => `<span class="bwb-card-source-alignment ${b}"></span>${c} ${b}`)
+                .join(" ")}</td>
+              <td>${info.topStories
+                .slice(0, 2)
+                .map(
+                  (id) => `<a href="${sectionUrl("world")}?signal=${id}">${id.slice(0, 30)}...</a>`
+                )
+                .join(", ")}</td>
+            </tr>`
+            )
+            .join("")}
         </tbody>
       </table>
     </div>
   </div></div>`;
-  const radarLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Radar — BotwaveBomba", "url": pageUrl("radar"), "description": "Global signal coverage intensity by theater. Visualize where media attention concentrates." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":"Radar"}] }] };
-  write("radar.html", chrome("radar", radarBody, { title: "Radar — BotwaveBomba", description: "Global signal coverage intensity by theater.", canonical: pageUrl("radar"), jsonLd: radarLd }));
-  publicPages.push({ page: "radar", title: "Radar — BotwaveBomba", desc: "Global signal coverage intensity by theater." });
+  const radarLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        name: "Radar — BotwaveBomba",
+        url: pageUrl("radar"),
+        description:
+          "Global signal coverage intensity by theater. Visualize where media attention concentrates.",
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "PORTADA", item: pageUrl("index") },
+          { "@type": "ListItem", position: 2, name: "Radar" },
+        ],
+      },
+    ],
+  };
+  write(
+    "radar.html",
+    chrome("radar", radarBody, {
+      title: "Radar — BotwaveBomba",
+      description: "Global signal coverage intensity by theater.",
+      canonical: pageUrl("radar"),
+      jsonLd: radarLd,
+    })
+  );
+  publicPages.push({
+    page: "radar",
+    title: "Radar — BotwaveBomba",
+    desc: "Global signal coverage intensity by theater.",
+  });
 
   // SPOOL page
   const chronosEntries = spoolChronos(stories);
@@ -553,41 +827,113 @@ function generate() {
           <th>INTERCEPT</th>
         </tr></thead>
         <tbody>
-          ${Object.entries(groupedChronos).sort((a, b) => b[0].localeCompare(a[0])).slice(0, 14).map(([date, entries]) => `
+          ${Object.entries(groupedChronos)
+            .sort((a, b) => b[0].localeCompare(a[0]))
+            .slice(0, 14)
+            .map(
+              ([date, entries]) => `
             <tr style="border-bottom:1px solid var(--color-border);">
               <td style="font-weight:600;">${escapeHtml(formatChronosDate(date))}</td>
               <td>${entries.reduce((sum, e) => sum + e.assetCount, 0)}</td>
               <td>
                 <div class="bwb-alignments-bar" style="height:16px;">
-                  ${['western', 'non-aligned', 'adversarial'].map(a => {
-                    const total = entries.reduce((s, e) => s + (e.alignmentSpread[a] || 0), 0);
-                    const pct = entries.reduce((s, e) => s + e.assetCount, 0) || 1;
-                    return `<div class="bwb-alignments-seg ${a}" style="width:${(total/pct)*100}%"></div>`;
-                  }).join('')}
+                  ${["western", "non-aligned", "adversarial"]
+                    .map((a) => {
+                      const total = entries.reduce((s, e) => s + (e.alignmentSpread[a] || 0), 0);
+                      const pct = entries.reduce((s, e) => s + e.assetCount, 0) || 1;
+                      return `<div class="bwb-alignments-seg ${a}" style="width:${(total / pct) * 100}%"></div>`;
+                    })
+                    .join("")}
                 </div>
               </td>
-              <td>${entries.map(e => `<a href="${storyUrl(e.sigintId)}">${escapeHtml(e.headline)}</a> <span style="color:var(--color-muted);">(${e.theaters.join(', ')})</span>`).join('<br>')}</td>
-            </tr>`).join('')}
+              <td>${entries.map((e) => `<a href="${storyUrl(e.sigintId)}">${escapeHtml(e.headline)}</a> <span style="color:var(--color-muted);">(${e.theaters.join(", ")})</span>`).join("<br>")}</td>
+            </tr>`
+            )
+            .join("")}
         </tbody>
       </table>
     </div>
   </div></div>`;
-  const spoolLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Spool — BotwaveBomba", "url": pageUrl("spool"), "description": "Track intercept coverage evolution over time across media alignments." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":"Spool"}] }] };
-  write("spool.html", chrome("spool", spoolBody, { title: "Spool — BotwaveBomba", description: "Track intercept coverage evolution over time across media alignments.", canonical: pageUrl("spool"), jsonLd: spoolLd }));
-  publicPages.push({ page: "spool", title: "Spool — BotwaveBomba", desc: "Track intercept coverage evolution over time." });
+  const spoolLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        name: "Spool — BotwaveBomba",
+        url: pageUrl("spool"),
+        description: "Track intercept coverage evolution over time across media alignments.",
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "PORTADA", item: pageUrl("index") },
+          { "@type": "ListItem", position: 2, name: "Spool" },
+        ],
+      },
+    ],
+  };
+  write(
+    "spool.html",
+    chrome("spool", spoolBody, {
+      title: "Spool — BotwaveBomba",
+      description: "Track intercept coverage evolution over time across media alignments.",
+      canonical: pageUrl("spool"),
+      jsonLd: spoolLd,
+    })
+  );
+  publicPages.push({
+    page: "spool",
+    title: "Spool — BotwaveBomba",
+    desc: "Track intercept coverage evolution over time.",
+  });
 
   // NUMBERS STATION page + API
   const numbersStationHtml = broadcastNumbersStation(stories);
   write("numbers-station.html", numbersStationHtml);
   writeJson("api/numbers-station_latest.json", {
-    id: `numbers-station-${new Date().toISOString().split('T')[0]}`,
-    date: new Date().toISOString().split('T')[0],
-    title: `NISA Numbers Station ${new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}`,
-    html: numbersStationHtml
+    id: `numbers-station-${new Date().toISOString().split("T")[0]}`,
+    date: new Date().toISOString().split("T")[0],
+    title: `NISA Numbers Station ${new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}`,
+    html: numbersStationHtml,
   });
-  const numbersStationLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Numbers Station — BotwaveBomba", "url": pageUrl("numbers-station"), "description": "NISA Numbers Station: critical black sites, radar snapshot, silent sector alerts." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":"Numbers Station"}] }] };
-  write("numbers-station.html", chrome("numbers-station", `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">${numbersStationHtml}</div></div>`, { title: "Numbers Station — BotwaveBomba", description: "NISA Numbers Station: critical black sites, radar snapshot, silent sector alerts.", canonical: pageUrl("numbers-station"), jsonLd: numbersStationLd }));
-  publicPages.push({ page: "numbers-station", title: "Numbers Station — BotwaveBomba", desc: "NISA Numbers Station: critical black sites, radar snapshot, silent sector alerts." });
+  const numbersStationLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        name: "Numbers Station — BotwaveBomba",
+        url: pageUrl("numbers-station"),
+        description:
+          "NISA Numbers Station: critical black sites, radar snapshot, silent sector alerts.",
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "PORTADA", item: pageUrl("index") },
+          { "@type": "ListItem", position: 2, name: "Numbers Station" },
+        ],
+      },
+    ],
+  };
+  write(
+    "numbers-station.html",
+    chrome(
+      "numbers-station",
+      `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">${numbersStationHtml}</div></div>`,
+      {
+        title: "Numbers Station — BotwaveBomba",
+        description:
+          "NISA Numbers Station: critical black sites, radar snapshot, silent sector alerts.",
+        canonical: pageUrl("numbers-station"),
+        jsonLd: numbersStationLd,
+      }
+    )
+  );
+  publicPages.push({
+    page: "numbers-station",
+    title: "Numbers Station — BotwaveBomba",
+    desc: "NISA Numbers Station: critical black sites, radar snapshot, silent sector alerts.",
+  });
 
   // Asset Transparency page (ownership, funding, vetting badges)
   const ownership = getOwnershipByDomain();
@@ -599,15 +945,25 @@ function generate() {
           <th>Asset</th><th>Theater</th><th>Alignment</th><th>Lean</th><th>Vetting</th><th>Funding</th><th>Paywall</th><th>Handler</th><th>Domain</th>
         </tr></thead>
         <tbody>
-          ${getSources().slice(0, 120).map(s => {
-            const alignment = normBloc(s.bloc);
-            const lean = s.bias || 'unknown';
-            const vetting = s.factuality || 'unknown';
-            const funding = s.funding || 'unknown';
-            const paywall = s.paywall || 'unknown';
-            const handler = ownership[getDomain(s.url)]?.owner || ownership[getDomain(s.url)]?.parent_company || 'Unknown';
-            const leanClass = lean === 'left' ? 'bwb-lean-left' : lean === 'right' ? 'bwb-lean-right' : 'bwb-lean-center';
-            return `<tr>
+          ${getSources()
+            .slice(0, 120)
+            .map((s) => {
+              const alignment = normBloc(s.bloc);
+              const lean = s.bias || "unknown";
+              const vetting = s.factuality || "unknown";
+              const funding = s.funding || "unknown";
+              const paywall = s.paywall || "unknown";
+              const handler =
+                ownership[getDomain(s.url)]?.owner ||
+                ownership[getDomain(s.url)]?.parent_company ||
+                "Unknown";
+              const leanClass =
+                lean === "left"
+                  ? "bwb-lean-left"
+                  : lean === "right"
+                    ? "bwb-lean-right"
+                    : "bwb-lean-center";
+              return `<tr>
               <td><span class="bwb-card-source-alignment ${alignment}"></span> ${escapeHtml(s.name)}</td>
               <td>${escapeHtml(s.country)}</td>
               <td>${escapeHtml(alignment)}</td>
@@ -618,14 +974,45 @@ function generate() {
               <td>${escapeHtml(handler)}</td>
               <td><a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(getDomain(s.url))}</a></td>
             </tr>`;
-          }).join('')}
+            })
+            .join("")}
         </tbody>
       </table>
     </div>
   </div></div>`;
-  const assetTransparencyLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Asset Transparency — BotwaveBomba", "url": pageUrl("asset-transparency"), "description": "Ownership, funding, vetting, and lean transparency for every asset in the registry." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":"Asset Transparency"}] }] };
-  write("asset-transparency.html", chrome("asset-transparency", assetTransparencyBody, { title: "Asset Transparency — BotwaveBomba", description: "Ownership, funding, vetting, and lean transparency for every asset.", canonical: pageUrl("asset-transparency"), jsonLd: assetTransparencyLd }));
-  publicPages.push({ page: "asset-transparency", title: "Asset Transparency — BotwaveBomba", desc: "Ownership, funding, vetting, and lean transparency for every asset." });
+  const assetTransparencyLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        name: "Asset Transparency — BotwaveBomba",
+        url: pageUrl("asset-transparency"),
+        description:
+          "Ownership, funding, vetting, and lean transparency for every asset in the registry.",
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "PORTADA", item: pageUrl("index") },
+          { "@type": "ListItem", position: 2, name: "Asset Transparency" },
+        ],
+      },
+    ],
+  };
+  write(
+    "asset-transparency.html",
+    chrome("asset-transparency", assetTransparencyBody, {
+      title: "Asset Transparency — BotwaveBomba",
+      description: "Ownership, funding, vetting, and lean transparency for every asset.",
+      canonical: pageUrl("asset-transparency"),
+      jsonLd: assetTransparencyLd,
+    })
+  );
+  publicPages.push({
+    page: "asset-transparency",
+    title: "Asset Transparency — BotwaveBomba",
+    desc: "Ownership, funding, vetting, and lean transparency for every asset.",
+  });
 
   // Tradecraft Transparency page
   const tradecraftBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main bwb-prose">
@@ -671,17 +1058,48 @@ function generate() {
     <p>"Dead Drop" feed is <strong>opt-in only</strong>. Monitored frequencies stored in <code>localStorage</code>. No server-side profiling. No tracking pixels in Numbers Station.</p>
 
     <h2>Errata Policy</h2>
-    <p>All corrections logged publicly at <a href="${sectionUrl('errata')}">Errata</a>. Each entry: original claim, correction, date, source intercept link.</p>
+    <p>All corrections logged publicly at <a href="${sectionUrl("errata")}">Errata</a>. Each entry: original claim, correction, date, source intercept link.</p>
 
     <h2>Data Sources & Refresh</h2>
     <p>RSS/Atom feeds from 100+ assets, polled every 4 hours. Clustering via embedding similarity (threshold 0.78). Alignment labels assigned at asset level, not per-intercept.</p>
   </div></div>`;
-  const tradecraftLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Tradecraft — BotwaveBomba", "url": pageUrl("tradecraft"), "description": "How we classify alignment, vetting, coverage gaps, and ownership. Full transparency." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":"Tradecraft"}] }] };
-  write("tradecraft.html", chrome("tradecraft", tradecraftBody, { title: "Tradecraft — BotwaveBomba", description: "How we classify alignment, vetting, coverage gaps, and ownership. Full transparency.", canonical: pageUrl("tradecraft"), jsonLd: tradecraftLd }));
-  publicPages.push({ page: "tradecraft", title: "Tradecraft — BotwaveBomba", desc: "How we classify alignment, vetting, coverage gaps, and ownership." });
+  const tradecraftLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        name: "Tradecraft — BotwaveBomba",
+        url: pageUrl("tradecraft"),
+        description:
+          "How we classify alignment, vetting, coverage gaps, and ownership. Full transparency.",
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "PORTADA", item: pageUrl("index") },
+          { "@type": "ListItem", position: 2, name: "Tradecraft" },
+        ],
+      },
+    ],
+  };
+  write(
+    "tradecraft.html",
+    chrome("tradecraft", tradecraftBody, {
+      title: "Tradecraft — BotwaveBomba",
+      description:
+        "How we classify alignment, vetting, coverage gaps, and ownership. Full transparency.",
+      canonical: pageUrl("tradecraft"),
+      jsonLd: tradecraftLd,
+    })
+  );
+  publicPages.push({
+    page: "tradecraft",
+    title: "Tradecraft — BotwaveBomba",
+    desc: "How we classify alignment, vetting, coverage gaps, and ownership.",
+  });
 
   // Search index
-  const searchIndex = stories.map(s => {
+  const searchIndex = stories.map((s) => {
     const card = renderSigintCard(s);
     return {
       id: s.id,
@@ -691,20 +1109,36 @@ function generate() {
       theater: card.topAsset?.country || "",
       alignment: classifyAlignment(s)[0] || "world",
       theaters: s.countries,
-      assets: s.sources.map(x => x.name),
+      assets: s.sources.map((x) => x.name),
     };
   });
   writeJson("api/search_index.json", searchIndex);
 
   // Update meta
-  const updatedMeta = { ...meta, generated_at: new Date().toISOString(), pages: publicPages.map(p => p.page), sector_count: SECTIONS.length, total_page_count: publicPages.length };
+  const updatedMeta = {
+    ...meta,
+    generated_at: new Date().toISOString(),
+    pages: publicPages.map((p) => p.page),
+    sector_count: SECTIONS.length,
+    total_page_count: publicPages.length,
+  };
   writeJson("api/meta.json", updatedMeta);
 
   // Sitemap
-  const urls = publicPages.map(p => `  <url><loc>${p.page === "index" ? pageUrl("index") : `${DOMAIN}${BASE}/${p.page}.html`}</loc></url>`).join("\n");
-  write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`);
+  const urls = publicPages
+    .map(
+      (p) =>
+        `  <url><loc>${p.page === "index" ? pageUrl("index") : `${DOMAIN}${BASE}/${p.page}.html`}</loc></url>`
+    )
+    .join("\n");
+  write(
+    "sitemap.xml",
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`
+  );
 
-  console.log(`[build_site] generated ${publicPages.length} pages, ${stories.length} intercepts, ${SECTIONS.length} sectors`);
+  console.log(
+    `[build_site] generated ${publicPages.length} pages, ${stories.length} intercepts, ${SECTIONS.length} sectors`
+  );
 }
 
 function write(path: string, content: string) {

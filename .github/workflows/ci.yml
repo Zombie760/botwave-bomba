@@ -10,7 +10,7 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: '0 2 * * 1'  # Weekly Monday 2 AM UTC
+    - cron: "0 2 * * 1" # Weekly Monday 2 AM UTC
   workflow_dispatch: {}
 
 permissions:
@@ -53,21 +53,11 @@ jobs:
         run: bunx tsc --noEmit
 
       - name: ESLint
-        run: |
-          if [ -f eslint.config.js ] || [ -f eslint.config.mjs ] || [ -f eslint.config.cjs ] || [ -f .eslintrc.js ] || [ -f .eslintrc.json ] || [ -f .eslintrc.yml ] || [ -f .eslintrc.yaml ]; then
-            bun run lint
-          else
-            echo "⚠️ No ESLint config found; skipping."
-          fi
+        run: bun run lint
         continue-on-error: true
 
       - name: Prettier check
-        run: |
-          if [ -f .prettierrc ] || [ -f .prettierrc.json ] || [ -f prettier.config.js ] || [ -f prettier.config.cjs ] || [ -f prettier.config.mjs ]; then
-            bun run format:check
-          else
-            echo "⚠️ No Prettier config found; skipping."
-          fi
+        run: bun run format:check
         continue-on-error: true
 
   # ──────────────────────────────────────────────────────────────

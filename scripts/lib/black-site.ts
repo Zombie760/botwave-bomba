@@ -1,10 +1,10 @@
 // BotwaveBomba BLACK SITE detection — intelligence gaps across alignments
-import { Story, normBloc } from './data.ts';
+import { Story, normBloc } from "./data.ts";
 
 export interface BlackSiteIntel {
   story: Story;
   sigintPackage: Story;
-  silentSector: 'western' | 'non-aligned' | 'adversarial';
+  silentSector: "western" | "non-aligned" | "adversarial";
   coverageRatio: number;
 }
 
@@ -14,7 +14,7 @@ export interface BlackSiteIntel {
  */
 export function detectBlackSites(stories: Story[]): BlackSiteIntel[] {
   const blackSites: BlackSiteIntel[] = [];
-  const alignments = ['western', 'non-aligned', 'adversarial'] as const;
+  const alignments = ["western", "non-aligned", "adversarial"] as const;
 
   for (const story of stories) {
     const spread = story.alignmentSpread || story.bloc_spread || {};
@@ -24,13 +24,13 @@ export function detectBlackSites(stories: Story[]): BlackSiteIntel[] {
     for (const alignment of alignments) {
       const count = spread[alignment] || 0;
       const ratio = count / total;
-      
+
       if (ratio < 0.2) {
         blackSites.push({
           story,
           sigintPackage: story,
           silentSector: alignment,
-          coverageRatio: ratio
+          coverageRatio: ratio,
         });
         break; // Only flag once per story
       }
@@ -59,12 +59,12 @@ export function getTopBlackSites(stories: Story[], limit = 10): BlackSiteIntel[]
  */
 export function formatSilentSector(sector: string): string {
   switch (sector) {
-    case 'western':
-      return 'Missing Western';
-    case 'non-aligned':
-      return 'Missing Non-Aligned';
-    case 'adversarial':
-      return 'Missing Adversarial';
+    case "western":
+      return "Missing Western";
+    case "non-aligned":
+      return "Missing Non-Aligned";
+    case "adversarial":
+      return "Missing Adversarial";
     default:
       return `Missing ${sector}`;
   }

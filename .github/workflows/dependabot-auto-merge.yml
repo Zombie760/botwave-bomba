@@ -25,21 +25,21 @@ jobs:
         run: |
           # Get PR labels
           LABELS=$(gh pr view ${{ github.event.pull_request.number }} --json labels --jq '.labels[].name')
-          
+
           # Check for major update label (requires manual review)
           if echo "$LABELS" | grep -q "major"; then
             echo "major=true" >> $GITHUB_OUTPUT
             echo "Major version update - requires manual review"
             exit 0
           fi
-          
+
           # Check for security label (always review)
           if echo "$LABELS" | grep -q "security"; then
             echo "security=true" >> $GITHUB_OUTPUT
             echo "Security update - requires manual review"
             exit 0
           fi
-          
+
           echo "safe=true" >> $GITHUB_OUTPUT
           echo "Safe dependency update (patch/minor/dev)"
         env:

@@ -2,19 +2,20 @@
 
 > **Not Left/Right. Who Owns The Story.**
 
-Thank you for contributing. This document is the contract between you and the maintainers — follow it and your PR will be reviewed fast. Ignore it and it'll sit.
+Thank you for contributing. This document is the contract between you and the maintainers — follow
+it and your PR will be reviewed fast. Ignore it and it'll sit.
 
 ---
 
 ## 1. Before You Start
 
-| Check | Required? |
-|-------|-----------|
-| Read this entire file | ✅ Yes |
-| Sign commits with GPG (`git commit -S`) | ✅ Yes |
-| Run `bun run lint && bun run format:check` locally | ✅ Yes |
-| Check [existing issues](https://github.com/Zombie760/botwave-bomba/issues) | ✅ Yes |
-| Open a draft PR for discussion before big changes | 🟡 Recommended |
+| Check                                                                      | Required?      |
+| -------------------------------------------------------------------------- | -------------- |
+| Read this entire file                                                      | ✅ Yes         |
+| Sign commits with GPG (`git commit -S`)                                    | ✅ Yes         |
+| Run `bun run lint && bun run format:check` locally                         | ✅ Yes         |
+| Check [existing issues](https://github.com/Zombie760/botwave-bomba/issues) | ✅ Yes         |
+| Open a draft PR for discussion before big changes                          | 🟡 Recommended |
 
 ---
 
@@ -36,6 +37,7 @@ bun run build       # Full build → 20+ HTML files in repo root
 ```
 
 **Dev server** (hot reload):
+
 ```bash
 bun run dev         # http://localhost:3000
 ```
@@ -104,7 +106,9 @@ botwave-bomba/
 └── README.md
 ```
 
-**Golden rule:** Edit `scripts/lib/*.ts` and `scripts/build_site.ts`, then run `bun run build`. The `*.html` files in root are **generated artifacts** — committed for GitHub Pages, but source of truth is the build script.
+**Golden rule:** Edit `scripts/lib/*.ts` and `scripts/build_site.ts`, then run `bun run build`. The
+`*.html` files in root are **generated artifacts** — committed for GitHub Pages, but source of truth
+is the build script.
 
 ---
 
@@ -112,20 +116,22 @@ botwave-bomba/
 
 **Format:** `<type>(<scope>): <subject>`
 
-| Type | When |
-|------|------|
-| `feat` | New page, new metric, new data field |
-| `fix` | Bug in build, data, rendering, algorithm |
-| `docs` | README, CHANGELOG, ISA, code comments |
-| `refactor` | Code restructuring, no behavior change |
-| `perf` | Build speed, bundle size, runtime perf |
-| `chore` | Deps, CI, tooling, housekeeping |
-| `data` | Asset registry updates, sigint re-cluster (patch) |
-| `security` | Vulnerability fix, CSP hardening |
+| Type       | When                                              |
+| ---------- | ------------------------------------------------- |
+| `feat`     | New page, new metric, new data field              |
+| `fix`      | Bug in build, data, rendering, algorithm          |
+| `docs`     | README, CHANGELOG, ISA, code comments             |
+| `refactor` | Code restructuring, no behavior change            |
+| `perf`     | Build speed, bundle size, runtime perf            |
+| `chore`    | Deps, CI, tooling, housekeeping                   |
+| `data`     | Asset registry updates, sigint re-cluster (patch) |
+| `security` | Vulnerability fix, CSP hardening                  |
 
-**Scope examples:** `build`, `black-site`, `radar`, `chronos`, `numbers-station`, `assets`, `ui`, `a11y`, `deps`, `ci`
+**Scope examples:** `build`, `black-site`, `radar`, `chronos`, `numbers-station`, `assets`, `ui`,
+`a11y`, `deps`, `ci`
 
 **Examples:**
+
 ```
 feat(black-site): add missing-adversarial filter to black site page
 fix(build): handle missing sigint.excerpt in hero render
@@ -141,18 +147,23 @@ chore(deps): bump @mozilla/readability to 0.6.0
 ## 5. Pull Request Process
 
 ### 5.1 PR Title
+
 Follow commit convention: `feat(black-site): add missing-adversarial filter`
 
 ### 5.2 PR Description Template
+
 ```markdown
 ## Summary
+
 One paragraph: what, why, user-visible change.
 
 ## Type
-- [ ] feat  - [ ] fix  - [ ] docs  - [ ] refactor
-- [ ] perf  - [ ] chore - [ ] data  - [ ] security
+
+- [ ] feat - [ ] fix - [ ] docs - [ ] refactor
+- [ ] perf - [ ] chore - [ ] data - [ ] security
 
 ## Testing
+
 - [ ] `bun run lint` passes
 - [ ] `bun run format:check` passes
 - [ ] `bun run build` succeeds (check generated HTML)
@@ -160,9 +171,11 @@ One paragraph: what, why, user-visible change.
 - [ ] [ ] Add unit test for new logic in `scripts/lib/`
 
 ## Screenshots
+
 Required for UI changes (mobile + desktop).
 
 ## Checklist
+
 - [ ] Commits signed (GPG)
 - [ ] No generated `*.html` changes in diff (build runs in CI)
 - [ ] CHANGELOG.md updated (Unreleased section)
@@ -170,14 +183,16 @@ Required for UI changes (mobile + desktop).
 ```
 
 ### 5.3 Review Requirements
-| Check | Gate |
-|-------|------|
-| CI passes (lint, build, audit) | ✅ Required |
-| Maintainer approval | ✅ Required (1) |
-| No unsigned commits | ✅ Required |
-| CHANGELOG updated | ✅ Required |
+
+| Check                          | Gate            |
+| ------------------------------ | --------------- |
+| CI passes (lint, build, audit) | ✅ Required     |
+| Maintainer approval            | ✅ Required (1) |
+| No unsigned commits            | ✅ Required     |
+| CHANGELOG updated              | ✅ Required     |
 
 ### 5.4 Merge
+
 Squash merge only. Maintainer squashes with PR title as commit message.
 
 ---
@@ -185,6 +200,7 @@ Squash merge only. Maintainer squashes with PR title as commit message.
 ## 6. Coding Standards
 
 ### TypeScript
+
 - **Strict mode** — `tsconfig.json` has `"strict": true`
 - **No `any`** — use `unknown` + type guards
 - **Interfaces over types** for public APIs (`scripts/lib/*.ts`)
@@ -192,12 +208,14 @@ Squash merge only. Maintainer squashes with PR title as commit message.
 - **JSDoc** on all exported functions + types
 
 ### CSS (`assets/css/main.css`)
+
 - **Custom properties only** — no hardcoded colors/spacing
 - **Mobile-first** — `@media (min-width: 900px)` for desktop
 - **BEM-ish** — `.bwb-component__element--modifier`
 - **No `!important`** — fix specificity instead
 
 ### HTML Generation (`scripts/build_site.ts`)
+
 - **Escape everything** — `escapeHtml()` on all dynamic content
 - **Semantic HTML** — `<article>`, `<section>`, `<nav>`, `<header>`, `<footer>`
 - **ARIA** — labels, roles, `aria-expanded`, `aria-controls`
@@ -205,6 +223,7 @@ Squash merge only. Maintainer squashes with PR title as commit message.
 - **Deterministic** — no `Date.now()`, no random, same input = byte-identical output
 
 ### Accessibility Baseline (Non-Negotiable)
+
 - Skip link (`<a class="bwb-skip-link" href="#main-content">`)
 - Focus visible (`:focus-visible` outline)
 - Contrast ≥ 4.5:1 (text), 3:1 (UI)
@@ -216,6 +235,7 @@ Squash merge only. Maintainer squashes with PR title as commit message.
 ## 7. Adding Data (Assets, Intercepts, Ownership)
 
 ### 7.1 New Asset (`api/asset-registry.json`)
+
 ```json
 {
   "name": "Outlet Name",
@@ -229,9 +249,12 @@ Squash merge only. Maintainer squashes with PR title as commit message.
   "notes": "Optional context"
 }
 ```
-**Required fields:** `name`, `domain`, `country`, `alignment`, `owner`, `funding`, `credibility`, `lean`
+
+**Required fields:** `name`, `domain`, `country`, `alignment`, `owner`, `funding`, `credibility`,
+`lean`
 
 ### 7.2 Ownership Mapping (`api/money-trail.json`)
+
 ```json
 {
   "outlet.example.com": {
@@ -243,19 +266,23 @@ Squash merge only. Maintainer squashes with PR title as commit message.
 ```
 
 ### 7.3 Sigint Packages (`api/sigint-packages.json`)
-Generated by your ingestion pipeline — must match `SigintPackage` interface in `scripts/lib/data.ts`.
+
+Generated by your ingestion pipeline — must match `SigintPackage` interface in
+`scripts/lib/data.ts`.
 
 ---
 
 ## 8. Algorithm Changes
 
 Any change to:
+
 - `scripts/lib/black-site.ts` (coverage ratio, silent sector logic)
 - `scripts/lib/radar.ts` (intensity normalization, theater mapping)
 - `scripts/lib/chronos.ts` (grouping, framing shift detection)
 - `scripts/lib/alignment.ts` (sector routing, trending frequencies)
 
 **Requires:**
+
 1. Update `ISA.md` with new algorithm spec
 2. Add unit test in `scripts/lib/__tests__/` (create if needed)
 3. Document in `CHANGELOG.md` (Minor version if behavior changes)
@@ -280,18 +307,19 @@ git push && git push --tags
 # 5. GitHub Actions builds, creates Release, deploys to gh-pages
 ```
 
-**Release artifacts:** GitHub Release with `dist/` zip + `botwavebomba-vX.Y.Z.html` (single-file snapshot).
+**Release artifacts:** GitHub Release with `dist/` zip + `botwavebomba-vX.Y.Z.html` (single-file
+snapshot).
 
 ---
 
 ## 10. Getting Help
 
-| Channel | For |
-|---------|-----|
-| GitHub Issues | Bugs, feature requests, asset additions |
-| GitHub Discussions | Design questions, algorithm debate |
-| security@botwave.io | Vulnerabilities (see SECURITY.md) |
-| conduct@botwave.io | Code of Conduct reports |
+| Channel             | For                                     |
+| ------------------- | --------------------------------------- |
+| GitHub Issues       | Bugs, feature requests, asset additions |
+| GitHub Discussions  | Design questions, algorithm debate      |
+| security@botwave.io | Vulnerabilities (see SECURITY.md)       |
+| conduct@botwave.io  | Code of Conduct reports                 |
 
 ---
 
@@ -303,25 +331,28 @@ By contributing, you agree your contributions are licensed under the [MIT Licens
 
 ## 12. Terminology
 
-This project uses **Botwave sovereign terminology**, not Ground News clones. See [TERMINOLOGY_MAP.md](TERMINOLOGY_MAP.md) for the full mapping.
+This project uses **Botwave sovereign terminology**, not Ground News clones. See
+[TERMINOLOGY_MAP.md](TERMINOLOGY_MAP.md) for the full mapping.
 
-| Ground News Term | Botwave Term | Used In |
-|------------------|--------------|---------|
-| Blindspot | BLACK SITE | `black-site.html`, `scripts/lib/black-site.ts` |
-| Heatmap | RADAR | `radar.html`, `scripts/lib/radar.ts` |
-| Timeline | SPOOL | `spool.html`, `scripts/lib/chronos.ts` |
-| For You | DEAD DROP | `dead-drop.html` |
-| Newsletter | NUMBERS STATION | `numbers-station.html`, `scripts/lib/numbers-station.ts` |
-| Source Registry | ASSET REGISTRY | `asset-registry.html` |
-| Methodology | TRADECRAFT | `tradecraft.html` |
-| Framing | REFRACTION | `refraction.html` |
-| Corruption Tracker | MONEY TRAIL | `corruption.html` |
-| Story | SIGINT PACKAGE | Core data model |
-| Source | ASSET | Core data model |
-| Bloc | ALIGNMENT | Core data model |
+| Ground News Term   | Botwave Term    | Used In                                                  |
+| ------------------ | --------------- | -------------------------------------------------------- |
+| Blindspot          | BLACK SITE      | `black-site.html`, `scripts/lib/black-site.ts`           |
+| Heatmap            | RADAR           | `radar.html`, `scripts/lib/radar.ts`                     |
+| Timeline           | SPOOL           | `spool.html`, `scripts/lib/chronos.ts`                   |
+| For You            | DEAD DROP       | `dead-drop.html`                                         |
+| Newsletter         | NUMBERS STATION | `numbers-station.html`, `scripts/lib/numbers-station.ts` |
+| Source Registry    | ASSET REGISTRY  | `asset-registry.html`                                    |
+| Methodology        | TRADECRAFT      | `tradecraft.html`                                        |
+| Framing            | REFRACTION      | `refraction.html`                                        |
+| Corruption Tracker | MONEY TRAIL     | `corruption.html`                                        |
+| Story              | SIGINT PACKAGE  | Core data model                                          |
+| Source             | ASSET           | Core data model                                          |
+| Bloc               | ALIGNMENT       | Core data model                                          |
 
-**Use Botwave terms in all code, docs, PRs, and issues.** Ground News terms only appear in `TERMINOLOGY_MAP.md` as reference.
+**Use Botwave terms in all code, docs, PRs, and issues.** Ground News terms only appear in
+`TERMINOLOGY_MAP.md` as reference.
 
 ---
 
-*This document is part of the project's constitutional layer. Changes require a `docs` PR with maintainer review.*
+_This document is part of the project's constitutional layer. Changes require a `docs` PR with
+maintainer review._

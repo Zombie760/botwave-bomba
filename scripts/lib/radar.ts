@@ -1,9 +1,9 @@
 // BotwaveBomba RADAR — world coverage scan by signal density
-import { Story, normBloc } from './data.ts';
+import { Story, normBloc } from "./data.ts";
 
 export interface RadarContact {
   country: string;
-  bloc: 'western' | 'non-aligned' | 'adversarial' | 'other';
+  bloc: "western" | "non-aligned" | "adversarial" | "other";
   storyCount: number;
   sourceCount: number;
   topStoryIds: string[];
@@ -15,8 +15,8 @@ export function scanRadar(stories: Story[]): RadarContact[] {
 
   for (const story of stories) {
     for (const source of story.sources) {
-      const country = source.country || 'Unknown';
-      const bloc = normBloc(source.bloc) as RadarContact['bloc'];
+      const country = source.country || "Unknown";
+      const bloc = normBloc(source.bloc) as RadarContact["bloc"];
       const key = `${country}|${bloc}`;
 
       const existing = map.get(key) || {
@@ -25,7 +25,7 @@ export function scanRadar(stories: Story[]): RadarContact[] {
         storyCount: 0,
         sourceCount: 0,
         topStoryIds: [],
-        topStoryId: story.id
+        topStoryId: story.id,
       };
 
       existing.storyCount += 1;
@@ -39,23 +39,32 @@ export function scanRadar(stories: Story[]): RadarContact[] {
   }
 
   return Array.from(map.values())
-    .filter(c => c.storyCount > 0)
+    .filter((c) => c.storyCount > 0)
     .sort((a, b) => b.storyCount - a.storyCount);
 }
 
 /**
  * Get aggregated radar by country only (for world map view)
  */
-export function getCountryRadar(stories: Story[]): Record<string, { count: number; blocs: Record<string, number>; topStories: string[] }> {
-  const map: Record<string, { count: number; blocs: Record<string, number>; topStories: string[] }> = {};
+export function getCountryRadar(
+  stories: Story[]
+): Record<string, { count: number; blocs: Record<string, number>; topStories: string[] }> {
+  const map: Record<
+    string,
+    { count: number; blocs: Record<string, number>; topStories: string[] }
+  > = {};
 
   for (const story of stories) {
     for (const source of story.sources) {
-      const country = source.country || 'Unknown';
+      const country = source.country || "Unknown";
       const bloc = normBloc(source.bloc);
 
       if (!map[country]) {
-        map[country] = { count: 0, blocs: { western: 0, 'non-aligned': 0, adversarial: 0, other: 0 }, topStories: [] };
+        map[country] = {
+          count: 0,
+          blocs: { western: 0, "non-aligned": 0, adversarial: 0, other: 0 },
+          topStories: [],
+        };
       }
       map[country].count += 1;
       map[country].blocs[bloc] = (map[country].blocs[bloc] || 0) + 1;

@@ -41,7 +41,7 @@ jobs:
 
       - name: Run tests
         run: bun test
-        continue-on-error: true  # Tests optional until we have them
+        continue-on-error: true # Tests optional until we have them
 
   build:
     name: Build Static Site
