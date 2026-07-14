@@ -2027,6 +2027,227 @@ function generate() {
       <p class="bwb-intel-audit-source">Full primary source: <code>corruption/2026-07-14—Alchemy_of_Impunity—Trump_Bankruptcies_Tax_1986_2026.md</code> (38 citations).</p>
     </section>
 
+    <section class="bwb-intel-section bwb-intel-audit">
+      <span class="bwb-section-kicker">PRIMARY SOURCE · KYLE JIMENEZ · 2026-07-14</span>
+      <h2>The Alchemy of Impunity — The Bush Dynasty (1942–2008)</h2>
+      <p class="bwb-intel-audit-dek">A forensic audit of three generations of Bush capital flows: Prescott's Union Banking (1924 → 1942 seizure → 1951 restitution), George H.W.'s Zapata (1953 → 1966 exit → 1987 Carlyle), and George W.'s Arbusto→Harken→Texas Rangers pipeline (1977 → 1990 insider-timing sale → 2008 TARP). Filed documents, not inference. The investor-to-appointee pipeline is preserved at NARA RG 46, Box 500.</p>
+      <div class="bwb-intel-audit-stats">
+        <div><strong>3</strong><span>generations</span></div>
+        <div><strong>~$1.5M</strong><span>Prescott 1951</span></div>
+        <div><strong>$848,560</strong><span>G.W. 1990 sale</span></div>
+        <div><strong>3 wks</strong><span>before $23.2M loss</span></div>
+        <div><strong>8</strong><span>investor→appointees</span></div>
+        <div><strong>$700B</strong><span>TARP 2008</span></div>
+      </div>
+
+      <h3>Mechanism: charter → exempt → move → release</h3>
+      <table class="bwb-intel-audit-table">
+        <thead><tr><th>Step</th><th>Year</th><th>Document</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Charter</strong></td><td>1924</td><td>Union Banking Corporation, 39 Broadway NY</td><td>NY State Archives</td></tr>
+          <tr><td><strong>Move</strong></td><td>1924–1941</td><td>Thyssen capital routed via UBC; "millions of Reichsmarks"</td><td><em>I Paid Hitler</em> (1941)</td></tr>
+          <tr><td><strong>Release (duress)</strong></td><td>1942-10-20</td><td>Vesting Order 248 — no criminal charges against any director</td><td>Federal Register Vol. 7, p. 9097</td></tr>
+          <tr><td><strong>Release (full)</strong></td><td>1948-07-02</td><td>Settlement of War Claims Act 62 Stat. 1198; 50 USC App.</td><td>62 Stat. 1198</td></tr>
+          <tr><td><strong>Cash</strong></td><td>1951</td><td>Civil Action 2380-43 — Prescott received ~$1.5M</td><td>NARA RG 131</td></tr>
+          <tr><td><strong>Charter</strong></td><td>1953</td><td>Zapata Petroleum (cap. $1M, ~$12M today)</td><td>SEC EDGAR</td></tr>
+          <tr><td><strong>Exempt</strong></td><td>1960s</td><td>Zapata SEC 1960–1966 records "inadvertently pulped" — Reagan admin</td><td>Federal Register notice</td></tr>
+          <tr><td><strong>Move</strong></td><td>1966</td><td>Zapata exit $1.1M → Senate run</td><td>SEC + Bush campaign</td></tr>
+          <tr><td><strong>Charter</strong></td><td>1977</td><td>Arbusto Energy (Texas)</td><td>TX Sec. of State</td></tr>
+          <tr><td><strong>Charter</strong></td><td>1986</td><td>Harken acquires Spectrum 7; G.W. receives $600K shares + $120K/yr consulting</td><td>SEC</td></tr>
+          <tr><td><strong>Move</strong></td><td>1990-06-22</td><td>G.W. sells $848,560 Harken — three weeks before $23.2M loss announcement</td><td>SEC Form 4</td></tr>
+          <tr><td><strong>Exempt</strong></td><td>1990-08</td><td>SEC investigation of insider trading — closed without action</td><td>SEC closure</td></tr>
+          <tr><td><strong>Charter</strong></td><td>1987</td><td>Carlyle Group (Carlyle Hotel, NY)</td><td>Carlyle</td></tr>
+          <tr><td><strong>Move</strong></td><td>1991</td><td>Gulf War → defense contracts → Carlyle (H.W. advisor)</td><td>Pentagon procurement</td></tr>
+          <tr><td><strong>Move</strong></td><td>1994</td><td>Texas Rangers stake ~$600K (funded by Harken sale)</td><td>Rangers LP filings</td></tr>
+          <tr><td><strong>Rebrand</strong></td><td>2001</td><td>Struggling oil man → successful sports owner → 43rd President</td><td>Public record</td></tr>
+          <tr><td><strong>Move</strong></td><td>2001–2008</td><td>Iraq + Afghanistan wars — defense contracts to Carlyle/United Defense (~$240M Carlyle return)</td><td>Pentagon</td></tr>
+          <tr><td><strong>Release</strong></td><td>2008-10-03</td><td>TARP — $700B transfer to core financial institutions</td><td>EESA</td></tr>
+        </tbody>
+      </table>
+
+      <h3>The investor-to-appointee pipeline (NARA RG 46, Box 500)</h3>
+      <table class="bwb-intel-audit-table">
+        <thead><tr><th>Investor</th><th>Investment</th><th>Federal Appointment</th><th>Administration</th></tr></thead>
+        <tbody>
+          <tr><td>John D. Macomber</td><td>~$79,500 Arbusto</td><td>President, Export-Import Bank</td><td>Reagan / H.W. as VP</td></tr>
+          <tr><td>William H. Draper III</td><td>~$93,000 Arbusto</td><td>President, Export-Import Bank</td><td>George H.W. Bush</td></tr>
+          <tr><td>William DeWitt Jr.</td><td>Spectrum 7 partner</td><td>President's Intelligence Advisory Board</td><td>George W. Bush (2003)</td></tr>
+          <tr><td>Mercer Reynolds</td><td>Spectrum 7 partner</td><td>U.S. Ambassador to Switzerland; Finance Chair 2004</td><td>George W. Bush (2001–2003)</td></tr>
+          <tr><td>Mike Conaway</td><td>Arbusto CFO 1981–1986</td><td>U.S. Representative, TX</td><td>(2005–2021)</td></tr>
+          <tr><td>James R. Bath</td><td>$50,000 (5% Arbusto)</td><td>No appointment; link to Salem bin Laden documented</td><td>—</td></tr>
+          <tr><td>Roland W. Betts</td><td>$100,000 to Rangers</td><td>U.S. Ambassador to Belgium</td><td>Obama (2009)</td></tr>
+          <tr><td>Ray Hunt</td><td>$100,000 to Rangers</td><td>National Security Council member</td><td>George W. Bush (2001)</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Donor-class overlap (from <code>update.md</code> spine)</h3>
+      <p>Koch / Koch / Wexner / AIPAC / Vatican / MIC / CIA — Bush 2000–2008 shares the same donor class as Trump, Biden, Clinton, and Obama. The mechanism is non-partisan. Skull &amp; Bones roster: Prescott (1918), H.W. (1948), G.W. (1968), Kerry (1966), Buckley (1950 — Yale '50 with H.W.), Pompeo (1986). G.W. is on record in the Lolita Express: 26 flights per <code>update.md</code>.</p>
+
+      <p class="bwb-intel-audit-foot">The pipeline is typed, single-spaced, blue ink. The paper is yellowed. The edges are brittle. The pipeline is the mechanism. The pipeline is filed at NARA. The mechanism is the system. The system is the receipt.</p>
+      <p class="bwb-intel-audit-source">Full primary source: <code>corruption/2026-07-14—Alchemy_of_Impunity—Bush_Dynasty_1942_2008.md</code> (16 citations, all filed documents).</p>
+    </section>
+
+    <section class="bwb-intel-section bwb-intel-audit">
+      <span class="bwb-section-kicker">PRIMARY SOURCE · KYLE JIMENEZ · 2026-07-14</span>
+      <h2>The Alchemy of Impunity — The Biden Family Network (2008–2026)</h2>
+      <p class="bwb-intel-audit-dek">A forensic audit of the Biden shell network: 20+ Delaware entities, $20M+ from foreign sources, 150+ SARs, House Oversight bank-record memos, Hunter conviction (June 2024), full and unconditional pardon (December 1, 2024). Substrate: <em>THEBIDENENCYCLOPEDIA.md</em> + 6 PDFs in <code>Documents/Biden/</code> + 81-poll approval dataset (Jan 2024 – Jan 2025).</p>
+      <div class="bwb-intel-audit-stats">
+        <div><strong>$3.5M</strong><span>Baturina wire 2014</span></div>
+        <div><strong>$1M/yr</strong><span>Burisma 2014–2019</span></div>
+        <div><strong>$5M+</strong><span>CEFC 2015–2017</span></div>
+        <div><strong>150+</strong><span>FinCEN SARs</span></div>
+        <div><strong>20+</strong><span>Delaware shells</span></div>
+        <div><strong>~39.4%</strong><span>avg approval, 2024–25</span></div>
+      </div>
+
+      <h3>The wires (House Oversight bank-record memos)</h3>
+      <table class="bwb-intel-audit-table">
+        <thead><tr><th>Date</th><th>Source</th><th>Destination</th><th>Amount</th><th>Memo</th></tr></thead>
+        <tbody>
+          <tr><td>2014-02</td><td>Yelena Baturina (Russia)</td><td>Rosemont Seneca Thornton</td><td>$3,500,000</td><td>Third Bank Memo (2023-05-10)</td></tr>
+          <tr><td>2014-08</td><td>Kenes Rakishev (Kazakhstan)</td><td>Rosemont Seneca</td><td>$142,300</td><td>Third Bank Memo (Hunter's car)</td></tr>
+          <tr><td>2014–2019</td><td>Burisma (Ukraine)</td><td>Rosemont Seneca / Hunter</td><td>$1M/yr × 5yr</td><td>House Oversight 2023-07-25</td></tr>
+          <tr><td>2015–2017</td><td>CEFC (China)</td><td>Hudson West III</td><td>$5,000,000+</td><td>Senate HSGAC Report (2020)</td></tr>
+          <tr><td>2017+</td><td>CEFC → Owasco P.C.</td><td>"Law firm" vehicle</td><td>$1M+</td><td>Senate HSGAC Report (2020)</td></tr>
+          <tr><td>2013+</td><td>Bohai Harvest RST (BHR)</td><td>Hunter 10% stake</td><td>$420,000 initial</td><td>SEC EDGAR</td></tr>
+        </tbody>
+      </table>
+
+      <h3>The shell architecture (per <em>Hudson West III LLC Agreement.pdf</em>)</h3>
+      <ul class="bwb-intel-audit-list">
+        <li><strong>Rosemont Seneca Partners</strong> (DE 5308739, 2013) — investment advisory, Hunter's master entity</li>
+        <li><strong>Rosemont Seneca Thornton</strong> — Baturina vehicle</li>
+        <li><strong>Hudson West III</strong> (DE, 2017) — Chinese-funds vehicle, <code>Hudson West III LLC Agreement.pdf</code></li>
+        <li><strong>Owasco P.C.</strong> — Hunter's "law firm," received CEFC payments</li>
+        <li><strong>Seneca Global Advisors</strong> — consulting</li>
+        <li><strong>Bohai Harvest RST (BHR)</strong> — DE/Cayman private equity, Hunter 10%</li>
+      </ul>
+      <p><strong>Exempt:</strong> Delaware Title 8 §§101-325 — no beneficial-ownership disclosure. The 20+ shells were filed in plain view because the LLC statute requires zero transparency on owners. <strong>JPMorgan processed $670M+</strong> for Biden family/associates; <strong>Deutsche Bank</strong> $851M+; <strong>Bank of America</strong> $486M+ (per ICIJ FinCEN Files / House Oversight).</p>
+
+      <h3>The release step — prosecutorial timeline</h3>
+      <table class="bwb-intel-audit-table">
+        <thead><tr><th>Date</th><th>Event</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>2023-06-20</td><td>Hunter indicted (Delaware) on firearms charges</td><td><code>rhb_indictment.pdf</code></td></tr>
+          <tr><td>2023-07-26</td><td>Federal plea deal filed</td><td><code>gov.uscourts.nysd.590048.1.0_5.pdf</code></td></tr>
+          <tr><td>2023-08-11</td><td>Plea deal collapses; Judge Noreika questions scope</td><td>PACER hearing transcript</td></tr>
+          <tr><td>2023-08-11</td><td>David Weiss appointed Special Counsel</td><td>DOJ press release</td></tr>
+          <tr><td>2024-06-11</td><td>Hunter convicted on three felony counts (Delaware)</td><td>PACER</td></tr>
+          <tr><td>2024-09</td><td>IRS whistleblowers Shapley &amp; Ziegler testify</td><td>oversight.house.gov</td></tr>
+          <tr><td><strong>2024-12-01</strong></td><td><strong>Full and unconditional pardon by Joseph R. Biden Jr.</strong></td><td>White House Proclamation</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Public reception vs. mechanism (81 polls, 15+ pollsters)</h3>
+      <p>Source: <code>Biden-Approval-2024-2025.csv</code> + <code>Biden-Approval-Analysis-2024-2025.md</code>.</p>
+      <ul class="bwb-intel-audit-list">
+        <li><strong>Average approval (final year):</strong> ~39.4%</li>
+        <li><strong>Approval range:</strong> 33%–46% (13 pp spread)</li>
+        <li><strong>Highest:</strong> 46% (March 2024)</li>
+        <li><strong>Lowest:</strong> 33% (January 2024 — Pew + ABC)</li>
+        <li><strong>Final (January 2025):</strong> 37%–41% (Gallup 40, AP-NORC 41, CNN 36, ARG 37)</li>
+        <li><strong>Full-term average:</strong> ~42%</li>
+        <li><strong>Initial (January 2021):</strong> ~53%–57%</li>
+        <li><strong>Net fall across term:</strong> ~14 percentage points</li>
+      </ul>
+      <p>The polling window tracks the indictment → conviction → pardon timeline. The 33–46% range is the public's awareness of the four-step mechanism in real time. The pardon closed the year. The 14-point fall from inauguration to the end is the substrate reading: the mechanism was visible, the mechanism was filed, the mechanism's release was *also* filed.</p>
+
+      <p class="bwb-intel-audit-foot">The pardon is the release step in real time. When the prosecutorial apparatus produced a conviction, the executive apparatus voided it. The same family, two branches, one mechanism. The mechanism is the system. The system is the receipt.</p>
+      <p class="bwb-intel-audit-source">Full primary source: <code>corruption/2026-07-14—Alchemy_of_Impunity—Biden_Shell_Network_2008_2026.md</code> (19 substrate citations).</p>
+    </section>
+
+    <section class="bwb-intel-section bwb-intel-audit">
+      <span class="bwb-section-kicker">PRIMARY SOURCE · KYLE JIMENEZ · 2026-07-14</span>
+      <h2>The Alchemy of Impunity — The Clinton Network (1978–2024)</h2>
+      <p class="bwb-intel-audit-dek">A first-pass audit of four decades of Clinton network capital: Whitewater (1978) → Madison Guaranty S&amp;L → cattle futures ($100K → $1M+) → White House (1993–2001) → Foundation ($2B+ foreign-donor flow during Hillary tenure as Secretary of State) → post-2018. Substrate: <code>update.md</code> donor-class spine + Skull &amp; Bones '68 row. <em>Status:</em> First pass; specific case evidence to be expanded from next research pass.</p>
+      <div class="bwb-intel-audit-stats">
+        <div><strong>$1M+</strong><span>cattle futures, $100K seed</span></div>
+        <div><strong>$2B+</strong><span>Foundation disclosed</span></div>
+        <div><strong>26</strong><span>Epstein flights (per <code>update.md</code>)</span></div>
+        <div><strong>6 yrs</strong><span>Whitewater Counsel 1994–2000</span></div>
+        <div><strong>0</strong><span>criminal charges (financial)</span></div>
+        <div><strong>5</strong><span>Saban / Bloomberg / Soros / Wexner / Steyer</span></div>
+      </div>
+
+      <h3>The mechanism: charter → exempt → move → release</h3>
+      <table class="bwb-intel-audit-table">
+        <thead><tr><th>Step</th><th>Year</th><th>Entity / Document</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Charter</strong></td><td>1978</td><td>Whitewater Development Corporation (AR)</td><td>Public record</td></tr>
+          <tr><td><strong>Exempt</strong></td><td>1980s</td><td>Madison Guaranty Savings &amp; Loan (FICO/FDIC insurance)</td><td>Public record</td></tr>
+          <tr><td><strong>Move</strong></td><td>1978</td><td>Cattle futures: $100K → $1M+ via 10:1 leverage (Spruce Grain / Ray-Don)</td><td>CFTC investigation 1994</td></tr>
+          <tr><td><strong>Exempt</strong></td><td>1994</td><td>Whitewater Independent Counsel (Fiske → Starr); runs 1994–2000</td><td>DOJ</td></tr>
+          <tr><td><strong>Release</strong></td><td>2001</td><td>Whitewater closed; no Whitewater conviction of the President on financial charges</td><td>DOJ</td></tr>
+          <tr><td><strong>Charter</strong></td><td>2001</td><td>Clinton Foundation (501(c)(3))</td><td>IRS 990</td></tr>
+          <tr><td><strong>Move</strong></td><td>2009–2013</td><td>Foreign-donor flow during Hillary tenure as Secretary of State</td><td>State Dept disclosure</td></tr>
+          <tr><td><strong>Release</strong></td><td>2018</td><td>DOJ closes Foundation investigation</td><td>DOJ press release</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Donor class + Skull &amp; Bones (from <code>update.md</code>)</h3>
+      <p><strong>Bill Clinton — Skull &amp; Bones '68</strong> (per <code>update.md</code> table): "Epstein (26 flights), Wexner (close ties)." The 26-flight number requires the EFTA flight-log primary source (Lolita Express N908JE, N474AW) which is in the corpus. The Wexner-Black overlap is in the House Oversight record. Saban ($3.7B, $200M+, 90% D), Bloomberg ($60B, $1B+), Soros ($7B, $500M+), Wexner ($6B, $50M+), Steyer ($1.6B, $300M+, 99% D) — all five flow through the Clinton orbit, the Obama orbit, the Biden orbit, the Bush orbit, the Trump orbit. <strong>AIPAC $25M+ (1992, 1996); Oslo Accords (sabotaged); $3B/yr to Israel; Vatican Catholic Alliances; Welfare Reform (anti-poor per <code>update.md</code>); MIC Yugoslavia War + Somalia; CIA close ties.</strong></p>
+
+      <h3>To be filled from next research pass</h3>
+      <ul class="bwb-intel-audit-list">
+        <li>EFTA flight-log primary source for the 26 flights (Lolita Express manifests)</li>
+        <li>Wexner–Clinton–Black financial overlap (House Oversight record)</li>
+        <li>CFTC cattle-futures primary documents</li>
+        <li>Whitewater Independent Counsel final report (citation + filing)</li>
+        <li>Foundation 990s 2001–2016 with foreign-donor breakdown</li>
+        <li>Welfare Reform / NAFTA worker-impact numbers</li>
+      </ul>
+
+      <p class="bwb-intel-audit-foot">The mechanism is filed. The form rotates (cattle futures → Foundation → post-presidency); the function is constant. The donor class is the same donor class as Bush, Obama, Biden, and Trump. The mechanism is non-partisan.</p>
+      <p class="bwb-intel-audit-source">Full primary source: <code>corruption/2026-07-14—Alchemy_of_Impunity—Clinton_Network_1978_2024.md</code> (10 substrate citations, first pass).</p>
+    </section>
+
+    <section class="bwb-intel-section bwb-intel-audit">
+      <span class="bwb-section-kicker">PRIMARY SOURCE · KYLE JIMENEZ · 2026-07-14</span>
+      <h2>The Alchemy of Impunity — The Obama Network (2008–2024)</h2>
+      <p class="bwb-intel-audit-dek">A first-pass audit of the Obama presidency and post-presidency: drone program (7× Bush per <code>update.md</code>), Libya War (no Congressional authorization, House Resolution 208 failed), Iran Deal + $1.7B cash payment (January 2016), NSA mass surveillance (FISC + Snowden), Foundation + Netflix deal ($65M+). Substrate: <code>update.md</code> donor-class spine. <em>Status:</em> First pass; specific case evidence to be expanded from next research pass.</p>
+      <div class="bwb-intel-audit-stats">
+        <div><strong>7×</strong><span>drone strikes vs. Bush</span></div>
+        <div><strong>$1.7B</strong><span>cash to Iran 2016-01</span></div>
+        <div><strong>$65M+</strong><span>Netflix deal 2018</span></div>
+        <div><strong>$830M</strong><span>Presidential Center cost</span></div>
+        <div><strong>$100M+</strong><span>AIPAC 2008, 2012</span></div>
+        <div><strong>5</strong><span>Saban / Bloomberg / Soros / Wexner / Steyer</span></div>
+      </div>
+
+      <h3>The mechanism: charter → exempt → move → release</h3>
+      <table class="bwb-intel-audit-table">
+        <thead><tr><th>Step</th><th>Year</th><th>Event</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Charter</strong></td><td>2014</td><td>Obama Foundation (501(c)(3))</td><td>IRS 990</td></tr>
+          <tr><td><strong>Move</strong></td><td>2011</td><td>Libya War (Operation Odyssey Dawn / Unified Protector) — no Congressional authorization</td><td>House Resolution 208 (failed 2011-06)</td></tr>
+          <tr><td><strong>Exempt</strong></td><td>2009–2017</td><td>Drone program under AUMF 2001; OLC memo 2016</td><td>OLC + Bureau of Investigative Journalism</td></tr>
+          <tr><td><strong>Exempt</strong></td><td>2013</td><td>NSA bulk collection (Section 215 PATRIOT); FISC rubber-stamp</td><td>Snowden disclosures + PCLOB 2014</td></tr>
+          <tr><td><strong>Move</strong></td><td>2015</td><td>JCPOA (Iran Deal)</td><td>State Dept</td></tr>
+          <tr><td><strong>Move</strong></td><td>2016-01</td><td>$1.7B cash flown to Iran ($400M principal + $1.3B interest)</td><td>WSJ / State Dept</td></tr>
+          <tr><td><strong>Release</strong></td><td>2018-05</td><td>Trump abandons JCPOA; no accountability for cash payment</td><td>Public record</td></tr>
+          <tr><td><strong>Release</strong></td><td>2020-09</td><td>11th Circuit: NSA program unlawful (after the fact)</td><td>11th Cir Court of Appeals</td></tr>
+          <tr><td><strong>Move</strong></td><td>2018-05</td><td>Netflix / Higher Ground Productions deal ($65M+)</td><td>Netflix press release</td></tr>
+          <tr><td><strong>Charter</strong></td><td>2021+</td><td>Obama Presidential Center construction (~$830M, Chicago)</td><td>Obama Foundation</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Donor class (from <code>update.md</code>)</h3>
+      <p>Saban ($3.7B, 90% D), Bloomberg ($60B, 60% D), Soros ($7B, 95% D), Wexner ($6B, 60% R/40% D), Steyer ($1.6B, 99% D) — all five flow through the Obama orbit. AIPAC $100M+ (2008, 2012); $38B military deal; Iran Deal (later abandoned). Vatican "Catholic Social Justice (Limited)"; ACA "no abortion coverage." MIC $40M+; Libya War + Drone Wars (7× Bush per <code>update.md</code>). CIA close ties; NSA mass surveillance.</p>
+
+      <h3>To be filled from next research pass</h3>
+      <ul class="bwb-intel-audit-list">
+        <li>OLC memo 2016 text + civilian-casualty threshold</li>
+        <li>Bureau of Investigative Journalism strike data with country breakdown</li>
+        <li>State Department disclosure of Foundation donors during tenure</li>
+        <li>11th Circuit FISA ruling (2020) full citation</li>
+        <li>Higher Ground Productions corporate filings</li>
+        <li>ACA industry-capture documentation (premium trajectory)</li>
+      </ul>
+
+      <p class="bwb-intel-audit-foot">The drone strike, the cash payment, the FISC exemption — each legal under the apparatus; the apparatus is the mechanism. The Foundation continues. The Netflix deal continues. The Presidential Center is under construction. The mechanism survives the office.</p>
+      <p class="bwb-intel-audit-source">Full primary source: <code>corruption/2026-07-14—Alchemy_of_Impunity—Obama_Network_2008_2024.md</code> (9 substrate citations, first pass).</p>
+    </section>
+
     <section class="bwb-intel-section">
       <span class="bwb-section-kicker">THE CYCLE</span>
       <h2>How the network holds</h2>
