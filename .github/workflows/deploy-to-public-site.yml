@@ -49,15 +49,18 @@ jobs:
       - name: Copy build into public site
         run: |
           mkdir -p public-site/botwavebomba
+          # Core chrome + verticals — keep in sync with bun run build output
           cp -r \
-            index.html black-site.html radar.html spool.html dead-drop.html \
+            index.html black-site.html radar.html refraction.html spool.html dead-drop.html \
             numbers-station.html asset-registry.html tradecraft.html sitrep.html \
             pro.html errata.html perdido.html sin-senal.html offline.html \
-            asset-transparency.html 404.html \
+            asset-transparency.html 404.html intelligence.html \
             world.html politics.html business.html conflict.html local.html \
             brief.html sources.html methodology.html methodology-transparency.html \
             api assets sitemap.xml service-worker.js manifest.json \
             public-site/botwavebomba/ 2>/dev/null || true
+          # Per-story deep pages (refraction-{id}.html, sigint-{id}.html, intelligence-{id}.html)
+          cp refraction-*.html sigint-*.html intelligence-*.html public-site/botwavebomba/ 2>/dev/null || true
 
       - name: Commit and push public site
         working-directory: public-site
