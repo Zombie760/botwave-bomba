@@ -2,11 +2,11 @@
   {
     "id": "26cb5d81ac87d055",
     "title": "Shipping through Strait of Hormuz declines as US-Iran hostilities resume",
-    "excerpt": "Shipping through Strait of Hormuz declines as US-Iran hostilities resume",
-    "source": "ABC News Australia",
-    "country": "AU",
-    "section": "world",
-    "countries": [
+    "excerpt": "Trump: U.S. has told Iran ceasefire is 'over' despite agreement to continue talks",
+    "asset": "ABC News Australia",
+    "theater": "AU",
+    "alignment": "world",
+    "theaters": [
       "AU",
       "GB",
       "GH",
@@ -22,7 +22,7 @@
       "RU",
       "TW"
     ],
-    "sources": [
+    "assets": [
       "ABC News Australia",
       "ABC News Australia",
       "Al Jazeera English",
@@ -64,11 +64,11 @@
   {
     "id": "6b029231a42e7279",
     "title": "How an Egypt-Argentina World Cup game became a referendum on Palestine",
-    "excerpt": "How an Egypt-Argentina World Cup game became a referendum on Palestine",
-    "source": "ABC News Australia",
-    "country": "AU",
-    "section": "world",
-    "countries": [
+    "excerpt": "Pride despite defeat as Morocco’s World Cup run ends",
+    "asset": "ABC News Australia",
+    "theater": "AU",
+    "alignment": "world",
+    "theaters": [
       "AU",
       "GH",
       "IN",
@@ -80,7 +80,7 @@
       "QA",
       "RU"
     ],
-    "sources": [
+    "assets": [
       "ABC News Australia",
       "ABC News Australia",
       "ABC News Australia",
@@ -146,11 +146,11 @@
   {
     "id": "3fd9b77adb3fde98",
     "title": "US Senator Lindsey Graham passes away",
-    "excerpt": "US Senator Lindsey Graham passes away",
-    "source": "ABC News Australia",
-    "country": "AU",
-    "section": "world",
-    "countries": [
+    "excerpt": "Warhawk US Senator Lindsey Graham dies",
+    "asset": "ABC News Australia",
+    "theater": "AU",
+    "alignment": "world",
+    "theaters": [
       "AU",
       "GH",
       "IN",
@@ -163,7 +163,7 @@
       "RU",
       "US"
     ],
-    "sources": [
+    "assets": [
       "ABC News Australia",
       "Al Jazeera English",
       "Border Report",
@@ -181,11 +181,11 @@
   {
     "id": "f8b3b175c123edbf",
     "title": "How the absence of Iran’s new supreme leader is becoming a liability for Tehran",
-    "excerpt": "How the absence of Iran’s new supreme leader is becoming a liability for Tehran",
-    "source": "ABC News Australia",
-    "country": "AU",
-    "section": "conflict",
-    "countries": [
+    "excerpt": "Ayatollah Khamenei hails ‘historic’ funeral turnout, vows revenge for martyred Leader",
+    "asset": "ABC News Australia",
+    "theater": "AU",
+    "alignment": "world",
+    "theaters": [
       "AU",
       "GB",
       "GH",
@@ -196,7 +196,7 @@
       "PK",
       "RU"
     ],
-    "sources": [
+    "assets": [
       "ABC News Australia",
       "Dawn (Pakistan)",
       "IRNA (Iran)",
@@ -215,11 +215,11 @@
   {
     "id": "8901e063660a0309",
     "title": "PM Modi in New Zealand LIVE: India, New Zealand elevate ties to strategic partnership",
-    "excerpt": "PM Modi in New Zealand LIVE: India, New Zealand elevate ties to strategic partnership",
-    "source": "Al Jazeera English",
-    "country": "QA",
-    "section": "world",
-    "countries": [
+    "excerpt": "New Zealand and India form ‘strategic partnership’",
+    "asset": "Al Jazeera English",
+    "theater": "QA",
+    "alignment": "world",
+    "theaters": [
       "GH",
       "IN",
       "JP",
@@ -228,7 +228,7 @@
       "QA",
       "TW"
     ],
-    "sources": [
+    "assets": [
       "Al Jazeera English",
       "Al Jazeera English",
       "Dawn (Pakistan)",
@@ -260,11 +260,11 @@
   {
     "id": "dbc0873265dd476e",
     "title": "Former emir of Qatar, Sheikh Hamad bin Khalifa Al Thani, dies at 74",
-    "excerpt": "Former emir of Qatar, Sheikh Hamad bin Khalifa Al Thani, dies at 74",
-    "source": "Al Jazeera English",
-    "country": "QA",
-    "section": "world",
-    "countries": [
+    "excerpt": "Sheikh Hamad bin Khalifa Al Thani, architect of modern Qatar",
+    "asset": "Al Jazeera English",
+    "theater": "QA",
+    "alignment": "world",
+    "theaters": [
       "IN",
       "NG",
       "NZ",
@@ -273,7 +273,7 @@
       "QA",
       "RU"
     ],
-    "sources": [
+    "assets": [
       "Al Jazeera English",
       "Al Jazeera English",
       "Dawn (Pakistan)",
@@ -288,11 +288,11 @@
   {
     "id": "8fc9601df0fd2c5d",
     "title": "Former Tory minister Ann Widdecombe dies at 78",
-    "excerpt": "Former Tory minister Ann Widdecombe dies at 78",
-    "source": "ABC News Australia",
-    "country": "AU",
-    "section": "world",
-    "countries": [
+    "excerpt": "Markapuram police arrest habitual offender",
+    "asset": "ABC News Australia",
+    "theater": "AU",
+    "alignment": "world",
+    "theaters": [
       "AU",
       "GH",
       "IN",
@@ -301,7 +301,7 @@
       "QA",
       "RU"
     ],
-    "sources": [
+    "assets": [
       "ABC News Australia",
       "ABC News Australia",
       "ABC News Australia",
@@ -321,17 +321,17 @@
   {
     "id": "01ef7709578f190c",
     "title": "Breaking: All Kidnapped Oyo School Children, Teachers Rescued",
-    "excerpt": "Breaking: All Kidnapped Oyo School Children, Teachers Rescued",
-    "source": "Al Jazeera English",
-    "country": "QA",
-    "section": "world",
-    "countries": [
+    "excerpt": "BREAKING: Kidnapped Oyo pupils, teachers regain freedom",
+    "asset": "Al Jazeera English",
+    "theater": "QA",
+    "alignment": "world",
+    "theaters": [
       "GH",
       "NG",
       "QA",
       "TW"
     ],
-    "sources": [
+    "assets": [
       "Al Jazeera English",
       "Daily Trust (Nigeria)",
       "Daily Trust (Nigeria)",
@@ -367,11 +367,11 @@
   {
     "id": "80b69e26a423fdbd",
     "title": "10 Palestinians injured in Israeli occupier, army attacks in occupied West Bank",
-    "excerpt": "10 Palestinians injured in Israeli occupier, army attacks in occupied West Bank",
-    "source": "Dawn (Pakistan)",
-    "country": "PK",
-    "section": "politics",
-    "countries": [
+    "excerpt": "US Democrat Ro Khanna detained by Israeli settlers during West Bank visit",
+    "asset": "Dawn (Pakistan)",
+    "theater": "PK",
+    "alignment": "world",
+    "theaters": [
       "GB",
       "IN",
       "IR",
@@ -379,7 +379,7 @@
       "PK",
       "RU"
     ],
-    "sources": [
+    "assets": [
       "Dawn (Pakistan)",
       "Dawn (Pakistan)",
       "Middle East Monitor (Palestinian coverage)",
@@ -395,18 +395,18 @@
   {
     "id": "8b8f7408081fc453",
     "title": "At least 11 dead and 19 missing in wildfire in southern Spain",
-    "excerpt": "At least 11 dead and 19 missing in wildfire in southern Spain",
-    "source": "Japan Times",
-    "country": "JP",
-    "section": "tech",
-    "countries": [
+    "excerpt": "Eleven dead, 19 missing as Spain wildfire roars through village",
+    "asset": "Japan Times",
+    "theater": "JP",
+    "alignment": "world",
+    "theaters": [
       "GH",
       "JP",
       "NZ",
       "PH",
       "TW"
     ],
-    "sources": [
+    "assets": [
       "Japan Times",
       "Joy Online (Ghana)",
       "Philippine Daily Inquirer",
@@ -417,18 +417,18 @@
   {
     "id": "b272704d6ba223c5",
     "title": "New York Times journalists issued subpoenas over Air Force One reporting",
-    "excerpt": "New York Times journalists issued subpoenas over Air Force One reporting",
-    "source": "ABC News Australia",
-    "country": "AU",
-    "section": "world",
-    "countries": [
+    "excerpt": "NYT reporters subpoenaed over Air Force One security concerns stories",
+    "asset": "ABC News Australia",
+    "theater": "AU",
+    "alignment": "world",
+    "theaters": [
       "AU",
       "GH",
       "IR",
       "NZ",
       "QA"
     ],
-    "sources": [
+    "assets": [
       "ABC News Australia",
       "Al Jazeera English",
       "Joy Online (Ghana)",
@@ -440,17 +440,17 @@
   {
     "id": "983c332e05666567",
     "title": "One of Spain's deadliest wildfires has killed at least 11 people, with 19 others missing",
-    "excerpt": "One of Spain's deadliest wildfires has killed at least 11 people, with 19 others missing",
-    "source": "Club of Mozambique",
-    "country": "MZ",
-    "section": "tech",
-    "countries": [
+    "excerpt": "One of Spain's deadliest wildfires has killed at least 12 people, with 23 others missing",
+    "asset": "Club of Mozambique",
+    "theater": "MZ",
+    "alignment": "world",
+    "theaters": [
       "GH",
       "IN",
       "MZ",
       "NZ"
     ],
-    "sources": [
+    "assets": [
       "Club of Mozambique",
       "Joy Online (Ghana)",
       "Stuff (New Zealand)",
@@ -460,16 +460,16 @@
   {
     "id": "6efc4d76959d2d58",
     "title": "Iran will respond in kind to attack on its infrastructure: Security official",
-    "excerpt": "Iran will respond in kind to attack on its infrastructure: Security official",
-    "source": "IRNA (Iran)",
-    "country": "IR",
-    "section": "conflict",
-    "countries": [
+    "excerpt": "Iran’s security chief warns any attack on infrastructure will be retaliated",
+    "asset": "IRNA (Iran)",
+    "theater": "IR",
+    "alignment": "world",
+    "theaters": [
       "GB",
       "IR",
       "RU"
     ],
-    "sources": [
+    "assets": [
       "IRNA (Iran)",
       "Middle East Monitor (Palestinian coverage)",
       "PressTV",
@@ -479,14 +479,14 @@
   {
     "id": "b5351104b63c6a90",
     "title": "JUST IN: APC retains Shettima as Tinubu’s running mate ahead of 2027 election",
-    "excerpt": "JUST IN: APC retains Shettima as Tinubu’s running mate ahead of 2027 election",
-    "source": "Daily Trust (Nigeria)",
-    "country": "NG",
-    "section": "world",
-    "countries": [
+    "excerpt": "2027: Tinubu retains Shettima as running mate",
+    "asset": "Daily Trust (Nigeria)",
+    "theater": "NG",
+    "alignment": "world",
+    "theaters": [
       "NG"
     ],
-    "sources": [
+    "assets": [
       "Daily Trust (Nigeria)",
       "Daily Trust (Nigeria)",
       "Premium Times (Nigeria)",
@@ -498,16 +498,16 @@
   {
     "id": "d77cee07c01c13e8",
     "title": "Teen arrested after remains found in search for missing 13-year-old girl",
-    "excerpt": "Teen arrested after remains found in search for missing 13-year-old girl",
-    "source": "ABC News Australia",
-    "country": "AU",
-    "section": "world",
-    "countries": [
+    "excerpt": "Teen boy charged with murder after missing 13-year-old girl found dead in Australia",
+    "asset": "ABC News Australia",
+    "theater": "AU",
+    "alignment": "world",
+    "theaters": [
       "AU",
       "IN",
       "NZ"
     ],
-    "sources": [
+    "assets": [
       "ABC News Australia",
       "Stuff (New Zealand)",
       "Stuff (New Zealand)",
@@ -520,16 +520,16 @@
   {
     "id": "12665d1b8f12fc7d",
     "title": "US demands Iran publicly state the Strait of Hormuz is open, and ships won’t be attacked, officials say",
-    "excerpt": "US demands Iran publicly state the Strait of Hormuz is open, and ships won’t be attacked, officials say",
-    "source": "RT (Russia Today)",
-    "country": "RU",
-    "section": "conflict",
-    "countries": [
+    "excerpt": "US demands Iran publicly announce intention against attacking vessels in Strait of Hormuz",
+    "asset": "RT (Russia Today)",
+    "theater": "RU",
+    "alignment": "world",
+    "theaters": [
       "IN",
       "NZ",
       "RU"
     ],
-    "sources": [
+    "assets": [
       "RT (Russia Today)",
       "Stuff (New Zealand)",
       "TASS (Russia)",
@@ -539,17 +539,17 @@
   {
     "id": "6b6452126096058d",
     "title": "Trump threatens to ‘destroy’ Iran over assassination fears",
-    "excerpt": "Trump threatens to ‘destroy’ Iran over assassination fears",
-    "source": "Al Jazeera English",
-    "country": "QA",
-    "section": "world",
-    "countries": [
+    "excerpt": "Trump threatens Iran after Ayatollah Ali Khamenei's funeral saw open calls for his killing",
+    "asset": "Al Jazeera English",
+    "theater": "QA",
+    "alignment": "world",
+    "theaters": [
       "IN",
       "NG",
       "QA",
       "RU"
     ],
-    "sources": [
+    "assets": [
       "Al Jazeera English",
       "RT (Russia Today)",
       "The Hindu (India)",
@@ -559,14 +559,14 @@
   {
     "id": "0a6240317c2d38c6",
     "title": "IRGC chief vows justice for martyred Leader, says resistance path will endure",
-    "excerpt": "IRGC chief vows justice for martyred Leader, says resistance path will endure",
-    "source": "IRNA (Iran)",
-    "country": "IR",
-    "section": "world",
-    "countries": [
+    "excerpt": "Iran will continue on martyred Leader’s path of steadfastness: Army chief",
+    "asset": "IRNA (Iran)",
+    "theater": "IR",
+    "alignment": "world",
+    "theaters": [
       "IR"
     ],
-    "sources": [
+    "assets": [
       "IRNA (Iran)",
       "IRNA (Iran)",
       "PressTV",
@@ -580,15 +580,15 @@
     "id": "81a2b2206531f405",
     "title": "China successfully tests sea-based rocket booster recovery system",
     "excerpt": "China successfully tests sea-based rocket booster recovery system",
-    "source": "Dawn (Pakistan)",
-    "country": "PK",
-    "section": "tech",
-    "countries": [
+    "asset": "Dawn (Pakistan)",
+    "theater": "PK",
+    "alignment": "world",
+    "theaters": [
       "JP",
       "PK",
       "TW"
     ],
-    "sources": [
+    "assets": [
       "Dawn (Pakistan)",
       "Japan Times",
       "Taipei Times"
@@ -597,16 +597,16 @@
   {
     "id": "e7ab54652c1c8db9",
     "title": "Israel bans Jerusalem’s grand mufti from Al-Aqsa Mosque for one week",
-    "excerpt": "Israel bans Jerusalem’s grand mufti from Al-Aqsa Mosque for one week",
-    "source": "Al Jazeera English",
-    "country": "QA",
-    "section": "world",
-    "countries": [
+    "excerpt": "Israel detains Jerusalem grand mufti, bars him from Al-Aqsa Mosque for 1 week",
+    "asset": "Al Jazeera English",
+    "theater": "QA",
+    "alignment": "world",
+    "theaters": [
       "GB",
       "IR",
       "QA"
     ],
-    "sources": [
+    "assets": [
       "Al Jazeera English",
       "Middle East Monitor (Palestinian coverage)",
       "PressTV"
@@ -615,14 +615,14 @@
   {
     "id": "32e54ae9d49b837d",
     "title": "Fubara Presents N1.85trn 2026 Budget to Rivers Assembly",
-    "excerpt": "Fubara Presents N1.85trn 2026 Budget to Rivers Assembly",
-    "source": "Daily Trust (Nigeria)",
-    "country": "NG",
-    "section": "politics",
-    "countries": [
+    "excerpt": "Fubara Presents N1.854trn 2026 Appropriation Bill to Rivers Assembly",
+    "asset": "Daily Trust (Nigeria)",
+    "theater": "NG",
+    "alignment": "world",
+    "theaters": [
       "NG"
     ],
-    "sources": [
+    "assets": [
       "Daily Trust (Nigeria)",
       "Premium Times (Nigeria)",
       "ThisDay (Nigeria)"
@@ -631,14 +631,14 @@
   {
     "id": "f349dfa9f774f60c",
     "title": "SSS releases journalist linked to Sowore from detention",
-    "excerpt": "SSS releases journalist linked to Sowore from detention",
-    "source": "Daily Trust (Nigeria)",
-    "country": "NG",
-    "section": "conflict",
-    "countries": [
+    "excerpt": "DSS releases journalist carrying drone after IPI Nigeria’s intervention",
+    "asset": "Daily Trust (Nigeria)",
+    "theater": "NG",
+    "alignment": "world",
+    "theaters": [
       "NG"
     ],
-    "sources": [
+    "assets": [
       "Daily Trust (Nigeria)",
       "Premium Times (Nigeria)",
       "Premium Times (Nigeria)",
@@ -648,16 +648,16 @@
   {
     "id": "c97a4b41467efc91",
     "title": "Apple sues OpenAI for trade secret theft in pivotal case",
-    "excerpt": "Apple sues OpenAI for trade secret theft in pivotal case",
-    "source": "Japan Times",
-    "country": "JP",
-    "section": "business",
-    "countries": [
+    "excerpt": "Apple accuses OpenAI \nof stealing trade secrets",
+    "asset": "Japan Times",
+    "theater": "JP",
+    "alignment": "world",
+    "theaters": [
       "JP",
       "PH",
       "TW"
     ],
-    "sources": [
+    "assets": [
       "Japan Times",
       "Rappler (Philippines)",
       "Taipei Times"
@@ -666,16 +666,16 @@
   {
     "id": "3b5312d85766e81c",
     "title": "Japan successfully launches and lands reusable rocket",
-    "excerpt": "Japan successfully launches and lands reusable rocket",
-    "source": "Japan Times",
-    "country": "JP",
-    "section": "tech",
-    "countries": [
+    "excerpt": "Japan’s JAXA successfully launches, lands reusable rocket",
+    "asset": "Japan Times",
+    "theater": "JP",
+    "alignment": "world",
+    "theaters": [
       "IN",
       "JP",
       "TW"
     ],
-    "sources": [
+    "assets": [
       "Japan Times",
       "Taipei Times",
       "The Hindu (India)"
@@ -684,16 +684,16 @@
   {
     "id": "3fd2e0dfcc4ae73a",
     "title": "Live: Wallabies aiming to rebound against France in Nations Championship",
-    "excerpt": "Live: Wallabies aiming to rebound against France in Nations Championship",
-    "source": "ABC News Australia",
-    "country": "AU",
-    "section": "world",
-    "countries": [
+    "excerpt": "Wallabies v France — Nations Championship",
+    "asset": "ABC News Australia",
+    "theater": "AU",
+    "alignment": "world",
+    "theaters": [
       "AU",
       "JP",
       "NZ"
     ],
-    "sources": [
+    "assets": [
       "ABC News Australia",
       "Japan Times",
       "Stuff (New Zealand)",
@@ -705,14 +705,14 @@
   {
     "id": "8ab7ed87059c5707",
     "title": "Federation Cup Final PREVIEW: Ikorodu City chase history, El-Kanemi eye fourth title",
-    "excerpt": "Federation Cup Final PREVIEW: Ikorodu City chase history, El-Kanemi eye fourth title",
-    "source": "Daily Trust (Nigeria)",
-    "country": "NG",
-    "section": "politics",
-    "countries": [
+    "excerpt": "President Federation Cup: El-Kanemi Warriors edge Ikorodu City to win fourth title",
+    "asset": "Daily Trust (Nigeria)",
+    "theater": "NG",
+    "alignment": "world",
+    "theaters": [
       "NG"
     ],
-    "sources": [
+    "assets": [
       "Daily Trust (Nigeria)",
       "Daily Trust (Nigeria)",
       "Premium Times (Nigeria)",
@@ -723,16 +723,16 @@
   {
     "id": "aff3eb114bececaa",
     "title": "On World Population Day, govt pledges 'responsible' planning to tackle alarming demographic boom",
-    "excerpt": "On World Population Day, govt pledges 'responsible' planning to tackle alarming demographic boom",
-    "source": "Dawn (Pakistan)",
-    "country": "PK",
-    "section": "world",
-    "countries": [
+    "excerpt": "Andhra University observes World Population Day",
+    "asset": "Dawn (Pakistan)",
+    "theater": "PK",
+    "alignment": "world",
+    "theaters": [
       "IN",
       "NG",
       "PK"
     ],
-    "sources": [
+    "assets": [
       "Dawn (Pakistan)",
       "Punch (Nigeria)",
       "The Hindu (India)"
@@ -741,14 +741,14 @@
   {
     "id": "3cb9045bc431e9a4",
     "title": "Iran tripled drone production output during US–Israeli aggression: Caretaker Defense Minister",
-    "excerpt": "Iran tripled drone production output during US–Israeli aggression: Caretaker Defense Minister",
-    "source": "IRNA (Iran)",
-    "country": "IR",
-    "section": "politics",
-    "countries": [
+    "excerpt": "Iran: Production of drones tripled during US-Israeli war of aggression",
+    "asset": "IRNA (Iran)",
+    "theater": "IR",
+    "alignment": "world",
+    "theaters": [
       "IR"
     ],
-    "sources": [
+    "assets": [
       "IRNA (Iran)",
       "PressTV",
       "Tehran Times"
@@ -757,16 +757,16 @@
   {
     "id": "478977e350346a7b",
     "title": "Linda Noskova survives Karolina Muchova fightback to win Wimbledon",
-    "excerpt": "Linda Noskova survives Karolina Muchova fightback to win Wimbledon",
-    "source": "ABC News Australia",
-    "country": "AU",
-    "section": "tech",
-    "countries": [
+    "excerpt": "Noskova Holds off Muchova’s Fightback to Win Maiden Grand Slam",
+    "asset": "ABC News Australia",
+    "theater": "AU",
+    "alignment": "world",
+    "theaters": [
       "AU",
       "NG",
       "PH"
     ],
-    "sources": [
+    "assets": [
       "ABC News Australia",
       "Rappler (Philippines)",
       "ThisDay (Nigeria)"
@@ -775,16 +775,16 @@
   {
     "id": "30aba64603c873af",
     "title": "PH, 13 countries urge Beijing: Abide by 2016 South China Sea Arbitral award",
-    "excerpt": "PH, 13 countries urge Beijing: Abide by 2016 South China Sea Arbitral award",
-    "source": "Rappler (Philippines)",
-    "country": "PH",
-    "section": "world",
-    "countries": [
+    "excerpt": "U.S., U.K., and 12 other nations reaffirm 2016 ruling invalidating China’s claims in South China Sea",
+    "asset": "Rappler (Philippines)",
+    "theater": "PH",
+    "alignment": "world",
+    "theaters": [
       "IN",
       "NZ",
       "PH"
     ],
-    "sources": [
+    "assets": [
       "Rappler (Philippines)",
       "Stuff (New Zealand)",
       "The Hindu (India)"
@@ -793,16 +793,16 @@
   {
     "id": "ba8582f5b9ac4a60",
     "title": "2 dead and 3 wounded in shooting near Toronto street festival, police say",
-    "excerpt": "2 dead and 3 wounded in shooting near Toronto street festival, police say",
-    "source": "Joy Online (Ghana)",
-    "country": "GH",
-    "section": "conflict",
-    "countries": [
+    "excerpt": "At least two killed in Toronto street festival shooting",
+    "asset": "Joy Online (Ghana)",
+    "theater": "GH",
+    "alignment": "world",
+    "theaters": [
       "GH",
       "IN",
       "RU"
     ],
-    "sources": [
+    "assets": [
       "Joy Online (Ghana)",
       "RT (Russia Today)",
       "The Hindu (India)"

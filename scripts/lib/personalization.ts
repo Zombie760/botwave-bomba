@@ -1,5 +1,8 @@
 // BotwaveBomba personalization — Ground News parity: For You / Local / Topics
-import { Story, normBloc } from './data.ts';
+import { Story, Asset, normBloc } from './data.ts';
+import { classifyAlignment } from './alignment.ts';
+
+const classifyStory = classifyAlignment;
 
 export interface Topic {
   id: string;
@@ -98,7 +101,7 @@ export function extractTopicsFromStories(stories: Story[]): Topic[] {
     }
     
     // Keyword-based extraction
-    const text = story.top_headlines.join(' ').toLowerCase();
+    const text = (story.top_headlines ?? story.topHeadlines ?? []).join(' ').toLowerCase();
     const keywords: Record<string, string[]> = {
       'climate': ['climate', 'carbon', 'emission', 'renewable', 'warming', 'paris agreement', 'cop2'],
       'health': ['health', 'pandemic', 'vaccine', 'hospital', 'disease', 'who', 'covid'],
@@ -148,11 +151,11 @@ export function filterStoriesForYou(stories: Story[], prefs: UserPreferences): S
       prefs.followedTopics.some(t => storyTopics.includes(t));
     
     // Check country match
-    const countryMatch = prefs.followedCountries.length === 0 ||
-      story.countries.some(c => prefs.followedCountries.includes(c));
+    const countryMatch = (prefs.followedCountries.length === 0) ||
+      (story.countries?.some(c => prefs.followedCountries.includes(c)) ?? false);
     
     // Check bloc match
-    const storyBlocs = [...new Set(story.sources.map(s => normBloc(s.bloc)))];
+    const storyBlocs = Array.from(new Set(story.sources.map(s => normBloc(s.bloc))));
     const blocMatch = prefs.followedBlocs.length === 0 ||
       prefs.followedBlocs.some(b => storyBlocs.includes(b));
     
@@ -167,7 +170,7 @@ export function getLocalStories(stories: Story[], prefs: UserPreferences): Story
   const countries = prefs.followedCountries;
   if (countries.length === 0) return [];
   
-  return stories.filter(story => 
-    story.countries.some(c => countries.includes(c))
+  return stories.filter(story =>
+    (story.countries?.some(c => countries.includes(c)) ?? false)
   ).slice(0, 20);
 }

@@ -7,18 +7,16 @@ export interface RadarContact {
   storyCount: number;
   sourceCount: number;
   topStoryIds: string[];
+  topStoryId?: string;
 }
 
-/**
- * Aggregate story coverage by country + bloc for radar visualization
- */
 export function scanRadar(stories: Story[]): RadarContact[] {
   const map = new Map<string, RadarContact>();
 
   for (const story of stories) {
     for (const source of story.sources) {
       const country = source.country || 'Unknown';
-      const bloc = normBloc(source.bloc);
+      const bloc = normBloc(source.bloc) as RadarContact['bloc'];
       const key = `${country}|${bloc}`;
 
       const existing = map.get(key) || {
@@ -26,7 +24,8 @@ export function scanRadar(stories: Story[]): RadarContact[] {
         bloc,
         storyCount: 0,
         sourceCount: 0,
-        topStoryIds: []
+        topStoryIds: [],
+        topStoryId: story.id
       };
 
       existing.storyCount += 1;

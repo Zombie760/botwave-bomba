@@ -14,16 +14,18 @@ const BASE = "/botwavebomba";
 const DOMAIN = "https://zombie760.github.io";
 
 
-// Rewrap existing content pages with shared chrome
+// Rewrap existing content pages with shared chrome (skip if not present during local dev)
 const EXISTING_CONTENT: Record<string, { title: string; desc: string; body: string }> = (() => {
   const map: Record<string, { title: string; desc: string; body: string }> = {};
   for (const page of ["sitrep.html", "asset-registry.html", "tradecraft.html", "pro.html", "errata.html", "sin-senal.html", "perdido.html"]) {
-    const text = readFileSync(`${ROOT}/${page}`, "utf8");
-    const title = (text.match(/<title>([^<]+)<\/title>/i) || ["", page])[1];
-    const desc = (text.match(/<meta[^>]*name=["']description["'][^>]*content=["']([^"']+)/i) || ["", ""])[1];
-    const bodyMatch = text.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
-    const body = bodyMatch ? bodyMatch[1].trim() : "";
-    map[page] = { title, desc, body };
+    try {
+      const text = readFileSync(`${ROOT}/${page}`, "utf8");
+      const title = (text.match(/<title>([^<]+)<\/title>/i) || ["", page])[1];
+      const desc = (text.match(/<meta[^>]*name=["']description["'][^>]*content=["']([^"']+)/i) || ["", ""])[1];
+      const bodyMatch = text.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
+      const body = bodyMatch ? bodyMatch[1].trim() : "";
+      map[page] = { title, desc, body };
+    } catch {}
   }
   return map;
 })();
@@ -51,7 +53,7 @@ function escapeHtml(s: string | number | undefined): string {
     .replace(/&/g, "&")
     .replace(/</g, "<")
     .replace(/>/g, ">")
-    .replace(/"/g, """)
+    .replace(/"/g, "\"")
     .replace(/'/g, "'");
 }
 
@@ -393,7 +395,7 @@ function generate() {
   // Static / content pages
   const staticPages = ["tradecraft.html", "pro.html", "errata.html", "sin-senal.html", "perdido.html"];
   for (const page of staticPages) {
-    const e = EXISTING_CONTENT[page];
+    const e = EXISTING_CONTENT[page] || { title: page.replace('.html', '').toUpperCase(), desc: "BotwaveBomba", body: "" };
     const id = page.replace(".html", "");
     const navId = id === "perdido" ? "home" : id;
     const ld = {

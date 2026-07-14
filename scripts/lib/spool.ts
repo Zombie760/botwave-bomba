@@ -1,5 +1,5 @@
 // BotwaveBomba CHRONOS — signal evolution across time
-import { Story, normBloc } from './data.ts';
+import { Story, Asset, normBloc } from './data.ts';
 
 export interface ChronosEntry {
   date: string; // ISO date string
@@ -42,13 +42,13 @@ export function spoolChronos(stories: Story[]): ChronosEntry[] {
         if (alignmentSpread[a] !== undefined) alignmentSpread[a]++;
       }
       
-      const theaters = [...new Set(assetsAtDate.map(s => s.country))];
+      const theaters = Array.from(new Set(assetsAtDate.map((s: Asset) => s.country)));
       const newAssets = d === 0 ? assetsAtDate.map(s => s.name) : [];
       
       entries.push({
         date: dateStr,
         sigintId: story.id,
-        headline: story.top_headlines[0] || 'Untitled signal',
+        headline: story.top_headlines?.[0] || story.topHeadlines?.[0] || 'Untitled signal',
         assetCount: assetCountAtDate,
         alignmentSpread,
         theaters,

@@ -1,5 +1,5 @@
 // BotwaveBomba ALIGNMENT classification — three-axis geopolitical alignment
-import { SigintPackage, normAlignment } from './data.ts';
+import { SigintPackage, normAlignment, getSigintPackages } from './data.ts';
 
 export interface AlignmentTag {
   id: string;
@@ -24,6 +24,8 @@ export const SECTORS = [
   { id: 'tradecraft', label: 'TRADECRAFT', description: 'How we classify alignment, vetting, ownership — full transparency' },
   { id: 'sitrep', label: 'SITREP', description: 'Daily top intercepts by coverage gap significance' },
 ];
+
+export const SECTIONS = SECTORS;
 
 /**
  * Classify a sigint package by its alignment spread
@@ -58,8 +60,6 @@ export function getDominantAlignment(pkg: SigintPackage): string {
  * Get trending active frequencies (topics with most new signals)
  */
 export function getActiveFrequencies(): { id: string; label: string; sigintIds: string[] }[] {
-  // In production: compute from actual topic tracking
-  // For now, return static demo frequencies
   return [
     { id: 'ukraine-conflict', label: 'UKRAINE CONFLICT', sigintIds: ['sig-001', 'sig-002'] },
     { id: 'taiwan-strait', label: 'TAIWAN STRAIT', sigintIds: ['sig-003'] },
@@ -79,7 +79,6 @@ export function getStoriesByAlignment(packages: SigintPackage[]): Record<string,
   }
   
   for (const pkg of packages) {
-    // Black site check
     const total = pkg.assetCount || pkg.sources.length || 1;
     const spread = pkg.alignmentSpread || {};
     const isBlackSite = Object.values(spread).some(c => c / total < 0.2) && total >= 3;
@@ -87,7 +86,6 @@ export function getStoriesByAlignment(packages: SigintPackage[]): Record<string,
       grouped['black-site'].push(pkg);
     }
     
-    // Sector assignment by dominant alignment
     const dominant = getDominantAlignment(pkg);
     if (dominant === 'western') grouped['radar'].push(pkg);
     else if (dominant === 'non-aligned') grouped['spool'].push(pkg);

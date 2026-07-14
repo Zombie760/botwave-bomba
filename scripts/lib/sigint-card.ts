@@ -18,16 +18,18 @@ export interface RenderedSigintCard {
 }
 
 export function renderSigintCard(pkg: SigintPackage): RenderedSigintCard {
-  const alignmentCounts = pkg.alignmentSpread || {};
+  const alignmentSpread = pkg.alignmentSpread || pkg.bloc_spread || {};
+  const alignmentCounts = alignmentSpread;
   const topAlignment = getDominantAlignment(pkg);
   const assetCount = pkg.assetCount || pkg.sources.length || 1;
   const theaterCount = pkg.theaters?.length || 0;
   const countryCount = new Set(pkg.sources.map(s => s.country)).size;
   const timeAgo = formatTimeAgo(pkg.lastUpdated);
   const headlines = pickTopHeadlines(pkg, 1);
-  const headline = headlines[0]?.headline || pkg.topHeadlines[0] || 'Untitled signal';
+  const topHeadlines = pkg.topHeadlines || pkg.top_headlines || [];
+  const headline = headlines[0]?.headline || topHeadlines[0] || 'Untitled signal';
   const topAsset = headlines[0] ? { name: headlines[0].asset, country: headlines[0].theater, alignment: headlines[0].alignment } : null;
-  const excerpt = pkg.sources.map(s => s.excerpt).find(e => e && e.trim()) || pkg.topHeadlines[1] || '';
+  const excerpt = pkg.sources.map(s => s.excerpt).find(e => e && e.trim()) || topHeadlines[1] || '';
 
   // Badges based on alignment spread
   const badges: string[] = [];
@@ -66,7 +68,7 @@ export function renderSigintCard(pkg: SigintPackage): RenderedSigintCard {
 }
 
 function getDominantAlignment(pkg: SigintPackage): string {
-  const spread = pkg.alignmentSpread || {};
+  const spread = pkg.alignmentSpread || pkg.bloc_spread || {};
   let max = 0;
   let dominant = 'western';
   for (const [alignment, count] of Object.entries(spread)) {
@@ -82,8 +84,8 @@ export function sortSigintByBlackSite(packages: SigintPackage[]): SigintPackage[
   return [...packages].sort((a, b) => {
     const totalA = a.assetCount || a.sources.length || 1;
     const totalB = b.assetCount || b.sources.length || 1;
-    const spreadA = a.alignmentSpread || {};
-    const spreadB = b.alignmentSpread || {};
+    const spreadA = a.alignmentSpread || a.bloc_spread || {};
+    const spreadB = b.alignmentSpread || b.bloc_spread || {};
     
     const isBlackSiteA = Object.values(spreadA).some(c => c / totalA < 0.2) && totalA >= 3;
     const isBlackSiteB = Object.values(spreadB).some(c => c / totalB < 0.2) && totalB >= 3;

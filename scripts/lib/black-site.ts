@@ -3,6 +3,7 @@ import { Story, normBloc } from './data.ts';
 
 export interface BlackSiteIntel {
   story: Story;
+  sigintPackage: Story;
   silentSector: 'western' | 'non-aligned' | 'adversarial';
   coverageRatio: number;
 }
@@ -16,16 +17,18 @@ export function detectBlackSites(stories: Story[]): BlackSiteIntel[] {
   const alignments = ['western', 'non-aligned', 'adversarial'] as const;
 
   for (const story of stories) {
-    const total = story.source_count || story.sources.length || 1;
+    const spread = story.alignmentSpread || story.bloc_spread || {};
+    const total = story.assetCount || story.source_count || story.sources.length || 1;
     if (total < 3) continue;
 
     for (const alignment of alignments) {
-      const count = story.bloc_spread?.[alignment] || 0;
+      const count = spread[alignment] || 0;
       const ratio = count / total;
       
       if (ratio < 0.2) {
         blackSites.push({
           story,
+          sigintPackage: story,
           silentSector: alignment,
           coverageRatio: ratio
         });
@@ -36,8 +39,10 @@ export function detectBlackSites(stories: Story[]): BlackSiteIntel[] {
 
   return blackSites.sort((a, b) => {
     // Sort by gap significance: (1 - coverageRatio) * log(totalSources)
-    const scoreA = (1 - a.coverageRatio) * Math.log(a.story.sources.length);
-    const scoreB = (1 - b.coverageRatio) * Math.log(b.story.sources.length);
+    const totalA = a.story.assetCount || a.story.source_count || a.story.sources.length;
+    const totalB = b.story.assetCount || b.story.source_count || b.story.sources.length;
+    const scoreA = (1 - a.coverageRatio) * Math.log(totalA);
+    const scoreB = (1 - b.coverageRatio) * Math.log(totalB);
     return scoreB - scoreA;
   });
 }

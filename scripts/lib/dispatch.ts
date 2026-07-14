@@ -58,7 +58,7 @@ export function generateDispatchIssue(stories: Story[]): string {
       '<strong style="color:#2c3e50;">' + escapeHtml(story.title) + '</strong>' +
       '<span style="font-size:0.9em;color:#7f8c8d;">(' + story.id + ')</span>' +
       '<p style="margin:5px 0 10px 0;font-size:0.9em;">' + escapeHtml(story.summary) + '</p>' +
-      '<a href="' + story.linkSlug + '" style="color:#3498db;text-decoration:none;font-weight:bold;">[FULL INTEL] →</a>' +
+      '<a href="' + story.linkSlug + '" style="color:#3498db;text-decoration:none;font-weight:bold;">[FULL INTEL] \u2192</a>' +
     '</div>'
   ).join('');
 
@@ -78,6 +78,6 @@ function escapeHtml(s: string): string {
     .replace(/&/g, '&')
     .replace(/</g, '<')
     .replace(/>/g, '>')
-    .replace(/\"/g, '"')
-    .replace(/'/g, ''');
+    .replace(/"/g, '"')
+    .replace(/'/g, "'");
 }
