@@ -3,12 +3,48 @@
   "version": "5.0.0",
   "private": true,
   "license": "MIT",
+  "description": "Sovereign news coverage platform — surfaces media bias, ownership trails, and coverage gaps across outlets and countries. Not Left/Right. Who Owns The Story.",
+  "homepage": "https://zombie760.github.io/botwavebomba/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zombie760/botwave-bomba.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Zombie760/botwave-bomba/issues",
+    "email": "security@botwave.io"
+  },
+  "keywords": [
+    "news",
+    "media-bias",
+    "coverage-gaps",
+    "blindspot-detection",
+    "ownership-mapping",
+    "journalism-tools",
+    "static-site-generator",
+    "bun",
+    "typescript",
+    "sovereign-tech"
+  ],
+  "author": {
+    "name": "Kyle Jimenez",
+    "email": "kyle@botwave.io",
+    "url": "https://github.com/Zombie760"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/Zombie760"
+  },
   "scripts": {
     "dev": "bun run scripts/dev_server.ts",
     "build": "bun run scripts/build_site.ts",
     "lint": "eslint .",
     "format:check": "prettier --check .",
-    "format:write": "prettier --write ."
+    "format:write": "prettier --write .",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "docs:dev": "mkdocs serve -f docs/mkdocs.yml",
+    "docs:build": "mkdocs build -f docs/mkdocs.yml --site-dir ../docs-site",
+    "docs:deploy": "mkdocs gh-deploy -f docs/mkdocs.yml --force"
   },
   "dependencies": {
     "@mozilla/readability": "^0.6.0",
@@ -16,6 +52,13 @@
   },
   "devDependencies": {
     "@types/bun": "^1.3.14",
-    "@types/jsdom": "^28.0.3"
-  }
+    "@types/jsdom": "^28.0.3",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "bun": ">=1.1.0"
+  },
+  "packageManager": "bun@1.1.29"
 }

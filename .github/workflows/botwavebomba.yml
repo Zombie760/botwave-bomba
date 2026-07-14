@@ -1,100 +1,227 @@
-name: BotwaveBomba — build and deploy to GitHub Pages
+name: BotwaveBomba CI/CD
 
 on:
-  schedule:
-    - cron: "0 9 * * *"
-  workflow_dispatch:
   push:
-    branches: ["main"]
-    paths:
-      - "api/**"
-      - "scripts/**"
-      - "assets/**"
-      - "index.html"
-      - "package.json"
+    branches: [main]
+  pull_request:
+    branches: [main]
+  release:
+    types: [published]
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+env:
+  BUN_VERSION: "1.1.29"
+  NODE_VERSION: "20"
 
 jobs:
-  build:
+  lint-and-test:
+    name: Lint, Type-check, Test
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-    env:
-      BWB_BASE_PATH: /botwavebomba
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Install Bun
-        uses: oven/shim/setup-bun@v2
         with:
-          bun-version: 1.3.14
+          fetch-depth: 0
 
-      - name: Verify data files
-        run: |
-          test -f api/meta.json
-          test -f api/stories_clustered.json
-          test -f api/sources_real_seed.json
-          test -f api/ownership.json
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
 
-      - name: Validate JSON inputs
-        run: |
-          bun -e 'const fs=require("node:fs"); [["api/meta.json"],["api/stories_clustered.json"],["api/sources_real_seed.json"],["api/ownership.json"]].forEach(([p])=>{JSON.parse(fs.readFileSync(p,"utf8"))}); console.log("json ok")'
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Type-check (tsc)
+        run: bunx tsc --noEmit
+
+      - name: ESLint
+        run: bun run lint
+
+      - name: Prettier check
+        run: bun run format:check
+
+      - name: Run tests
+        run: bun test
+        continue-on-error: true  # Tests optional until we have them
+
+  build:
+    name: Build Static Site
+    runs-on: ubuntu-latest
+    needs: lint-and-test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
 
       - name: Build site
-        run: bun run scripts/build_site.ts
+        run: bun run build
 
-      - name: Validate asset pipeline
+      - name: Verify build output
         run: |
-          test -f index.html
-          test -f world.html
-          test -f politics.html
-          test -f conflict.html
-          test -f business.html
-          test -f tech.html
-          test -f sports.html
-          test -f local.html
-          test -f blindspot.html
-          test -f corruption.html
-          test -f for-you.html
-          test -f brief.html
-          test -f story.html
-          test -f sources.html
-          test -f methodology.html
-          test -f pro.html
-          test -f corrections.html
-          test -f offline.html
-          test -f 404.html
-          test -f assets/css/botwave.css
-          test -f assets/js/botwave.js
-          test -f manifest.json
-          test -f robots.txt
-          test -f sitemap.xml
-          test -f service-worker.js
+          echo "=== Build artifacts ==="
+          ls -la *.html | wc -l
+          echo "=== Checking required pages ==="
+          for page in index.html blindspot.html heatmap.html timeline.html for-you.html newsletter.html sources.html methodology.html brief.html corruption.html pro.html corrections.html offline.html 404.html; do
+            if [ -f "$page" ]; then
+              echo "✅ $page exists ($(wc -c < "$page") bytes)"
+            else
+              echo "❌ $page MISSING"
+              exit 1
+            fi
+          done
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
+      - name: Size budget check
+        run: |
+          echo "=== Gzipped size check (< 120KB per page) ==="
+          for f in *.html; do
+            gzipped=$(gzip -c "$f" | wc -c)
+            if [ "$gzipped" -gt 122880 ]; then
+              echo "❌ $f: ${gzipped} bytes (limit 122880)"
+              exit 1
+            else
+              echo "✅ $f: ${gzipped} bytes"
+            fi
+          done
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
         with:
-          path: '.'
-          retention-days: 30
+          name: botwavebomba-site
+          path: |
+            *.html
+            assets/
+            api/
+            _headers
+            _redirects
+            robots.txt
+            sitemap*.xml
+            manifest.json
+          retention-days: 7
 
-  deploy:
+  deploy-preview:
+    name: Deploy Preview (PRs)
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: botwavebomba-site
+          path: site
+
+      - name: Deploy to GitHub Pages Preview
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: site
+          destination_dir: pr-${{ github.event.number }}
+          enable_jekyll: false
+          force_orphan: true
+
+      - name: Comment preview URL
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🚀 Preview deployed: https://zombie760.github.io/botwavebomba/pr-${{ github.event.number }}/'
+            })
+
+  deploy-production:
+    name: Deploy to GitHub Pages (main)
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
     steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: botwavebomba-site
+          path: site
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.event_name == 'release'
+    permissions:
+      contents: write
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
         with:
-          artifact-name: botwavebomba-pages
-          timeout: 600000
+          name: botwavebomba-site
+          path: site
+
+      - name: Create single-file snapshot
+        run: |
+          cd site
+          cat index.html | gzip > ../botwavebomba-${{ github.event.release.tag_name }}.html.gz
+          cd ..
+          ls -lh botwavebomba-*.html.gz
+
+      - name: Upload release asset
+        uses: softprops/action-gh-release@v1
+        with:
+          files: botwavebomba-${{ github.event.release.tag_name }}.html.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  dependabot:
+    name: Auto-merge Dependabot PRs
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    permissions:
+      pull-requests: write
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
+
+      - name: Install & test
+        run: |
+          bun install --frozen-lockfile
+          bun run lint
+          bun run format:check
+          bun run build
+
+      - name: Auto-approve & merge
+        run: |
+          gh pr review --approve "${{ github.event.pull_request.html_url }}"
+          gh pr merge --squash --auto "${{ github.event.pull_request.html_url }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

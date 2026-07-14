@@ -1,7 +1,7 @@
-// BotwaveBomba coverage heatmap — Ground News parity: world choropleth by story density
+// BotwaveBomba RADAR — world coverage scan by signal density
 import { Story, normBloc } from './data.ts';
 
-export interface HeatmapCell {
+export interface RadarContact {
   country: string;
   bloc: 'western' | 'non-aligned' | 'adversarial' | 'other';
   storyCount: number;
@@ -10,10 +10,10 @@ export interface HeatmapCell {
 }
 
 /**
- * Aggregate story coverage by country + bloc for heatmap visualization
+ * Aggregate story coverage by country + bloc for radar visualization
  */
-export function getHeatmapData(stories: Story[]): HeatmapCell[] {
-  const map = new Map<string, HeatmapCell>();
+export function scanRadar(stories: Story[]): RadarContact[] {
+  const map = new Map<string, RadarContact>();
 
   for (const story of stories) {
     for (const source of story.sources) {
@@ -45,9 +45,9 @@ export function getHeatmapData(stories: Story[]): HeatmapCell[] {
 }
 
 /**
- * Get aggregated heatmap by country only (for world map view)
+ * Get aggregated radar by country only (for world map view)
  */
-export function getCountryHeatmap(stories: Story[]): Record<string, { count: number; blocs: Record<string, number>; topStories: string[] }> {
+export function getCountryRadar(stories: Story[]): Record<string, { count: number; blocs: Record<string, number>; topStories: string[] }> {
   const map: Record<string, { count: number; blocs: Record<string, number>; topStories: string[] }> = {};
 
   for (const story of stories) {

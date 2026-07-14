@@ -1,0 +1,64 @@
+# Dependabot Auto-Merge Workflow
+# Auto-merges safe dependency updates (patch, minor, dev deps)
+# Requires: CI passes, no breaking changes detected
+
+name: Dependabot Auto-Merge
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+  statuses: read
+
+jobs:
+  auto-merge:
+    name: Auto-merge Dependabot PRs
+    if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if PR is safe to auto-merge
+        id: check
+        run: |
+          # Get PR labels
+          LABELS=$(gh pr view ${{ github.event.pull_request.number }} --json labels --jq '.labels[].name')
+          
+          # Check for major update label (requires manual review)
+          if echo "$LABELS" | grep -q "major"; then
+            echo "major=true" >> $GITHUB_OUTPUT
+            echo "Major version update - requires manual review"
+            exit 0
+          fi
+          
+          # Check for security label (always review)
+          if echo "$LABELS" | grep -q "security"; then
+            echo "security=true" >> $GITHUB_OUTPUT
+            echo "Security update - requires manual review"
+            exit 0
+          fi
+          
+          echo "safe=true" >> $GITHUB_OUTPUT
+          echo "Safe dependency update (patch/minor/dev)"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Enable auto-merge for safe PRs
+        if: steps.check.outputs.safe == 'true'
+        run: |
+          gh pr merge ${{ github.event.pull_request.number }} \
+            --squash \
+            --auto \
+            --delete-branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Add review-required label for major/security
+        if: steps.check.outputs.major == 'true' || steps.check.outputs.security == 'true'
+        run: |
+          gh pr edit ${{ github.event.pull_request.number }} --add-label "review-required"
+          gh pr comment ${{ github.event.pull_request.number }} --body "⚠️ This PR contains a major version update or security fix. Manual review required before merge."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

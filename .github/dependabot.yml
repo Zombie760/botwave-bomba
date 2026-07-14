@@ -1,10 +1,56 @@
+# Dependabot Configuration for BotwaveBomba
+# Automated dependency updates with auto-merge for safe updates
+
 version: 2
 updates:
-  - package-ecosystem: github-actions
-    directory: /
+  # npm/Bun dependencies
+  - package-ecosystem: "npm"
+    directory: "/"
     schedule:
-      interval: weekly
-  - package-ecosystem: npm
-    directory: /
+      interval: "weekly"
+      day: "monday"
+      time: "03:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "Zombie760"
+    assignees:
+      - "Zombie760"
+    labels:
+      - "dependencies"
+      - "automated"
+    commit-message:
+      prefix: "chore(deps)"
+      prefix-development: "chore(deps-dev)"
+      include: "scope"
+    groups:
+      # Group dev dependencies together
+      dev-dependencies:
+        dependency-type: "development"
+      # Group major updates separately for review
+      major-updates:
+        update-types:
+          - "major"
+        dependency-type: "all"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
     schedule:
-      interval: weekly
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "Zombie760"
+    labels:
+      - "dependencies"
+      - "github-actions"
+      - "automated"
+    commit-message:
+      prefix: "chore(ci)"
+      include: "scope"
+
+# Auto-merge configuration (handled by workflow)
+# See .github/workflows/dependabot-auto-merge.yml

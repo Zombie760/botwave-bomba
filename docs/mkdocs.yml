@@ -1,0 +1,132 @@
+site_name: BotwaveBomba Documentation
+site_url: https://zombie760.github.io/botwavebomba/docs/
+site_description: Sovereign news coverage platform — methodology, API, algorithms, contributing
+site_author: Kyle Jimenez (Botwave)
+repo_url: https://github.com/Zombie760/botwave-bomba
+repo_name: Zombie760/botwave-bomba
+edit_uri: edit/main/docs/
+copyright: |
+  © 2026 Kyle Jimenez (Botwave) — MIT License.
+  Not Left/Right. Who Owns The Story.
+
+theme:
+  name: material
+  language: en
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: DM Mono
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - toc.integrate
+  icon:
+    repo: fontawesome/brands/github
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Quickstart: getting-started/quickstart.md
+      - Architecture: getting-started/architecture.md
+      - Data Pipeline: getting-started/data-pipeline.md
+  - Methodology:
+      - Alignment Taxonomy: methodology/alignment-taxonomy.md
+      - Black Site Detection: methodology/black-site-detection.md
+      - Radar Algorithm: methodology/radar-algorithm.md
+      - Spool Algorithm: methodology/spool-algorithm.md
+      - Numbers Station: methodology/numbers-station.md
+      - Framing Analysis: methodology/framing-analysis.md
+      - Credibility Scoring: methodology/credibility-scoring.md
+      - Transparency: methodology/transparency.md
+  - API Reference:
+      - Sigint Packages: api/sigint-packages.md
+      - Asset Registry: api/asset-registry.md
+      - Money Trail: api/money-trail.md
+      - Meta & Schema: api/meta-schema.md
+  - Algorithms:
+      - Black Site: algorithms/black-site.md
+      - Radar: algorithms/radar.md
+      - Spool: algorithms/spool.md
+      - Numbers Station: algorithms/numbers-station.md
+      - Classification: algorithms/classification.md
+  - Contributing:
+      - Development Setup: contributing/setup.md
+      - Code Standards: contributing/code-standards.md
+      - Adding Assets: contributing/adding-assets.md
+      - Algorithm Changes: contributing/algorithm-changes.md
+      - Release Process: contributing/release-process.md
+  - Security:
+      - Policy: security/policy.md
+      - CSP & Headers: security/csp-headers.md
+      - Supply Chain: security/supply-chain.md
+  - Changelog: changelog.md
+
+plugins:
+  - search
+  - autorefs
+  - mkdocstrings:
+      handlers:
+        typescript:
+          paths: [../../scripts/lib]
+          options:
+            show_source: true
+            show_root_heading: true
+            docstring_style: google
+            merge_init_into_class: true
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      base_path: .
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true

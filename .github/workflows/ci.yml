@@ -1,0 +1,212 @@
+# CI/CD Pipeline for BotwaveBomba
+# Runs on: push to main, PR to main, weekly schedule
+# Deploys: GitHub Pages (gh-pages branch) on main push
+
+name: BotwaveBomba CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 2 * * 1'  # Weekly Monday 2 AM UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  checks: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  BUN_VERSION: "1.1.29"
+  NODE_VERSION: "20"
+
+jobs:
+  # ──────────────────────────────────────────────────────────────
+  # LINT & TYPECHECK
+  # ──────────────────────────────────────────────────────────────
+  lint:
+    name: Lint & Typecheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: TypeScript typecheck
+        run: bunx tsc --noEmit
+
+      - name: ESLint
+        run: bun run lint
+
+      - name: Prettier check
+        run: bun run format:check
+
+  # ──────────────────────────────────────────────────────────────
+  # BUILD
+  # ──────────────────────────────────────────────────────────────
+  build:
+    name: Build Static Site
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: lint
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build site
+        run: bun run build
+        env:
+          BASE_URL: "/botwavebomba"
+          DOMAIN: "https://zombie760.github.io"
+
+      - name: Verify build output
+        run: |
+          echo "Generated files:"
+          ls -la *.html | wc -l
+          test -f index.html || (echo "index.html missing!" && exit 1)
+          test -f blindspot.html || (echo "blindspot.html missing!" && exit 1)
+          test -f heatmap.html || (echo "heatmap.html missing!" && exit 1)
+          test -f sources.html || (echo "sources.html missing!" && exit 1)
+
+      - name: Size budget check
+        run: |
+          for f in *.html; do
+            size=$(gzip -c "$f" | wc -c)
+            if [ $size -gt 122880 ]; then
+              echo "❌ $f is ${size} bytes gzipped (> 120KB budget)"
+              exit 1
+            fi
+          done
+          echo "✅ All pages under 120KB gzipped"
+
+      - name: HTML validation (basic)
+        run: |
+          # Check for unescaped content in generated HTML
+          for f in *.html; do
+            if grep -q '{{' "$f"; then
+              echo "❌ $f contains unescaped template syntax"
+              exit 1
+            fi
+          done
+          echo "✅ No template leakage"
+
+      - name: Upload build artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+          retention-days: 7
+
+  # ──────────────────────────────────────────────────────────────
+  # DEPENDENCY AUDIT
+  # ──────────────────────────────────────────────────────────────
+  audit:
+    name: Dependency Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: lint
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Audit dependencies
+        run: |
+          bun audit --level=moderate
+          # Fails on moderate+ vulnerabilities
+
+  # ──────────────────────────────────────────────────────────────
+  # DEPLOY TO GITHUB PAGES
+  # ──────────────────────────────────────────────────────────────
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [build, audit]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  # ──────────────────────────────────────────────────────────────
+  # RELEASE DRAFT (on tag push)
+  # ──────────────────────────────────────────────────────────────
+  release-draft:
+    name: Draft GitHub Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [build, audit]
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate release notes
+        id: changelog
+        run: |
+          # Extract changelog section for this tag
+          TAG="${GITHUB_REF_NAME}"
+          awk -v tag="$TAG" '
+            /^## \[Unreleased\]/ { next }
+            $0 ~ "^## \\[" tag "\\]" { in_section=1; next }
+            in_section && /^## \[/ { exit }
+            in_section { print }
+          ' CHANGELOG.md > release_notes.md || true
+          if [ ! -s release_notes.md ]; then
+            echo "No changelog entry for $TAG" > release_notes.md
+          fi
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: "BotwaveBomba ${{ github.ref_name }}"
+          body_path: release_notes.md
+          draft: true
+          prerelease: false
+          files: |
+            *.html
+            api/*.json
+            _headers
+            assets/**/*

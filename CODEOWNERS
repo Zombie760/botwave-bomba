@@ -1,1 +1,40 @@
-* @zombie760
+# CODEOWNERS
+# These users/teams are requested for review on matching files
+
+# Global owners (everything)
+* @Zombie760
+
+# Build & CI
+/.github/workflows/ @Zombie760
+/.github/dependabot.yml @Zombie760
+/scripts/build_site.ts @Zombie760
+/scripts/dev_server.ts @Zombie760
+/scripts/lib/ @Zombie760
+/package.json @Zombie760
+/tsconfig.json @Zombie760
+/bun.lock @Zombie760
+
+# Data & Algorithms (core IP)
+/api/ @Zombie760
+/scripts/lib/blindspot.ts @Zombie760
+/scripts/lib/heatmap.ts @Zombie760
+/scripts/lib/timeline.ts @Zombie760
+/scripts/lib/newsletter.ts @Zombie760
+/scripts/lib/classify.ts @Zombie760
+/scripts/lib/data.ts @Zombie760
+/scripts/lib/story_card.ts @Zombie760
+/ISA.md @Zombie760
+
+# Frontend
+/assets/css/ @Zombie760
+/assets/js/ @Zombie760
+/_headers @Zombie760
+
+# Documentation
+/README.md @Zombie760
+/CHANGELOG.md @Zombie760
+/CONTRIBUTING.md @Zombie760
+/SECURITY.md @Zombie760
+/CODE_OF_CONDUCT.md @Zombie760
+/.github/PULL_REQUEST_TEMPLATE.md @Zombie760
+/.github/ISSUE_TEMPLATE/ @Zombie760

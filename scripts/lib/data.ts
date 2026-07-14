@@ -1,89 +1,100 @@
 // BotwaveBomba data pipeline — reads canonical API JSON and exports typed helpers
-export interface Source {
+export interface Asset {
   name: string;
-  bloc: string;
+  alignment: string;
   country: string;
   url: string;
   excerpt?: string;
   framing_placeholder?: string | null;
-  // Ground News parity fields
-  bias?: 'left' | 'center' | 'right';
-  factuality?: 'high' | 'mixed' | 'low';
+  // Tradecraft fields
+  lean?: 'left' | 'center' | 'right';
+  vetting?: 'high' | 'mixed' | 'low';
   tone?: 'neutral' | 'sensationalist' | 'opinion';
   funding?: string;
   independence?: string;
   paywall?: string;
   language?: string;
-  ownership?: string;
+  handler?: string;
 }
 
-export interface Story {
+export interface SigintPackage {
   id: string;
   size: number;
-  source_count: number;
-  bloc_spread: Record<string, number>;
-  bloc_source: string;
-  countries: string[];
-  top_headlines: string[];
-  primary_urls: string[];
-  sources: Source[];
-  // Ground News parity: narrative framing per source
-  framing?: Record<string, string>;
-  // Timeline support
-  first_seen?: string;
-  last_updated?: string;
-  peak_coverage?: string;
+  assetCount: number;
+  alignmentSpread: Record<string, number>;
+  alignmentSource: string;
+  theaters: string[];
+  topHeadlines: string[];
+  primaryUrls: string[];
+  sources: Asset[];
+  // Tradecraft: refraction per asset
+  refraction?: Record<string, string>;
+  // Chronos support
+  firstSeen?: string;
+  lastUpdated?: string;
+  peakCoverage?: string;
 }
 
-export interface OwnershipEntry {
+export interface MoneyTrailLink {
   domain: string;
-  owner?: string;
-  parent_company?: string;
-  owner_type?: string;
+  handler?: string;
+  parentCompany?: string;
+  handlerType?: string;
   motive?: string;
-  evidence_url?: string;
+  evidenceUrl?: string;
 }
 
 export interface Meta {
-  generated_at: string;
-  story_count: number;
-  source_count_total: number;
-  source_registry_count: number;
-  country_count: number;
-  bloc_spread: Record<string, number>;
-  diversity_score: number;
-  coverage_gap_headline: string;
+  generatedAt: string;
+  sigintCount: number;
+  assetCountTotal: number;
+  assetRegistryCount: number;
+  theaterCount: number;
+  alignmentSpread: Record<string, number>;
+  diversityScore: number;
+  silentSectorHeadline: string;
 }
 
-// Ground News parity: Blindspot story
-export interface BlindspotStory extends Story {
-  missing_bloc: string;
-  coverage_ratio: number;
+// Tradecraft: Black Site intel
+export interface BlackSiteIntel extends SigintPackage {
+  silentSector: string;
+  coverageRatio: number;
 }
 
-// Ground News parity: Topic for personalization
-export interface Topic {
+// Tradecraft: Active frequency for personalization
+export interface ActiveFrequency {
   id: string;
   label: string;
-  story_ids: string[];
-  follower_count?: number;
+  sigintIds: string[];
+  monitorCount?: number;
 }
 
-// Ground News parity: Newsletter issue
-export interface NewsletterIssue {
+// Tradecraft: Numbers Station broadcast
+export interface NumbersStationBroadcast {
   id: string;
   date: string;
   title: string;
-  story_ids: string[];
-  read_time_min: number;
+  sigintIds: string[];
+  readTimeMin: number;
 }
 
-// Ground News parity: Coverage heatmap cell
-export interface HeatmapCell {
-  country: string;
-  bloc: string;
-  story_count: number;
-  source_count: number;
+// Tradecraft: Radar contact
+export interface RadarContact {
+  theater: string;
+  alignment: string;
+  signalCount: number;
+  assetCount: number;
+}
+
+// Tradecraft: Chronos frame
+export interface ChronosFrame {
+  date: string; // ISO date string
+  sigintId: string;
+  headline: string;
+  assetCount: number;
+  alignmentSpread: Record<string, number>;
+  theaters: string[];
+  newAssets: string[];
 }
 
 import { readFileSync } from "node:fs";
@@ -94,24 +105,24 @@ function readJson<T>(path: string): T {
   return JSON.parse(readFileSync(path, "utf8")) as T;
 }
 
-export function getStories(): Story[] {
-  const data = readJson<{ stories?: Story[] }>(`${ROOT}/api/stories_clustered.json`);
+export function getSigintPackages(): SigintPackage[] {
+  const data = readJson<{ stories?: SigintPackage[] }>(`${ROOT}/api/sigint-packages.json`);
   return data.stories || [];
 }
 
-export function getSources(): Source[] {
-  const data = readJson<{ sources?: Source[] }>(`${ROOT}/api/sources_real_seed.json`);
+export function getAssets(): Asset[] {
+  const data = readJson<{ sources?: Asset[] }>(`${ROOT}/api/asset-registry.json`);
   return data.sources || [];
 }
 
-export function getOwnership(): OwnershipEntry[] {
-  const data = readJson<{ entries?: OwnershipEntry[] }>(`${ROOT}/api/ownership.json`);
+export function getMoneyTrail(): MoneyTrailLink[] {
+  const data = readJson<{ entries?: MoneyTrailLink[] }>(`${ROOT}/api/money-trail.json`);
   return data.entries || [];
 }
 
-export function getOwnershipByDomain(): Record<string, OwnershipEntry> {
-  const list = getOwnership();
-  const map: Record<string, OwnershipEntry> = {};
+export function getMoneyTrailByDomain(): Record<string, MoneyTrailLink> {
+  const list = getMoneyTrail();
+  const map: Record<string, MoneyTrailLink> = {};
   for (const entry of list) {
     if (entry?.domain) map[entry.domain] = entry;
   }
@@ -122,15 +133,15 @@ export function getMeta(): Meta {
   return readJson<Meta>(`${ROOT}/api/meta.json`);
 }
 
-export function getCorrections() {
-  return readJson<{ corrections?: any[] }>(`${ROOT}/api/corrections.json`);
+export function getErrata() {
+  return readJson<{ corrections?: any[] }>(`${ROOT}/api/errata.json`);
 }
 
-export function normBloc(bloc?: string): string {
-  const b = String(bloc || 'other').toLowerCase().replace(/_/g, '-');
-  if (b === 'western') return 'western';
-  if (b === 'non-aligned' || b === 'nonaligned' || b === 'neutral') return 'non-aligned';
-  if (b === 'adversarial') return 'adversarial';
+export function normAlignment(alignment?: string): string {
+  const a = String(alignment || 'other').toLowerCase().replace(/_/g, '-');
+  if (a === 'western') return 'western';
+  if (a === 'non-aligned' || a === 'nonaligned' || a === 'neutral') return 'non-aligned';
+  if (a === 'adversarial') return 'adversarial';
   return 'other';
 }
 
@@ -157,21 +168,21 @@ export function formatTimeAgo(date?: string | Date): string {
   return `${Math.floor(days / 7)}w ago`;
 }
 
-export function pickTopHeadlines(story: Story, n = 3): { source: string; country: string; bloc: string; headline: string; url: string }[] {
-  const out: { source: string; country: string; bloc: string; headline: string; url: string }[] = [];
+export function pickTopHeadlines(pkg: SigintPackage, n = 3): { asset: string; theater: string; alignment: string; headline: string; url: string }[] {
+  const out: { asset: string; theater: string; alignment: string; headline: string; url: string }[] = [];
   const seen = new Set<string>();
-  for (let i = 0; i < Math.min(story.sources.length, n * 2); i++) {
-    const s = story.sources[i];
+  for (let i = 0; i < Math.min(pkg.sources.length, n * 2); i++) {
+    const s = pkg.sources[i];
     if (!s) continue;
     const key = `${s.name}|${s.country}`;
     if (seen.has(key)) continue;
     seen.add(key);
-    const idx = story.sources.findIndex(x => x.name === s.name && x.country === s.country);
+    const idx = pkg.sources.findIndex(x => x.name === s.name && x.country === s.country);
     out.push({
-      source: s.name,
-      country: s.country,
-      bloc: normBloc(s.bloc),
-      headline: story.top_headlines[idx] || story.top_headlines[i] || '',
+      asset: s.name,
+      theater: s.country,
+      alignment: normAlignment(s.alignment),
+      headline: pkg.topHeadlines[idx] || pkg.topHeadlines[i] || '',
       url: s.url,
     });
     if (out.length >= n) break;
@@ -179,14 +190,14 @@ export function pickTopHeadlines(story: Story, n = 3): { source: string; country
   return out;
 }
 
-export function storyUrl(id: string): string {
-  return `/botwavebomba/story.html?id=${encodeURIComponent(id)}`;
+export function sigintUrl(id: string): string {
+  return `/botwavebomba/sigint.html?id=${encodeURIComponent(id)}`;
 }
 
-export function sectionUrl(id: string): string {
+export function sectorUrl(id: string): string {
   return `/botwavebomba/${id}.html`;
 }
 
-export function homeUrl(): string {
+export function portadaUrl(): string {
   return '/botwavebomba/';
 }

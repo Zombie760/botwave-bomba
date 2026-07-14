@@ -2,12 +2,12 @@
 // BotwaveBomba static site generator
 import { readFileSync, writeFileSync } from "node:fs";
 import { Story, getStories, getSources, getMeta, getDomain, normBloc, storyUrl, sectionUrl, homeUrl, getOwnershipByDomain } from "./lib/data.ts";
-import { SECTIONS, classifyStory, getTrending, getStoriesBySection } from "./lib/classify.ts";
-import { storyToCard, sortStoriesByCoverageGap } from "./lib/story_card.ts";
-import { computeBlindspots, getTopBlindspots, formatMissingBloc } from "./lib/blindspot.ts";
-import { getHeatmapData, getCountryHeatmap, normalizeIntensity } from "./lib/heatmap.ts";
-import { buildTimeline, groupTimelineByDate, formatTimelineDate } from "./lib/timeline.ts";
-import { generateNewsletterIssue } from "./lib/newsletter.ts";
+import { SECTIONS, classifyAlignment, getActiveFrequencies, getStoriesByAlignment } from "./lib/alignment.ts";
+import { renderSigintCard, sortSigintByBlackSite } from "./lib/sigint-card.ts";
+import { detectBlackSites, getTopBlackSites, formatSilentSector } from "./lib/black-site.ts";
+import { scanRadar, getCountryRadar, normalizeIntensity } from "./lib/radar.ts";
+import { spoolChronos, groupChronosByDate, formatChronosDate } from "./lib/spool.ts";
+import { broadcastNumbersStation } from "./lib/numbers-station.ts";
 
 const ROOT = `${import.meta.dir}/..`;
 const BASE = "/botwavebomba";
@@ -17,7 +17,7 @@ const DOMAIN = "https://zombie760.github.io";
 // Rewrap existing content pages with shared chrome
 const EXISTING_CONTENT: Record<string, { title: string; desc: string; body: string }> = (() => {
   const map: Record<string, { title: string; desc: string; body: string }> = {};
-  for (const page of ["brief.html", "sources.html", "methodology.html", "pro.html", "corrections.html", "offline.html", "404.html"]) {
+  for (const page of ["sitrep.html", "asset-registry.html", "tradecraft.html", "pro.html", "errata.html", "sin-senal.html", "perdido.html"]) {
     const text = readFileSync(`${ROOT}/${page}`, "utf8");
     const title = (text.match(/<title>([^<]+)<\/title>/i) || ["", page])[1];
     const desc = (text.match(/<meta[^>]*name=["']description["'][^>]*content=["']([^"']+)/i) || ["", ""])[1];
@@ -48,11 +48,11 @@ function renderExisting(page: string, activeNav: string, jsonLd: object): string
 
 function escapeHtml(s: string | number | undefined): string {
   return String(s ?? "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
+    .replace(/&/g, "&")
+    .replace(/</g, "<")
+    .replace(/>/g, ">")
+    .replace(/"/g, """)
+    .replace(/'/g, "'");
 }
 
 function asset(path: string): string {
@@ -111,24 +111,22 @@ function chrome(activeNav: string, body: string, opts: {
   ogType?: string;
   jsonLd?: object;
 }) {
-  const trending = getTrending();
-  const trendingHtml = trending.map(t => {
+  const activeFrequencies = getActiveFrequencies();
+  const trendingHtml = activeFrequencies.map(t => {
     const href = sectionUrl("world") + `?q=${encodeURIComponent(t.label)}`;
     return `<a href="${href}">${escapeHtml(t.label)}</a><button class="bwb-follow-btn" data-topic="${escapeHtml(t.id)}" aria-label="Follow ${escapeHtml(t.label)}">Follow</button>`;
   }).join("");
 
   const navItems = [
-    { id: "home", label: "Home", href: homeUrl() },
-    { id: "for-you", label: "For You", href: sectionUrl("for-you") },
-    { id: "local", label: "Local", href: sectionUrl("local") },
-    { id: "blindspot", label: "Blindspot", href: sectionUrl("blindspot") },
-    { id: "world", label: "World", href: sectionUrl("world") },
-    { id: "politics", label: "Politics", href: sectionUrl("politics") },
-    { id: "conflict", label: "Conflict", href: sectionUrl("conflict") },
-    { id: "business", label: "Business", href: sectionUrl("business") },
-    { id: "tech", label: "Tech", href: sectionUrl("tech") },
-    { id: "sports", label: "Sports", href: sectionUrl("sports") },
-    { id: "corruption", label: "Corruption", href: sectionUrl("corruption") },
+    { id: "home", label: "PORTADA", href: homeUrl() },
+    { id: "black-site", label: "BLACK SITE", href: sectionUrl("black-site") },
+    { id: "radar", label: "RADAR", href: sectionUrl("radar") },
+    { id: "spool", label: "SPOOL", href: sectionUrl("spool") },
+    { id: "dead-drop", label: "DEAD DROP", href: sectionUrl("dead-drop") },
+    { id: "numbers-station", label: "NUMBERS STATION", href: sectionUrl("numbers-station") },
+    { id: "asset-registry", label: "ASSET REGISTRY", href: sectionUrl("asset-registry") },
+    { id: "tradecraft", label: "TRADECRAFT", href: sectionUrl("tradecraft") },
+    { id: "sitrep", label: "SITREP", href: sectionUrl("sitrep") },
   ];
   const navHtml = navItems.map(n => {
     const current = n.id === activeNav ? ' aria-current="page"' : "";
@@ -159,14 +157,14 @@ function chrome(activeNav: string, body: string, opts: {
     </div>
   </header>
 
-  <div class="bwb-trending" aria-label="Trending topics">
-    <span class="bwb-trending-label">Trending</span>
+  <div class="bwb-active-frequencies" aria-label="Active frequencies">
+    <span class="bwb-trending-label">ACTIVE FREQUENCIES</span>
     ${trendingHtml}
   </div>
 
   <div class="bwb-search-overlay" id="searchOverlay" hidden>
     <div class="bwb-search-inner">
-      <input type="search" id="siteSearch" placeholder="Search stories, sources, countries…" autocomplete="off" aria-label="Search stories">
+      <input type="search" id="siteSearch" placeholder="Search signals, assets, theaters..." autocomplete="off" aria-label="Search signals">
       <button id="searchClose" aria-label="Close search">Close</button>
     </div>
     <div class="bwb-search-results" id="searchResults"></div>
@@ -178,11 +176,11 @@ function chrome(activeNav: string, body: string, opts: {
     <div class="bwb-footer-inner">
       <div class="bwb-footer-brand">BOTWAVEBOMBA</div>
       <nav aria-label="Footer">
-        <a href="${sectionUrl("brief")}">Daily Brief</a>
-        <a href="${sectionUrl("methodology")}">Methodology</a>
-        <a href="${sectionUrl("sources")}">Sources</a>
-        <a href="${sectionUrl("corrections")}">Corrections</a>
-        <a href="${sectionUrl("pro")}">Pricing</a>
+        <a href="${sectionUrl("sitrep")}">SITREP</a>
+        <a href="${sectionUrl("tradecraft")}">TRADECRAFT</a>
+        <a href="${sectionUrl("asset-registry")}">ASSET REGISTRY</a>
+        <a href="${sectionUrl("errata")}">ERRATA</a>
+        <a href="${sectionUrl("pro")}">PRO</a>
       </nav>
       <p class="bwb-footer-tagline">Not Left/Right. Who Owns The Story.</p>
     </div>
@@ -193,49 +191,49 @@ function chrome(activeNav: string, body: string, opts: {
 </html>`;
 }
 
-function renderBlocsBar(counts: Record<string, number>): string {
+function renderAlignmentsBar(counts: Record<string, number>): string {
   const total = Object.values(counts).reduce((a, b) => a + b, 0) || 1;
   const segs = ["western", "non-aligned", "adversarial", "other"]
     .map(k => {
       const pct = ((counts[k] || 0) / total) * 100;
       if (!pct) return "";
-      return `<div class="bwb-blocs-seg ${k}" style="width:${pct.toFixed(2)}%" data-label="${escapeHtml(k)} ${counts[k]}"></div>`;
+      return `<div class="bwb-alignments-seg ${k}" style="width:${pct.toFixed(2)}%" data-label="${escapeHtml(k)} ${counts[k]}"></div>`;
     }).join("");
-  return `<div class="bwb-blocs-bar" aria-label="Source bloc mix">${segs || '<div class="bwb-blocs-seg other" style="width:100%"></div>'}</div>`;
+  return `<div class="bwb-alignments-bar" aria-label="Alignment mix">${segs || '<div class="bwb-alignments-seg other" style="width:100%"></div>'}</div>`;
 }
 
-function renderStoryCard(story: Story, extraFilters: string[] = []): string {
-  const card = storyToCard(story);
-  const sections = classifyStory(story).join(" ");
+function renderSigintCardHtml(story: Story, extraFilters: string[] = []): string {
+  const card = renderSigintCard(story);
+  const alignments = classifyAlignment(story).join(" ");
   const filters = [...extraFilters, ...card.badges.map(b => b.toLowerCase().replace(/\s+/g, "-"))].join(" ");
-  const badgeHtml = card.badges.slice(0, 2).map(b => `<span class="bwb-story-card-bloc ${card.topBloc}">${escapeHtml(b)}</span>`).join("");
+  const badgeHtml = card.badges.slice(0, 2).map(b => `<span class="bwb-sigint-card-alignment ${card.topAlignment}">${escapeHtml(b)}</span>`).join("");
   const sources = story.sources.slice(0, 8).map((s, i) => {
-    const bloc = normBloc(s.bloc);
-    return `<li class="bwb-card-source-row ${bloc}">
-      <span class="bwb-card-source-bloc ${bloc}"></span>
+    const alignment = normBloc(s.bloc);
+    return `<li class="bwb-card-source-row ${alignment}">
+      <span class="bwb-card-source-alignment ${alignment}"></span>
       <span class="bwb-card-source-name">${escapeHtml(s.name)}</span>
-      <span class="bwb-card-source-country">${escapeHtml(s.country)}</span>
+      <span class="bwb-card-source-theater">${escapeHtml(s.country)}</span>
       <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener" aria-label="Open ${escapeHtml(s.name)} source">↗</a>
     </li>`;
   }).join("");
 
-  return `<article class="bwb-story-card" data-sections="${sections}" data-filters="${filters}">
-  <a class="bwb-story-card-link" href="${card.url}" aria-label="Read full coverage of: ${escapeHtml(card.headline)}">
-    <div class="bwb-story-card-header">
-      ${badgeHtml || `<span class="bwb-story-card-bloc ${card.topBloc}">${escapeHtml(card.topBloc)}</span>`}
-      <span class="bwb-story-card-source">${escapeHtml(card.topSource?.name || "Multiple sources")}</span>
-      <span class="bwb-story-card-country">${escapeHtml(card.topSource?.country || "")}</span>
+  return `<article class="bwb-sigint-card" data-alignments="${alignments}" data-filters="${filters}">
+  <a class="bwb-sigint-card-link" href="${card.url}" aria-label="Read full intercept of: ${escapeHtml(card.headline)}">
+    <div class="bwb-sigint-card-header">
+      ${badgeHtml || `<span class="bwb-sigint-card-alignment ${card.topAlignment}">${escapeHtml(card.topAlignment)}</span>`}
+      <span class="bwb-sigint-card-asset">${escapeHtml(card.topAsset?.name || "Multiple assets")}</span>
+      <span class="bwb-sigint-card-theater">${escapeHtml(card.topAsset?.country || "")}</span>
     </div>
-    <h3 class="bwb-story-card-title">${escapeHtml(card.headline)}</h3>
-    ${card.excerpt ? `<p class="bwb-story-card-excerpt">${escapeHtml(card.excerpt)}</p>` : ""}
-    ${renderBlocsBar(card.blocCounts)}
-    <div class="bwb-story-card-meta">
-      <span class="bwb-story-card-time">${escapeHtml(card.timeAgo)}</span>
-      <span>${card.sourceCount} sources</span>
-      <span>${card.countryCount} countries</span>
+    <h3 class="bwb-sigint-card-title">${escapeHtml(card.headline)}</h3>
+    ${card.excerpt ? `<p class="bwb-sigint-card-excerpt">${escapeHtml(card.excerpt)}</p>` : ""}
+    ${renderAlignmentsBar(card.alignmentCounts)}
+    <div class="bwb-sigint-card-meta">
+      <span class="bwb-sigint-card-time">${escapeHtml(card.timeAgo)}</span>
+      <span>${card.assetCount} assets</span>
+      <span>${card.theaterCount} theaters</span>
     </div>
   </a>
-  <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-${story.id}" data-expand="${story.id}" data-count="${Math.min(story.sources.length, 8)}">Show ${Math.min(story.sources.length, 8)} sources</button>
+  <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-${story.id}" data-expand="${story.id}" data-count="${Math.min(story.sources.length, 8)}">Show ${Math.min(story.sources.length, 8)} assets</button>
   <div class="bwb-card-sources" id="sources-${story.id}" hidden>
     <ul>${sources}</ul>
   </div>
@@ -243,10 +241,10 @@ function renderStoryCard(story: Story, extraFilters: string[] = []): string {
 }
 
 function renderHero(story: Story): string {
-  const card = storyToCard(story);
-  const sources = card.heroSources.map(h => `
-    <article class="bwb-hero-source ${h.bloc}">
-      <cite>${escapeHtml(h.source)} · ${escapeHtml(h.country)}</cite>
+  const card = renderSigintCard(story);
+  const sources = card.heroAssets.map(h => `
+    <article class="bwb-hero-asset ${h.alignment}">
+      <cite>${escapeHtml(h.asset)} · ${escapeHtml(h.theater)}</cite>
       <p>${escapeHtml(h.headline)}</p>
     </article>
   `).join("");
@@ -254,51 +252,51 @@ function renderHero(story: Story): string {
   return `<section class="bwb-hero" aria-labelledby="hero-title">
   <div class="bwb-hero-inner">
     <div class="bwb-hero-text">
-      <span class="bwb-hero-kicker">Featured story</span>
+      <span class="bwb-hero-kicker">FEATURED INTERCEPT</span>
       <h1 id="hero-title">${escapeHtml(card.headline)}</h1>
       <p class="bwb-hero-lead">${escapeHtml(card.excerpt)}</p>
       <div class="bwb-hero-meta">
-        <span class="bwb-source-count">${card.sourceCount} sources</span>
-        <span class="bwb-country-count">${card.countryCount} countries</span>
-        <span class="bwb-story-card-time">${escapeHtml(card.timeAgo)}</span>
-        <a class="bwb-hero-cta" href="${card.url}">Compare coverage →</a>
+        <span class="bwb-asset-count">${card.assetCount} assets</span>
+        <span class="bwb-theater-count">${card.theaterCount} theaters</span>
+        <span class="bwb-sigint-card-time">${escapeHtml(card.timeAgo)}</span>
+        <a class="bwb-hero-cta" href="${card.url}">Compare intercepts →</a>
       </div>
-      <div class="bwb-hero-sources">${sources}</div>
+      <div class="bwb-hero-assets">${sources}</div>
     </div>
   </div>
 </section>`;
 }
 
-function renderBriefing(stories: Story[]): string {
-  const sorted = sortStoriesByCoverageGap(stories).slice(0, 5);
-  const totalArticles = sorted.reduce((a, s) => a + (s.source_count || s.sources.length), 0);
-  const readMin = Math.max(1, Math.round(totalArticles * 0.15));
+function renderSitrep(stories: Story[]): string {
+  const sorted = sortSigintByBlackSite(stories).slice(0, 5);
+  const totalAssets = sorted.reduce((a, s) => a + (s.source_count || s.sources.length), 0);
+  const readMin = Math.max(1, Math.round(totalAssets * 0.15));
   const items = sorted.map(s => {
-    const card = storyToCard(s);
-    return `<a href="${card.url}" class="bwb-briefing-item">
+    const card = renderSigintCard(s);
+    return `<a href="${card.url}" class="bwb-sitrep-item">
       <img src="${asset("/assets/logos/default.png")}" alt="" loading="lazy">
       <div>
         <h3>${escapeHtml(card.headline)}</h3>
-        <p>${card.sourceCount} sources · ${card.countryCount} countries</p>
+        <p>${card.assetCount} assets · ${card.theaterCount} theaters</p>
       </div>
     </a>`;
   }).join("");
 
-  return `<section class="bwb-briefing" aria-labelledby="briefing-title">
-  <h2 id="briefing-title">Daily Briefing</h2>
-  <p class="bwb-briefing-meta">${sorted.length} stories · ${totalArticles} articles · ${readMin}m read</p>
-  <div class="bwb-briefing-list">${items}</div>
-  <a href="${sectionUrl("brief")}" class="bwb-briefing-more">Full briefing →</a>
+  return `<section class="bwb-sitrep" aria-labelledby="sitrep-title">
+  <h2 id="sitrep-title">SITREP</h2>
+  <p class="bwb-sitrep-meta">${sorted.length} intercepts · ${totalAssets} assets · ${readMin}m read</p>
+  <div class="bwb-sitrep-list">${items}</div>
+  <a href="${sectionUrl("sitrep")}" class="bwb-sitrep-more">Full SITREP →</a>
 </section>`;
 }
 
 function renderFilters(activeFilter = "all"): string {
   const filters = [
-    { id: "all", label: "All" },
-    { id: "blindspot", label: "Blindspot" },
-    { id: "non-aligned-lead", label: "Non-Aligned Lead" },
-    { id: "adversarial-heavy", label: "Adversarial Heavy" },
-    { id: "global", label: "Global" },
+    { id: "all", label: "ALL" },
+    { id: "black-site", label: "BLACK SITE" },
+    { id: "non-aligned-lead", label: "NON-ALIGNED LEAD" },
+    { id: "adversarial-heavy", label: "ADVERSARIAL HEAVY" },
+    { id: "global", label: "GLOBAL" },
   ];
   return filters.map(f => {
     const cls = f.id === activeFilter ? "active" : "";
@@ -308,50 +306,50 @@ function renderFilters(activeFilter = "all"): string {
 
 function renderSectionHeader(section: { id: string; label: string; description: string }): string {
   return `<div class="bwb-section-header">
-  <span class="bwb-section-kicker">Section</span>
+  <span class="bwb-section-kicker">SECTOR</span>
   <h1>${escapeHtml(section.label)}</h1>
   <p>${escapeHtml(section.description)}</p>
 </div>`;
 }
 
-function renderStoryGrid(stories: Story[], sectionId: string): string {
+function renderSigintGrid(stories: Story[], sectionId: string): string {
   if (!stories.length) {
     return `<div class="bwb-empty">
-      <h2>No stories in this section yet</h2>
-      <p>Check the <a href="${homeUrl()}">homepage</a> or <a href="${sectionUrl("blindspot")}">Blindspot</a> feed for the latest clusters.</p>
+      <h2>No intercepts in this sector yet</h2>
+      <p>Check the <a href="${homeUrl()}">PORTADA</a> or <a href="${sectionUrl("black-site")}">BLACK SITE</a> feed for the latest packages.</p>
     </div>`;
   }
-  const cards = stories.map(s => renderStoryCard(s, [sectionId])).join("");
+  const cards = stories.map(s => renderSigintCardHtml(s, [sectionId])).join("");
   return `<div class="bwb-grid">${cards}</div>`;
 }
 
-function renderHome(stories: Story[]): string {
-  const featured = sortStoriesByCoverageGap(stories)[0] || stories[0];
+function renderPortada(stories: Story[]): string {
+  const featured = sortSigintByBlackSite(stories)[0] || stories[0];
   const rest = stories.filter(s => s.id !== featured?.id);
-  const restCards = sortStoriesByCoverageGap(rest).slice(0, 12).map(s => renderStoryCard(s)).join("");
+  const restCards = sortSigintByBlackSite(rest).slice(0, 12).map(s => renderSigintCardHtml(s)).join("");
   return `${renderHero(featured)}
 <div class="bwb-layout">
   <aside class="bwb-sidebar" aria-label="Filters">
     <div class="bwb-sidebar-section">
-      <h2 class="bwb-sidebar-title">Signal</h2>
+      <h2 class="bwb-sidebar-title">SIGNAL</h2>
       <div class="bwb-filter-group">${renderFilters()}</div>
     </div>
   </aside>
   <div class="bwb-main">
-    ${renderBriefing(stories)}
-    <h2 class="bwb-section-kicker" style="margin-bottom:var(--space-4); font-size:var(--fs-xl); font-family:var(--font-display);">Latest coverage gaps</h2>
+    ${renderSitrep(stories)}
+    <h2 class="bwb-section-kicker" style="margin-bottom:var(--space-4); font-size:var(--fs-xl); font-family:var(--font-display);">LATEST BLACK SITES</h2>
     <div class="bwb-grid">${restCards}</div>
   </div>
 </div>`;
 }
 
-function renderSectionPage(sectionId: string, stories: Story[], allStories: Story[]): string {
+function renderSectorPage(sectionId: string, stories: Story[], allStories: Story[]): string {
   const section = SECTIONS.find(s => s.id === sectionId)!;
-  const sectionStories = getStoriesBySection(allStories)[sectionId] || [];
+  const sectorStories = getStoriesByAlignment(allStories)[sectionId] || [];
   return `<div class="bwb-layout" style="grid-template-columns:1fr;">
   <div class="bwb-main">
     ${renderSectionHeader(section)}
-    ${renderStoryGrid(sectionStories, sectionId)}
+    ${renderSigintGrid(sectorStories, sectionId)}
   </div>
 </div>`;
 }
@@ -359,11 +357,11 @@ function renderSectionPage(sectionId: string, stories: Story[], allStories: Stor
 function generate() {
   const stories = getStories();
   const meta = getMeta();
-  const bySection = getStoriesBySection(stories);
+  const byAlignment = getStoriesByAlignment(stories);
 
   const publicPages: { page: string; title: string; desc: string }[] = [];
 
-  // Home
+  // Home - PORTADA
   const homeTitle = "BotwaveBomba — Global coverage gaps, named sources";
   const homeDesc = "Not left/center/right. Five-axis bias fingerprints across Western, Adversarial, and Non-Aligned blocs. The gap IS the story.";
   const homeLd = {
@@ -371,13 +369,13 @@ function generate() {
     "@graph": [
       { "@type": "WebSite", "name": "BotwaveBomba", "url": pageUrl("index"), "description": homeDesc },
       { "@type": "NewsMediaOrganization", "name": "BotwaveBomba", "url": pageUrl("index"), "sameAs": ["https://t.me/botwave_news"], "foundingDate": "2026" },
-      { "@type": "ItemList", "itemListElement": [{"@type":"ListItem", position:1, name:"World"}, {"@type":"ListItem", position:2, name:"Politics"}, {"@type":"ListItem", position:3, name:"Conflict"}, {"@type":"ListItem", position:4, name:"Business"}] }
+      { "@type": "ItemList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"BLACK SITE"}, {"@type":"ListItem", "position":2, "name":"RADAR"}, {"@type":"ListItem", "position":3, "name":"SPOOL"}, {"@type":"ListItem", "position":4, "name":"DEAD DROP"}] }
     ]
   };
-  write("index.html", chrome("home", renderHome(stories), { title: homeTitle, description: homeDesc, canonical: pageUrl("index"), jsonLd: homeLd }));
+  write("index.html", chrome("home", renderPortada(stories), { title: homeTitle, description: homeDesc, canonical: pageUrl("index"), jsonLd: homeLd }));
   publicPages.push({ page: "index", title: homeTitle, desc: homeDesc });
 
-  // Section pages
+  // Sector pages
   for (const section of SECTIONS) {
     const title = `${section.label} — BotwaveBomba`;
     const desc = section.description;
@@ -385,24 +383,24 @@ function generate() {
       "@context": "https://schema.org",
       "@graph": [
         { "@type": "WebPage", "name": title, "url": pageUrl(section.id), "description": desc },
-        { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", position:1, name:"Home", item:pageUrl("index")}, {"@type":"ListItem", position:2, name:section.label}] }
+        { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":section.label}] }
       ]
     };
-    write(`${section.id}.html`, chrome(section.id, renderSectionPage(section.id, bySection[section.id] || [], stories), { title, description: desc, canonical: pageUrl(section.id), jsonLd: ld }));
+    write(`${section.id}.html`, chrome(section.id, renderSectorPage(section.id, byAlignment[section.id] || [], stories), { title, description: desc, canonical: pageUrl(section.id), jsonLd: ld }));
     publicPages.push({ page: section.id, title, desc });
   }
 
   // Static / content pages
-  const staticPages = ["methodology.html", "pro.html", "corrections.html", "offline.html", "404.html"];
+  const staticPages = ["tradecraft.html", "pro.html", "errata.html", "sin-senal.html", "perdido.html"];
   for (const page of staticPages) {
     const e = EXISTING_CONTENT[page];
     const id = page.replace(".html", "");
-    const navId = id === "404" ? "home" : id;
+    const navId = id === "perdido" ? "home" : id;
     const ld = {
       "@context": "https://schema.org",
       "@graph": [
         { "@type": "WebPage", "name": e.title, "url": `${DOMAIN}${BASE}/${page}`, "description": e.desc },
-        { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", position:1, name:"Home", item:pageUrl("index")}, {"@type":"ListItem", position:2, name:e.title}] }
+        { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":e.title}] }
       ]
     };
     write(page, renderExisting(page, navId, ld));
@@ -410,85 +408,84 @@ function generate() {
   }
 
 
-  // Sources registry page
-  function renderSources(): string {
+  // Asset Registry page
+  function renderAssetRegistry(): string {
     const sources = getSources().slice(0, 120);
     const rows = sources.map(s => {
-      const bloc = normBloc(s.bloc);
+      const alignment = normBloc(s.bloc);
       return `<tr>
-        <td><span class="bwb-card-source-bloc ${bloc}"></span> ${escapeHtml(s.name)}</td>
+        <td><span class="bwb-card-source-alignment ${alignment}"></span> ${escapeHtml(s.name)}</td>
         <td>${escapeHtml(s.country)}</td>
-        <td>${escapeHtml(bloc)}</td>
+        <td>${escapeHtml(alignment)}</td>
         <td><a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(getDomain(s.url))}</a></td>
       </tr>`;
     }).join("");
     return `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">
-      <div class="bwb-section-header"><span class="bwb-section-kicker">Registry</span><h1>Sources</h1><p>The outlets clustered across Western, Non-Aligned, and Adversarial blocs. Every domain is a named source, not a hidden algorithm.</p></div>
+      <div class="bwb-section-header"><span class="bwb-section-kicker">REGISTRY</span><h1>ASSET REGISTRY</h1><p>The outlets clustered across Western, Non-Aligned, and Adversarial alignments. Every domain is a known asset, not a hidden algorithm.</p></div>
       <div style="overflow-x:auto;">
         <table class="bwb-sources-table" style="width:100%; border-collapse:collapse; font-size:var(--fs-sm);">
-          <thead><tr style="border-bottom:2px solid var(--color-border); text-align:left;"><th>Outlet</th><th>Country</th><th>Bloc</th><th>Domain</th></tr></thead>
+          <thead><tr style="border-bottom:2px solid var(--color-border); text-align:left;"><th>Asset</th><th>Theater</th><th>Alignment</th><th>Domain</th></tr></thead>
           <tbody>${rows}</tbody>
         </table>
       </div>
     </div></div>`;
   }
-  const sourcesLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Sources — BotwaveBomba", "url": pageUrl("sources"), "description": "Named source registry across blocs." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", position:1, name:"Home", item:pageUrl("index")}, {"@type":"ListItem", position:2, name:"Sources"}] }] };
-  write("sources.html", chrome("sources", renderSources(), { title: "Sources — BotwaveBomba", description: "Named source registry across Western, Non-Aligned, and Adversarial blocs.", canonical: pageUrl("sources"), jsonLd: sourcesLd }));
-  publicPages.push({ page: "sources", title: "Sources — BotwaveBomba", desc: "Named source registry across blocs." });
+  const assetRegistryLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Asset Registry — BotwaveBomba", "url": pageUrl("asset-registry"), "description": "Named asset registry across alignments." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":"Asset Registry"}] }] };
+  write("asset-registry.html", chrome("asset-registry", renderAssetRegistry(), { title: "Asset Registry — BotwaveBomba", description: "Named asset registry across Western, Non-Aligned, and Adversarial alignments.", canonical: pageUrl("asset-registry"), jsonLd: assetRegistryLd }));
+  publicPages.push({ page: "asset-registry", title: "Asset Registry — BotwaveBomba", desc: "Named asset registry across alignments." });
 
-  // For You page (client-only followed topics)
-  const forYouBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-section-header"><span class="bwb-section-kicker">Personalized</span><h1>For You</h1><p>Stories from topics you follow. Click “Follow” on any trending topic to build your personal feed. Followed topics are stored only in your browser.</p></div><div id="for-you-feed" class="bwb-grid"></div></div></div>`;
-  const forYouLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "For You — BotwaveBomba", "url": pageUrl("for-you"), "description": "Your followed topics and personalized coverage feed." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", position:1, name:"Home", item:pageUrl("index")}, {"@type":"ListItem", position:2, name:"For You"}] }] };
-  write("for-you.html", chrome("for-you", forYouBody, { title: "For You — BotwaveBomba", description: "Your followed topics and personalized coverage feed.", canonical: pageUrl("for-you"), jsonLd: forYouLd }));
+  // Dead Drop page (client-only followed topics)
+  const deadDropBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-section-header"><span class="bwb-section-kicker">PERSONALIZED</span><h1>DEAD DROP</h1><p>Signals from frequencies you monitor. Click "Follow" on any active frequency to build your personal feed. Monitored frequencies are stored only in your browser.</p></div><div id="dead-drop-feed" class="bwb-grid"></div></div></div>`;
+  const deadDropLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Dead Drop — BotwaveBomba", "url": pageUrl("dead-drop"), "description": "Your monitored frequencies and personalized intercept feed." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":"Dead Drop"}] }] };
+  write("dead-drop.html", chrome("dead-drop", deadDropBody, { title: "Dead Drop — BotwaveBomba", description: "Your monitored frequencies and personalized intercept feed.", canonical: pageUrl("dead-drop"), jsonLd: deadDropLd }));
 
-  // Daily Brief landing page
-  const briefBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">${renderBriefing(stories)}</div></div>`;
-  const briefLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Daily Briefing — BotwaveBomba", "url": pageUrl("brief"), "description": "Top coverage-gap stories of the day." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", position:1, name:"Home", item:pageUrl("index")}, {"@type":"ListItem", position:2, name:"Daily Briefing"}] }] };
-  write("brief.html", chrome("brief", briefBody, { title: "Daily Briefing — BotwaveBomba", description: "Top coverage-gap stories of the day.", canonical: pageUrl("brief"), jsonLd: briefLd }));
+  // SITREP landing page
+  const sitrepBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">${renderSitrep(stories)}</div></div>`;
+  const sitrepLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "SITREP — BotwaveBomba", "url": pageUrl("sitrep"), "description": "Top coverage-gap intercepts of the day." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":"SITREP"}] }] };
+  write("sitrep.html", chrome("sitrep", sitrepBody, { title: "SITREP — BotwaveBomba", description: "Top coverage-gap intercepts of the day.", canonical: pageUrl("sitrep"), jsonLd: sitrepLd }));
 
-
-  // NEW: Blindspot page (Ground News parity)
-  const blindspotStories = getTopBlindspots(stories, 10);
-  const blindspotBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">
-    <div class="bwb-section-header"><span class="bwb-section-kicker">Blindspot</span><h1>Coverage Gaps</h1><p>Stories where one bloc has zero or near-zero coverage. <strong>Missing Western</strong> = stories the Western press ignores. <strong>Missing Non-Aligned</strong> = Global South perspectives absent. <strong>Missing Adversarial</strong> = narratives blocked in rival media spheres.</p></div>
-    <div class="bwb-grid">${blindspotStories.map(b => {
-      const card = storyToCard(b.story);
-      return `<article class="bwb-story-card" data-filters="blindspot">
-        <a class="bwb-story-card-link" href="${card.url}">
-          <div class="bwb-story-card-header">
-            <span class="bwb-story-card-bloc ${b.missingBloc}">${escapeHtml(formatMissingBloc(b.missingBloc))}</span>
-            <span class="bwb-story-card-source">${escapeHtml(card.topSource?.name || "Multiple sources")}</span>
-            <span class="bwb-story-card-country">${escapeHtml(card.topSource?.country || "")}</span>
+  // BLACK SITE page
+  const blackSiteIntel = getTopBlackSites(stories, 10);
+  const blackSiteBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">
+    <div class="bwb-section-header"><span class="bwb-section-kicker">BLACK SITE</span><h1>SILENT SECTORS</h1><p>Intercepts where one alignment has zero or near-zero presence. <strong>Western dark</strong> = intercepts Western assets ignore. <strong>Non-Aligned absent</strong> = Global South perspectives missing. <strong>Adversarial suppressed</strong> = narratives blocked in rival media spheres.</p></div>
+    <div class="bwb-grid">${blackSiteIntel.map(b => {
+      const card = renderSigintCard(b.sigintPackage);
+      return `<article class="bwb-sigint-card" data-filters="black-site">
+        <a class="bwb-sigint-card-link" href="${card.url}">
+          <div class="bwb-sigint-card-header">
+            <span class="bwb-sigint-card-alignment ${b.silentSector}">${escapeHtml(formatSilentSector(b.silentSector))}</span>
+            <span class="bwb-sigint-card-asset">${escapeHtml(card.topAsset?.name || "Multiple assets")}</span>
+            <span class="bwb-sigint-card-theater">${escapeHtml(card.topAsset?.country || "")}</span>
           </div>
-          <h3 class="bwb-story-card-title">${escapeHtml(card.headline)}</h3>
-          ${card.excerpt ? `<p class="bwb-story-card-excerpt">${escapeHtml(card.excerpt)}</p>` : ""}
-          ${renderBlocsBar(card.blocCounts)}
-          <div class="bwb-story-card-meta">
-            <span class="bwb-story-card-time">${escapeHtml(card.timeAgo)}</span>
-            <span>${card.sourceCount} sources</span>
-            <span>${card.countryCount} countries</span>
-            <span class="bwb-gap-ratio">Gap: ${Math.round((1 - b.coverageRatio) * 100)}% missing ${b.missingBloc}</span>
+          <h3 class="bwb-sigint-card-title">${escapeHtml(card.headline)}</h3>
+          ${card.excerpt ? `<p class="bwb-sigint-card-excerpt">${escapeHtml(card.excerpt)}</p>` : ""}
+          ${renderAlignmentsBar(card.alignmentCounts)}
+          <div class="bwb-sigint-card-meta">
+            <span class="bwb-sigint-card-time">${escapeHtml(card.timeAgo)}</span>
+            <span>${card.assetCount} assets</span>
+            <span>${card.theaterCount} theaters</span>
+            <span class="bwb-gap-ratio">Gap: ${Math.round((1 - b.coverageRatio) * 100)}% ${b.silentSector} silent</span>
           </div>
         </a>
       </article>`;
     }).join("")}
     </div></div>`;
-  const blindspotLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Blindspot — BotwaveBomba", "url": pageUrl("blindspot"), "description": "Stories where one media bloc has zero coverage. The gap IS the story." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", position:1, name:"Home", item:pageUrl("index")}, {"@type":"ListItem", position:2, name:"Blindspot"}] }] };
-  write("blindspot.html", chrome("blindspot", blindspotBody, { title: "Blindspot — BotwaveBomba", description: "Stories where one media bloc has zero coverage. The gap IS the story.", canonical: pageUrl("blindspot"), jsonLd: blindspotLd }));
-  publicPages.push({ page: "blindspot", title: "Blindspot — BotwaveBomba", desc: "Stories where one media bloc has zero coverage." });
+  const blackSiteLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Black Site — BotwaveBomba", "url": pageUrl("black-site"), "description": "Intercepts where one media alignment has zero coverage. The gap IS the story." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":"Black Site"}] }] };
+  write("black-site.html", chrome("black-site", blackSiteBody, { title: "Black Site — BotwaveBomba", description: "Intercepts where one media alignment has zero coverage. The gap IS the story.", canonical: pageUrl("black-site"), jsonLd: blackSiteLd }));
+  publicPages.push({ page: "black-site", title: "Black Site — BotwaveBomba", desc: "Intercepts where one media alignment has zero coverage." });
 
-  // NEW: Heatmap page
-  const countryHeatmap = getCountryHeatmap(stories);
-  const maxCount = Math.max(...Object.values(countryHeatmap).map(c => c.count), 1);
-  const heatmapBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">
-    <div class="bwb-section-header"><span class="bwb-section-kicker">Coverage Heatmap</span><h1>Global Story Density</h1><p>World map showing story coverage intensity by country. Darker = more sources covering stories from that country. Hover for details.</p></div>
-    <div id="heatmap-canvas" style="width:100%; height:500px; background:#f5f5f5; border-radius:8px; margin-top:16px; position:relative;"></div>
+  // RADAR page
+  const countryRadar = getCountryRadar(stories);
+  const maxCount = Math.max(...Object.values(countryRadar).map(c => c.count), 1);
+  const radarBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">
+    <div class="bwb-section-header"><span class="bwb-section-kicker">RADAR SCAN</span><h1>GLOBAL SIGNAL DENSITY</h1><p>World map showing signal coverage intensity by country. Hotter = more assets covering signals from that theater. Hover for details.</p></div>
+    <div id="radar-canvas" style="width:100%; height:500px; background:#f5f5f5; border-radius:8px; margin-top:16px; position:relative;"></div>
     <script>
-      // Client-side heatmap rendering using Canvas
+      // Client-side radar rendering using Canvas
       (function() {
-        const data = ${JSON.stringify(countryHeatmap)};
+        const data = ${JSON.stringify(countryRadar)};
         const max = ${maxCount};
-        const canvas = document.getElementById('heatmap-canvas');
+        const canvas = document.getElementById('radar-canvas');
         const ctx = canvas.getContext('2d');
         const w = canvas.width = canvas.clientWidth;
         const h = canvas.height = 500;
@@ -517,107 +514,106 @@ function generate() {
           ctx.fillStyle = \`hsl(\${hue}, 70%, 50%)\`;
           const r = Math.max(4, intensity * 20);
           ctx.beginPath(); ctx.arc(pos.x, pos.y, r, 0, 2 * Math.PI); ctx.fill();
-          // Tooltip data attribute
         }
       })();
     </script>
     <div style="margin-top:24px;">
-      <h3>Top Countries by Coverage</h3>
+      <h3>Top Theaters by Signal Count</h3>
       <table class="bwb-sources-table" style="width:100%; font-size:var(--fs-sm);">
-        <thead><tr style="border-bottom:2px solid var(--color-border); text-align:left;"><th>Country</th><th>Story Count</th><th>Bloc Mix</th><th>Top Stories</th></tr></thead>
+        <thead><tr style="border-bottom:2px solid var(--color-border); text-align:left;"><th>Theater</th><th>Signal Count</th><th>Alignment Mix</th><th>Top Signals</th></tr></thead>
         <tbody>
-          ${Object.entries(countryHeatmap).sort((a, b) => b[1].count - a[1].count).slice(0, 30).map(([country, info]) => `
+          ${Object.entries(countryRadar).sort((a, b) => b[1].count - a[1].count).slice(0, 30).map(([country, info]) => `
             <tr>
               <td>${escapeHtml(country)}</td>
               <td>${info.count}</td>
-              <td>${Object.entries(info.blocs).filter(([_, c]) => c > 0).map(([b, c]) => `<span class="bwb-card-source-bloc ${b}"></span>${c} ${b}`).join(' ')}</td>
-              <td>${info.topStories.slice(0, 2).map(id => `<a href="${sectionUrl('world')}?story=${id}">${id.slice(0, 30)}...</a>`).join(', ')}</td>
+              <td>${Object.entries(info.blocs).filter(([_, c]) => c > 0).map(([b, c]) => `<span class="bwb-card-source-alignment ${b}"></span>${c} ${b}`).join(' ')}</td>
+              <td>${info.topStories.slice(0, 2).map(id => `<a href="${sectionUrl('world')}?signal=${id}">${id.slice(0, 30)}...</a>`).join(', ')}</td>
             </tr>`).join('')}
         </tbody>
       </table>
     </div>
   </div></div>`;
-  const heatmapLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Coverage Heatmap — BotwaveBomba", "url": pageUrl("heatmap"), "description": "Global story coverage intensity by country. Visualize where media attention concentrates." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", position:1, name:"Home", item:pageUrl("index")}, {"@type":"ListItem", position:2, name:"Heatmap"}] }] };
-  write("heatmap.html", chrome("heatmap", heatmapBody, { title: "Coverage Heatmap — BotwaveBomba", description: "Global story coverage intensity by country.", canonical: pageUrl("heatmap"), jsonLd: heatmapLd }));
-  publicPages.push({ page: "heatmap", title: "Coverage Heatmap — BotwaveBomba", desc: "Global story coverage intensity by country." });
+  const radarLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Radar — BotwaveBomba", "url": pageUrl("radar"), "description": "Global signal coverage intensity by theater. Visualize where media attention concentrates." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":"Radar"}] }] };
+  write("radar.html", chrome("radar", radarBody, { title: "Radar — BotwaveBomba", description: "Global signal coverage intensity by theater.", canonical: pageUrl("radar"), jsonLd: radarLd }));
+  publicPages.push({ page: "radar", title: "Radar — BotwaveBomba", desc: "Global signal coverage intensity by theater." });
 
-  // NEW: Timeline page
-  const timelineEntries = buildTimeline(stories);
-  const groupedTimeline = groupTimelineByDate(timelineEntries);
-  const timelineBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">
-    <div class="bwb-section-header"><span class="bwb-section-kicker">Timeline</span><h1>Story Evolution</h1><p>Track how coverage grows across days. Each row = a story. Colored segments = bloc mix on that day.</p></div>
-    <div class="bwb-timeline" style="overflow-x:auto;">
+  // SPOOL page
+  const chronosEntries = spoolChronos(stories);
+  const groupedChronos = groupChronosByDate(chronosEntries);
+  const spoolBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">
+    <div class="bwb-section-header"><span class="bwb-section-kicker">SPOOL</span><h1>SIGNAL EVOLUTION</h1><p>Track how coverage grows across days. Each row = an intercept. Colored segments = alignment mix on that day.</p></div>
+    <div class="bwb-spool" style="overflow-x:auto;">
       <table class="bwb-sources-table" style="width:100%; min-width:800px; border-collapse:collapse; font-size:var(--fs-sm);">
         <thead><tr style="border-bottom:2px solid var(--color-border); text-align:left; position:sticky; left:0; background:var(--color-bg);">
-          <th style="width:120px; min-width:120px;">Date</th>
-          <th style="width:60px;">Sources</th>
-          <th>Bloc Mix</th>
-          <th>Story</th>
+          <th style="width:120px; min-width:120px;">DATE</th>
+          <th style="width:60px;">ASSETS</th>
+          <th>ALIGNMENT MIX</th>
+          <th>INTERCEPT</th>
         </tr></thead>
         <tbody>
-          ${Object.entries(groupedTimeline).sort((a, b) => b[0].localeCompare(a[0])).slice(0, 14).map(([date, entries]) => `
+          ${Object.entries(groupedChronos).sort((a, b) => b[0].localeCompare(a[0])).slice(0, 14).map(([date, entries]) => `
             <tr style="border-bottom:1px solid var(--color-border);">
-              <td style="font-weight:600;">${escapeHtml(formatTimelineDate(date))}</td>
-              <td>${entries.reduce((sum, e) => sum + e.sourceCount, 0)}</td>
+              <td style="font-weight:600;">${escapeHtml(formatChronosDate(date))}</td>
+              <td>${entries.reduce((sum, e) => sum + e.assetCount, 0)}</td>
               <td>
-                <div class="bwb-blocs-bar" style="height:16px;">
-                  ${['western', 'non-aligned', 'adversarial'].map(b => {
-                    const total = entries.reduce((s, e) => s + (e.blocSpread[b] || 0), 0);
-                    const pct = entries.reduce((s, e) => s + e.sourceCount, 0) || 1;
-                    return `<div class="bwb-blocs-seg ${b}" style="width:${(total/pct)*100}%"></div>`;
+                <div class="bwb-alignments-bar" style="height:16px;">
+                  ${['western', 'non-aligned', 'adversarial'].map(a => {
+                    const total = entries.reduce((s, e) => s + (e.alignmentSpread[a] || 0), 0);
+                    const pct = entries.reduce((s, e) => s + e.assetCount, 0) || 1;
+                    return `<div class="bwb-alignments-seg ${a}" style="width:${(total/pct)*100}%"></div>`;
                   }).join('')}
                 </div>
               </td>
-              <td>${entries.map(e => `<a href="${storyUrl(e.storyId)}">${escapeHtml(e.headline)}</a> <span style="color:var(--color-muted);">(${e.countries.join(', ')})</span>`).join('<br>')}</td>
+              <td>${entries.map(e => `<a href="${storyUrl(e.sigintId)}">${escapeHtml(e.headline)}</a> <span style="color:var(--color-muted);">(${e.theaters.join(', ')})</span>`).join('<br>')}</td>
             </tr>`).join('')}
         </tbody>
       </table>
     </div>
   </div></div>`;
-  const timelineLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Timeline — BotwaveBomba", "url": pageUrl("timeline"), "description": "Track story coverage evolution over time across media blocs." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", position:1, name:"Home", item:pageUrl("index")}, {"@type":"ListItem", position:2, name:"Timeline"}] }] };
-  write("timeline.html", chrome("timeline", timelineBody, { title: "Timeline — BotwaveBomba", description: "Track story coverage evolution over time across media blocs.", canonical: pageUrl("timeline"), jsonLd: timelineLd }));
-  publicPages.push({ page: "timeline", title: "Timeline — BotwaveBomba", desc: "Track story coverage evolution over time." });
+  const spoolLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Spool — BotwaveBomba", "url": pageUrl("spool"), "description": "Track intercept coverage evolution over time across media alignments." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":"Spool"}] }] };
+  write("spool.html", chrome("spool", spoolBody, { title: "Spool — BotwaveBomba", description: "Track intercept coverage evolution over time across media alignments.", canonical: pageUrl("spool"), jsonLd: spoolLd }));
+  publicPages.push({ page: "spool", title: "Spool — BotwaveBomba", desc: "Track intercept coverage evolution over time." });
 
-  // NEW: Newsletter page + API
-  const newsletterHtml = generateNewsletterIssue(stories);
-  write("newsletter.html", newsletterHtml);
-  writeJson("api/newsletter_latest.json", {
-    id: `newsletter-${new Date().toISOString().split('T')[0]}`,
+  // NUMBERS STATION page + API
+  const numbersStationHtml = broadcastNumbersStation(stories);
+  write("numbers-station.html", numbersStationHtml);
+  writeJson("api/numbers-station_latest.json", {
+    id: `numbers-station-${new Date().toISOString().split('T')[0]}`,
     date: new Date().toISOString().split('T')[0],
-    title: `NISA Daily Dispatch ${new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}`,
-    html: newsletterHtml
+    title: `NISA Numbers Station ${new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}`,
+    html: numbersStationHtml
   });
-  const newsletterLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Daily Dispatch — BotwaveBomba", "url": pageUrl("newsletter"), "description": "NISA Daily Dispatch: critical coverage gaps, heatmap snapshot, blindspot alerts." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", position:1, name:"Home", item:pageUrl("index")}, {"@type":"ListItem", position:2, name:"Daily Dispatch"}] }] };
-  write("newsletter.html", chrome("newsletter", `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">${newsletterHtml}</div></div>`, { title: "Daily Dispatch — BotwaveBomba", description: "NISA Daily Dispatch: critical coverage gaps, heatmap snapshot, blindspot alerts.", canonical: pageUrl("newsletter"), jsonLd: newsletterLd }));
-  publicPages.push({ page: "newsletter", title: "Daily Dispatch — BotwaveBomba", desc: "NISA Daily Dispatch: critical coverage gaps, heatmap snapshot, blindspot alerts." });
+  const numbersStationLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Numbers Station — BotwaveBomba", "url": pageUrl("numbers-station"), "description": "NISA Numbers Station: critical black sites, radar snapshot, silent sector alerts." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":"Numbers Station"}] }] };
+  write("numbers-station.html", chrome("numbers-station", `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">${numbersStationHtml}</div></div>`, { title: "Numbers Station — BotwaveBomba", description: "NISA Numbers Station: critical black sites, radar snapshot, silent sector alerts.", canonical: pageUrl("numbers-station"), jsonLd: numbersStationLd }));
+  publicPages.push({ page: "numbers-station", title: "Numbers Station — BotwaveBomba", desc: "NISA Numbers Station: critical black sites, radar snapshot, silent sector alerts." });
 
-  // NEW: Sources Transparency page (ownership, funding, factuality badges)
+  // Asset Transparency page (ownership, funding, vetting badges)
   const ownership = getOwnershipByDomain();
-  const sourcesTransparencyBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">
-    <div class="bwb-section-header"><span class="bwb-section-kicker">Sources Registry</span><h1>Source Transparency</h1><p>Every outlet is a known entity. Owner, funding model, factuality track record, paywall status, language.</p></div>
+  const assetTransparencyBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">
+    <div class="bwb-section-header"><span class="bwb-section-kicker">ASSET REGISTRY</span><h1>ASSET TRANSPARENCY</h1><p>Every outlet is a known entity. Owner, funding model, vetting track record, paywall status, language.</p></div>
     <div style="overflow-x:auto;">
       <table class="bwb-sources-table" style="width:100%; border-collapse:collapse; font-size:var(--fs-sm);">
         <thead><tr style="border-bottom:2px solid var(--color-border); text-align:left;">
-          <th>Outlet</th><th>Country</th><th>Bloc</th><th>Bias</th><th>Factuality</th><th>Funding</th><th>Paywall</th><th>Owner</th><th>Domain</th>
+          <th>Asset</th><th>Theater</th><th>Alignment</th><th>Lean</th><th>Vetting</th><th>Funding</th><th>Paywall</th><th>Handler</th><th>Domain</th>
         </tr></thead>
         <tbody>
           ${getSources().slice(0, 120).map(s => {
-            const bloc = normBloc(s.bloc);
-            const bias = s.bias || 'unknown';
-            const factuality = s.factuality || 'unknown';
+            const alignment = normBloc(s.bloc);
+            const lean = s.bias || 'unknown';
+            const vetting = s.factuality || 'unknown';
             const funding = s.funding || 'unknown';
             const paywall = s.paywall || 'unknown';
-            const owner = ownership[getDomain(s.url)]?.owner || ownership[getDomain(s.url)]?.parent_company || 'Unknown';
-            const biasClass = bias === 'left' ? 'bwb-bias-left' : bias === 'right' ? 'bwb-bias-right' : 'bwb-bias-center';
+            const handler = ownership[getDomain(s.url)]?.owner || ownership[getDomain(s.url)]?.parent_company || 'Unknown';
+            const leanClass = lean === 'left' ? 'bwb-lean-left' : lean === 'right' ? 'bwb-lean-right' : 'bwb-lean-center';
             return `<tr>
-              <td><span class="bwb-card-source-bloc ${bloc}"></span> ${escapeHtml(s.name)}</td>
+              <td><span class="bwb-card-source-alignment ${alignment}"></span> ${escapeHtml(s.name)}</td>
               <td>${escapeHtml(s.country)}</td>
-              <td>${escapeHtml(bloc)}</td>
-              <td><span class="bwb-bias-badge ${biasClass}">${escapeHtml(bias.toUpperCase())}</span></td>
-              <td><span class="bwb-factuality-badge">${escapeHtml(factuality.toUpperCase())}</span></td>
+              <td>${escapeHtml(alignment)}</td>
+              <td><span class="bwb-lean-badge ${leanClass}">${escapeHtml(lean.toUpperCase())}</span></td>
+              <td><span class="bwb-vetting-badge">${escapeHtml(vetting.toUpperCase())}</span></td>
               <td>${escapeHtml(funding)}</td>
               <td>${escapeHtml(paywall)}</td>
-              <td>${escapeHtml(owner)}</td>
+              <td>${escapeHtml(handler)}</td>
               <td><a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(getDomain(s.url))}</a></td>
             </tr>`;
           }).join('')}
@@ -625,34 +621,34 @@ function generate() {
       </table>
     </div>
   </div></div>`;
-  const sourcesTransparencyLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Source Transparency — BotwaveBomba", "url": pageUrl("sources-transparency"), "description": "Ownership, funding, factuality, and bias transparency for every outlet in the registry." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", position:1, name:"Home", item:pageUrl("index")}, {"@type":"ListItem", position:2, name:"Source Transparency"}] }] };
-  write("sources-transparency.html", chrome("sources-transparency", sourcesTransparencyBody, { title: "Source Transparency — BotwaveBomba", description: "Ownership, funding, factuality, and bias transparency for every outlet.", canonical: pageUrl("sources-transparency"), jsonLd: sourcesTransparencyLd }));
-  publicPages.push({ page: "sources-transparency", title: "Source Transparency — BotwaveBomba", desc: "Ownership, funding, factuality, and bias transparency for every outlet." });
+  const assetTransparencyLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Asset Transparency — BotwaveBomba", "url": pageUrl("asset-transparency"), "description": "Ownership, funding, vetting, and lean transparency for every asset in the registry." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":"Asset Transparency"}] }] };
+  write("asset-transparency.html", chrome("asset-transparency", assetTransparencyBody, { title: "Asset Transparency — BotwaveBomba", description: "Ownership, funding, vetting, and lean transparency for every asset.", canonical: pageUrl("asset-transparency"), jsonLd: assetTransparencyLd }));
+  publicPages.push({ page: "asset-transparency", title: "Asset Transparency — BotwaveBomba", desc: "Ownership, funding, vetting, and lean transparency for every asset." });
 
-  // NEW: Methodology Transparency page
-  const methodologyBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main bwb-prose">
-    <div class="bwb-section-header"><span class="bwb-section-kicker">Methodology</span><h1>How We Rate Bias, Factuality & Coverage</h1><p>Full transparency on our classification system. No black boxes.</p></div>
+  // Tradecraft Transparency page
+  const tradecraftBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main bwb-prose">
+    <div class="bwb-section-header"><span class="bwb-section-kicker">TRADECRAFT</span><h1>How We Classify Alignment, Vetting & Coverage</h1><p>Full transparency on our classification system. No black boxes.</p></div>
     
-    <h2>Three-Bloc Classification (Not Left/Right)</h2>
-    <p>We classify outlets by geopolitical alignment, not domestic partisan lean:</p>
+    <h2>Three-Alignment Classification (Not Left/Right)</h2>
+    <p>We classify assets by geopolitical alignment, not domestic partisan lean:</p>
     <ul>
       <li><strong>Western:</strong> NATO/EU/US-aligned media ecosystems (e.g., BBC, NYT, DW, France24)</li>
       <li><strong>Non-Aligned:</strong> Global South, BRICS, neutral/alternative perspectives (e.g., Al Jazeera, RT en Español, Global Times, Telesur, The Hindu)</li>
       <li><strong>Adversarial:</strong> State media from regimes actively opposing Western bloc (e.g., RT, Press TV, CGTN, Sputnik, Tasnim)</li>
     </ul>
-    <p>Classification uses: ownership structure, state funding %, editorial control, geopolitical stance consistency across 100+ test stories.</p>
+    <p>Classification uses: ownership structure, state funding %, editorial control, geopolitical stance consistency across 100+ test intercepts.</p>
 
-    <h2>Bias Rating (LEFT / CENTER / RIGHT)</h2>
-    <p>Within each bloc, we apply a traditional Left/Center/Right spectrum based on:</p>
+    <h2>Lean Rating (LEFT / CENTER / RIGHT)</h2>
+    <p>Within each alignment, we apply a traditional Left/Center/Right spectrum based on:</p>
     <ul>
       <li>Economic policy framing (regulation vs. markets)</li>
       <li>Social policy framing (progressive vs. traditional)</li>
       <li>Foreign intervention stance (interventionist vs. restraint)</li>
-      <li>Keyword frequency analysis across 500+ tagged articles per outlet</li>
+      <li>Keyword frequency analysis across 500+ tagged articles per asset</li>
     </ul>
-    <p>Rating is <strong>bloc-relative</strong>: a "Left" outlet in the Western bloc differs from "Left" in the Adversarial bloc.</p>
+    <p>Rating is <strong>alignment-relative</strong>: a "Left" asset in the Western alignment differs from "Left" in the Adversarial alignment.</p>
 
-    <h2>Factuality Rating (HIGH / MIXED / LOW)</h2>
+    <h2>Vetting Rating (HIGH / MIXED / LOW)</h2>
     <p>Based on:</p>
     <ul>
       <li>Correction/retraction rate (public corrections per 100 articles)</li>
@@ -662,51 +658,51 @@ function generate() {
     </ul>
     <p>Thresholds: HIGH = <5% correction rate, >80% primary citations. LOW = >15% correction rate, <40% primary citations.</p>
 
-    <h2>Coverage Gap / Blindspot Detection</h2>
-    <p>A story is flagged as a <strong>Blindspot</strong> when one bloc has <strong><20% representation</strong> among sources covering it, AND total sources ≥ 3.</p>
-    <p>Formula: <code>gap_score = (1 - bloc_share) * log(total_sources)</code>. Higher = more significant gap.</p>
+    <h2>Black Site / Silent Sector Detection</h2>
+    <p>An intercept is flagged as a <strong>Black Site</strong> when one alignment has <strong><20% representation</strong> among assets covering it, AND total assets ≥ 3.</p>
+    <p>Formula: <code>gap_score = (1 - alignment_share) * log(total_assets)</code>. Higher = more significant gap.</p>
 
-    <h2>Heatmap Intensity</h2>
-    <p>Logarithmic scale: <code>intensity = log1p(story_count) / log1p(max_country_count)</code>. Prevents superpowers from drowning out smaller nations.</p>
+    <h2>Radar Intensity</h2>
+    <p>Logarithmic scale: <code>intensity = log1p(signal_count) / log1p(max_country_count)</code>. Prevents superpowers from drowning out smaller theaters.</p>
 
     <h2>No Algorithmic Personalization by Default</h2>
-    <p>"For You" feed is <strong>opt-in only</strong>. Followed topics stored in <code>localStorage</code>. No server-side profiling. No tracking pixels in newsletter.</p>
+    <p>"Dead Drop" feed is <strong>opt-in only</strong>. Monitored frequencies stored in <code>localStorage</code>. No server-side profiling. No tracking pixels in Numbers Station.</p>
 
-    <h2>Corrections Policy</h2>
-    <p>All corrections logged publicly at <a href="${sectionUrl('corrections')}">Corrections</a>. Each entry: original claim, correction, date, source article link.</p>
+    <h2>Errata Policy</h2>
+    <p>All corrections logged publicly at <a href="${sectionUrl('errata')}">Errata</a>. Each entry: original claim, correction, date, source intercept link.</p>
 
     <h2>Data Sources & Refresh</h2>
-    <p>RSS/Atom feeds from 100+ outlets, polled every 4 hours. Clustering via embedding similarity (threshold 0.78). Bloc labels assigned at source level, not per-article.</p>
+    <p>RSS/Atom feeds from 100+ assets, polled every 4 hours. Clustering via embedding similarity (threshold 0.78). Alignment labels assigned at asset level, not per-intercept.</p>
   </div></div>`;
-  const methodologyLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Methodology — BotwaveBomba", "url": pageUrl("methodology-transparency"), "description": "How we classify bias, factuality, coverage gaps, and ownership. Full transparency." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", position:1, name:"Home", item:pageUrl("index")}, {"@type":"ListItem", position:2, name:"Methodology"}] }] };
-  write("methodology-transparency.html", chrome("methodology-transparency", methodologyBody, { title: "Methodology — BotwaveBomba", description: "How we classify bias, factuality, coverage gaps, and ownership. Full transparency.", canonical: pageUrl("methodology-transparency"), jsonLd: methodologyLd }));
-  publicPages.push({ page: "methodology-transparency", title: "Methodology — BotwaveBomba", desc: "How we classify bias, factuality, coverage gaps, and ownership." });
+  const tradecraftLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Tradecraft — BotwaveBomba", "url": pageUrl("tradecraft"), "description": "How we classify alignment, vetting, coverage gaps, and ownership. Full transparency." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", "position":1, "name":"PORTADA", "item":pageUrl("index")}, {"@type":"ListItem", "position":2, "name":"Tradecraft"}] }] };
+  write("tradecraft.html", chrome("tradecraft", tradecraftBody, { title: "Tradecraft — BotwaveBomba", description: "How we classify alignment, vetting, coverage gaps, and ownership. Full transparency.", canonical: pageUrl("tradecraft"), jsonLd: tradecraftLd }));
+  publicPages.push({ page: "tradecraft", title: "Tradecraft — BotwaveBomba", desc: "How we classify alignment, vetting, coverage gaps, and ownership." });
 
   // Search index
   const searchIndex = stories.map(s => {
-    const card = storyToCard(s);
+    const card = renderSigintCard(s);
     return {
       id: s.id,
       title: card.headline,
       excerpt: card.excerpt,
-      source: card.topSource?.name || "",
-      country: card.topSource?.country || "",
-      section: classifyStory(s)[0] || "world",
-      countries: s.countries,
-      sources: s.sources.map(x => x.name),
+      asset: card.topAsset?.name || "",
+      theater: card.topAsset?.country || "",
+      alignment: classifyAlignment(s)[0] || "world",
+      theaters: s.countries,
+      assets: s.sources.map(x => x.name),
     };
   });
   writeJson("api/search_index.json", searchIndex);
 
   // Update meta
-  const updatedMeta = { ...meta, generated_at: new Date().toISOString(), pages: publicPages.map(p => p.page), section_count: SECTIONS.length, total_page_count: publicPages.length };
+  const updatedMeta = { ...meta, generated_at: new Date().toISOString(), pages: publicPages.map(p => p.page), sector_count: SECTIONS.length, total_page_count: publicPages.length };
   writeJson("api/meta.json", updatedMeta);
 
   // Sitemap
   const urls = publicPages.map(p => `  <url><loc>${p.page === "index" ? pageUrl("index") : `${DOMAIN}${BASE}/${p.page}.html`}</loc></url>`).join("\n");
   write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`);
 
-  console.log(`[build_site] generated ${publicPages.length} pages, ${stories.length} stories, ${SECTIONS.length} sections`);
+  console.log(`[build_site] generated ${publicPages.length} pages, ${stories.length} intercepts, ${SECTIONS.length} sectors`);
 }
 
 function write(path: string, content: string) {
