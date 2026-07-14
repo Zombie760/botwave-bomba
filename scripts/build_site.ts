@@ -1935,7 +1935,7 @@ function generate() {
     <div class="bwb-section-header">
       <span class="bwb-section-kicker">EPSTEIN FILES FOIA</span>
       <h1>INTELLIGENCE</h1>
-      <p>The mechanism. The cycle. The exempt-person network exposed in 10,715 primary documents. Every entity below is named in a real EFTA-bates file; every co-occurrence is measured, not asserted.</p>
+      <p>ground.news compares the framings. botwavebomba compares the filings. The 10,715 EFTA documents, the donor-class spine across 5 dynasties, the 200-plate Bush visual sequence, and the 3D-printable Zorro Ranch and Little Saint James models below are not framings. They are filed. They are receipts. They are citable in court. Every entity is named in a real EFTA-bates file; every co-occurrence is measured, not asserted.</p>
     </div>
 
     <div class="bwb-intel-hero">
