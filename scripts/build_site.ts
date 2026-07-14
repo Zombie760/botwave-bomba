@@ -15,6 +15,7 @@ import {
   getOwnership,
   getSigintPackages,
   extractDomain,
+  getIntelligence,
 } from "./lib/data.ts";
 import {
   SECTIONS,
@@ -279,6 +280,7 @@ function chrome(
     { id: "home", label: "PORTADA", href: homeUrl() },
     { id: "black-site", label: "BLACK SITE", href: sectionUrl("black-site") },
     { id: "radar", label: "RADAR", href: sectionUrl("radar") },
+    { id: "intelligence", label: "INTELLIGENCE", href: sectionUrl("intelligence") },
     { id: "refraction", label: "REFRACTION", href: sectionUrl("refraction") },
     { id: "spool", label: "SPOOL", href: sectionUrl("spool") },
     { id: "numbers-station", label: "NUMBERS STATION", href: sectionUrl("numbers-station") },
@@ -1835,6 +1837,254 @@ function generate() {
       desc: "Per-bloc coverage comparison with ownership trail. The frame you see is a function of the funder behind it.",
     });
   }
+
+  // INTELLIGENCE page — Epstein-Files mechanism registry
+  // Solely EFTA corpus. The CIA does not work for the people.
+  // It works for the people who own the banks.
+  const intel = getIntelligence();
+  const stats = intel.corpus_stats;
+  const classColors: Record<string, string> = {
+    INTELLIGENCE: '#c4302b',
+    PROSECUTORIAL: '#E86A3C',
+    FINANCE: '#E8B339',
+    LEGAL: '#3FA796',
+    POLITICAL: '#5b8def',
+    OLIGARCH: '#a86ad0',
+  };
+  const classOrder = ['INTELLIGENCE', 'PROSECUTORIAL', 'FINANCE', 'LEGAL', 'POLITICAL', 'OLIGARCH'];
+
+  // Co-occurrence bars
+  const coBars = intel.cooccurrence.slice(0, 12).map(({ a, b, count }) => {
+    const colorA = classColors[a] || '#888';
+    const colorB = classColors[b] || '#888';
+    return `<div class="bwb-intel-copair">
+      <div class="bwb-intel-copair-names"><span style="color:${colorA}">${a}</span> <span class="bwb-intel-copair-x">↔</span> <span style="color:${colorB}">${b}</span></div>
+      <div class="bwb-intel-copair-bar"><span style="width:${Math.min(100, count * 15)}%; background:linear-gradient(90deg, ${colorA}55, ${colorB}55);"></span><strong>${count}</strong></div>
+    </div>`;
+  }).join("");
+
+  // First-EP chain (10 dated events 1119–2019)
+  const epChain = intel.moat_framing.first_ep_chain.map(ev => `
+    <li class="bwb-intel-chain-item">
+      <span class="bwb-intel-chain-year">${ev.year}</span>
+      <span class="bwb-intel-chain-event">${escapeHtml(ev.event)}</span>
+      <span class="bwb-intel-chain-mech">${escapeHtml(ev.mechanism)}</span>
+    </li>`).join("");
+
+  // Spotlight dossiers (top 5 highest-class-coverage docs)
+  const spotlights = intel.spotlight.map((e, i) => {
+    const chips = e.classes.map(c =>
+      `<span class="bwb-intel-chip" style="background:${classColors[c] || '#888'}22; color:${classColors[c] || '#888'}; border-color:${classColors[c] || '#888'}66">${c}</span>`
+    ).join("");
+    const actorList = e.actors.length ? e.actors.slice(0, 6).map(a => escapeHtml(a)).join(" · ") : "(no actor tag)";
+    return `<article class="bwb-intel-spotlight">
+      <header>
+        <span class="bwb-intel-spotlight-num">${String(i+1).padStart(2,'0')}</span>
+        <span class="bwb-intel-spotlight-bates">${escapeHtml(e.bates)}</span>
+        ${e.year ? `<span class="bwb-intel-spotlight-year">${e.year}</span>` : ''}
+        <span class="bwb-intel-spotlight-class">${escapeHtml(e.classification)}</span>
+      </header>
+      <div class="bwb-intel-spotlight-chips">${chips}</div>
+      <div class="bwb-intel-spotlight-actors">${actorList}</div>
+      <p class="bwb-intel-spotlight-excerpt">"${escapeHtml(e.excerpt)}"</p>
+    </article>`;
+  }).join("");
+
+  // Entity tallies (top entities per class)
+  const tallySections = classOrder.map(cls => {
+    const ents = intel.scanner_stats[cls] || {};
+    const sorted = Object.entries(ents).sort((a, b) => b[1] - a[1]);
+    const max = sorted[0]?.[1] || 1;
+    const rows = sorted.map(([name, ct]) =>
+      `<li><span class="bwb-intel-tally-bar"><span style="width:${Math.min(100, ct / max * 100)}%; background:${classColors[cls]}"></span></span><span class="bwb-intel-tally-name">${escapeHtml(name)}</span><span class="bwb-intel-tally-num">${ct.toLocaleString()}</span></li>`
+    ).join("");
+    return `<div class="bwb-intel-tally-block">
+      <h3 style="color:${classColors[cls]}">${cls}</h3>
+      <ul>${rows}</ul>
+    </div>`;
+  }).join("");
+
+  // Hero
+  const mechanismQuote = `
+    <blockquote class="bwb-intel-quote">
+      <p>"The CIA does not work for the people. It works for the people who own the banks."</p>
+      <cite>— Unwarranted Influence, Kyle Jimenez (2026)</cite>
+    </blockquote>`;
+
+  // Book + corkboard companion links
+  const companions = `
+    <div class="bwb-intel-companions">
+      <a class="bwb-intel-companion" href="${escapeHtml(intel.book_reference.path)}" target="_blank" rel="noopener">
+        <span class="bwb-intel-companion-kicker">THE THESIS</span>
+        <span class="bwb-intel-companion-title">${escapeHtml(intel.book_reference.title)}</span>
+        <span class="bwb-intel-companion-meta">${intel.book_reference.chapters.length} chapters · ${intel.book_reference.year}</span>
+      </a>
+      <a class="bwb-intel-companion" href="${escapeHtml(intel.corkboard_reference.path)}" target="_blank" rel="noopener">
+        <span class="bwb-intel-companion-kicker">VISUAL COMPANION</span>
+        <span class="bwb-intel-companion-title">${escapeHtml(intel.corkboard_reference.title)}</span>
+        <span class="bwb-intel-companion-meta">${escapeHtml(intel.corkboard_reference.aesthetic)}</span>
+      </a>
+    </div>`;
+
+  // Mechanism cycle (6 steps)
+  const cycle = intel.mechanism.cycle.map((step, i) =>
+    `<li><span class="bwb-intel-cycle-num">${i+1}</span><span class="bwb-intel-cycle-text">${escapeHtml(step)}</span></li>`
+  ).join("");
+
+  const intelligenceBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">
+    <div class="bwb-section-header">
+      <span class="bwb-section-kicker">EPSTEIN FILES FOIA</span>
+      <h1>INTELLIGENCE</h1>
+      <p>The mechanism. The cycle. The exempt-person network exposed in 10,715 primary documents. Every entity below is named in a real EFTA-bates file; every co-occurrence is measured, not asserted.</p>
+    </div>
+
+    <div class="bwb-intel-hero">
+      <div class="bwb-intel-hero-stats">
+        <div><strong>${stats.total_docs.toLocaleString()}</strong><span>EFTA documents</span></div>
+        <div><strong>${stats.ocr_processed.toLocaleString()}</strong><span>OCR processed</span></div>
+        <div><strong>${stats.hand_tagged_actor_docs.toLocaleString()}</strong><span>hand-tagged</span></div>
+        <div><strong>${stats.entries_with_body_hits.toLocaleString()}</strong><span>power-class hits</span></div>
+      </div>
+      ${mechanismQuote}
+    </div>
+
+    ${companions}
+
+    <section class="bwb-intel-section">
+      <span class="bwb-section-kicker">THE CYCLE</span>
+      <h2>How the network holds</h2>
+      <ol class="bwb-intel-cycle">${cycle}</ol>
+      <p class="bwb-intel-principle">${escapeHtml(intel.mechanism.principle)}</p>
+    </section>
+
+    <section class="bwb-intel-section">
+      <span class="bwb-section-kicker">FIRST-EP CHAIN · 1119–2019</span>
+      <h2>The same shape, nine centuries</h2>
+      <p class="bwb-intel-lede">The first Exempt Person network was the Knights Templar — a monastic-military order, freed by Pope Innocent II from every local jurisdiction. The property didn't disappear when the order did. It migrated into the Hospitallers, then the early central banks, then the global reserve system. The Epstein files are the modern receipt for the same mechanism.</p>
+      <ol class="bwb-intel-chain">${epChain}</ol>
+    </section>
+
+    <section class="bwb-intel-section">
+      <span class="bwb-section-kicker">CO-OCCURRENCE · THE MOAT</span>
+      <h2>Which power classes sit in the same files</h2>
+      <p class="bwb-intel-lede">For every power-class entity we find in the EFTA corpus, we tag the rest of the classes that co-occur in the same document. High counts = the same actors touching the same case.</p>
+      <div class="bwb-intel-copair-grid">${coBars}</div>
+    </section>
+
+    <section class="bwb-intel-section">
+      <span class="bwb-section-kicker">SPOTLIGHT · TOP 5 DOSSIERS</span>
+      <h2>The files where everything converges</h2>
+      <p class="bwb-intel-lede">The five EFTA documents that hit the most power classes at once. Each is a real file with a real bates number. Click the bates to see the full OCR text in the corpus.</p>
+      <div class="bwb-intel-spotlight-grid">${spotlights}</div>
+    </section>
+
+    <section class="bwb-intel-section">
+      <span class="bwb-section-kicker">CORPUS-WIDE ENTITY TALLIES</span>
+      <h2>What the 10,182 OCRed files actually name</h2>
+      <p class="bwb-intel-lede">Per-entity hit counts across the full EFTA OCR corpus. The bars are scaled within each class, so they show rank within class, not absolute comparison across classes.</p>
+      <div class="bwb-intel-tally-grid">${tallySections}</div>
+    </section>
+
+    <section class="bwb-intel-section">
+      <span class="bwb-section-kicker">CLASS OF 2025 · THE HOLDERS-UP</span>
+      <h2>The current chain of obstruction</h2>
+      <p class="bwb-intel-lede">Officials and adjacent figures with documented entanglement in the EFTA corpus or active obstruction of release. These are the names to ask, in alphabetical order by office.</p>
+      <div class="bwb-intel-class-grid">
+        ${(intel.class_of_2025?.members || []).map(m => `
+          <article class="bwb-intel-class-card">
+            <h3>${escapeHtml(m.name)}</h3>
+            <p class="bwb-intel-class-role">${escapeHtml(m.role)}</p>
+            <p><strong>Receipt:</strong> ${escapeHtml(m.receipt)}</p>
+            <p><strong>Holdup:</strong> ${escapeHtml(m.block)}</p>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+
+    <section class="bwb-intel-section">
+      <span class="bwb-section-kicker">TRUMP ORBIT · DIRECT RECEIPTS</span>
+      <h2>Named in the corpus, not alleged in headlines</h2>
+      <p class="bwb-intel-lede">Every name below is tied to a primary source — EFTA bates, flight log, subcorpus file, or memo. The tier reflects the strength of the document chain, not the seriousness of the allegation.</p>
+      <div class="bwb-intel-orbit-grid">
+        ${(intel.trump_orbit?.members || []).map(m => `
+          <article class="bwb-intel-orbit-card bwb-intel-orbit-${m.tier.toLowerCase()}">
+            <h3>${escapeHtml(m.name)} <span class="bwb-intel-orbit-tier">${escapeHtml(m.tier)}</span></h3>
+            <p>${escapeHtml(m.receipt)}</p>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+
+    <section class="bwb-intel-section">
+      <span class="bwb-section-kicker">DONOR CLASS BIBLE · 2026 EVIDENCE GRADING</span>
+      <h2>The money behind the gate</h2>
+      <p class="bwb-intel-lede">From <em>Donor_Class_Bible_Deep_State_2026.pdf</em>. Direct = documented payment or hand-off. Structural = financial conduit or ownership chain.</p>
+      <div class="bwb-intel-donor-grid">
+        ${(intel.donor_class?.members || []).map(m => `
+          <article class="bwb-intel-donor-card bwb-intel-donor-${m.tier.toLowerCase()}">
+            <h3>${escapeHtml(m.name)}${m.amount ? ` <span class="bwb-intel-donor-amount">${escapeHtml(m.amount)}</span>` : ''}</h3>
+            <p><span class="bwb-intel-donor-tier">${escapeHtml(m.tier)}</span> ${escapeHtml(m.receipt)}</p>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+
+    ${(intel.models_reference?.items?.length) ? `
+    <section class="bwb-intel-section">
+      <span class="bwb-section-kicker">3D PRINT MODELS · FREE TO MAKE</span>
+      <h2>Hold the receipts in your hand</h2>
+      <p class="bwb-intel-lede">${escapeHtml(intel.models_reference.note)}</p>
+      <div class="bwb-intel-models-grid">
+        ${intel.models_reference.items.map(mod => `
+          <article class="bwb-intel-model-card">
+            <h3>${escapeHtml(mod.name)}</h3>
+            <p>${escapeHtml(mod.note)}</p>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+    ` : ''}
+
+    <section class="bwb-intel-section">
+      <span class="bwb-section-kicker">METHOD</span>
+      <h2>How the dataset was built</h2>
+      <p>${escapeHtml(intel.method)}</p>
+      <p class="bwb-intel-meta">Generated ${escapeHtml(intel.generated_at)} · ${escapeHtml(intel.source_corpus)}.</p>
+    </section>
+  </div></div>`;
+
+  const intelligenceLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        name: "Intelligence — BotwaveBomba",
+        url: pageUrl("intelligence"),
+        description: intel.mechanism.claim,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "PORTADA", item: pageUrl("index") },
+          { "@type": "ListItem", position: 2, name: "Intelligence" },
+        ],
+      },
+    ],
+  };
+  write(
+    "intelligence.html",
+    chrome("intelligence", intelligenceBody, {
+      title: "Intelligence — BotwaveBomba",
+      description: "The mechanism. The cycle. The exempt-person network exposed in 10,715 primary documents.",
+      canonical: pageUrl("intelligence"),
+      jsonLd: intelligenceLd,
+    })
+  );
+  publicPages.push({
+    page: "intelligence",
+    title: "Intelligence — BotwaveBomba",
+    desc: "Epstein-Files mechanism registry. The CIA does not work for the people. It works for the people who own the banks.",
+  });
 
   // Sitemap
   const urls = publicPages

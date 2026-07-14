@@ -246,6 +246,95 @@ export function getErrata() {
   return readJson<{ corrections?: any[] }>("api/errata.json", { corrections: [] });
 }
 
+export interface IntelligenceEntry {
+  bates: string;
+  year: number | null;
+  classification: string;
+  cycle_layer: string;
+  classes: string[];
+  entities: string[];
+  actors: string[];
+  excerpt: string;
+}
+
+export interface Intelligence {
+  generated_at: string;
+  source_corpus: string;
+  method?: string;
+  corpus_stats: {
+    total_docs: number;
+    ocr_processed: number;
+    hand_tagged_actor_docs: number;
+    entries_with_body_hits: number;
+  };
+  class_of_2025?: {
+    headline: string;
+    summary: string;
+    members: Array<{ name: string; role: string; receipt: string; block: string }>;
+  };
+  trump_orbit?: {
+    headline: string;
+    summary: string;
+    members: Array<{ name: string; receipt: string; tier: string }>;
+  };
+  donor_class?: {
+    headline: string;
+    summary: string;
+    members: Array<{ name: string; amount?: string; receipt: string; tier: string }>;
+  };
+  models_reference?: {
+    title: string;
+    items: Array<{ name: string; note: string }>;
+    note: string;
+  };
+  mechanism: {
+    claim: string;
+    principle: string;
+    cycle: string[];
+  };
+  book_reference: {
+    title: string;
+    author: string;
+    year: number;
+    path: string;
+    chapters: string[];
+  };
+  corkboard_reference: {
+    title: string;
+    path: string;
+    description: string;
+    aesthetic: string;
+  };
+  moat_framing: {
+    first_ep_chain: Array<{ year: number; event: string; mechanism: string }>;
+  };
+  scanner_stats: Record<string, Record<string, number>>;
+  cooccurrence: Array<{ a: string; b: string; count: number }>;
+  spotlight: IntelligenceEntry[];
+  entries: IntelligenceEntry[];
+}
+
+export function getIntelligence(): Intelligence {
+  return readJson<Intelligence>("api/intelligence.json", {
+    generated_at: new Date().toISOString(),
+    source_corpus: "EFTA corpus (fallback: empty)",
+    method: "",
+    corpus_stats: { total_docs: 0, ocr_processed: 0, hand_tagged_actor_docs: 0, entries_with_body_hits: 0 },
+    class_of_2025: { headline: "", summary: "", members: [] },
+    trump_orbit: { headline: "", summary: "", members: [] },
+    donor_class: { headline: "", summary: "", members: [] },
+    models_reference: { title: "", items: [], note: "" },
+    mechanism: { claim: "", principle: "", cycle: [] },
+    book_reference: { title: "", author: "", year: 0, path: "", chapters: [] },
+    corkboard_reference: { title: "", path: "", description: "", aesthetic: "" },
+    moat_framing: { first_ep_chain: [] },
+    scanner_stats: {},
+    cooccurrence: [],
+    spotlight: [],
+    entries: [],
+  });
+}
+
 export function getMoneyTrailByDomain(): Record<string, MoneyTrailLink> {
   const list = getMoneyTrail();
   const map: Record<string, MoneyTrailLink> = {};

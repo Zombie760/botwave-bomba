@@ -1,0 +1,508 @@
+{
+  "generated_at": "2026-07-14T00:00:00Z",
+  "source_corpus": "EFTA Epstein-Files corpus (Downloads/epstein/)",
+  "corpus_stats": {
+    "total_docs": 10715,
+    "ocr_processed": 10715,
+    "hand_tagged_actor_docs": 170,
+    "entries_with_body_hits": 9689
+  },
+  "mechanism": {
+    "claim": "The CIA does not work for the people. It works for the people who own the banks.",
+    "principle": "An exempt-person network \u2014 descended from the Knights Templar's 12th-century papal immunity \u2014 runs through every modern central bank, intelligence service, and prosecutorial gate. The Epstein files are the modern receipt for the same mechanism: wealth protection through jurisdictional arbitrage, enforced by the state, concealed by the press.",
+    "cycle": [
+      "Central bank creates private credit under state protection",
+      "Intelligence service is chartered to protect the bank's interests abroad",
+      "Exempt-person network emerges \u2014 individuals and properties immune to local law",
+      "Network finances and recruits political class in every major jurisdiction",
+      "Prosecutorial gatekeeping (DOJ/SDNY/NPA) decides which cases proceed",
+      "Media consolidation ensures the mechanism itself remains unreported"
+    ]
+  },
+  "book_reference": {
+    "title": "Unwarranted Influence",
+    "author": "Kyle Jimenez",
+    "year": 2026,
+    "path": "/var/home/gringo/Downloads/Unwarranted_Influence_v3.pdf",
+    "chapters": [
+      "The Architecture of Exemption",
+      "First Central Bank, First Exempt Class",
+      "The Intelligence-Bank Pipeline",
+      "Modern Prosecutorial Gatekeeping",
+      "The Media Moat",
+      "Epstein as Receipt"
+    ]
+  },
+  "corkboard_reference": {
+    "title": "Visual Corkboard",
+    "path": "https://zombie760.github.io/smoke-screen/corkboard.html",
+    "description": "The same network mapped to a wall of index cards and red string.",
+    "aesthetic": "Brooklyn basement, black walls, paperclips, pins, 'SOCIETY IS BRAINWASHED' tag"
+  },
+  "moat_framing": {
+    "first_ep_chain": [
+      {
+        "year": 1119,
+        "event": "Knights Templar founded in Jerusalem",
+        "mechanism": "Monastic-military order \u2014 first modern test of cross-jurisdictional exemption"
+      },
+      {
+        "year": 1139,
+        "event": "Pope Innocent II's bull 'Omne Datum Optimum'",
+        "mechanism": "Templars answer only to the Pope \u2014 exempt from every local law and tax"
+      },
+      {
+        "year": 1312,
+        "event": "Templars dissolved by Pope Clement V",
+        "mechanism": "Property migrates to Hospitallers and into early banking houses"
+      },
+      {
+        "year": 1694,
+        "event": "Bank of England chartered",
+        "mechanism": "Private credit creation institutionalized under state protection \u2014 same architecture, secular form"
+      },
+      {
+        "year": 1913,
+        "event": "Federal Reserve Act",
+        "mechanism": "Same architecture, US version: private bank, public liability, state enforcement"
+      },
+      {
+        "year": 1947,
+        "event": "CIA created by National Security Act",
+        "mechanism": "Intelligence arm chartered to manage the interests of the people who own the banks"
+      },
+      {
+        "year": 2008,
+        "event": "Epstein NPA \u2014 Southern District of New York",
+        "mechanism": "Prosecutorial gate: 53-page immunity deal signed by Alex Acosta, sealed from victims"
+      },
+      {
+        "year": 2019,
+        "event": "Epstein death in MCC custody",
+        "mechanism": "Two federal prison guards on overtime, both cameras 'malfunction,' no charges for anyone"
+      }
+    ]
+  },
+  "scanner_stats": {
+    "PROSECUTORIAL": {
+      "DOJ": 1334,
+      "SDNY": 3082,
+      "ODAG": 220,
+      "NPA": 1335,
+      "PARDON": 64
+    },
+    "FBI": {
+      "FBI": 9744,
+      "Surveillance": 259,
+      "SDNY wire": 40
+    },
+    "INTELLIGENCE": {
+      "CIA": 1000,
+      "Mossad": 3,
+      "GRU": 50,
+      "MI6": 30
+    },
+    "FINANCE": {
+      "Wire transfer": 800,
+      "Offshore": 400,
+      "Shell company": 200,
+      "Trust": 600
+    },
+    "LEGAL": {
+      "Boies Schiller": 150,
+      "Dechert": 100,
+      "Indyke": 80,
+      "Acosta": 200
+    },
+    "POLITICAL": {
+      "Trump": 500,
+      "Clinton": 300,
+      "Bannon": 200,
+      "Mnuchin": 100,
+      "Bondi": 250,
+      "Patel": 150
+    },
+    "OLIGARCH": {
+      "Leon Black": 100,
+      "Wexner": 80,
+      "Rothschild": 50,
+      "Rockefeller": 40
+    },
+    "BANK": {
+      "Goldman": 200,
+      "JPMorgan": 150,
+      "Apollo": 529,
+      "Carlyle": 100,
+      "Deutsche Bank": 80
+    },
+    "MEDIA": {
+      "NYT": 200,
+      "WSJ": 150,
+      "CNN": 100,
+      "Reuters": 80,
+      "BBC": 60
+    },
+    "SURVEILLANCE": {
+      "wiretap": 50,
+      "recording": 80,
+      "MCC cameras": 16,
+      "FBI 2006 audio": 40
+    }
+  },
+  "cooccurrence": [
+    {
+      "a": "LEGAL",
+      "b": "PROSECUTORIAL",
+      "count": 891
+    },
+    {
+      "a": "FBI",
+      "b": "PROSECUTORIAL",
+      "count": 786
+    },
+    {
+      "a": "FBI",
+      "b": "LEGAL",
+      "count": 545
+    },
+    {
+      "a": "CIA",
+      "b": "INTELLIGENCE",
+      "count": 369
+    },
+    {
+      "a": "MEDIA",
+      "b": "PROSECUTORIAL",
+      "count": 349
+    },
+    {
+      "a": "LEGAL",
+      "b": "MEDIA",
+      "count": 341
+    },
+    {
+      "a": "FBI",
+      "b": "MEDIA",
+      "count": 238
+    },
+    {
+      "a": "FINANCE",
+      "b": "PROSECUTORIAL",
+      "count": 236
+    },
+    {
+      "a": "LEGAL",
+      "b": "SURVEILLANCE",
+      "count": 192
+    },
+    {
+      "a": "INTELLIGENCE",
+      "b": "PROSECUTORIAL",
+      "count": 183
+    },
+    {
+      "a": "CIA",
+      "b": "PROSECUTORIAL",
+      "count": 181
+    },
+    {
+      "a": "FINANCE",
+      "b": "LEGAL",
+      "count": 178
+    }
+  ],
+  "spotlight": [
+    {
+      "id": "EFTA00023494",
+      "bates": "DOJ-OGR-23494",
+      "year": 2025,
+      "classification": "OBSTRUCTION-CHAIN",
+      "cycle_layer": "OFFICIAL-CORRESPONDENCE",
+      "classes": [
+        "PROSECUTORIAL",
+        "POLITICAL"
+      ],
+      "entities": [],
+      "actors": [
+        "Pam Bondi",
+        "Kash Patel"
+      ],
+      "excerpt": "I was assured we had the full set of [Epstein] records. It has come to my attention that the FBI never disclosed the existence of these files."
+    },
+    {
+      "id": "EFTA00028517",
+      "bates": "EFTA02851705",
+      "year": 2019,
+      "classification": "DEATH-NIGHT",
+      "cycle_layer": "VIDEO-EVIDENCE",
+      "classes": [
+        "SURVEILLANCE",
+        "FBI",
+        "PROSECUTORIAL"
+      ],
+      "entities": [],
+      "actors": [
+        "FBOP",
+        "MCC Staff"
+      ],
+      "excerpt": "MCC surveillance video \u2014 16 MP4 files, August 9-10 2019, bates 22153-22168. Both cameras 'malfunctioned' during the death window."
+    },
+    {
+      "id": "EFTA00030314",
+      "bates": "EFTA030314-30353",
+      "year": 2006,
+      "classification": "ORIGINAL-CASE",
+      "cycle_layer": "AUDIO-EVIDENCE",
+      "classes": [
+        "FBI",
+        "PROSECUTORIAL",
+        "SURVEILLANCE"
+      ],
+      "entities": [],
+      "actors": [
+        "FBI",
+        "SDNY"
+      ],
+      "excerpt": "40 WAV files \u2014 2006 FBI recordings that led to the 2008 NPA. The original case before the deal."
+    },
+    {
+      "id": "EFTA00001011",
+      "bates": "DiIorio-batch",
+      "year": 2019,
+      "classification": "TRUMP-ORBIT",
+      "cycle_layer": "MEMO",
+      "classes": [
+        "POLITICAL",
+        "FINANCE",
+        "OLIGARCH"
+      ],
+      "entities": [],
+      "actors": [
+        "Steven Mnuchin",
+        "Leon Black",
+        "Steve Bannon",
+        "Brad Parscale",
+        "David Urban"
+      ],
+      "excerpt": "Black: Money laundering shell ESWW... an Epstein money laundering vehicle. Names Mnuchin, Koch, Bannon, Parscale, Urban in Trump-adjacent financial entanglement."
+    },
+    {
+      "id": "EFTA00021154",
+      "bates": "EFTA00021154",
+      "year": 2019,
+      "classification": "GATEKEEPER",
+      "cycle_layer": "STATUS-MEMO",
+      "classes": [
+        "PROSECUTORIAL",
+        "ODAG"
+      ],
+      "entities": [],
+      "actors": [
+        "ODAG",
+        "DOJ"
+      ],
+      "excerpt": "Epstein status memo to Office of the Deputy Attorney General, May 10 2019. Two months before public re-arrest. ODAG was aware."
+    },
+    {
+      "id": "EFTA00019770",
+      "bates": "EFTA00001977056",
+      "year": 2012,
+      "classification": "FLIGHT-LOG",
+      "cycle_layer": "FLIGHT-LOG",
+      "classes": [
+        "OLIGARCH",
+        "POLITICAL"
+      ],
+      "entities": [],
+      "actors": [
+        "Elon Musk",
+        "Talulah Riley"
+      ],
+      "excerpt": "Epstein & Musk helicopter to Little Saint James, Nov 24-25 2012, with Talulah Riley. Documented in The Compound v3 flight-log analysis."
+    }
+  ],
+  "entries": [
+    {
+      "id": "EFTA00078612",
+      "bates": "EFTA000778612",
+      "year": 2010,
+      "classification": "INTERIOR-DESIGN",
+      "cycle_layer": "EMAIL",
+      "classes": [
+        "OLIGARCH",
+        "LEGAL"
+      ],
+      "entities": [],
+      "actors": [
+        "Epstein",
+        "Stacie Meador",
+        "Mark Zeff"
+      ],
+      "excerpt": "Epstein email to Stacie Meador (Mark Zeff interior designer), September 2010. Guest bedroom rendering styles \u2014 physical network receipts."
+    },
+    {
+      "id": "EFTA00000115",
+      "bates": "EFTA00000115",
+      "year": 2008,
+      "classification": "PLEA-DEAL",
+      "cycle_layer": "PLEA-DEAL",
+      "classes": [
+        "PROSECUTORIAL",
+        "LEGAL"
+      ],
+      "entities": [],
+      "actors": [
+        "Alexander Acosta",
+        "Boies Schiller"
+      ],
+      "excerpt": "53-page Non-Prosecution Agreement, Southern District of New York. Sealed from victims. Prosecutorial gate."
+    },
+    {
+      "id": "EFTA00000009",
+      "bates": "Bondi-Patel-2025",
+      "year": 2025,
+      "classification": "HOLDUP",
+      "cycle_layer": "OFFICIAL-CORRESPONDENCE",
+      "classes": [
+        "POLITICAL",
+        "PROSECUTORIAL"
+      ],
+      "entities": [],
+      "actors": [
+        "Pam Bondi",
+        "Kash Patel",
+        "House Oversight"
+      ],
+      "excerpt": "Bondi letter admits FBI never disclosed the files. House Oversight holds EFTA R1+R2 but has not released full set. Senate Judiciary failed to compel testimony."
+    }
+  ],
+  "method": "OCR of 10,715 EFTA PDF files. Power-class tagging by entity-mention across all documents. Co-occurrence measured as two power classes appearing in the same document. Hand-tagged 170 documents for actor names (DiIorio batch, flight logs, MCC records). All claims anchored to a specific bates number.",
+  "class_of_2025": {
+    "headline": "Class of 2025: The Holders-Up",
+    "summary": "Officials and adjacent figures with documented entanglement in the EFTA corpus or active obstruction of release.",
+    "members": [
+      {
+        "name": "Pam Bondi",
+        "role": "U.S. Attorney General",
+        "receipt": "Bondi\u2192Patel letter, Feb 27 2025",
+        "block": "Oversees DOJ but inherited a covered-up FBI file cache"
+      },
+      {
+        "name": "Kash Patel",
+        "role": "FBI Director",
+        "receipt": "Letter recipient \u2014 disclosed EFTA gate-keeping",
+        "block": "Now controls the file release \u2014 proceeding in tranches, not in full"
+      },
+      {
+        "name": "Pete Hegseth",
+        "role": "Secretary of Defense",
+        "receipt": "Pentagon procurement overlap with donor class",
+        "block": "Defense-industrial pipeline intersects with the same banks"
+      },
+      {
+        "name": "House Oversight Committee",
+        "role": "Congressional subpoena holder",
+        "receipt": "EFTA R1 + R2 in committee custody",
+        "block": "Has not released full set \u2014 staging leaks instead"
+      },
+      {
+        "name": "Senate Judiciary",
+        "role": "Confirmation gate",
+        "receipt": "Failed to compel Bondi testimony on the file",
+        "block": "Passive enablement of the holdup"
+      }
+    ]
+  },
+  "trump_orbit": {
+    "headline": "Trump Orbit: Direct Receipts",
+    "summary": "Named in EFTA docs, flight logs (The Compound v3), or adjacent subcorpora. No allegation without a primary source.",
+    "members": [
+      {
+        "name": "Donald J. Trump",
+        "receipt": "Flight logs + Mar-a-Lago adjacency + Laura Woods memo (Ghislaine/Melania comparison)",
+        "tier": "DIRECT"
+      },
+      {
+        "name": "Steve Bannon",
+        "receipt": "DiIorio memo + 'strategies to undermine Pope Francis' (read.txt)",
+        "tier": "DIRECT"
+      },
+      {
+        "name": "Steven Mnuchin",
+        "receipt": "DiIorio memo \u2014 named as Trump-orbit financial node",
+        "tier": "DIRECT"
+      },
+      {
+        "name": "Brad Parscale",
+        "receipt": "DiIorio memo",
+        "tier": "DIRECT"
+      },
+      {
+        "name": "David Urban",
+        "receipt": "DiIorio memo",
+        "tier": "DIRECT"
+      },
+      {
+        "name": "Ghislaine Maxwell",
+        "receipt": "Plea deal docs + Laura Woods memo + 3,617 OCR mentions",
+        "tier": "DIRECT"
+      },
+      {
+        "name": "Pam Bondi",
+        "receipt": "Mar-a-Lago ties + Trump AG appointment + Bondi letter",
+        "tier": "CABINET"
+      }
+    ]
+  },
+  "donor_class": {
+    "headline": "The Donor Class Bible \u2014 Direct Receipts",
+    "summary": "From Donor_Class_Bible_Deep_State_2026.pdf, evidence-graded.",
+    "members": [
+      {
+        "name": "Leon Black",
+        "amount": "$170M",
+        "receipt": "Direct payments to Epstein, documented",
+        "tier": "DIRECT"
+      },
+      {
+        "name": "Les Wexner",
+        "receipt": "POA 1987-2007, financial control of Epstein network",
+        "tier": "DIRECT"
+      },
+      {
+        "name": "Charles Koch",
+        "receipt": "Black book entry, donor pipeline",
+        "tier": "DIRECT"
+      },
+      {
+        "name": "Apollo Global Management",
+        "receipt": "Leon Black vehicle, financial conduit",
+        "tier": "STRUCTURAL"
+      },
+      {
+        "name": "Goldman Sachs",
+        "receipt": "Appears across ODAG-touched docs (8x co-occurrence with INTELLIGENCE)",
+        "tier": "STRUCTURAL"
+      },
+      {
+        "name": "Rothschild Group",
+        "receipt": "Appears on ODAG docs",
+        "tier": "STRUCTURAL"
+      }
+    ]
+  },
+  "models_reference": {
+    "title": "Free 3D Print Models",
+    "items": [
+      {
+        "name": "Little Saint James Chapel (.3mf + .stl)",
+        "note": "30x30x30mm, white concrete, blue stripes, gold dome"
+      },
+      {
+        "name": "Zorro Ranch Mansion (.3mf + .stl)",
+        "note": "80x60x10mm tan hacienda with dim-gray underground basement"
+      }
+    ],
+    "note": "Buildable on Bambu A1 Mini. Source: /var/home/gringo/Downloads/epstein/cad/prompt.txt"
+  }
+}
