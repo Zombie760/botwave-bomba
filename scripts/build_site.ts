@@ -9,7 +9,6 @@ import {
   getDomain,
   normBloc,
   storyUrl,
-  sectionUrl,
   homeUrl,
   getOwnershipByDomain,
 } from "./lib/data.ts";
@@ -24,8 +23,24 @@ import { detectBlackSites, getTopBlackSites, formatSilentSector } from "./lib/bl
 import { scanRadar, getCountryRadar, normalizeIntensity } from "./lib/radar.ts";
 import { spoolChronos, groupChronosByDate, formatChronosDate } from "./lib/spool.ts";
 import { broadcastNumbersStation } from "./lib/numbers-station.ts";
+import { getPackagesBySector } from "./lib/sector.ts";
 
 const ROOT = `${import.meta.dir}/..`;
+const VERTICALS = [
+  { id: "world", label: "WORLD", description: "Global signals without a fixed theater filter." },
+  { id: "sports", label: "SPORTS", description: "Live intercepts from the pitch, court, and arena." },
+  { id: "tech", label: "TECH", description: "Silicon, chips, AI, cyber, and space launches." },
+  { id: "health", label: "HEALTH", description: "Medical, outbreak, research, and public health intercepts." },
+  { id: "science", label: "SCIENCE", description: "Climate, space, research, and natural phenomena." },
+  { id: "business", label: "BUSINESS", description: "Trade, markets, energy, sanctions, and central bank moves." },
+  { id: "conflict", label: "CONFLICT", description: "War, clashes, ceasefires, and security incidents." },
+  { id: "politics", label: "POLITICS", description: "Elections, governments, policy, and diplomacy." },
+];
+
+function sectionUrl(id: string): string {
+  return `/botwavebomba/${id}.html`;
+}
+
 const BASE = "/botwavebomba";
 const DOMAIN = "https://zombie760.github.io";
 
@@ -154,7 +169,7 @@ function chrome(
   const activeFrequencies = getActiveFrequencies();
   const trendingHtml = activeFrequencies
     .map((t) => {
-      const href = sectionUrl("world") + `?q=${encodeURIComponent(t.label)}`;
+      const href = sectionUrl("radar") + `?q=${encodeURIComponent(t.label)}`;
       return `<a href="${href}">${escapeHtml(t.label)}</a><button class="bwb-follow-btn" data-topic="${escapeHtml(t.id)}" aria-label="Follow ${escapeHtml(t.label)}">Follow</button>`;
     })
     .join("");
@@ -164,16 +179,30 @@ function chrome(
     { id: "black-site", label: "BLACK SITE", href: sectionUrl("black-site") },
     { id: "radar", label: "RADAR", href: sectionUrl("radar") },
     { id: "spool", label: "SPOOL", href: sectionUrl("spool") },
-    { id: "dead-drop", label: "DEAD DROP", href: sectionUrl("dead-drop") },
     { id: "numbers-station", label: "NUMBERS STATION", href: sectionUrl("numbers-station") },
-    { id: "asset-registry", label: "ASSET REGISTRY", href: sectionUrl("asset-registry") },
+    { id: "asset-registry", label: "ASSETS", href: sectionUrl("asset-registry") },
     { id: "tradecraft", label: "TRADECRAFT", href: sectionUrl("tradecraft") },
-    { id: "sitrep", label: "SITREP", href: sectionUrl("sitrep") },
+  ];
+  const deskItems = [
+    { id: "sports", label: "SPORTS", href: sectionUrl("sports") },
+    { id: "tech", label: "TECH", href: sectionUrl("tech") },
+    { id: "health", label: "HEALTH", href: sectionUrl("health") },
+    { id: "science", label: "SCIENCE", href: sectionUrl("science") },
+    { id: "business", label: "BUSINESS", href: sectionUrl("business") },
+    { id: "conflict", label: "CONFLICT", href: sectionUrl("conflict") },
+    { id: "politics", label: "POLITICS", href: sectionUrl("politics") },
+    { id: "world", label: "WORLD", href: sectionUrl("world") },
   ];
   const navHtml = navItems
     .map((n) => {
       const current = n.id === activeNav ? ' aria-current="page"' : "";
       return `<a href="${n.href}" data-nav="${n.id}"${current}>${escapeHtml(n.label)}</a>`;
+    })
+    .join("");
+  const deskHtml = deskItems
+    .map((n) => {
+      const current = n.id === activeNav ? ' aria-current="page"' : "";
+      return `<a href="${n.href}" data-desk="${n.id}"${current}>${escapeHtml(n.label)}</a>`;
     })
     .join("");
 
@@ -191,6 +220,9 @@ function chrome(
       </button>
       <nav class="bwb-primary-nav" id="primaryNav" aria-label="Primary">
         ${navHtml}
+      </nav>
+      <nav class="bwb-desk-nav" id="deskNav" aria-label="Coverage desks">
+        ${deskHtml}
       </nav>
       <div class="bwb-header-actions">
         <button class="bwb-search-btn" id="searchToggle" aria-label="Search">
@@ -410,6 +442,20 @@ function renderPortada(stories: Story[]): string {
 </div>`;
 }
 
+function renderVerticalPage(vertical: { id: string; label: string; description: string }, stories: Story[]): string {
+  const sectorStories = getPackagesBySector(stories)[vertical.id] || [];
+  return `<div class="bwb-layout" style="grid-template-columns:1fr;">
+<div class="bwb-main">
+  <div class="bwb-section-header">
+    <span class="bwb-section-kicker">DESK</span>
+    <h1>${escapeHtml(vertical.label)}</h1>
+    <p>${escapeHtml(vertical.description)}</p>
+  </div>
+  ${renderSigintGrid(sectorStories, vertical.id)}
+</div>
+</div>`;
+}
+
 function renderSectorPage(sectionId: string, stories: Story[], allStories: Story[]): string {
   const section = SECTIONS.find((s) => s.id === sectionId)!;
   const sectorStories = getStoriesByAlignment(allStories)[sectionId] || [];
@@ -464,6 +510,35 @@ function generate() {
     })
   );
   publicPages.push({ page: "index", title: homeTitle, desc: homeDesc });
+
+  // Vertical / desk pages
+  for (const vertical of VERTICALS) {
+    const title = `${vertical.label} — BotwaveBomba`;
+    const desc = vertical.description;
+    const ld = {
+      "@context": "https://schema.org",
+      "@graph": [
+        { "@type": "WebPage", name: title, url: pageUrl(vertical.id), description: desc },
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "PORTADA", item: pageUrl("index") },
+            { "@type": "ListItem", position: 2, name: vertical.label },
+          ],
+        },
+      ],
+    };
+    write(
+      `${vertical.id}.html`,
+      chrome(vertical.id, renderVerticalPage(vertical, stories), {
+        title,
+        description: desc,
+        canonical: pageUrl(vertical.id),
+        jsonLd: ld,
+      })
+    );
+    publicPages.push({ page: vertical.id, title, desc });
+  }
 
   // Sector pages
   for (const section of SECTIONS) {

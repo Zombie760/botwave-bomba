@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-14T03:20:17.868Z",
+  "generated_at": "2026-07-14T03:57:11.481Z",
   "story_count": 31,
   "source_count_total": 302,
   "source_registry_count": 104,
@@ -13,6 +13,14 @@
   "coverage_gap_headline": "Non-Aligned press leads at 65%. Western press trails at 17%. 16 countries represented.",
   "pages": [
     "index",
+    "world",
+    "sports",
+    "tech",
+    "health",
+    "science",
+    "business",
+    "conflict",
+    "politics",
     "black-site",
     "radar",
     "spool",
@@ -35,6 +43,6 @@
     "tradecraft"
   ],
   "section_count": 11,
-  "total_page_count": 21,
+  "total_page_count": 29,
   "sector_count": 8
 }
