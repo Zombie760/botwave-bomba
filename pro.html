@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="auto">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -54,34 +54,47 @@
 }
   </script>
 </head>
-<body>
+<body class="bwb-page" data-page="pro">
   <a class="bwb-skip-link" href="#main-content">Skip to content</a>
+
+  <div class="bwb-utility-bar" role="complementary" aria-label="Site utility">
+    <div class="bwb-utility-inner">
+      <span class="bwb-utility-left">
+        <span class="bwb-utility-item"><time class="bwb-utility-time" datetime="2026-07-14T16:29:47.909Z">2026-07-14</time> · UTC</span>
+        <span class="bwb-utility-item bwb-utility-build">BUILD 260714162947</span>
+        <span class="bwb-utility-item"><a href="/botwavebomba/methodology.html">METHODOLOGY</a></span>
+        <span class="bwb-utility-item"><a href="/botwavebomba/errata.html">ERRATA</a></span>
+      </span>
+      <span class="bwb-utility-right">
+        <span class="bwb-utility-item bwb-utility-counts">31 intercepts · 0 funders · 16 theaters</span>
+        <button class="bwb-search-btn" id="searchToggle" aria-label="Search">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <span class="bwb-utility-search-label">SEARCH</span>
+        </button>
+        <button class="bwb-theme-btn" id="themeToggle" aria-label="Toggle theme"><span aria-hidden="true">🌙</span></button>
+      </span>
+    </div>
+  </div>
 
   <header class="bwb-site-header" role="banner">
     <div class="bwb-header-inner">
-      <a class="bwb-wordmark" href="/botwavebomba/">BOTWAVE<span>BOMBA</span></a>
+      <a class="bwb-wordmark" href="/botwavebomba/" aria-label="BotwaveBomba home">
+        <span class="bwb-wordmark-line-1">BOTWAVE</span><span class="bwb-wordmark-line-2">BOMBA</span>
+      </a>
       <button class="bwb-menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <nav class="bwb-primary-nav" id="primaryNav" aria-label="Primary">
-        <a href="/botwavebomba/" data-nav="home">PORTADA</a><a href="/botwavebomba/black-site.html" data-nav="black-site">BLACK SITE</a><a href="/botwavebomba/radar.html" data-nav="radar">RADAR</a><a href="/botwavebomba/spool.html" data-nav="spool">SPOOL</a><a href="/botwavebomba/numbers-station.html" data-nav="numbers-station">NUMBERS STATION</a><a href="/botwavebomba/asset-registry.html" data-nav="asset-registry">ASSETS</a><a href="/botwavebomba/tradecraft.html" data-nav="tradecraft">TRADECRAFT</a><a href="/botwavebomba/sports.html" data-nav="sports">SPORTS</a><a href="/botwavebomba/tech.html" data-nav="tech">TECH</a><a href="/botwavebomba/health.html" data-nav="health">HEALTH</a><a href="/botwavebomba/science.html" data-nav="science">SCIENCE</a>
+        <a href="/botwavebomba/" data-nav="home">PORTADA</a><a href="/botwavebomba/black-site.html" data-nav="black-site">BLACK SITE</a><a href="/botwavebomba/radar.html" data-nav="radar">RADAR</a><a href="/botwavebomba/refraction.html" data-nav="refraction">REFRACTION</a><a href="/botwavebomba/spool.html" data-nav="spool">SPOOL</a><a href="/botwavebomba/numbers-station.html" data-nav="numbers-station">NUMBERS STATION</a><a href="/botwavebomba/asset-registry.html" data-nav="asset-registry">ASSETS</a><a href="/botwavebomba/tradecraft.html" data-nav="tradecraft">TRADECRAFT</a><a href="/botwavebomba/sports.html" data-nav="sports">SPORTS</a><a href="/botwavebomba/tech.html" data-nav="tech">TECH</a><a href="/botwavebomba/health.html" data-nav="health">HEALTH</a><a href="/botwavebomba/science.html" data-nav="science">SCIENCE</a>
       </nav>
       <nav class="bwb-desk-nav" id="deskNav" aria-label="Coverage desks">
         <a href="/botwavebomba/sports.html" data-desk="sports">SPORTS</a><a href="/botwavebomba/tech.html" data-desk="tech">TECH</a><a href="/botwavebomba/health.html" data-desk="health">HEALTH</a><a href="/botwavebomba/science.html" data-desk="science">SCIENCE</a><a href="/botwavebomba/business.html" data-desk="business">BUSINESS</a><a href="/botwavebomba/conflict.html" data-desk="conflict">CONFLICT</a><a href="/botwavebomba/politics.html" data-desk="politics">POLITICS</a><a href="/botwavebomba/world.html" data-desk="world">WORLD</a>
       </nav>
-      <div class="bwb-header-actions">
-        <button class="bwb-search-btn" id="searchToggle" aria-label="Search">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-        </button>
-        <button class="bwb-theme-btn" id="themeToggle" aria-label="Toggle theme"><span aria-hidden="true">🌙</span></button>
-      </div>
     </div>
+    
   </header>
 
-  <div class="bwb-active-frequencies" aria-label="Active frequencies">
-    <span class="bwb-trending-label">ACTIVE FREQUENCIES</span>
-    <a href="/botwavebomba/radar.html?q=UKRAINE%20CONFLICT">UKRAINE CONFLICT</a><button class="bwb-follow-btn" data-topic="ukraine-conflict" aria-label="Follow UKRAINE CONFLICT">Follow</button><a href="/botwavebomba/radar.html?q=TAIWAN%20STRAIT">TAIWAN STRAIT</a><button class="bwb-follow-btn" data-topic="taiwan-strait" aria-label="Follow TAIWAN STRAIT">Follow</button><a href="/botwavebomba/radar.html?q=GAZA%20%2F%20ISRAEL">GAZA / ISRAEL</a><button class="bwb-follow-btn" data-topic="gaza-israel" aria-label="Follow GAZA / ISRAEL">Follow</button><a href="/botwavebomba/radar.html?q=ENERGY%20POLITICS">ENERGY POLITICS</a><button class="bwb-follow-btn" data-topic="energy-politics" aria-label="Follow ENERGY POLITICS">Follow</button><a href="/botwavebomba/radar.html?q=TECH%20SOVEREIGNTY">TECH SOVEREIGNTY</a><button class="bwb-follow-btn" data-topic="tech-sovereignty" aria-label="Follow TECH SOVEREIGNTY">Follow</button>
-  </div>
+  
 
   <div class="bwb-search-overlay" id="searchOverlay" hidden>
     <div class="bwb-search-inner">
@@ -91,7 +104,7 @@
     <div class="bwb-search-results" id="searchResults"></div>
   </div>
 
-  <main id="main-content"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><section class="bwb-hero-small">
+  <main id="main-content"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main"><section class="bwb-hero-small">
       <h1>Pricing</h1>
       <p class="bwb-lead">The feed is free. The brief lands in your inbox. Vantage unlocks the ownership chain behind every source.</p>
     </section>
@@ -135,19 +148,58 @@
         </ul>
         <a class="bwb-cta" href="mailto:hello@botwavebomba.com?subject=BotwaveBomba+Vantage+signup">Request access</a>
       </article>
-    </section></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></main>
+    </section></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></main>
 
   <footer class="bwb-site-footer" role="contentinfo">
     <div class="bwb-footer-inner">
-      <div class="bwb-footer-brand">BOTWAVEBOMBA</div>
-      <nav aria-label="Footer">
-        <a href="/botwavebomba/sitrep.html">SITREP</a>
-        <a href="/botwavebomba/tradecraft.html">TRADECRAFT</a>
-        <a href="/botwavebomba/asset-registry.html">ASSET REGISTRY</a>
-        <a href="/botwavebomba/errata.html">ERRATA</a>
-        <a href="/botwavebomba/pro.html">PRO</a>
-      </nav>
-      <p class="bwb-footer-tagline">Not Left/Right. Who Owns The Story.</p>
+      <div class="bwb-footer-col bwb-footer-col-brand">
+        <div class="bwb-footer-wordmark">BOTWAVE<span>BOMBA</span></div>
+        <p class="bwb-footer-tagline">Not Left/Right.<br>Who Owns The Story.</p>
+        <p class="bwb-footer-meta">Built 2026-07-14 · Build 260714162947<br>31 intercepts · 0 funders · 16 theaters</p>
+      </div>
+      <div class="bwb-footer-col">
+        <h4 class="bwb-footer-h">SECTIONS</h4>
+        <ul>
+          <li><a href="/botwavebomba/">PORTADA</a></li>
+          <li><a href="/botwavebomba/black-site.html">BLACK SITE</a></li>
+          <li><a href="/botwavebomba/radar.html">RADAR</a></li>
+          <li><a href="/botwavebomba/refraction.html">REFRACTION</a></li>
+          <li><a href="/botwavebomba/spool.html">SPOOL</a></li>
+          <li><a href="/botwavebomba/numbers-station.html">NUMBERS STATION</a></li>
+        </ul>
+      </div>
+      <div class="bwb-footer-col">
+        <h4 class="bwb-footer-h">REGISTRIES</h4>
+        <ul>
+          <li><a href="/botwavebomba/asset-registry.html">ASSET REGISTRY</a></li>
+          <li><a href="/botwavebomba/asset-transparency.html">ASSET TRANSPARENCY</a></li>
+          <li><a href="/botwavebomba/tradecraft.html">TRADECRAFT</a></li>
+          <li><a href="/botwavebomba/sitrep.html">SITREP</a></li>
+          <li><a href="/botwavebomba/dead-drop.html">DEAD DROP</a></li>
+        </ul>
+      </div>
+      <div class="bwb-footer-col">
+        <h4 class="bwb-footer-h">METHODS</h4>
+        <ul>
+          <li><a href="/botwavebomba/methodology.html">METHODOLOGY</a></li>
+          <li><a href="/botwavebomba/errata.html">ERRATA</a></li>
+          <li><a href="/botwavebomba/pro.html">PRO</a></li>
+          <li><a href="/sitemap.xml">SITEMAP</a></li>
+        </ul>
+      </div>
+      <div class="bwb-footer-col bwb-footer-col-contact">
+        <h4 class="bwb-footer-h">CONTACT</h4>
+        <ul>
+          <li><a href="mailto:al@botwave.app">al@botwave.app</a></li>
+          <li><a href="mailto:botwave1904@gmail.com">botwave1904@gmail.com</a></li>
+          <li><a href="tel:+17608259781">+1 760 825 9781</a></li>
+        </ul>
+        <p class="bwb-footer-attribution">Made on Fedora · Built with bun · Hosted on GitHub Pages</p>
+      </div>
+    </div>
+    <div class="bwb-footer-bar">
+      <span>© 2026 BotwaveBomba</span>
+      <span>Every story is a function of who paid for it. We make the payer visible.</span>
     </div>
   </footer>
 

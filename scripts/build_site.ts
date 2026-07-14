@@ -11,6 +11,9 @@ import {
   storyUrl,
   homeUrl,
   getOwnershipByDomain,
+  resolveOwnershipForSource,
+  getOwnership,
+  getSigintPackages,
 } from "./lib/data.ts";
 import {
   SECTIONS,
@@ -26,6 +29,35 @@ import { broadcastNumbersStation } from "./lib/numbers-station.ts";
 import { getPackagesBySector, classifySector } from "./lib/sector.ts";
 
 const ROOT = `${import.meta.dir}/..`;
+
+// Build-time constants — used in chrome() utility bar and footer
+const BUILD_GENERATED_AT = new Date().toISOString();
+const BUILD_DATE_LABEL = new Date().toISOString().slice(0, 10);
+const BUILD_HASH = (BUILD_GENERATED_AT.replace(/[^0-9]/g, "").slice(2, 14)).toUpperCase();
+
+let _siteCounts: { stories: number; funders: number; theaters: number } | null = null;
+function getSiteCounts(): { stories: number; funders: number; theaters: number } {
+  if (_siteCounts) return _siteCounts;
+  const stories = getSigintPackages();
+  const funderSet = new Set<string>();
+  const theaterSet = new Set<string>();
+  const ownership = getOwnershipByDomain();
+  for (const s of stories) {
+    for (const src of s.sources || []) {
+      const key = (src.url || "").replace(/^https?:\/\//, "").replace(/^www\./, "").split("/")[0].toLowerCase();
+      const owner = ownership[key];
+      if (owner?.parent_company) funderSet.add(owner.parent_company);
+      if (src.country) theaterSet.add(src.country);
+    }
+  }
+  _siteCounts = {
+    stories: stories.length,
+    funders: funderSet.size,
+    theaters: theaterSet.size,
+  };
+  return _siteCounts;
+}
+
 const VERTICALS = [
   { id: "world", label: "WORLD", description: "Global signals without a fixed theater filter." },
   {
@@ -189,20 +221,56 @@ function chrome(
     canonical: string;
     ogType?: string;
     jsonLd?: object;
+    context?: string;
   }
 ) {
   const activeFrequencies = getActiveFrequencies();
+  const counts = getSiteCounts();
+  const storyCount = counts.stories;
+  const funderCount = counts.funders;
+  const theaterCount = counts.theaters;
   const trendingHtml = activeFrequencies
     .map((t) => {
       const href = sectionUrl("radar") + `?q=${encodeURIComponent(t.label)}`;
-      return `<a href="${href}">${escapeHtml(t.label)}</a><button class="bwb-follow-btn" data-topic="${escapeHtml(t.id)}" aria-label="Follow ${escapeHtml(t.label)}">Follow</button>`;
+      const popover =
+        t.topHeadlines.length > 0
+          ? `<div class="bwb-topic-popover" role="tooltip">
+            <strong>${escapeHtml(t.label)} · ${t.count} ${t.count === 1 ? "intercept" : "intercepts"}</strong>
+            <ul>${t.topHeadlines
+              .map(
+                (h) =>
+                  `<li><a href="${h.url}"><span class="bwb-topic-popover-headline">${escapeHtml(h.headline)}</span><span class="bwb-topic-popover-time">${escapeHtml(h.timeAgo)}</span></a></li>`
+              )
+              .join("")}</ul>
+          </div>`
+          : "";
+      return `<span class="bwb-topic-chip" data-topic="${escapeHtml(t.id)}">
+        <a class="bwb-topic-link" href="${href}">${escapeHtml(t.label)}</a>
+        <span class="bwb-topic-count">${t.count}</span>
+        <button class="bwb-follow-btn" data-topic="${escapeHtml(t.id)}" aria-label="Follow ${escapeHtml(t.label)}">Follow</button>
+        ${popover}
+      </span>`;
     })
     .join("");
+
+  const showFrequencies = activeNav === "home" || activeNav === "radar";
+  const trendingStrip = showFrequencies
+    ? `<div class="bwb-active-frequencies" aria-label="Active frequencies">
+    <span class="bwb-trending-label">ACTIVE FREQUENCIES</span>
+    ${trendingHtml}
+  </div>`
+    : "";
+  const contextLine = opts.context
+    ? `<div class="bwb-context-bar" data-page="${activeNav}">
+    <span class="bwb-context-bar-inner">${opts.context}</span>
+  </div>`
+    : "";
 
   const navItems = [
     { id: "home", label: "PORTADA", href: homeUrl() },
     { id: "black-site", label: "BLACK SITE", href: sectionUrl("black-site") },
     { id: "radar", label: "RADAR", href: sectionUrl("radar") },
+    { id: "refraction", label: "REFRACTION", href: sectionUrl("refraction") },
     { id: "spool", label: "SPOOL", href: sectionUrl("spool") },
     { id: "numbers-station", label: "NUMBERS STATION", href: sectionUrl("numbers-station") },
     { id: "asset-registry", label: "ASSETS", href: sectionUrl("asset-registry") },
@@ -236,14 +304,35 @@ function chrome(
     .join("");
 
   return `<!doctype html>
-<html lang="en" data-theme="auto">
+<html lang="en" data-theme="dark">
 <head>${headMeta(opts)}</head>
-<body>
+<body class="bwb-page" data-page="${activeNav}">
   <a class="bwb-skip-link" href="#main-content">Skip to content</a>
+
+  <div class="bwb-utility-bar" role="complementary" aria-label="Site utility">
+    <div class="bwb-utility-inner">
+      <span class="bwb-utility-left">
+        <span class="bwb-utility-item"><time class="bwb-utility-time" datetime="${BUILD_GENERATED_AT}">${BUILD_DATE_LABEL}</time> · UTC</span>
+        <span class="bwb-utility-item bwb-utility-build">BUILD ${BUILD_HASH}</span>
+        <span class="bwb-utility-item"><a href="${sectionUrl("methodology")}">METHODOLOGY</a></span>
+        <span class="bwb-utility-item"><a href="${sectionUrl("errata")}">ERRATA</a></span>
+      </span>
+      <span class="bwb-utility-right">
+        <span class="bwb-utility-item bwb-utility-counts">${storyCount} intercepts · ${funderCount} funders · ${theaterCount} theaters</span>
+        <button class="bwb-search-btn" id="searchToggle" aria-label="Search">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <span class="bwb-utility-search-label">SEARCH</span>
+        </button>
+        <button class="bwb-theme-btn" id="themeToggle" aria-label="Toggle theme"><span aria-hidden="true">🌙</span></button>
+      </span>
+    </div>
+  </div>
 
   <header class="bwb-site-header" role="banner">
     <div class="bwb-header-inner">
-      <a class="bwb-wordmark" href="${homeUrl()}">BOTWAVE<span>BOMBA</span></a>
+      <a class="bwb-wordmark" href="${homeUrl()}" aria-label="BotwaveBomba home">
+        <span class="bwb-wordmark-line-1">BOTWAVE</span><span class="bwb-wordmark-line-2">BOMBA</span>
+      </a>
       <button class="bwb-menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -253,19 +342,11 @@ function chrome(
       <nav class="bwb-desk-nav" id="deskNav" aria-label="Coverage desks">
         ${deskHtml}
       </nav>
-      <div class="bwb-header-actions">
-        <button class="bwb-search-btn" id="searchToggle" aria-label="Search">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-        </button>
-        <button class="bwb-theme-btn" id="themeToggle" aria-label="Toggle theme"><span aria-hidden="true">🌙</span></button>
-      </div>
     </div>
+    ${contextLine}
   </header>
 
-  <div class="bwb-active-frequencies" aria-label="Active frequencies">
-    <span class="bwb-trending-label">ACTIVE FREQUENCIES</span>
-    ${trendingHtml}
-  </div>
+  ${trendingStrip}
 
   <div class="bwb-search-overlay" id="searchOverlay" hidden>
     <div class="bwb-search-inner">
@@ -279,15 +360,54 @@ function chrome(
 
   <footer class="bwb-site-footer" role="contentinfo">
     <div class="bwb-footer-inner">
-      <div class="bwb-footer-brand">BOTWAVEBOMBA</div>
-      <nav aria-label="Footer">
-        <a href="${sectionUrl("sitrep")}">SITREP</a>
-        <a href="${sectionUrl("tradecraft")}">TRADECRAFT</a>
-        <a href="${sectionUrl("asset-registry")}">ASSET REGISTRY</a>
-        <a href="${sectionUrl("errata")}">ERRATA</a>
-        <a href="${sectionUrl("pro")}">PRO</a>
-      </nav>
-      <p class="bwb-footer-tagline">Not Left/Right. Who Owns The Story.</p>
+      <div class="bwb-footer-col bwb-footer-col-brand">
+        <div class="bwb-footer-wordmark">BOTWAVE<span>BOMBA</span></div>
+        <p class="bwb-footer-tagline">Not Left/Right.<br>Who Owns The Story.</p>
+        <p class="bwb-footer-meta">Built ${BUILD_DATE_LABEL} · Build ${BUILD_HASH}<br>${storyCount} intercepts · ${funderCount} funders · ${theaterCount} theaters</p>
+      </div>
+      <div class="bwb-footer-col">
+        <h4 class="bwb-footer-h">SECTIONS</h4>
+        <ul>
+          <li><a href="${homeUrl()}">PORTADA</a></li>
+          <li><a href="${sectionUrl("black-site")}">BLACK SITE</a></li>
+          <li><a href="${sectionUrl("radar")}">RADAR</a></li>
+          <li><a href="${sectionUrl("refraction")}">REFRACTION</a></li>
+          <li><a href="${sectionUrl("spool")}">SPOOL</a></li>
+          <li><a href="${sectionUrl("numbers-station")}">NUMBERS STATION</a></li>
+        </ul>
+      </div>
+      <div class="bwb-footer-col">
+        <h4 class="bwb-footer-h">REGISTRIES</h4>
+        <ul>
+          <li><a href="${sectionUrl("asset-registry")}">ASSET REGISTRY</a></li>
+          <li><a href="${sectionUrl("asset-transparency")}">ASSET TRANSPARENCY</a></li>
+          <li><a href="${sectionUrl("tradecraft")}">TRADECRAFT</a></li>
+          <li><a href="${sectionUrl("sitrep")}">SITREP</a></li>
+          <li><a href="${sectionUrl("dead-drop")}">DEAD DROP</a></li>
+        </ul>
+      </div>
+      <div class="bwb-footer-col">
+        <h4 class="bwb-footer-h">METHODS</h4>
+        <ul>
+          <li><a href="${sectionUrl("methodology")}">METHODOLOGY</a></li>
+          <li><a href="${sectionUrl("errata")}">ERRATA</a></li>
+          <li><a href="${sectionUrl("pro")}">PRO</a></li>
+          <li><a href="/sitemap.xml">SITEMAP</a></li>
+        </ul>
+      </div>
+      <div class="bwb-footer-col bwb-footer-col-contact">
+        <h4 class="bwb-footer-h">CONTACT</h4>
+        <ul>
+          <li><a href="mailto:al@botwave.app">al@botwave.app</a></li>
+          <li><a href="mailto:botwave1904@gmail.com">botwave1904@gmail.com</a></li>
+          <li><a href="tel:+17608259781">+1 760 825 9781</a></li>
+        </ul>
+        <p class="bwb-footer-attribution">Made on Fedora · Built with bun · Hosted on GitHub Pages</p>
+      </div>
+    </div>
+    <div class="bwb-footer-bar">
+      <span>© ${new Date().getUTCFullYear()} BotwaveBomba</span>
+      <span>Every story is a function of who paid for it. We make the payer visible.</span>
     </div>
   </footer>
 
@@ -336,6 +456,7 @@ function renderSigintCardHtml(story: Story, extraFilters: string[] = []): string
 
   return `<article class="bwb-sigint-card" data-alignments="${alignments}" data-filters="${filters}">
   <a class="bwb-sigint-card-link" href="${card.url}" aria-label="Read full intercept of: ${escapeHtml(card.headline)}">
+    <div class="bwb-lead-image" style="background-image:url(https://picsum.photos/seed/${encodeURIComponent(story.id)}/640/360)"></div>
     <div class="bwb-sigint-card-header">
       ${badgeHtml || `<span class="bwb-sigint-card-alignment ${card.topAlignment}">${escapeHtml(card.topAlignment)}</span>`}
       <span class="bwb-sigint-card-asset">${escapeHtml(card.topAsset?.name || "Multiple assets")}</span>
@@ -413,7 +534,238 @@ function renderSitrep(stories: Story[]): string {
 </section>`;
 }
 
-function renderFilters(activeFilter = "all"): string {
+/**
+ * REFRACTION: the money-trail moat page.
+ * Takes a single SIGINT package, groups its sources by alignment,
+ * and shows the OWNERSHIP of every named source — parent, ultimate
+ * parent, motive, evidence URL. The frame comparison makes the elite
+ * mechanism of narrative control visible.
+ */
+function renderRefractionPage(story: Story, allStories: Story[]): string {
+  const blocLabel: Record<string, string> = {
+    western: "WESTERN",
+    "non-aligned": "NON-ALIGNED",
+    adversarial: "ADVERSARIAL",
+    other: "OTHER",
+  };
+  const sources = story.sources || [];
+  const totalSources = sources.length;
+
+  // Group sources by bloc
+  const byBloc: Record<string, { source: any; ownership: ReturnType<typeof resolveOwnershipForSource> }[]> = {
+    western: [],
+    "non-aligned": [],
+    adversarial: [],
+    other: [],
+  };
+  for (const src of sources) {
+    const bloc = normBloc(src.bloc);
+    const own = resolveOwnershipForSource(src.url || "");
+    byBloc[bloc] = byBloc[bloc] || [];
+    byBloc[bloc].push({ source: src, ownership: own });
+  }
+
+  // Money trail summary: count sources by parent company
+  const parentCounts: Record<string, { count: number; type: string; motive: string; evidence: string; name: string }> = {};
+  for (const bloc of Object.keys(byBloc)) {
+    for (const { source, ownership } of byBloc[bloc]) {
+      if (!ownership) continue;
+      const key = ownership.parent_company || ownership.owner || "Independent";
+      if (!parentCounts[key]) {
+        parentCounts[key] = {
+          count: 0,
+          type: ownership.owner_type,
+          motive: ownership.motive,
+          evidence: ownership.evidence_url,
+          name: ownership.name,
+        };
+      }
+      parentCounts[key].count += 1;
+    }
+  }
+  const topParents = Object.entries(parentCounts)
+    .sort((a, b) => b[1].count - a[1].count)
+    .slice(0, 6);
+
+  // Headlines per bloc
+  const headlinesByBloc: Record<string, string[]> = {
+    western: [],
+    "non-aligned": [],
+    adversarial: [],
+    other: [],
+  };
+  // Use story.topHeadlines + sources-by-bloc to derive
+  // (topHeadlines is a flat list, not per-source, so we just bucket)
+  const allTop = story.topHeadlines || [];
+  // Even split as a fallback — but we can also pull from each source's framing if present
+  // For now, distribute the top headlines round-robin
+  const blocsWithSources = Object.keys(byBloc).filter((b) => byBloc[b].length > 0);
+  for (let i = 0; i < allTop.length; i++) {
+    const bloc = blocsWithSources[i % blocsWithSources.length] || "other";
+    headlinesByBloc[bloc].push(allTop[i]);
+  }
+
+  const colHtml = (bloc: string) => {
+    const entries = byBloc[bloc] || [];
+    if (entries.length === 0) {
+      return `<section class="bwb-refraction-col ${bloc}" aria-label="${blocLabel[bloc]} coverage">
+        <header><h3>${blocLabel[bloc]}</h3>
+          <p class="bwb-refraction-col-meta">0 sources · 0%</p>
+        </header>
+        <div class="bwb-refraction-silent">
+          <strong>Silent on this story.</strong>
+          <p>No ${blocLabel[bloc].toLowerCase()}-bloc outlet in the registry covered this. The gap is the signal.</p>
+        </div>
+      </section>`;
+    }
+    const pct = Math.round((entries.length / totalSources) * 100);
+    const cards = entries
+      .map(({ source, ownership }) => {
+        const parent = ownership?.parent_company || ownership?.owner || "Independent (no controlling owner in registry)";
+        const parentType = ownership?.owner_type || "unverified";
+        const motive = ownership?.motive || "Owner/motive unverified in registry.";
+        const evidenceUrl = ownership?.evidence_url || null;
+        const evidenceLink = evidenceUrl
+          ? `<a class="bwb-evidence-link" href="${escapeHtml(evidenceUrl)}" rel="noopener" target="_blank">${escapeHtml(evidenceUrl.length > 60 ? evidenceUrl.slice(0, 60) + "…" : evidenceUrl)} ↗</a>`
+          : `<span class="bwb-evidence-link bwb-evidence-link--unverified">No evidence URL on file</span>`;
+        return `<article class="bwb-refraction-source">
+          <header>
+            <strong>${escapeHtml(source.name || "Unknown")}</strong>
+            <span class="bwb-refraction-source-country">${escapeHtml(source.country || "??")}</span>
+          </header>
+          <p class="bwb-refraction-funder">
+            <span class="bwb-refraction-funder-label">FUNDER</span>
+            <span class="bwb-refraction-funder-name">${escapeHtml(parent)}</span>
+            <span class="bwb-refraction-funder-type">${escapeHtml(parentType)}</span>
+          </p>
+          <p class="bwb-refraction-motive">${escapeHtml(motive)}</p>
+          <p class="bwb-refraction-evidence">${evidenceLink}</p>
+        </article>`;
+      })
+      .join("");
+    const headBlock = headlinesByBloc[bloc]?.length
+      ? `<div class="bwb-refraction-headlines">
+          <h4>HOW THEY FRAMED IT</h4>
+          <ul>${headlinesByBloc[bloc]
+            .slice(0, 4)
+            .map((h) => `<li>${escapeHtml(h)}</li>`)
+            .join("")}</ul>
+        </div>`
+      : "";
+    return `<section class="bwb-refraction-col ${bloc}" aria-label="${blocLabel[bloc]} coverage">
+      <header>
+        <h3>${blocLabel[bloc]}</h3>
+        <p class="bwb-refraction-col-meta">${entries.length} source${entries.length === 1 ? "" : "s"} · ${pct}%</p>
+      </header>
+      <div class="bwb-refraction-sources">${cards}</div>
+      ${headBlock}
+    </section>`;
+  };
+
+  // Silent blocs
+  const silentBlocs = Object.keys(byBloc).filter((b) => byBloc[b].length === 0);
+
+  // Money trail banner
+  const moneyBanner = topParents.length
+    ? `<aside class="bwb-money-banner" aria-label="Money trail">
+        <span class="bwb-money-banner-kicker">MONEY TRAIL · TOP FUNDERS</span>
+        <ol class="bwb-money-banner-list">
+          ${topParents
+            .map(
+              ([parent, info]) =>
+                `<li>
+                  <span class="bwb-money-banner-count">${info.count}</span>
+                  <span class="bwb-money-banner-parent">${escapeHtml(parent)}</span>
+                  <span class="bwb-money-banner-type">${escapeHtml(info.type)}</span>
+                </li>`
+            )
+            .join("")}
+        </ol>
+      </aside>`
+    : "";
+
+  // Gaps callout
+  const gapsCallout = silentBlocs.length
+    ? `<aside class="bwb-gaps-callout" aria-label="Coverage gaps">
+        <span class="bwb-gaps-callout-kicker">BLIND SPOTS</span>
+        <p>${silentBlocs.map((b) => blocLabel[b]).join(", ")} bloc${silentBlocs.length > 1 ? "s are" : " is"} silent on this story. ${totalSources} named source${totalSources === 1 ? "" : "s"} total — ${Object.values(byBloc).filter((b) => b.length).length} bloc${Object.values(byBloc).filter((b) => b.length).length === 1 ? "" : "s"} represented.</p>
+      </aside>`
+    : "";
+
+  const featured = story.topHeadlines?.[0] || "Untitled story";
+  const summary = (story.topHeadlines || [])[1] || (story.topHeadlines || [])[0] || "";
+  const theaters = (story.theaters || story.countries || []).slice(0, 8).join(" · ");
+  const alignmentSpread = story.alignmentSpread || {};
+  const spreadTotal = Object.values(alignmentSpread).reduce((a, b) => a + b, 0) || 1;
+  const spreadLine = Object.entries(alignmentSpread)
+    .sort((a, b) => b[1] - a[1])
+    .map(([k, v]) => `${blocLabel[k] || k} ${Math.round((v / spreadTotal) * 100)}%`)
+    .join(" · ");
+
+  const navId = "refraction";
+  const ld = {
+    "@context": "https://schema.org",
+    "@type": "AnalysisNewsArticle",
+    headline: `Refraction: ${featured}`,
+    description: `Per-bloc coverage comparison with ownership trail for "${featured}".`,
+    url: pageUrl("refraction") + `?id=${story.id}`,
+    isPartOf: { "@type": "WebSite", name: "BotwaveBomba", url: pageUrl("index") },
+  };
+
+  const content = `
+  <section class="bwb-refraction-header" aria-labelledby="refraction-title">
+    <span class="bwb-section-kicker">REFRACTION · MONEY TRAIL</span>
+    <h1 id="refraction-title">${escapeHtml(featured)}</h1>
+    <p class="bwb-refraction-summary">${escapeHtml(summary)}</p>
+    <p class="bwb-refraction-meta">${totalSources} named sources · ${(story.theaters || story.countries || []).length} theaters · ${escapeHtml(spreadLine || "mixed coverage")}</p>
+  </section>
+
+  ${moneyBanner}
+
+  <div class="bwb-refraction">
+    ${colHtml("western")}
+    ${colHtml("non-aligned")}
+    ${colHtml("adversarial")}
+  </div>
+
+  ${gapsCallout}
+
+  <section class="bwb-refraction-context" aria-label="Why this matters">
+    <h2>WHY REFRACTION</h2>
+    <p>The same story refracts through different ownership. The <strong>frame</strong> you see is a function of the <strong>funder</strong> behind it. BotwaveBomba surfaces the parent, the motive, and the evidence — so you can read the refraction for yourself.</p>
+    <p>Compare this refraction against the unfiltered coverage on the <a href="${sectionUrl("radar")}">RADAR</a>, the <a href="${sectionUrl("black-site")}">BLACK SITE</a> index, or browse the <a href="${sectionUrl("assets")}">asset registry</a>.</p>
+  </section>
+
+  <section class="bwb-refraction-others" aria-label="More refractions">
+    <h2>OTHER REFRACTIONS</h2>
+    <ul class="bwb-refraction-others-list">
+      ${allStories
+        .filter((s) => s.id !== story.id && (s.sources?.length || 0) >= 3)
+        .slice(0, 8)
+        .map((s) => {
+          const sb = s.sources || [];
+          const sp = s.alignmentSpread || {};
+          const st = Object.values(sp).reduce((a, b) => a + b, 0) || 1;
+          const tline = Object.entries(sp)
+            .sort((a, b) => b[1] - a[1])
+            .map(([k, v]) => `${blocLabel[k] || k} ${Math.round((v / st) * 100)}%`)
+            .join(" · ");
+          return `<li><a href="${pageUrl("refraction")}?id=${s.id}">
+            <strong>${escapeHtml((s.topHeadlines || [])[0] || "Untitled")}</strong>
+            <span>${sb.length} sources · ${escapeHtml(tline)}</span>
+          </a></li>`;
+        })
+        .join("")}
+    </ul>
+  </section>
+  `;
+
+  return `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">
+  ${content}
+  </div></div>`;
+}
+
+function renderFilters(stories: Story[], activeFilter = "all"): { html: string; counts: Record<string, number> } {
   const filters = [
     { id: "all", label: "ALL" },
     { id: "black-site", label: "BLACK SITE" },
@@ -421,12 +773,58 @@ function renderFilters(activeFilter = "all"): string {
     { id: "adversarial-heavy", label: "ADVERSARIAL HEAVY" },
     { id: "global", label: "GLOBAL" },
   ];
-  return filters
+  // Count matching packages per filter, matching the client-side filter logic in botwave.js
+  const counts: Record<string, number> = { all: stories.length, "black-site": 0, "non-aligned-lead": 0, "adversarial-heavy": 0, global: 0 };
+  for (const s of stories) {
+    const total = s.assetCount || s.sources.length || 1;
+    const spread = s.alignmentSpread || s.bloc_spread || {};
+    const hasGap = Object.values(spread).some((c) => c / total < 0.2) && total >= 3;
+    if (hasGap) counts["black-site"]++;
+    const isNonAlignedLead =
+      (spread["non-aligned"] || 0) > (spread.western || 0) &&
+      (spread["non-aligned"] || 0) > (spread.adversarial || 0);
+    if (isNonAlignedLead) counts["non-aligned-lead"]++;
+    const isAdversarialHeavy =
+      (spread.adversarial || 0) > (spread.western || 0) &&
+      (spread.adversarial || 0) > (spread["non-aligned"] || 0);
+    if (isAdversarialHeavy) counts["adversarial-heavy"]++;
+    if (Object.values(spread).filter((c) => c > 0).length >= 3) counts.global++;
+  }
+  const html = filters
     .map((f) => {
       const cls = f.id === activeFilter ? "active" : "";
-      return `<button class="bwb-filter-btn ${cls}" data-filter="${f.id}">${escapeHtml(f.label)}</button>`;
+      const count = counts[f.id] ?? 0;
+      return `<button class="bwb-filter-btn ${cls}" data-filter="${f.id}"><span class="bwb-filter-label">${escapeHtml(f.label)}</span><span class="bwb-filter-count">${count}</span></button>`;
     })
     .join("");
+  return { html, counts };
+}
+
+function renderAlignmentMixBar(stories: Story[]): string {
+  // Aggregate the alignment spread across the visible (unfiltered) set
+  const totals: Record<string, number> = { western: 0, "non-aligned": 0, adversarial: 0 };
+  for (const s of stories) {
+    const spread = s.alignmentSpread || s.bloc_spread || {};
+    totals.western += spread.western || 0;
+    totals["non-aligned"] += spread["non-aligned"] || 0;
+    totals.adversarial += spread.adversarial || 0;
+  }
+  const total = totals.western + totals["non-aligned"] + totals.adversarial;
+  if (total === 0) return "";
+  const segments = [
+    { cls: "western", val: totals.western },
+    { cls: "non-aligned", val: totals["non-aligned"] },
+    { cls: "adversarial", val: totals.adversarial },
+  ];
+  const segs = segments
+    .filter((s) => s.val > 0)
+    .map((s) => `<div class="bwb-alignments-seg ${s.cls}" style="width:${((s.val / total) * 100).toFixed(2)}%" data-label="${s.cls} ${s.val}"></div>`)
+    .join("");
+  return `<div class="bwb-sidebar-section">
+    <h3 class="bwb-sidebar-title">ALIGNMENT MIX</h3>
+    <div class="bwb-alignments-bar" aria-label="Alignment mix across visible intercepts">${segs}</div>
+    <p class="bwb-sidebar-meta">${total} assets across ${stories.length} intercepts</p>
+  </div>`;
 }
 
 function renderSectionHeader(section: { id: string; label: string; description: string }): string {
@@ -455,13 +853,15 @@ function renderPortada(stories: Story[]): string {
     .slice(0, 12)
     .map((s) => renderSigintCardHtml(s))
     .join("");
+  const filters = renderFilters(stories);
   return `${renderHero(featured)}
 <div class="bwb-layout">
   <aside class="bwb-sidebar" aria-label="Filters">
     <div class="bwb-sidebar-section">
       <h2 class="bwb-sidebar-title">SIGNAL</h2>
-      <div class="bwb-filter-group">${renderFilters()}</div>
+      <div class="bwb-filter-group">${filters.html}</div>
     </div>
+    ${renderAlignmentMixBar(stories)}
   </aside>
   <div class="bwb-main">
     ${renderSitrep(stories)}
@@ -841,6 +1241,7 @@ function generate() {
         const card = renderSigintCard(b.sigintPackage);
         return `<article class="bwb-sigint-card" data-filters="black-site">
         <a class="bwb-sigint-card-link" href="${card.url}">
+          <div class="bwb-lead-image" style="background-image:url(https://picsum.photos/seed/${encodeURIComponent(b.sigintPackage.id)}/640/360)"></div>
           <div class="bwb-sigint-card-header">
             <span class="bwb-sigint-card-alignment ${b.silentSector}">${escapeHtml(formatSilentSector(b.silentSector))}</span>
             <span class="bwb-sigint-card-asset">${escapeHtml(card.topAsset?.name || "Multiple assets")}</span>
@@ -1311,6 +1712,41 @@ function generate() {
     total_page_count: publicPages.length,
   };
   writeJson("api/meta.json", updatedMeta);
+
+  // REFRACTION: per-story money-trail page
+  // Default: pick the story with the highest cross-bloc coverage (3+ blocs represented) — that's the most interesting refraction.
+  const candidates = [...stories].sort((a, b) => {
+    const aBloc = Object.values(a.alignmentSpread || {}).filter((v) => v > 0).length;
+    const bBloc = Object.values(b.alignmentSpread || {}).filter((v) => v > 0).length;
+    if (bBloc !== aBloc) return bBloc - aBloc;
+    return (b.sources?.length || 0) - (a.sources?.length || 0);
+  });
+  const defaultRefractionStory = candidates[0] || stories[0];
+  if (defaultRefractionStory) {
+    const refractionBody = renderRefractionPage(defaultRefractionStory, stories);
+    const refractionLd = {
+      "@context": "https://schema.org",
+      "@type": "AnalysisNewsArticle",
+      headline: `Refraction: ${defaultRefractionStory.topHeadlines?.[0] || "Money Trail"}`,
+      description: "Per-bloc coverage comparison with ownership trail. The frame you see is a function of the funder behind it.",
+      url: pageUrl("refraction"),
+    };
+    write(
+      "refraction.html",
+      chrome("refraction", refractionBody, {
+        title: `Refraction: ${defaultRefractionStory.topHeadlines?.[0] || "Money Trail"} — BotwaveBomba`,
+        description: "Per-bloc coverage comparison with ownership trail. The frame you see is a function of the funder behind it.",
+        canonical: pageUrl("refraction"),
+        jsonLd: refractionLd,
+        context: `${defaultRefractionStory.topHeadlines?.[0] || "Money Trail"} · ${(defaultRefractionStory.sources || []).length} sources · ${Object.keys(defaultRefractionStory.alignmentSpread || {}).length} blocs`,
+      })
+    );
+    publicPages.push({
+      page: "refraction",
+      title: `Refraction: ${defaultRefractionStory.topHeadlines?.[0] || "Money Trail"}`,
+      desc: "Per-bloc coverage comparison with ownership trail. The frame you see is a function of the funder behind it.",
+    });
+  }
 
   // Sitemap
   const urls = publicPages

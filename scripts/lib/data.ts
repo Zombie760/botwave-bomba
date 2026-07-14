@@ -135,15 +135,72 @@ function readJson<T>(filePath: string, fallback?: T): T {
   return JSON.parse(readFileSync(full, "utf8")) as T;
 }
 
+// Normalize legacy JSON field names (bloc_spread / countries / non_aligned)
+// to the canonical SigintPackage schema. The data on disk uses an older
+// naming scheme; this keeps every consumer in build_site.ts working without
+// having to know which schema is on disk.
+function normalizePackage(raw: any): SigintPackage {
+  const sources: Asset[] = (raw.sources || []).map((s: any) => ({
+    ...s,
+    alignment: (s.alignment || s.bloc || "other")
+      .toString()
+      .toLowerCase()
+      .replace(/_/g, "-"),
+    bloc: s.bloc || s.alignment,
+  }));
+
+  // Derive theaters from sources (unique country set) when countries[] is missing or sparse.
+  const fromSources = Array.from(
+    new Set(sources.map((s) => s.country).filter(Boolean))
+  );
+  const theaters: string[] =
+    raw.theaters && raw.theaters.length
+      ? raw.theaters
+      : raw.countries && raw.countries.length
+        ? raw.countries
+        : fromSources;
+
+  // Translate bloc_spread (western / non_aligned / adversarial / other) -> hyphenated keys.
+  const blocSpread: Record<string, number> = raw.bloc_spread || {};
+  const alignmentSpread: Record<string, number> = {
+    ...(raw.alignmentSpread || {}),
+  };
+  for (const [k, v] of Object.entries(blocSpread)) {
+    const key = k.toLowerCase().replace(/_/g, "-");
+    alignmentSpread[key] = (alignmentSpread[key] || 0) + Number(v || 0);
+  }
+  // If neither spread had anything, count from sources.
+  if (Object.values(alignmentSpread).every((v) => !v)) {
+    for (const src of sources) {
+      const k = src.alignment || "other";
+      alignmentSpread[k] = (alignmentSpread[k] || 0) + 1;
+    }
+  }
+
+  return {
+    ...raw,
+    id: String(raw.id),
+    size: raw.size ?? sources.length,
+    assetCount: raw.assetCount ?? raw.source_count ?? sources.length,
+    sources,
+    theaters,
+    countries: raw.countries || theaters,
+    alignmentSpread,
+    alignmentSource: raw.alignmentSource || raw.bloc_source || "derived",
+    topHeadlines: raw.topHeadlines || raw.top_headlines || [],
+    lastUpdated: raw.lastUpdated || raw.generated_at || raw.firstSeen,
+  };
+}
+
 export function getSigintPackages(): SigintPackage[] {
   // Try canonical name first, then legacy clustered file
-  let data: { stories?: SigintPackage[] } | null = null;
+  let data: { stories?: any[] } | null = null;
   try {
-    data = readJson<{ stories?: SigintPackage[] }>("api/sigint-packages.json");
+    data = readJson<{ stories?: any[] }>("api/sigint-packages.json");
   } catch {
-    data = readJson<{ stories?: SigintPackage[] }>("api/stories_clustered.json");
+    data = readJson<{ stories?: any[] }>("api/stories_clustered.json");
   }
-  return data?.stories || [];
+  return (data?.stories || []).map(normalizePackage);
 }
 
 export function getAssets(): Asset[] {
@@ -201,6 +258,57 @@ export function getMoneyTrailByDomain(): Record<string, MoneyTrailLink> {
     if (entry?.domain) map[entry.domain] = entry;
   }
   return map;
+}
+
+interface OwnershipEntry {
+  domain: string;
+  name: string;
+  owner: string;
+  owner_type: string;
+  parent_company?: string | null;
+  motive: string;
+  evidence_url: string;
+  evidence_method?: string;
+  verified_at?: string;
+}
+
+let _ownershipCache: Record<string, OwnershipEntry> | null = null;
+export function getOwnership(): Record<string, OwnershipEntry> {
+  if (_ownershipCache) return _ownershipCache;
+  const data = readJson<{ entries?: OwnershipEntry[] }>("api/ownership.json", { entries: [] });
+  const map: Record<string, OwnershipEntry> = {};
+  for (const e of data.entries || []) {
+    if (e?.domain) map[e.domain] = e;
+  }
+  _ownershipCache = map;
+  return map;
+}
+
+export function extractDomain(url: string): string | null {
+  if (!url) return null;
+  try {
+    const u = new URL(url);
+    let host = u.hostname.toLowerCase();
+    if (host.startsWith("www.")) host = host.slice(4);
+    return host;
+  } catch {
+    return null;
+  }
+}
+
+export function resolveOwnershipForSource(url: string): OwnershipEntry | null {
+  const domain = extractDomain(url);
+  if (!domain) return null;
+  const own = getOwnership();
+  // Exact match
+  if (own[domain]) return own[domain];
+  // Try stripping common subdomains (e.g. "m.aljazeera.com" → "aljazeera.com")
+  const parts = domain.split(".");
+  for (let i = 1; i < parts.length - 1; i++) {
+    const candidate = parts.slice(i).join(".");
+    if (own[candidate]) return own[candidate];
+  }
+  return null;
 }
 
 export function normAlignment(alignment?: string): string {

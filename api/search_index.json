@@ -5,7 +5,7 @@
     "excerpt": "Trump: U.S. has told Iran ceasefire is 'over' despite agreement to continue talks",
     "asset": "ABC News Australia",
     "theater": "AU",
-    "alignment": "world",
+    "alignment": "western",
     "theaters": [
       "AU",
       "GB",
@@ -67,7 +67,7 @@
     "excerpt": "Pride despite defeat as Morocco’s World Cup run ends",
     "asset": "ABC News Australia",
     "theater": "AU",
-    "alignment": "world",
+    "alignment": "western",
     "theaters": [
       "AU",
       "GH",
@@ -149,7 +149,7 @@
     "excerpt": "Warhawk US Senator Lindsey Graham dies",
     "asset": "ABC News Australia",
     "theater": "AU",
-    "alignment": "world",
+    "alignment": "western",
     "theaters": [
       "AU",
       "GH",
@@ -184,7 +184,7 @@
     "excerpt": "Ayatollah Khamenei hails ‘historic’ funeral turnout, vows revenge for martyred Leader",
     "asset": "ABC News Australia",
     "theater": "AU",
-    "alignment": "world",
+    "alignment": "western",
     "theaters": [
       "AU",
       "GB",
@@ -218,7 +218,7 @@
     "excerpt": "New Zealand and India form ‘strategic partnership’",
     "asset": "Al Jazeera English",
     "theater": "QA",
-    "alignment": "world",
+    "alignment": "western",
     "theaters": [
       "GH",
       "IN",
@@ -263,7 +263,7 @@
     "excerpt": "Sheikh Hamad bin Khalifa Al Thani, architect of modern Qatar",
     "asset": "Al Jazeera English",
     "theater": "QA",
-    "alignment": "world",
+    "alignment": "western",
     "theaters": [
       "IN",
       "NG",
@@ -291,7 +291,7 @@
     "excerpt": "Markapuram police arrest habitual offender",
     "asset": "ABC News Australia",
     "theater": "AU",
-    "alignment": "world",
+    "alignment": "western",
     "theaters": [
       "AU",
       "GH",
@@ -324,7 +324,7 @@
     "excerpt": "BREAKING: Kidnapped Oyo pupils, teachers regain freedom",
     "asset": "Al Jazeera English",
     "theater": "QA",
-    "alignment": "world",
+    "alignment": "non-aligned",
     "theaters": [
       "GH",
       "NG",
@@ -370,7 +370,7 @@
     "excerpt": "US Democrat Ro Khanna detained by Israeli settlers during West Bank visit",
     "asset": "Dawn (Pakistan)",
     "theater": "PK",
-    "alignment": "world",
+    "alignment": "western",
     "theaters": [
       "GB",
       "IN",
@@ -398,7 +398,7 @@
     "excerpt": "Eleven dead, 19 missing as Spain wildfire roars through village",
     "asset": "Japan Times",
     "theater": "JP",
-    "alignment": "world",
+    "alignment": "western",
     "theaters": [
       "GH",
       "JP",
@@ -420,7 +420,7 @@
     "excerpt": "NYT reporters subpoenaed over Air Force One security concerns stories",
     "asset": "ABC News Australia",
     "theater": "AU",
-    "alignment": "world",
+    "alignment": "western",
     "theaters": [
       "AU",
       "GH",
@@ -443,7 +443,7 @@
     "excerpt": "One of Spain's deadliest wildfires has killed at least 12 people, with 23 others missing",
     "asset": "Club of Mozambique",
     "theater": "MZ",
-    "alignment": "world",
+    "alignment": "western",
     "theaters": [
       "GH",
       "IN",
@@ -463,7 +463,7 @@
     "excerpt": "Iran’s security chief warns any attack on infrastructure will be retaliated",
     "asset": "IRNA (Iran)",
     "theater": "IR",
-    "alignment": "world",
+    "alignment": "western",
     "theaters": [
       "GB",
       "IR",
@@ -482,7 +482,7 @@
     "excerpt": "2027: Tinubu retains Shettima as running mate",
     "asset": "Daily Trust (Nigeria)",
     "theater": "NG",
-    "alignment": "world",
+    "alignment": "non-aligned",
     "theaters": [
       "NG"
     ],
@@ -501,7 +501,7 @@
     "excerpt": "Teen boy charged with murder after missing 13-year-old girl found dead in Australia",
     "asset": "ABC News Australia",
     "theater": "AU",
-    "alignment": "world",
+    "alignment": "western",
     "theaters": [
       "AU",
       "IN",
@@ -523,7 +523,7 @@
     "excerpt": "US demands Iran publicly announce intention against attacking vessels in Strait of Hormuz",
     "asset": "RT (Russia Today)",
     "theater": "RU",
-    "alignment": "world",
+    "alignment": "western",
     "theaters": [
       "IN",
       "NZ",
@@ -542,7 +542,7 @@
     "excerpt": "Trump threatens Iran after Ayatollah Ali Khamenei's funeral saw open calls for his killing",
     "asset": "Al Jazeera English",
     "theater": "QA",
-    "alignment": "world",
+    "alignment": "non-aligned",
     "theaters": [
       "IN",
       "NG",
@@ -562,7 +562,7 @@
     "excerpt": "Iran will continue on martyred Leader’s path of steadfastness: Army chief",
     "asset": "IRNA (Iran)",
     "theater": "IR",
-    "alignment": "world",
+    "alignment": "adversarial",
     "theaters": [
       "IR"
     ],
@@ -582,7 +582,7 @@
     "excerpt": "China successfully tests sea-based rocket booster recovery system",
     "asset": "Dawn (Pakistan)",
     "theater": "PK",
-    "alignment": "world",
+    "alignment": "non-aligned",
     "theaters": [
       "JP",
       "PK",
@@ -600,7 +600,7 @@
     "excerpt": "Israel detains Jerusalem grand mufti, bars him from Al-Aqsa Mosque for 1 week",
     "asset": "Al Jazeera English",
     "theater": "QA",
-    "alignment": "world",
+    "alignment": "western",
     "theaters": [
       "GB",
       "IR",
@@ -618,7 +618,7 @@
     "excerpt": "Fubara Presents N1.854trn 2026 Appropriation Bill to Rivers Assembly",
     "asset": "Daily Trust (Nigeria)",
     "theater": "NG",
-    "alignment": "world",
+    "alignment": "non-aligned",
     "theaters": [
       "NG"
     ],
@@ -634,7 +634,7 @@
     "excerpt": "DSS releases journalist carrying drone after IPI Nigeria’s intervention",
     "asset": "Daily Trust (Nigeria)",
     "theater": "NG",
-    "alignment": "world",
+    "alignment": "non-aligned",
     "theaters": [
       "NG"
     ],
@@ -651,7 +651,7 @@
     "excerpt": "Apple accuses OpenAI \nof stealing trade secrets",
     "asset": "Japan Times",
     "theater": "JP",
-    "alignment": "world",
+    "alignment": "non-aligned",
     "theaters": [
       "JP",
       "PH",
@@ -669,7 +669,7 @@
     "excerpt": "Japan’s JAXA successfully launches, lands reusable rocket",
     "asset": "Japan Times",
     "theater": "JP",
-    "alignment": "world",
+    "alignment": "non-aligned",
     "theaters": [
       "IN",
       "JP",
@@ -687,7 +687,7 @@
     "excerpt": "Wallabies v France — Nations Championship",
     "asset": "ABC News Australia",
     "theater": "AU",
-    "alignment": "world",
+    "alignment": "western",
     "theaters": [
       "AU",
       "JP",
@@ -708,7 +708,7 @@
     "excerpt": "President Federation Cup: El-Kanemi Warriors edge Ikorodu City to win fourth title",
     "asset": "Daily Trust (Nigeria)",
     "theater": "NG",
-    "alignment": "world",
+    "alignment": "non-aligned",
     "theaters": [
       "NG"
     ],
@@ -726,7 +726,7 @@
     "excerpt": "Andhra University observes World Population Day",
     "asset": "Dawn (Pakistan)",
     "theater": "PK",
-    "alignment": "world",
+    "alignment": "non-aligned",
     "theaters": [
       "IN",
       "NG",
@@ -744,7 +744,7 @@
     "excerpt": "Iran: Production of drones tripled during US-Israeli war of aggression",
     "asset": "IRNA (Iran)",
     "theater": "IR",
-    "alignment": "world",
+    "alignment": "adversarial",
     "theaters": [
       "IR"
     ],
@@ -760,7 +760,7 @@
     "excerpt": "Noskova Holds off Muchova’s Fightback to Win Maiden Grand Slam",
     "asset": "ABC News Australia",
     "theater": "AU",
-    "alignment": "world",
+    "alignment": "western",
     "theaters": [
       "AU",
       "NG",
@@ -778,7 +778,7 @@
     "excerpt": "U.S., U.K., and 12 other nations reaffirm 2016 ruling invalidating China’s claims in South China Sea",
     "asset": "Rappler (Philippines)",
     "theater": "PH",
-    "alignment": "world",
+    "alignment": "western",
     "theaters": [
       "IN",
       "NZ",
@@ -796,7 +796,7 @@
     "excerpt": "At least two killed in Toronto street festival shooting",
     "asset": "Joy Online (Ghana)",
     "theater": "GH",
-    "alignment": "world",
+    "alignment": "non-aligned",
     "theaters": [
       "GH",
       "IN",

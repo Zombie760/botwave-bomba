@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="auto">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -72,33 +72,89 @@
 }
   </script>
 </head>
-<body>
+<body class="bwb-page" data-page="home">
   <a class="bwb-skip-link" href="#main-content">Skip to content</a>
+
+  <div class="bwb-utility-bar" role="complementary" aria-label="Site utility">
+    <div class="bwb-utility-inner">
+      <span class="bwb-utility-left">
+        <span class="bwb-utility-item"><time class="bwb-utility-time" datetime="2026-07-14T16:29:47.909Z">2026-07-14</time> · UTC</span>
+        <span class="bwb-utility-item bwb-utility-build">BUILD 260714162947</span>
+        <span class="bwb-utility-item"><a href="/botwavebomba/methodology.html">METHODOLOGY</a></span>
+        <span class="bwb-utility-item"><a href="/botwavebomba/errata.html">ERRATA</a></span>
+      </span>
+      <span class="bwb-utility-right">
+        <span class="bwb-utility-item bwb-utility-counts">31 intercepts · 0 funders · 16 theaters</span>
+        <button class="bwb-search-btn" id="searchToggle" aria-label="Search">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <span class="bwb-utility-search-label">SEARCH</span>
+        </button>
+        <button class="bwb-theme-btn" id="themeToggle" aria-label="Toggle theme"><span aria-hidden="true">🌙</span></button>
+      </span>
+    </div>
+  </div>
 
   <header class="bwb-site-header" role="banner">
     <div class="bwb-header-inner">
-      <a class="bwb-wordmark" href="/botwavebomba/">BOTWAVE<span>BOMBA</span></a>
+      <a class="bwb-wordmark" href="/botwavebomba/" aria-label="BotwaveBomba home">
+        <span class="bwb-wordmark-line-1">BOTWAVE</span><span class="bwb-wordmark-line-2">BOMBA</span>
+      </a>
       <button class="bwb-menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <nav class="bwb-primary-nav" id="primaryNav" aria-label="Primary">
-        <a href="/botwavebomba/" data-nav="home" aria-current="page">PORTADA</a><a href="/botwavebomba/black-site.html" data-nav="black-site">BLACK SITE</a><a href="/botwavebomba/radar.html" data-nav="radar">RADAR</a><a href="/botwavebomba/spool.html" data-nav="spool">SPOOL</a><a href="/botwavebomba/numbers-station.html" data-nav="numbers-station">NUMBERS STATION</a><a href="/botwavebomba/asset-registry.html" data-nav="asset-registry">ASSETS</a><a href="/botwavebomba/tradecraft.html" data-nav="tradecraft">TRADECRAFT</a><a href="/botwavebomba/sports.html" data-nav="sports">SPORTS</a><a href="/botwavebomba/tech.html" data-nav="tech">TECH</a><a href="/botwavebomba/health.html" data-nav="health">HEALTH</a><a href="/botwavebomba/science.html" data-nav="science">SCIENCE</a>
+        <a href="/botwavebomba/" data-nav="home" aria-current="page">PORTADA</a><a href="/botwavebomba/black-site.html" data-nav="black-site">BLACK SITE</a><a href="/botwavebomba/radar.html" data-nav="radar">RADAR</a><a href="/botwavebomba/refraction.html" data-nav="refraction">REFRACTION</a><a href="/botwavebomba/spool.html" data-nav="spool">SPOOL</a><a href="/botwavebomba/numbers-station.html" data-nav="numbers-station">NUMBERS STATION</a><a href="/botwavebomba/asset-registry.html" data-nav="asset-registry">ASSETS</a><a href="/botwavebomba/tradecraft.html" data-nav="tradecraft">TRADECRAFT</a><a href="/botwavebomba/sports.html" data-nav="sports">SPORTS</a><a href="/botwavebomba/tech.html" data-nav="tech">TECH</a><a href="/botwavebomba/health.html" data-nav="health">HEALTH</a><a href="/botwavebomba/science.html" data-nav="science">SCIENCE</a>
       </nav>
       <nav class="bwb-desk-nav" id="deskNav" aria-label="Coverage desks">
         <a href="/botwavebomba/sports.html" data-desk="sports">SPORTS</a><a href="/botwavebomba/tech.html" data-desk="tech">TECH</a><a href="/botwavebomba/health.html" data-desk="health">HEALTH</a><a href="/botwavebomba/science.html" data-desk="science">SCIENCE</a><a href="/botwavebomba/business.html" data-desk="business">BUSINESS</a><a href="/botwavebomba/conflict.html" data-desk="conflict">CONFLICT</a><a href="/botwavebomba/politics.html" data-desk="politics">POLITICS</a><a href="/botwavebomba/world.html" data-desk="world">WORLD</a>
       </nav>
-      <div class="bwb-header-actions">
-        <button class="bwb-search-btn" id="searchToggle" aria-label="Search">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-        </button>
-        <button class="bwb-theme-btn" id="themeToggle" aria-label="Toggle theme"><span aria-hidden="true">🌙</span></button>
-      </div>
     </div>
+    
   </header>
 
   <div class="bwb-active-frequencies" aria-label="Active frequencies">
     <span class="bwb-trending-label">ACTIVE FREQUENCIES</span>
-    <a href="/botwavebomba/radar.html?q=UKRAINE%20CONFLICT">UKRAINE CONFLICT</a><button class="bwb-follow-btn" data-topic="ukraine-conflict" aria-label="Follow UKRAINE CONFLICT">Follow</button><a href="/botwavebomba/radar.html?q=TAIWAN%20STRAIT">TAIWAN STRAIT</a><button class="bwb-follow-btn" data-topic="taiwan-strait" aria-label="Follow TAIWAN STRAIT">Follow</button><a href="/botwavebomba/radar.html?q=GAZA%20%2F%20ISRAEL">GAZA / ISRAEL</a><button class="bwb-follow-btn" data-topic="gaza-israel" aria-label="Follow GAZA / ISRAEL">Follow</button><a href="/botwavebomba/radar.html?q=ENERGY%20POLITICS">ENERGY POLITICS</a><button class="bwb-follow-btn" data-topic="energy-politics" aria-label="Follow ENERGY POLITICS">Follow</button><a href="/botwavebomba/radar.html?q=TECH%20SOVEREIGNTY">TECH SOVEREIGNTY</a><button class="bwb-follow-btn" data-topic="tech-sovereignty" aria-label="Follow TECH SOVEREIGNTY">Follow</button>
+    <span class="bwb-topic-chip" data-topic="iran-us">
+        <a class="bwb-topic-link" href="/botwavebomba/radar.html?q=IRAN%20%2F%20US">IRAN / US</a>
+        <span class="bwb-topic-count">7</span>
+        <button class="bwb-follow-btn" data-topic="iran-us" aria-label="Follow IRAN / US">Follow</button>
+        <div class="bwb-topic-popover" role="tooltip">
+            <strong>IRAN / US · 7 intercepts</strong>
+            <ul><li><a href="/botwavebomba/sigint.html?id=26cb5d81ac87d055"><span class="bwb-topic-popover-headline">Shipping through Strait of Hormuz declines as US-Iran hostilities resume</span><span class="bwb-topic-popover-time">just now</span></a></li><li><a href="/botwavebomba/sigint.html?id=f8b3b175c123edbf"><span class="bwb-topic-popover-headline">How the absence of Iran’s new supreme leader is becoming a liability for Tehran</span><span class="bwb-topic-popover-time">just now</span></a></li><li><a href="/botwavebomba/sigint.html?id=6efc4d76959d2d58"><span class="bwb-topic-popover-headline">Iran will respond in kind to attack on its infrastructure: Security official</span><span class="bwb-topic-popover-time">just now</span></a></li></ul>
+          </div>
+      </span><span class="bwb-topic-chip" data-topic="middle-east">
+        <a class="bwb-topic-link" href="/botwavebomba/radar.html?q=MIDDLE%20EAST">MIDDLE EAST</a>
+        <span class="bwb-topic-count">5</span>
+        <button class="bwb-follow-btn" data-topic="middle-east" aria-label="Follow MIDDLE EAST">Follow</button>
+        <div class="bwb-topic-popover" role="tooltip">
+            <strong>MIDDLE EAST · 5 intercepts</strong>
+            <ul><li><a href="/botwavebomba/sigint.html?id=dbc0873265dd476e"><span class="bwb-topic-popover-headline">Former emir of Qatar, Sheikh Hamad bin Khalifa Al Thani, dies at 74</span><span class="bwb-topic-popover-time">just now</span></a></li><li><a href="/botwavebomba/sigint.html?id=80b69e26a423fdbd"><span class="bwb-topic-popover-headline">10 Palestinians injured in Israeli occupier, army attacks in occupied West Bank</span><span class="bwb-topic-popover-time">just now</span></a></li><li><a href="/botwavebomba/sigint.html?id=6efc4d76959d2d58"><span class="bwb-topic-popover-headline">Iran will respond in kind to attack on its infrastructure: Security official</span><span class="bwb-topic-popover-time">just now</span></a></li></ul>
+          </div>
+      </span><span class="bwb-topic-chip" data-topic="africa">
+        <a class="bwb-topic-link" href="/botwavebomba/radar.html?q=AFRICA">AFRICA</a>
+        <span class="bwb-topic-count">3</span>
+        <button class="bwb-follow-btn" data-topic="africa" aria-label="Follow AFRICA">Follow</button>
+        <div class="bwb-topic-popover" role="tooltip">
+            <strong>AFRICA · 3 intercepts</strong>
+            <ul><li><a href="/botwavebomba/sigint.html?id=01ef7709578f190c"><span class="bwb-topic-popover-headline">Breaking: All Kidnapped Oyo School Children, Teachers Rescued</span><span class="bwb-topic-popover-time">just now</span></a></li><li><a href="/botwavebomba/sigint.html?id=b5351104b63c6a90"><span class="bwb-topic-popover-headline">JUST IN: APC retains Shettima as Tinubu’s running mate ahead of 2027 election</span><span class="bwb-topic-popover-time">just now</span></a></li><li><a href="/botwavebomba/sigint.html?id=f349dfa9f774f60c"><span class="bwb-topic-popover-headline">SSS releases journalist linked to Sowore from detention</span><span class="bwb-topic-popover-time">just now</span></a></li></ul>
+          </div>
+      </span><span class="bwb-topic-chip" data-topic="china">
+        <a class="bwb-topic-link" href="/botwavebomba/radar.html?q=CHINA%20WATCH">CHINA WATCH</a>
+        <span class="bwb-topic-count">2</span>
+        <button class="bwb-follow-btn" data-topic="china" aria-label="Follow CHINA WATCH">Follow</button>
+        <div class="bwb-topic-popover" role="tooltip">
+            <strong>CHINA WATCH · 2 intercepts</strong>
+            <ul><li><a href="/botwavebomba/sigint.html?id=81a2b2206531f405"><span class="bwb-topic-popover-headline">China successfully tests sea-based rocket booster recovery system</span><span class="bwb-topic-popover-time">just now</span></a></li><li><a href="/botwavebomba/sigint.html?id=30aba64603c873af"><span class="bwb-topic-popover-headline">PH, 13 countries urge Beijing: Abide by 2016 South China Sea Arbitral award</span><span class="bwb-topic-popover-time">just now</span></a></li></ul>
+          </div>
+      </span><span class="bwb-topic-chip" data-topic="spain-fires">
+        <a class="bwb-topic-link" href="/botwavebomba/radar.html?q=SPAIN%20FIRES">SPAIN FIRES</a>
+        <span class="bwb-topic-count">2</span>
+        <button class="bwb-follow-btn" data-topic="spain-fires" aria-label="Follow SPAIN FIRES">Follow</button>
+        <div class="bwb-topic-popover" role="tooltip">
+            <strong>SPAIN FIRES · 2 intercepts</strong>
+            <ul><li><a href="/botwavebomba/sigint.html?id=8b8f7408081fc453"><span class="bwb-topic-popover-headline">At least 11 dead and 19 missing in wildfire in southern Spain</span><span class="bwb-topic-popover-time">just now</span></a></li><li><a href="/botwavebomba/sigint.html?id=983c332e05666567"><span class="bwb-topic-popover-headline">One of Spain's deadliest wildfires has killed at least 11 people, with 19 others missing</span><span class="bwb-topic-popover-time">just now</span></a></li></ul>
+          </div>
+      </span>
   </div>
 
   <div class="bwb-search-overlay" id="searchOverlay" hidden>
@@ -113,23 +169,28 @@
   <div class="bwb-hero-inner">
     <div class="bwb-hero-text">
       <span class="bwb-hero-kicker">FEATURED INTERCEPT</span>
-      <h1 id="hero-title">Breaking: All Kidnapped Oyo School Children, Teachers Rescued</h1>
-      <p class="bwb-hero-lead">BREAKING: Kidnapped Oyo pupils, teachers regain freedom</p>
+      <h1 id="hero-title">PM Modi in New Zealand LIVE: India, New Zealand elevate ties to strategic partnership</h1>
+      <p class="bwb-hero-lead">New Zealand and India form ‘strategic partnership’</p>
       <div class="bwb-hero-meta">
-        <span class="bwb-asset-count">30 assets</span>
-        <span class="bwb-theater-count">0 theaters</span>
+        <span class="bwb-asset-count">8 assets</span>
+        <span class="bwb-theater-count">7 theaters</span>
         <span class="bwb-sigint-card-time">just now</span>
-        <a class="bwb-hero-cta" href="/botwavebomba/sigint.html?id=01ef7709578f190c">Compare intercepts →</a>
+        <a class="bwb-hero-cta" href="/botwavebomba/sigint.html?id=8901e063660a0309">Compare intercepts →</a>
       </div>
       <div class="bwb-hero-assets">
-    <article class="bwb-hero-asset other">
+    <article class="bwb-hero-asset non-aligned">
       <cite>Al Jazeera English · QA</cite>
-      <p>Breaking: All Kidnapped Oyo School Children, Teachers Rescued</p>
+      <p>PM Modi in New Zealand LIVE: India, New Zealand elevate ties to strategic partnership</p>
     </article>
   
-    <article class="bwb-hero-asset other">
-      <cite>Daily Trust (Nigeria) · NG</cite>
-      <p>BREAKING: Kidnapped Oyo pupils, teachers regain freedom</p>
+    <article class="bwb-hero-asset non-aligned">
+      <cite>Dawn (Pakistan) · PK</cite>
+      <p>New Zealand, India strike 'milestone' strategic partnership encompassing defence and security</p>
+    </article>
+  
+    <article class="bwb-hero-asset non-aligned">
+      <cite>Japan Times · JP</cite>
+      <p>Boat carrying several Indian tourists capsizes in Vietnam; rescue ops under way</p>
     </article>
   </div>
     </div>
@@ -139,121 +200,307 @@
   <aside class="bwb-sidebar" aria-label="Filters">
     <div class="bwb-sidebar-section">
       <h2 class="bwb-sidebar-title">SIGNAL</h2>
-      <div class="bwb-filter-group"><button class="bwb-filter-btn active" data-filter="all">ALL</button><button class="bwb-filter-btn " data-filter="black-site">BLACK SITE</button><button class="bwb-filter-btn " data-filter="non-aligned-lead">NON-ALIGNED LEAD</button><button class="bwb-filter-btn " data-filter="adversarial-heavy">ADVERSARIAL HEAVY</button><button class="bwb-filter-btn " data-filter="global">GLOBAL</button></div>
+      <div class="bwb-filter-group"><button class="bwb-filter-btn active" data-filter="all"><span class="bwb-filter-label">ALL</span><span class="bwb-filter-count">31</span></button><button class="bwb-filter-btn " data-filter="black-site"><span class="bwb-filter-label">BLACK SITE</span><span class="bwb-filter-count">25</span></button><button class="bwb-filter-btn " data-filter="non-aligned-lead"><span class="bwb-filter-label">NON-ALIGNED LEAD</span><span class="bwb-filter-count">22</span></button><button class="bwb-filter-btn " data-filter="adversarial-heavy"><span class="bwb-filter-label">ADVERSARIAL HEAVY</span><span class="bwb-filter-count">4</span></button><button class="bwb-filter-btn " data-filter="global"><span class="bwb-filter-label">GLOBAL</span><span class="bwb-filter-count">10</span></button></div>
     </div>
+    <div class="bwb-sidebar-section">
+    <h3 class="bwb-sidebar-title">ALIGNMENT MIX</h3>
+    <div class="bwb-alignments-bar" aria-label="Alignment mix across visible intercepts"><div class="bwb-alignments-seg western" style="width:16.89%" data-label="western 51"></div><div class="bwb-alignments-seg non-aligned" style="width:65.23%" data-label="non-aligned 197"></div><div class="bwb-alignments-seg adversarial" style="width:17.88%" data-label="adversarial 54"></div></div>
+    <p class="bwb-sidebar-meta">302 assets across 31 intercepts</p>
+  </div>
   </aside>
   <div class="bwb-main">
     <section class="bwb-sitrep" aria-labelledby="sitrep-title">
   <h2 id="sitrep-title">SITREP</h2>
-  <p class="bwb-sitrep-meta">5 intercepts · 26 assets · 4m read</p>
-  <div class="bwb-sitrep-list"><a href="/botwavebomba/sigint.html?id=01ef7709578f190c" class="bwb-sitrep-item">
-      <img src="/botwavebomba/assets/logos/default.png" alt="" loading="lazy">
-      <div>
-        <h3>Breaking: All Kidnapped Oyo School Children, Teachers Rescued</h3>
-        <p>30 assets · 0 theaters</p>
-      </div>
-    </a><a href="/botwavebomba/sigint.html?id=8901e063660a0309" class="bwb-sitrep-item">
+  <p class="bwb-sitrep-meta">5 intercepts · 28 assets · 4m read</p>
+  <div class="bwb-sitrep-list"><a href="/botwavebomba/sigint.html?id=8901e063660a0309" class="bwb-sitrep-item">
       <img src="/botwavebomba/assets/logos/default.png" alt="" loading="lazy">
       <div>
         <h3>PM Modi in New Zealand LIVE: India, New Zealand elevate ties to strategic partnership</h3>
-        <p>26 assets · 0 theaters</p>
+        <p>8 assets · 7 theaters</p>
       </div>
-    </a><a href="/botwavebomba/sigint.html?id=d77cee07c01c13e8" class="bwb-sitrep-item">
+    </a><a href="/botwavebomba/sigint.html?id=01ef7709578f190c" class="bwb-sitrep-item">
       <img src="/botwavebomba/assets/logos/default.png" alt="" loading="lazy">
       <div>
-        <h3>Teen arrested after remains found in search for missing 13-year-old girl</h3>
-        <p>7 assets · 0 theaters</p>
+        <h3>Breaking: All Kidnapped Oyo School Children, Teachers Rescued</h3>
+        <p>7 assets · 4 theaters</p>
       </div>
-    </a><a href="/botwavebomba/sigint.html?id=0a6240317c2d38c6" class="bwb-sitrep-item">
+    </a><a href="/botwavebomba/sigint.html?id=8b8f7408081fc453" class="bwb-sitrep-item">
       <img src="/botwavebomba/assets/logos/default.png" alt="" loading="lazy">
       <div>
-        <h3>IRGC chief vows justice for martyred Leader, says resistance path will endure</h3>
-        <p>7 assets · 0 theaters</p>
+        <h3>At least 11 dead and 19 missing in wildfire in southern Spain</h3>
+        <p>5 assets · 5 theaters</p>
       </div>
-    </a><a href="/botwavebomba/sigint.html?id=b5351104b63c6a90" class="bwb-sitrep-item">
+    </a><a href="/botwavebomba/sigint.html?id=983c332e05666567" class="bwb-sitrep-item">
       <img src="/botwavebomba/assets/logos/default.png" alt="" loading="lazy">
       <div>
-        <h3>JUST IN: APC retains Shettima as Tinubu’s running mate ahead of 2027 election</h3>
-        <p>6 assets · 0 theaters</p>
+        <h3>One of Spain's deadliest wildfires has killed at least 11 people, with 19 others missing</h3>
+        <p>4 assets · 4 theaters</p>
+      </div>
+    </a><a href="/botwavebomba/sigint.html?id=6efc4d76959d2d58" class="bwb-sitrep-item">
+      <img src="/botwavebomba/assets/logos/default.png" alt="" loading="lazy">
+      <div>
+        <h3>Iran will respond in kind to attack on its infrastructure: Security official</h3>
+        <p>4 assets · 3 theaters</p>
       </div>
     </a></div>
   <a href="/botwavebomba/sitrep.html" class="bwb-sitrep-more">Full SITREP →</a>
 </section>
     <h2 class="bwb-section-kicker" style="margin-bottom:var(--space-4); font-size:var(--fs-xl); font-family:var(--font-display);">LATEST BLACK SITES</h2>
-    <div class="bwb-grid"><article class="bwb-sigint-card" data-alignments="" data-filters="western-dark non-aligned-absent adversarial-suppressed">
-  <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=8901e063660a0309" aria-label="Read full intercept of: PM Modi in New Zealand LIVE: India, New Zealand elevate ties to strategic partnership">
+    <div class="bwb-grid"><article class="bwb-sigint-card" data-alignments="non-aligned" data-filters="western-dark adversarial-suppressed non-aligned-lead">
+  <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=01ef7709578f190c" aria-label="Read full intercept of: Breaking: All Kidnapped Oyo School Children, Teachers Rescued">
+    <div class="bwb-lead-image" style="background-image:url(https://picsum.photos/seed/01ef7709578f190c/640/360)"></div>
     <div class="bwb-sigint-card-header">
-      <span class="bwb-sigint-card-alignment non_aligned">WESTERN DARK</span><span class="bwb-sigint-card-alignment non_aligned">NON-ALIGNED ABSENT</span>
+      <span class="bwb-sigint-card-alignment non-aligned">WESTERN DARK</span><span class="bwb-sigint-card-alignment non-aligned">ADVERSARIAL SUPPRESSED</span>
       <span class="bwb-sigint-card-asset">Al Jazeera English</span>
       <span class="bwb-sigint-card-theater">QA</span>
     </div>
-    <h3 class="bwb-sigint-card-title">PM Modi in New Zealand LIVE: India, New Zealand elevate ties to strategic partnership</h3>
-    <p class="bwb-sigint-card-excerpt">New Zealand and India form ‘strategic partnership’</p>
-    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg western" style="width:3.85%" data-label="western 1"></div></div>
+    <h3 class="bwb-sigint-card-title">Breaking: All Kidnapped Oyo School Children, Teachers Rescued</h3>
+    <p class="bwb-sigint-card-excerpt">BREAKING: Kidnapped Oyo pupils, teachers regain freedom</p>
+    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg non-aligned" style="width:100.00%" data-label="non-aligned 30"></div></div>
     <div class="bwb-sigint-card-meta">
       <span class="bwb-sigint-card-time">just now</span>
-      <span>26 assets</span>
-      <span>0 theaters</span>
+      <span>7 assets</span>
+      <span>4 theaters</span>
     </div>
   </a>
-  <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-8901e063660a0309" data-expand="8901e063660a0309" data-count="8">Show 8 assets</button>
-  <div class="bwb-card-sources" id="sources-8901e063660a0309" hidden>
+  <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-01ef7709578f190c" data-expand="01ef7709578f190c" data-count="8">Show 8 assets</button>
+  <div class="bwb-card-sources" id="sources-01ef7709578f190c" hidden>
     <ul><li class="bwb-card-source-row non-aligned">
       <span class="bwb-card-source-alignment non-aligned"></span>
       <span class="bwb-card-source-name">Al Jazeera English</span>
       <span class="bwb-card-source-theater">QA</span>
-      <a href="https://www.aljazeera.com/news/2026/7/11/speedboat-accident-in-southern-vietnam-kills-15-indian-tourists?traffic_source=rss" target="_blank" rel="noopener" aria-label="Open Al Jazeera English source">↗</a>
+      <a href="https://www.aljazeera.com/news/2026/7/10/dozens-of-abducted-schoolchildren-and-teachers-rescued-in-nigeria?traffic_source=rss" target="_blank" rel="noopener" aria-label="Open Al Jazeera English source">↗</a>
     </li><li class="bwb-card-source-row non-aligned">
       <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">Al Jazeera English</span>
-      <span class="bwb-card-source-theater">QA</span>
-      <a href="https://www.aljazeera.com/video/newsfeed/2026/7/11/indian-tourists-killed-after-speedboat-capsizes-in-vietnam?traffic_source=rss" target="_blank" rel="noopener" aria-label="Open Al Jazeera English source">↗</a>
+      <span class="bwb-card-source-name">Daily Trust (Nigeria)</span>
+      <span class="bwb-card-source-theater">NG</span>
+      <a href="https://dailytrust.com/breaking-kidnapped-oyo-pupils-teachers-regain-freedom/" target="_blank" rel="noopener" aria-label="Open Daily Trust (Nigeria) source">↗</a>
     </li><li class="bwb-card-source-row non-aligned">
       <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">Dawn (Pakistan)</span>
-      <span class="bwb-card-source-theater">PK</span>
-      <a href="https://www.dawn.com/news/2014582/new-zealand-india-strike-milestone-strategic-partnership-encompassing-defence-and-security" target="_blank" rel="noopener" aria-label="Open Dawn (Pakistan) source">↗</a>
+      <span class="bwb-card-source-name">Daily Trust (Nigeria)</span>
+      <span class="bwb-card-source-theater">NG</span>
+      <a href="https://dailytrust.com/presidency-abductors-of-oyo-pupils-teachers-in-dss-custody/" target="_blank" rel="noopener" aria-label="Open Daily Trust (Nigeria) source">↗</a>
     </li><li class="bwb-card-source-row non-aligned">
       <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">Dawn (Pakistan)</span>
-      <span class="bwb-card-source-theater">PK</span>
-      <a href="https://www.dawn.com/news/2014632/speedboat-accident-in-southern-vietnam-kills-15-indian-tourists" target="_blank" rel="noopener" aria-label="Open Dawn (Pakistan) source">↗</a>
+      <span class="bwb-card-source-name">Daily Trust (Nigeria)</span>
+      <span class="bwb-card-source-theater">NG</span>
+      <a href="https://dailytrust.com/photos-the-operation-that-rescued-oyo-pupils-teachers/" target="_blank" rel="noopener" aria-label="Open Daily Trust (Nigeria) source">↗</a>
     </li><li class="bwb-card-source-row non-aligned">
       <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">Japan Times</span>
-      <span class="bwb-card-source-theater">JP</span>
-      <a href="https://www.japantimes.co.jp/news/2026/07/11/asia-pacific/politics/new-zealand-india-strategic-partnership/" target="_blank" rel="noopener" aria-label="Open Japan Times source">↗</a>
+      <span class="bwb-card-source-name">Daily Trust (Nigeria)</span>
+      <span class="bwb-card-source-theater">NG</span>
+      <a href="https://dailytrust.com/oyc-commends-makinde-security-agencies-over-release-of-oyo-pupils-teachers/" target="_blank" rel="noopener" aria-label="Open Daily Trust (Nigeria) source">↗</a>
+    </li><li class="bwb-card-source-row non-aligned">
+      <span class="bwb-card-source-alignment non-aligned"></span>
+      <span class="bwb-card-source-name">Daily Trust (Nigeria)</span>
+      <span class="bwb-card-source-theater">NG</span>
+      <a href="https://dailytrust.com/kidnappers-arrested-as-abducted-oyo-pupils-rescued/" target="_blank" rel="noopener" aria-label="Open Daily Trust (Nigeria) source">↗</a>
     </li><li class="bwb-card-source-row non-aligned">
       <span class="bwb-card-source-alignment non-aligned"></span>
       <span class="bwb-card-source-name">Joy Online (Ghana)</span>
       <span class="bwb-card-source-theater">GH</span>
-      <a href="https://www.myjoyonline.com/indian-tourists-among-15-killed-as-speedboat-capsizes-in-vietnam/" target="_blank" rel="noopener" aria-label="Open Joy Online (Ghana) source">↗</a>
+      <a href="https://www.myjoyonline.com/more-than-40-kidnapped-children-and-teachers-freed-after-nigerian-army-operation/" target="_blank" rel="noopener" aria-label="Open Joy Online (Ghana) source">↗</a>
+    </li><li class="bwb-card-source-row non-aligned">
+      <span class="bwb-card-source-alignment non-aligned"></span>
+      <span class="bwb-card-source-name">Premium Times (Nigeria)</span>
+      <span class="bwb-card-source-theater">NG</span>
+      <a href="https://www.premiumtimesng.com/news/headlines/894385-breaking-kidnapped-oyo-pupils-teachers-freed.html" target="_blank" rel="noopener" aria-label="Open Premium Times (Nigeria) source">↗</a>
+    </li></ul>
+  </div>
+</article><article class="bwb-sigint-card" data-alignments="western non-aligned" data-filters="adversarial-suppressed non-aligned-lead">
+  <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=8b8f7408081fc453" aria-label="Read full intercept of: At least 11 dead and 19 missing in wildfire in southern Spain">
+    <div class="bwb-lead-image" style="background-image:url(https://picsum.photos/seed/8b8f7408081fc453/640/360)"></div>
+    <div class="bwb-sigint-card-header">
+      <span class="bwb-sigint-card-alignment non-aligned">ADVERSARIAL SUPPRESSED</span><span class="bwb-sigint-card-alignment non-aligned">NON-ALIGNED LEAD</span>
+      <span class="bwb-sigint-card-asset">Japan Times</span>
+      <span class="bwb-sigint-card-theater">JP</span>
+    </div>
+    <h3 class="bwb-sigint-card-title">At least 11 dead and 19 missing in wildfire in southern Spain</h3>
+    <p class="bwb-sigint-card-excerpt">Eleven dead, 19 missing as Spain wildfire roars through village</p>
+    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg western" style="width:20.00%" data-label="western 1"></div><div class="bwb-alignments-seg non-aligned" style="width:80.00%" data-label="non-aligned 4"></div></div>
+    <div class="bwb-sigint-card-meta">
+      <span class="bwb-sigint-card-time">just now</span>
+      <span>5 assets</span>
+      <span>5 theaters</span>
+    </div>
+  </a>
+  <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-8b8f7408081fc453" data-expand="8b8f7408081fc453" data-count="5">Show 5 assets</button>
+  <div class="bwb-card-sources" id="sources-8b8f7408081fc453" hidden>
+    <ul><li class="bwb-card-source-row non-aligned">
+      <span class="bwb-card-source-alignment non-aligned"></span>
+      <span class="bwb-card-source-name">Japan Times</span>
+      <span class="bwb-card-source-theater">JP</span>
+      <a href="https://www.japantimes.co.jp/news/2026/07/10/world/spain-wildfire-dead-missing/" target="_blank" rel="noopener" aria-label="Open Japan Times source">↗</a>
+    </li><li class="bwb-card-source-row non-aligned">
+      <span class="bwb-card-source-alignment non-aligned"></span>
+      <span class="bwb-card-source-name">Joy Online (Ghana)</span>
+      <span class="bwb-card-source-theater">GH</span>
+      <a href="https://www.myjoyonline.com/at-least-11-dead-and-19-missing-in-wildfire-in-southern-spain/" target="_blank" rel="noopener" aria-label="Open Joy Online (Ghana) source">↗</a>
+    </li><li class="bwb-card-source-row non-aligned">
+      <span class="bwb-card-source-alignment non-aligned"></span>
+      <span class="bwb-card-source-name">Philippine Daily Inquirer</span>
+      <span class="bwb-card-source-theater">PH</span>
+      <a href="https://newsinfo.inquirer.net/2261614/13-dead-8-missing-in-mindanao-landslides" target="_blank" rel="noopener" aria-label="Open Philippine Daily Inquirer source">↗</a>
     </li><li class="bwb-card-source-row western">
       <span class="bwb-card-source-alignment western"></span>
       <span class="bwb-card-source-name">Stuff (New Zealand)</span>
       <span class="bwb-card-source-theater">NZ</span>
-      <a href="https://www.stuff.co.nz/world-news/361005235/vietnam-police-detain-captain-after-speedboat-capsizing-kill" target="_blank" rel="noopener" aria-label="Open Stuff (New Zealand) source">↗</a>
+      <a href="https://www.stuff.co.nz/world-news/361005047/hundreds-firefighters-battle-wildfire-southern-spain-t" target="_blank" rel="noopener" aria-label="Open Stuff (New Zealand) source">↗</a>
     </li><li class="bwb-card-source-row non-aligned">
       <span class="bwb-card-source-alignment non-aligned"></span>
       <span class="bwb-card-source-name">Taipei Times</span>
       <span class="bwb-card-source-theater">TW</span>
-      <a href="https://www.taipeitimes.com/News/front/archives/2026/07/12/2003860605" target="_blank" rel="noopener" aria-label="Open Taipei Times source">↗</a>
+      <a href="https://www.taipeitimes.com/News/world/archives/2026/07/11/2003860589" target="_blank" rel="noopener" aria-label="Open Taipei Times source">↗</a>
     </li></ul>
   </div>
-</article><article class="bwb-sigint-card" data-alignments="" data-filters="non-aligned-absent adversarial-suppressed">
-  <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=d77cee07c01c13e8" aria-label="Read full intercept of: Teen arrested after remains found in search for missing 13-year-old girl">
+</article><article class="bwb-sigint-card" data-alignments="western non-aligned" data-filters="adversarial-suppressed non-aligned-lead">
+  <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=983c332e05666567" aria-label="Read full intercept of: One of Spain's deadliest wildfires has killed at least 11 people, with 19 others missing">
+    <div class="bwb-lead-image" style="background-image:url(https://picsum.photos/seed/983c332e05666567/640/360)"></div>
     <div class="bwb-sigint-card-header">
-      <span class="bwb-sigint-card-alignment western">NON-ALIGNED ABSENT</span><span class="bwb-sigint-card-alignment western">ADVERSARIAL SUPPRESSED</span>
+      <span class="bwb-sigint-card-alignment non-aligned">ADVERSARIAL SUPPRESSED</span><span class="bwb-sigint-card-alignment non-aligned">NON-ALIGNED LEAD</span>
+      <span class="bwb-sigint-card-asset">Club of Mozambique</span>
+      <span class="bwb-sigint-card-theater">MZ</span>
+    </div>
+    <h3 class="bwb-sigint-card-title">One of Spain's deadliest wildfires has killed at least 11 people, with 19 others missing</h3>
+    <p class="bwb-sigint-card-excerpt">One of Spain's deadliest wildfires has killed at least 12 people, with 23 others missing</p>
+    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg western" style="width:25.00%" data-label="western 1"></div><div class="bwb-alignments-seg non-aligned" style="width:75.00%" data-label="non-aligned 3"></div></div>
+    <div class="bwb-sigint-card-meta">
+      <span class="bwb-sigint-card-time">just now</span>
+      <span>4 assets</span>
+      <span>4 theaters</span>
+    </div>
+  </a>
+  <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-983c332e05666567" data-expand="983c332e05666567" data-count="4">Show 4 assets</button>
+  <div class="bwb-card-sources" id="sources-983c332e05666567" hidden>
+    <ul><li class="bwb-card-source-row non-aligned">
+      <span class="bwb-card-source-alignment non-aligned"></span>
+      <span class="bwb-card-source-name">Club of Mozambique</span>
+      <span class="bwb-card-source-theater">MZ</span>
+      <a href="https://clubofmozambique.com/news/twelve-killed-23-missing-in-one-of-spains-deadliest-wildfires/" target="_blank" rel="noopener" aria-label="Open Club of Mozambique source">↗</a>
+    </li><li class="bwb-card-source-row non-aligned">
+      <span class="bwb-card-source-alignment non-aligned"></span>
+      <span class="bwb-card-source-name">Joy Online (Ghana)</span>
+      <span class="bwb-card-source-theater">GH</span>
+      <a href="https://www.myjoyonline.com/spain-battles-to-contain-one-of-its-deadliest-wildfires-as-at-least-12-killed/" target="_blank" rel="noopener" aria-label="Open Joy Online (Ghana) source">↗</a>
+    </li><li class="bwb-card-source-row western">
+      <span class="bwb-card-source-alignment western"></span>
+      <span class="bwb-card-source-name">Stuff (New Zealand)</span>
+      <span class="bwb-card-source-theater">NZ</span>
+      <a href="https://www.stuff.co.nz/world-news/361004773/one-spains-deadliest-wildfires-has-killed-least-11-peo" target="_blank" rel="noopener" aria-label="Open Stuff (New Zealand) source">↗</a>
+    </li><li class="bwb-card-source-row non-aligned">
+      <span class="bwb-card-source-alignment non-aligned"></span>
+      <span class="bwb-card-source-name">The Hindu (India)</span>
+      <span class="bwb-card-source-theater">IN</span>
+      <a href="https://www.thehindu.com/news/international/one-of-spains-deadliest-wildfires-has-killed-at-least-12-people-with-23-others-missing/article71206655.ece" target="_blank" rel="noopener" aria-label="Open The Hindu (India) source">↗</a>
+    </li></ul>
+  </div>
+</article><article class="bwb-sigint-card" data-alignments="western adversarial" data-filters="non-aligned-absent adversarial-heavy">
+  <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=6efc4d76959d2d58" aria-label="Read full intercept of: Iran will respond in kind to attack on its infrastructure: Security official">
+    <div class="bwb-lead-image" style="background-image:url(https://picsum.photos/seed/6efc4d76959d2d58/640/360)"></div>
+    <div class="bwb-sigint-card-header">
+      <span class="bwb-sigint-card-alignment adversarial">NON-ALIGNED ABSENT</span><span class="bwb-sigint-card-alignment adversarial">ADVERSARIAL HEAVY</span>
+      <span class="bwb-sigint-card-asset">IRNA (Iran)</span>
+      <span class="bwb-sigint-card-theater">IR</span>
+    </div>
+    <h3 class="bwb-sigint-card-title">Iran will respond in kind to attack on its infrastructure: Security official</h3>
+    <p class="bwb-sigint-card-excerpt">Iran’s security chief warns any attack on infrastructure will be retaliated</p>
+    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg western" style="width:25.00%" data-label="western 1"></div><div class="bwb-alignments-seg adversarial" style="width:75.00%" data-label="adversarial 3"></div></div>
+    <div class="bwb-sigint-card-meta">
+      <span class="bwb-sigint-card-time">just now</span>
+      <span>4 assets</span>
+      <span>3 theaters</span>
+    </div>
+  </a>
+  <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-6efc4d76959d2d58" data-expand="6efc4d76959d2d58" data-count="4">Show 4 assets</button>
+  <div class="bwb-card-sources" id="sources-6efc4d76959d2d58" hidden>
+    <ul><li class="bwb-card-source-row adversarial">
+      <span class="bwb-card-source-alignment adversarial"></span>
+      <span class="bwb-card-source-name">IRNA (Iran)</span>
+      <span class="bwb-card-source-theater">IR</span>
+      <a href="https://en.irna.ir/news/86205574/Iran-s-security-chief-warns-any-attack-on-infrastructure-will" target="_blank" rel="noopener" aria-label="Open IRNA (Iran) source">↗</a>
+    </li><li class="bwb-card-source-row western">
+      <span class="bwb-card-source-alignment western"></span>
+      <span class="bwb-card-source-name">Middle East Monitor (Palestinian coverage)</span>
+      <span class="bwb-card-source-theater">GB</span>
+      <a href="https://www.middleeastmonitor.com/20260710-iran-security-chief-warns-israel-will-not-be-safe-from-response/" target="_blank" rel="noopener" aria-label="Open Middle East Monitor (Palestinian coverage) source">↗</a>
+    </li><li class="bwb-card-source-row adversarial">
+      <span class="bwb-card-source-alignment adversarial"></span>
+      <span class="bwb-card-source-name">PressTV</span>
+      <span class="bwb-card-source-theater">IR</span>
+      <a href="https://presstv.ir/Detail/2026/07/10/771971/Iran-US-Zoqadr-Trump" target="_blank" rel="noopener" aria-label="Open PressTV source">↗</a>
+    </li><li class="bwb-card-source-row adversarial">
+      <span class="bwb-card-source-alignment adversarial"></span>
+      <span class="bwb-card-source-name">TASS (Russia)</span>
+      <span class="bwb-card-source-theater">RU</span>
+      <a href="https://tass.com/world/2158769" target="_blank" rel="noopener" aria-label="Open TASS (Russia) source">↗</a>
+    </li></ul>
+  </div>
+</article><article class="bwb-sigint-card" data-alignments="non-aligned" data-filters="western-dark adversarial-suppressed non-aligned-lead">
+  <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=b5351104b63c6a90" aria-label="Read full intercept of: JUST IN: APC retains Shettima as Tinubu’s running mate ahead of 2027 election">
+    <div class="bwb-lead-image" style="background-image:url(https://picsum.photos/seed/b5351104b63c6a90/640/360)"></div>
+    <div class="bwb-sigint-card-header">
+      <span class="bwb-sigint-card-alignment non-aligned">WESTERN DARK</span><span class="bwb-sigint-card-alignment non-aligned">ADVERSARIAL SUPPRESSED</span>
+      <span class="bwb-sigint-card-asset">Daily Trust (Nigeria)</span>
+      <span class="bwb-sigint-card-theater">NG</span>
+    </div>
+    <h3 class="bwb-sigint-card-title">JUST IN: APC retains Shettima as Tinubu’s running mate ahead of 2027 election</h3>
+    <p class="bwb-sigint-card-excerpt">2027: Tinubu retains Shettima as running mate</p>
+    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg non-aligned" style="width:100.00%" data-label="non-aligned 6"></div></div>
+    <div class="bwb-sigint-card-meta">
+      <span class="bwb-sigint-card-time">just now</span>
+      <span>4 assets</span>
+      <span>1 theaters</span>
+    </div>
+  </a>
+  <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-b5351104b63c6a90" data-expand="b5351104b63c6a90" data-count="6">Show 6 assets</button>
+  <div class="bwb-card-sources" id="sources-b5351104b63c6a90" hidden>
+    <ul><li class="bwb-card-source-row non-aligned">
+      <span class="bwb-card-source-alignment non-aligned"></span>
+      <span class="bwb-card-source-name">Daily Trust (Nigeria)</span>
+      <span class="bwb-card-source-theater">NG</span>
+      <a href="https://dailytrust.com/breaking-tinubu-retains-shettima-as-2027-running-mate/" target="_blank" rel="noopener" aria-label="Open Daily Trust (Nigeria) source">↗</a>
+    </li><li class="bwb-card-source-row non-aligned">
+      <span class="bwb-card-source-alignment non-aligned"></span>
+      <span class="bwb-card-source-name">Daily Trust (Nigeria)</span>
+      <span class="bwb-card-source-theater">NG</span>
+      <a href="https://dailytrust.com/2027-tinubu-to-run-with-shettima/" target="_blank" rel="noopener" aria-label="Open Daily Trust (Nigeria) source">↗</a>
+    </li><li class="bwb-card-source-row non-aligned">
+      <span class="bwb-card-source-alignment non-aligned"></span>
+      <span class="bwb-card-source-name">Premium Times (Nigeria)</span>
+      <span class="bwb-card-source-theater">NG</span>
+      <a href="https://www.premiumtimesng.com/news/headlines/894409-just-in-apc-retains-shettima-as-tinubus-running-mate-ahead-of-2027-election.html" target="_blank" rel="noopener" aria-label="Open Premium Times (Nigeria) source">↗</a>
+    </li><li class="bwb-card-source-row non-aligned">
+      <span class="bwb-card-source-alignment non-aligned"></span>
+      <span class="bwb-card-source-name">Punch (Nigeria)</span>
+      <span class="bwb-card-source-theater">NG</span>
+      <a href="https://punchng.com/neast-apc-hails-tinubu-for-shettimas-retention-as-running-mate/?utm_source=rss.punchng.com&utm_medium=web" target="_blank" rel="noopener" aria-label="Open Punch (Nigeria) source">↗</a>
+    </li><li class="bwb-card-source-row non-aligned">
+      <span class="bwb-card-source-alignment non-aligned"></span>
+      <span class="bwb-card-source-name">ThisDay (Nigeria)</span>
+      <span class="bwb-card-source-theater">NG</span>
+      <a href="https://www.thisdaylive.com/2026/07/10/apc-unveils-shettima-as-tinubus-running-mate/" target="_blank" rel="noopener" aria-label="Open ThisDay (Nigeria) source">↗</a>
+    </li><li class="bwb-card-source-row non-aligned">
+      <span class="bwb-card-source-alignment non-aligned"></span>
+      <span class="bwb-card-source-name">ThisDay (Nigeria)</span>
+      <span class="bwb-card-source-theater">NG</span>
+      <a href="https://www.thisdaylive.com/2026/07/11/2027-apc-confirms-shettima-as-tinubus-running-mate/" target="_blank" rel="noopener" aria-label="Open ThisDay (Nigeria) source">↗</a>
+    </li></ul>
+  </div>
+</article><article class="bwb-sigint-card" data-alignments="western non-aligned" data-filters="adversarial-suppressed">
+  <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=d77cee07c01c13e8" aria-label="Read full intercept of: Teen arrested after remains found in search for missing 13-year-old girl">
+    <div class="bwb-lead-image" style="background-image:url(https://picsum.photos/seed/d77cee07c01c13e8/640/360)"></div>
+    <div class="bwb-sigint-card-header">
+      <span class="bwb-sigint-card-alignment western">ADVERSARIAL SUPPRESSED</span>
       <span class="bwb-sigint-card-asset">ABC News Australia</span>
       <span class="bwb-sigint-card-theater">AU</span>
     </div>
     <h3 class="bwb-sigint-card-title">Teen arrested after remains found in search for missing 13-year-old girl</h3>
     <p class="bwb-sigint-card-excerpt">Teen boy charged with murder after missing 13-year-old girl found dead in Australia</p>
-    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg western" style="width:85.71%" data-label="western 6"></div></div>
+    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg western" style="width:85.71%" data-label="western 6"></div><div class="bwb-alignments-seg non-aligned" style="width:14.29%" data-label="non-aligned 1"></div></div>
     <div class="bwb-sigint-card-meta">
       <span class="bwb-sigint-card-time">just now</span>
-      <span>7 assets</span>
-      <span>0 theaters</span>
+      <span>4 assets</span>
+      <span>3 theaters</span>
     </div>
   </a>
   <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-d77cee07c01c13e8" data-expand="d77cee07c01c13e8" data-count="7">Show 7 assets</button>
@@ -295,8 +542,50 @@
       <a href="https://www.thehindu.com/news/national/uttar-pradesh/body-of-7-year-old-girl-found-at-under-construction-mall-in-ghaziabad-police-detain-suspects/article71210339.ece" target="_blank" rel="noopener" aria-label="Open The Hindu (India) source">↗</a>
     </li></ul>
   </div>
-</article><article class="bwb-sigint-card" data-alignments="" data-filters="western-dark non-aligned-absent adversarial-heavy">
+</article><article class="bwb-sigint-card" data-alignments="non-aligned adversarial" data-filters="western-dark non-aligned-lead">
+  <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=6b6452126096058d" aria-label="Read full intercept of: Trump threatens to ‘destroy’ Iran over assassination fears">
+    <div class="bwb-lead-image" style="background-image:url(https://picsum.photos/seed/6b6452126096058d/640/360)"></div>
+    <div class="bwb-sigint-card-header">
+      <span class="bwb-sigint-card-alignment non-aligned">WESTERN DARK</span><span class="bwb-sigint-card-alignment non-aligned">NON-ALIGNED LEAD</span>
+      <span class="bwb-sigint-card-asset">Al Jazeera English</span>
+      <span class="bwb-sigint-card-theater">QA</span>
+    </div>
+    <h3 class="bwb-sigint-card-title">Trump threatens to ‘destroy’ Iran over assassination fears</h3>
+    <p class="bwb-sigint-card-excerpt">Trump threatens Iran after Ayatollah Ali Khamenei's funeral saw open calls for his killing</p>
+    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg non-aligned" style="width:75.00%" data-label="non-aligned 3"></div><div class="bwb-alignments-seg adversarial" style="width:25.00%" data-label="adversarial 1"></div></div>
+    <div class="bwb-sigint-card-meta">
+      <span class="bwb-sigint-card-time">just now</span>
+      <span>4 assets</span>
+      <span>4 theaters</span>
+    </div>
+  </a>
+  <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-6b6452126096058d" data-expand="6b6452126096058d" data-count="4">Show 4 assets</button>
+  <div class="bwb-card-sources" id="sources-6b6452126096058d" hidden>
+    <ul><li class="bwb-card-source-row non-aligned">
+      <span class="bwb-card-source-alignment non-aligned"></span>
+      <span class="bwb-card-source-name">Al Jazeera English</span>
+      <span class="bwb-card-source-theater">QA</span>
+      <a href="https://www.aljazeera.com/news/2026/7/11/trump-threatens-iran-after-chants-for-his-death-erupted-at-khamenei-funeral?traffic_source=rss" target="_blank" rel="noopener" aria-label="Open Al Jazeera English source">↗</a>
+    </li><li class="bwb-card-source-row adversarial">
+      <span class="bwb-card-source-alignment adversarial"></span>
+      <span class="bwb-card-source-name">RT (Russia Today)</span>
+      <span class="bwb-card-source-theater">RU</span>
+      <a href="https://www.rt.com/news/642880-trump-iran-threat-1000-missiles/?utm_source=rss&utm_medium=rss&utm_campaign=RSS" target="_blank" rel="noopener" aria-label="Open RT (Russia Today) source">↗</a>
+    </li><li class="bwb-card-source-row non-aligned">
+      <span class="bwb-card-source-alignment non-aligned"></span>
+      <span class="bwb-card-source-name">The Hindu (India)</span>
+      <span class="bwb-card-source-theater">IN</span>
+      <a href="https://www.thehindu.com/news/international/trump-threatens-iran-after-ayatollah-ali-khameneis-funeral-saw-open-calls-for-his-killing/article71209403.ece" target="_blank" rel="noopener" aria-label="Open The Hindu (India) source">↗</a>
+    </li><li class="bwb-card-source-row non-aligned">
+      <span class="bwb-card-source-alignment non-aligned"></span>
+      <span class="bwb-card-source-name">ThisDay (Nigeria)</span>
+      <span class="bwb-card-source-theater">NG</span>
+      <a href="https://www.thisdaylive.com/2026/07/12/trump-threatens-to-completely-decimate-iran-over-assassination-plot/" target="_blank" rel="noopener" aria-label="Open ThisDay (Nigeria) source">↗</a>
+    </li></ul>
+  </div>
+</article><article class="bwb-sigint-card" data-alignments="adversarial" data-filters="western-dark non-aligned-absent adversarial-heavy">
   <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=0a6240317c2d38c6" aria-label="Read full intercept of: IRGC chief vows justice for martyred Leader, says resistance path will endure">
+    <div class="bwb-lead-image" style="background-image:url(https://picsum.photos/seed/0a6240317c2d38c6/640/360)"></div>
     <div class="bwb-sigint-card-header">
       <span class="bwb-sigint-card-alignment adversarial">WESTERN DARK</span><span class="bwb-sigint-card-alignment adversarial">NON-ALIGNED ABSENT</span>
       <span class="bwb-sigint-card-asset">IRNA (Iran)</span>
@@ -307,8 +596,8 @@
     <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg adversarial" style="width:100.00%" data-label="adversarial 7"></div></div>
     <div class="bwb-sigint-card-meta">
       <span class="bwb-sigint-card-time">just now</span>
-      <span>7 assets</span>
-      <span>0 theaters</span>
+      <span>3 assets</span>
+      <span>1 theaters</span>
     </div>
   </a>
   <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-0a6240317c2d38c6" data-expand="0a6240317c2d38c6" data-count="7">Show 7 assets</button>
@@ -350,330 +639,93 @@
       <a href="https://www.tehrantimes.com/news/528005/Martyred-Leader-s-legacy-for-Iran-s-scientific-development" target="_blank" rel="noopener" aria-label="Open Tehran Times source">↗</a>
     </li></ul>
   </div>
-</article><article class="bwb-sigint-card" data-alignments="" data-filters="western-dark non-aligned-absent adversarial-suppressed">
-  <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=b5351104b63c6a90" aria-label="Read full intercept of: JUST IN: APC retains Shettima as Tinubu’s running mate ahead of 2027 election">
+</article><article class="bwb-sigint-card" data-alignments="non-aligned" data-filters="western-dark adversarial-suppressed non-aligned-lead">
+  <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=81a2b2206531f405" aria-label="Read full intercept of: China successfully tests sea-based rocket booster recovery system">
+    <div class="bwb-lead-image" style="background-image:url(https://picsum.photos/seed/81a2b2206531f405/640/360)"></div>
     <div class="bwb-sigint-card-header">
-      <span class="bwb-sigint-card-alignment non_aligned">WESTERN DARK</span><span class="bwb-sigint-card-alignment non_aligned">NON-ALIGNED ABSENT</span>
-      <span class="bwb-sigint-card-asset">Daily Trust (Nigeria)</span>
-      <span class="bwb-sigint-card-theater">NG</span>
+      <span class="bwb-sigint-card-alignment non-aligned">WESTERN DARK</span><span class="bwb-sigint-card-alignment non-aligned">ADVERSARIAL SUPPRESSED</span>
+      <span class="bwb-sigint-card-asset">Dawn (Pakistan)</span>
+      <span class="bwb-sigint-card-theater">PK</span>
     </div>
-    <h3 class="bwb-sigint-card-title">JUST IN: APC retains Shettima as Tinubu’s running mate ahead of 2027 election</h3>
-    <p class="bwb-sigint-card-excerpt">2027: Tinubu retains Shettima as running mate</p>
-    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg other" style="width:100%"></div></div>
+    <h3 class="bwb-sigint-card-title">China successfully tests sea-based rocket booster recovery system</h3>
+    <p class="bwb-sigint-card-excerpt">China successfully tests sea-based rocket booster recovery system</p>
+    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg non-aligned" style="width:100.00%" data-label="non-aligned 3"></div></div>
     <div class="bwb-sigint-card-meta">
       <span class="bwb-sigint-card-time">just now</span>
-      <span>6 assets</span>
-      <span>0 theaters</span>
+      <span>3 assets</span>
+      <span>3 theaters</span>
     </div>
   </a>
-  <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-b5351104b63c6a90" data-expand="b5351104b63c6a90" data-count="6">Show 6 assets</button>
-  <div class="bwb-card-sources" id="sources-b5351104b63c6a90" hidden>
+  <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-81a2b2206531f405" data-expand="81a2b2206531f405" data-count="3">Show 3 assets</button>
+  <div class="bwb-card-sources" id="sources-81a2b2206531f405" hidden>
     <ul><li class="bwb-card-source-row non-aligned">
       <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">Daily Trust (Nigeria)</span>
-      <span class="bwb-card-source-theater">NG</span>
-      <a href="https://dailytrust.com/breaking-tinubu-retains-shettima-as-2027-running-mate/" target="_blank" rel="noopener" aria-label="Open Daily Trust (Nigeria) source">↗</a>
-    </li><li class="bwb-card-source-row non-aligned">
-      <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">Daily Trust (Nigeria)</span>
-      <span class="bwb-card-source-theater">NG</span>
-      <a href="https://dailytrust.com/2027-tinubu-to-run-with-shettima/" target="_blank" rel="noopener" aria-label="Open Daily Trust (Nigeria) source">↗</a>
-    </li><li class="bwb-card-source-row non-aligned">
-      <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">Premium Times (Nigeria)</span>
-      <span class="bwb-card-source-theater">NG</span>
-      <a href="https://www.premiumtimesng.com/news/headlines/894409-just-in-apc-retains-shettima-as-tinubus-running-mate-ahead-of-2027-election.html" target="_blank" rel="noopener" aria-label="Open Premium Times (Nigeria) source">↗</a>
-    </li><li class="bwb-card-source-row non-aligned">
-      <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">Punch (Nigeria)</span>
-      <span class="bwb-card-source-theater">NG</span>
-      <a href="https://punchng.com/neast-apc-hails-tinubu-for-shettimas-retention-as-running-mate/?utm_source=rss.punchng.com&utm_medium=web" target="_blank" rel="noopener" aria-label="Open Punch (Nigeria) source">↗</a>
-    </li><li class="bwb-card-source-row non-aligned">
-      <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">ThisDay (Nigeria)</span>
-      <span class="bwb-card-source-theater">NG</span>
-      <a href="https://www.thisdaylive.com/2026/07/10/apc-unveils-shettima-as-tinubus-running-mate/" target="_blank" rel="noopener" aria-label="Open ThisDay (Nigeria) source">↗</a>
-    </li><li class="bwb-card-source-row non-aligned">
-      <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">ThisDay (Nigeria)</span>
-      <span class="bwb-card-source-theater">NG</span>
-      <a href="https://www.thisdaylive.com/2026/07/11/2027-apc-confirms-shettima-as-tinubus-running-mate/" target="_blank" rel="noopener" aria-label="Open ThisDay (Nigeria) source">↗</a>
-    </li></ul>
-  </div>
-</article><article class="bwb-sigint-card" data-alignments="" data-filters="non-aligned-absent adversarial-suppressed">
-  <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=3fd2e0dfcc4ae73a" aria-label="Read full intercept of: Live: Wallabies aiming to rebound against France in Nations Championship">
-    <div class="bwb-sigint-card-header">
-      <span class="bwb-sigint-card-alignment western">NON-ALIGNED ABSENT</span><span class="bwb-sigint-card-alignment western">ADVERSARIAL SUPPRESSED</span>
-      <span class="bwb-sigint-card-asset">ABC News Australia</span>
-      <span class="bwb-sigint-card-theater">AU</span>
-    </div>
-    <h3 class="bwb-sigint-card-title">Live: Wallabies aiming to rebound against France in Nations Championship</h3>
-    <p class="bwb-sigint-card-excerpt">Wallabies v France — Nations Championship</p>
-    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg western" style="width:83.33%" data-label="western 5"></div></div>
-    <div class="bwb-sigint-card-meta">
-      <span class="bwb-sigint-card-time">just now</span>
-      <span>6 assets</span>
-      <span>0 theaters</span>
-    </div>
-  </a>
-  <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-3fd2e0dfcc4ae73a" data-expand="3fd2e0dfcc4ae73a" data-count="6">Show 6 assets</button>
-  <div class="bwb-card-sources" id="sources-3fd2e0dfcc4ae73a" hidden>
-    <ul><li class="bwb-card-source-row western">
-      <span class="bwb-card-source-alignment western"></span>
-      <span class="bwb-card-source-name">ABC News Australia</span>
-      <span class="bwb-card-source-theater">AU</span>
-      <a href="https://www.abc.net.au/news/2026-07-11/rugby-union-wallabies-france-nations-championship-blog-updates/106905422" target="_blank" rel="noopener" aria-label="Open ABC News Australia source">↗</a>
+      <span class="bwb-card-source-name">Dawn (Pakistan)</span>
+      <span class="bwb-card-source-theater">PK</span>
+      <a href="https://www.dawn.com/news/2014393/china-successfully-tests-sea-based-rocket-booster-recovery-system" target="_blank" rel="noopener" aria-label="Open Dawn (Pakistan) source">↗</a>
     </li><li class="bwb-card-source-row non-aligned">
       <span class="bwb-card-source-alignment non-aligned"></span>
       <span class="bwb-card-source-name">Japan Times</span>
       <span class="bwb-card-source-theater">JP</span>
-      <a href="https://www.japantimes.co.jp/sports/2026/07/12/more-sports/japan-rugby-ireland-loss/" target="_blank" rel="noopener" aria-label="Open Japan Times source">↗</a>
-    </li><li class="bwb-card-source-row western">
-      <span class="bwb-card-source-alignment western"></span>
-      <span class="bwb-card-source-name">Stuff (New Zealand)</span>
-      <span class="bwb-card-source-theater">NZ</span>
-      <a href="https://www.stuff.co.nz/sport/361001696/live-wallabies-v-france-nations-championship" target="_blank" rel="noopener" aria-label="Open Stuff (New Zealand) source">↗</a>
-    </li><li class="bwb-card-source-row western">
-      <span class="bwb-card-source-alignment western"></span>
-      <span class="bwb-card-source-name">Stuff (New Zealand)</span>
-      <span class="bwb-card-source-theater">NZ</span>
-      <a href="https://www.stuff.co.nz/sport/361001718/live-japan-v-ireland-nations-championship" target="_blank" rel="noopener" aria-label="Open Stuff (New Zealand) source">↗</a>
-    </li><li class="bwb-card-source-row western">
-      <span class="bwb-card-source-alignment western"></span>
-      <span class="bwb-card-source-name">Stuff (New Zealand)</span>
-      <span class="bwb-card-source-theater">NZ</span>
-      <a href="https://www.stuff.co.nz/sport/361001723/live-argentina-v-wales-nations-championship" target="_blank" rel="noopener" aria-label="Open Stuff (New Zealand) source">↗</a>
-    </li><li class="bwb-card-source-row western">
-      <span class="bwb-card-source-alignment western"></span>
-      <span class="bwb-card-source-name">Stuff (New Zealand)</span>
-      <span class="bwb-card-source-theater">NZ</span>
-      <a href="https://www.stuff.co.nz/sport/361005029/springboks-withstand-scotland-42-28-nations-championship-thriller" target="_blank" rel="noopener" aria-label="Open Stuff (New Zealand) source">↗</a>
-    </li></ul>
-  </div>
-</article><article class="bwb-sigint-card" data-alignments="" data-filters="non-aligned-absent adversarial-suppressed">
-  <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=8b8f7408081fc453" aria-label="Read full intercept of: At least 11 dead and 19 missing in wildfire in southern Spain">
-    <div class="bwb-sigint-card-header">
-      <span class="bwb-sigint-card-alignment non_aligned">NON-ALIGNED ABSENT</span><span class="bwb-sigint-card-alignment non_aligned">ADVERSARIAL SUPPRESSED</span>
-      <span class="bwb-sigint-card-asset">Japan Times</span>
-      <span class="bwb-sigint-card-theater">JP</span>
-    </div>
-    <h3 class="bwb-sigint-card-title">At least 11 dead and 19 missing in wildfire in southern Spain</h3>
-    <p class="bwb-sigint-card-excerpt">Eleven dead, 19 missing as Spain wildfire roars through village</p>
-    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg western" style="width:20.00%" data-label="western 1"></div></div>
-    <div class="bwb-sigint-card-meta">
-      <span class="bwb-sigint-card-time">just now</span>
-      <span>5 assets</span>
-      <span>0 theaters</span>
-    </div>
-  </a>
-  <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-8b8f7408081fc453" data-expand="8b8f7408081fc453" data-count="5">Show 5 assets</button>
-  <div class="bwb-card-sources" id="sources-8b8f7408081fc453" hidden>
-    <ul><li class="bwb-card-source-row non-aligned">
-      <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">Japan Times</span>
-      <span class="bwb-card-source-theater">JP</span>
-      <a href="https://www.japantimes.co.jp/news/2026/07/10/world/spain-wildfire-dead-missing/" target="_blank" rel="noopener" aria-label="Open Japan Times source">↗</a>
-    </li><li class="bwb-card-source-row non-aligned">
-      <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">Joy Online (Ghana)</span>
-      <span class="bwb-card-source-theater">GH</span>
-      <a href="https://www.myjoyonline.com/at-least-11-dead-and-19-missing-in-wildfire-in-southern-spain/" target="_blank" rel="noopener" aria-label="Open Joy Online (Ghana) source">↗</a>
-    </li><li class="bwb-card-source-row non-aligned">
-      <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">Philippine Daily Inquirer</span>
-      <span class="bwb-card-source-theater">PH</span>
-      <a href="https://newsinfo.inquirer.net/2261614/13-dead-8-missing-in-mindanao-landslides" target="_blank" rel="noopener" aria-label="Open Philippine Daily Inquirer source">↗</a>
-    </li><li class="bwb-card-source-row western">
-      <span class="bwb-card-source-alignment western"></span>
-      <span class="bwb-card-source-name">Stuff (New Zealand)</span>
-      <span class="bwb-card-source-theater">NZ</span>
-      <a href="https://www.stuff.co.nz/world-news/361005047/hundreds-firefighters-battle-wildfire-southern-spain-t" target="_blank" rel="noopener" aria-label="Open Stuff (New Zealand) source">↗</a>
+      <a href="https://www.japantimes.co.jp/news/2026/07/10/world/china-rocket-booster-recovery/" target="_blank" rel="noopener" aria-label="Open Japan Times source">↗</a>
     </li><li class="bwb-card-source-row non-aligned">
       <span class="bwb-card-source-alignment non-aligned"></span>
       <span class="bwb-card-source-name">Taipei Times</span>
       <span class="bwb-card-source-theater">TW</span>
-      <a href="https://www.taipeitimes.com/News/world/archives/2026/07/11/2003860589" target="_blank" rel="noopener" aria-label="Open Taipei Times source">↗</a>
+      <a href="https://www.taipeitimes.com/News/front/archives/2026/07/11/2003860566" target="_blank" rel="noopener" aria-label="Open Taipei Times source">↗</a>
     </li></ul>
   </div>
-</article><article class="bwb-sigint-card" data-alignments="" data-filters="western-dark non-aligned-absent adversarial-suppressed">
-  <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=8ab7ed87059c5707" aria-label="Read full intercept of: Federation Cup Final PREVIEW: Ikorodu City chase history, El-Kanemi eye fourth title">
+</article><article class="bwb-sigint-card" data-alignments="non-aligned" data-filters="western-dark adversarial-suppressed non-aligned-lead">
+  <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=32e54ae9d49b837d" aria-label="Read full intercept of: Fubara Presents N1.85trn 2026 Budget to Rivers Assembly">
+    <div class="bwb-lead-image" style="background-image:url(https://picsum.photos/seed/32e54ae9d49b837d/640/360)"></div>
     <div class="bwb-sigint-card-header">
-      <span class="bwb-sigint-card-alignment non_aligned">WESTERN DARK</span><span class="bwb-sigint-card-alignment non_aligned">NON-ALIGNED ABSENT</span>
+      <span class="bwb-sigint-card-alignment non-aligned">WESTERN DARK</span><span class="bwb-sigint-card-alignment non-aligned">ADVERSARIAL SUPPRESSED</span>
       <span class="bwb-sigint-card-asset">Daily Trust (Nigeria)</span>
       <span class="bwb-sigint-card-theater">NG</span>
     </div>
-    <h3 class="bwb-sigint-card-title">Federation Cup Final PREVIEW: Ikorodu City chase history, El-Kanemi eye fourth title</h3>
-    <p class="bwb-sigint-card-excerpt">President Federation Cup: El-Kanemi Warriors edge Ikorodu City to win fourth title</p>
-    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg other" style="width:100%"></div></div>
+    <h3 class="bwb-sigint-card-title">Fubara Presents N1.85trn 2026 Budget to Rivers Assembly</h3>
+    <p class="bwb-sigint-card-excerpt">Fubara Presents N1.854trn 2026 Appropriation Bill to Rivers Assembly</p>
+    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg non-aligned" style="width:100.00%" data-label="non-aligned 3"></div></div>
     <div class="bwb-sigint-card-meta">
       <span class="bwb-sigint-card-time">just now</span>
-      <span>5 assets</span>
-      <span>0 theaters</span>
+      <span>3 assets</span>
+      <span>1 theaters</span>
     </div>
   </a>
-  <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-8ab7ed87059c5707" data-expand="8ab7ed87059c5707" data-count="5">Show 5 assets</button>
-  <div class="bwb-card-sources" id="sources-8ab7ed87059c5707" hidden>
+  <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-32e54ae9d49b837d" data-expand="32e54ae9d49b837d" data-count="3">Show 3 assets</button>
+  <div class="bwb-card-sources" id="sources-32e54ae9d49b837d" hidden>
     <ul><li class="bwb-card-source-row non-aligned">
       <span class="bwb-card-source-alignment non-aligned"></span>
       <span class="bwb-card-source-name">Daily Trust (Nigeria)</span>
       <span class="bwb-card-source-theater">NG</span>
-      <a href="https://dailytrust.com/nasarawa-amazons-beat-heartland-queens-to-win-2026-president-federation-cup/" target="_blank" rel="noopener" aria-label="Open Daily Trust (Nigeria) source">↗</a>
-    </li><li class="bwb-card-source-row non-aligned">
-      <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">Daily Trust (Nigeria)</span>
-      <span class="bwb-card-source-theater">NG</span>
-      <a href="https://dailytrust.com/el-kanemi-defeat-ikorodu-city-to-win-4th-presidents-federation-cup-title/" target="_blank" rel="noopener" aria-label="Open Daily Trust (Nigeria) source">↗</a>
+      <a href="https://dailytrust.com/fubara-presents-n1-85trn-2026-budget-to-rivers-assembly/" target="_blank" rel="noopener" aria-label="Open Daily Trust (Nigeria) source">↗</a>
     </li><li class="bwb-card-source-row non-aligned">
       <span class="bwb-card-source-alignment non-aligned"></span>
       <span class="bwb-card-source-name">Premium Times (Nigeria)</span>
       <span class="bwb-card-source-theater">NG</span>
-      <a href="https://www.premiumtimesng.com/news/headlines/894529-federation-cup-final-preview-ikorodu-city-chase-history-el-kanemi-eye-fourth-title.html" target="_blank" rel="noopener" aria-label="Open Premium Times (Nigeria) source">↗</a>
-    </li><li class="bwb-card-source-row non-aligned">
-      <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">Premium Times (Nigeria)</span>
-      <span class="bwb-card-source-theater">NG</span>
-      <a href="https://www.premiumtimesng.com/sports/football/894645-president-federation-cup-el-kanemi-warriors-edge-ikorodu-city-to-win-fourth-title.html" target="_blank" rel="noopener" aria-label="Open Premium Times (Nigeria) source">↗</a>
+      <a href="https://www.premiumtimesng.com/regional/south-south-regional/894580-fubara-presents-n1-85-trillion-budget-for-2026-fiscal-year.html" target="_blank" rel="noopener" aria-label="Open Premium Times (Nigeria) source">↗</a>
     </li><li class="bwb-card-source-row non-aligned">
       <span class="bwb-card-source-alignment non-aligned"></span>
       <span class="bwb-card-source-name">ThisDay (Nigeria)</span>
       <span class="bwb-card-source-theater">NG</span>
-      <a href="https://www.thisdaylive.com/2026/07/12/nasarawa-amazons-el-kanemi-warriors-win-2026-federation-cup/" target="_blank" rel="noopener" aria-label="Open ThisDay (Nigeria) source">↗</a>
+      <a href="https://www.thisdaylive.com/2026/07/11/fubara-presents-n1-854trn-2026-appropriation-bill-to-rivers-assembly/" target="_blank" rel="noopener" aria-label="Open ThisDay (Nigeria) source">↗</a>
     </li></ul>
   </div>
-</article><article class="bwb-sigint-card" data-alignments="" data-filters="non-aligned-absent adversarial-suppressed">
-  <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=983c332e05666567" aria-label="Read full intercept of: One of Spain's deadliest wildfires has killed at least 11 people, with 19 others missing">
-    <div class="bwb-sigint-card-header">
-      <span class="bwb-sigint-card-alignment non_aligned">NON-ALIGNED ABSENT</span><span class="bwb-sigint-card-alignment non_aligned">ADVERSARIAL SUPPRESSED</span>
-      <span class="bwb-sigint-card-asset">Club of Mozambique</span>
-      <span class="bwb-sigint-card-theater">MZ</span>
-    </div>
-    <h3 class="bwb-sigint-card-title">One of Spain's deadliest wildfires has killed at least 11 people, with 19 others missing</h3>
-    <p class="bwb-sigint-card-excerpt">One of Spain's deadliest wildfires has killed at least 12 people, with 23 others missing</p>
-    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg western" style="width:25.00%" data-label="western 1"></div></div>
-    <div class="bwb-sigint-card-meta">
-      <span class="bwb-sigint-card-time">just now</span>
-      <span>4 assets</span>
-      <span>0 theaters</span>
-    </div>
-  </a>
-  <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-983c332e05666567" data-expand="983c332e05666567" data-count="4">Show 4 assets</button>
-  <div class="bwb-card-sources" id="sources-983c332e05666567" hidden>
-    <ul><li class="bwb-card-source-row non-aligned">
-      <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">Club of Mozambique</span>
-      <span class="bwb-card-source-theater">MZ</span>
-      <a href="https://clubofmozambique.com/news/twelve-killed-23-missing-in-one-of-spains-deadliest-wildfires/" target="_blank" rel="noopener" aria-label="Open Club of Mozambique source">↗</a>
-    </li><li class="bwb-card-source-row non-aligned">
-      <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">Joy Online (Ghana)</span>
-      <span class="bwb-card-source-theater">GH</span>
-      <a href="https://www.myjoyonline.com/spain-battles-to-contain-one-of-its-deadliest-wildfires-as-at-least-12-killed/" target="_blank" rel="noopener" aria-label="Open Joy Online (Ghana) source">↗</a>
-    </li><li class="bwb-card-source-row western">
-      <span class="bwb-card-source-alignment western"></span>
-      <span class="bwb-card-source-name">Stuff (New Zealand)</span>
-      <span class="bwb-card-source-theater">NZ</span>
-      <a href="https://www.stuff.co.nz/world-news/361004773/one-spains-deadliest-wildfires-has-killed-least-11-peo" target="_blank" rel="noopener" aria-label="Open Stuff (New Zealand) source">↗</a>
-    </li><li class="bwb-card-source-row non-aligned">
-      <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">The Hindu (India)</span>
-      <span class="bwb-card-source-theater">IN</span>
-      <a href="https://www.thehindu.com/news/international/one-of-spains-deadliest-wildfires-has-killed-at-least-12-people-with-23-others-missing/article71206655.ece" target="_blank" rel="noopener" aria-label="Open The Hindu (India) source">↗</a>
-    </li></ul>
-  </div>
-</article><article class="bwb-sigint-card" data-alignments="" data-filters="non-aligned-absent adversarial-heavy">
-  <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=6efc4d76959d2d58" aria-label="Read full intercept of: Iran will respond in kind to attack on its infrastructure: Security official">
-    <div class="bwb-sigint-card-header">
-      <span class="bwb-sigint-card-alignment adversarial">NON-ALIGNED ABSENT</span><span class="bwb-sigint-card-alignment adversarial">ADVERSARIAL HEAVY</span>
-      <span class="bwb-sigint-card-asset">IRNA (Iran)</span>
-      <span class="bwb-sigint-card-theater">IR</span>
-    </div>
-    <h3 class="bwb-sigint-card-title">Iran will respond in kind to attack on its infrastructure: Security official</h3>
-    <p class="bwb-sigint-card-excerpt">Iran’s security chief warns any attack on infrastructure will be retaliated</p>
-    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg western" style="width:25.00%" data-label="western 1"></div><div class="bwb-alignments-seg adversarial" style="width:75.00%" data-label="adversarial 3"></div></div>
-    <div class="bwb-sigint-card-meta">
-      <span class="bwb-sigint-card-time">just now</span>
-      <span>4 assets</span>
-      <span>0 theaters</span>
-    </div>
-  </a>
-  <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-6efc4d76959d2d58" data-expand="6efc4d76959d2d58" data-count="4">Show 4 assets</button>
-  <div class="bwb-card-sources" id="sources-6efc4d76959d2d58" hidden>
-    <ul><li class="bwb-card-source-row adversarial">
-      <span class="bwb-card-source-alignment adversarial"></span>
-      <span class="bwb-card-source-name">IRNA (Iran)</span>
-      <span class="bwb-card-source-theater">IR</span>
-      <a href="https://en.irna.ir/news/86205574/Iran-s-security-chief-warns-any-attack-on-infrastructure-will" target="_blank" rel="noopener" aria-label="Open IRNA (Iran) source">↗</a>
-    </li><li class="bwb-card-source-row western">
-      <span class="bwb-card-source-alignment western"></span>
-      <span class="bwb-card-source-name">Middle East Monitor (Palestinian coverage)</span>
-      <span class="bwb-card-source-theater">GB</span>
-      <a href="https://www.middleeastmonitor.com/20260710-iran-security-chief-warns-israel-will-not-be-safe-from-response/" target="_blank" rel="noopener" aria-label="Open Middle East Monitor (Palestinian coverage) source">↗</a>
-    </li><li class="bwb-card-source-row adversarial">
-      <span class="bwb-card-source-alignment adversarial"></span>
-      <span class="bwb-card-source-name">PressTV</span>
-      <span class="bwb-card-source-theater">IR</span>
-      <a href="https://presstv.ir/Detail/2026/07/10/771971/Iran-US-Zoqadr-Trump" target="_blank" rel="noopener" aria-label="Open PressTV source">↗</a>
-    </li><li class="bwb-card-source-row adversarial">
-      <span class="bwb-card-source-alignment adversarial"></span>
-      <span class="bwb-card-source-name">TASS (Russia)</span>
-      <span class="bwb-card-source-theater">RU</span>
-      <a href="https://tass.com/world/2158769" target="_blank" rel="noopener" aria-label="Open TASS (Russia) source">↗</a>
-    </li></ul>
-  </div>
-</article><article class="bwb-sigint-card" data-alignments="" data-filters="western-dark non-aligned-absent adversarial-heavy">
-  <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=6b6452126096058d" aria-label="Read full intercept of: Trump threatens to ‘destroy’ Iran over assassination fears">
-    <div class="bwb-sigint-card-header">
-      <span class="bwb-sigint-card-alignment non_aligned">WESTERN DARK</span><span class="bwb-sigint-card-alignment non_aligned">NON-ALIGNED ABSENT</span>
-      <span class="bwb-sigint-card-asset">Al Jazeera English</span>
-      <span class="bwb-sigint-card-theater">QA</span>
-    </div>
-    <h3 class="bwb-sigint-card-title">Trump threatens to ‘destroy’ Iran over assassination fears</h3>
-    <p class="bwb-sigint-card-excerpt">Trump threatens Iran after Ayatollah Ali Khamenei's funeral saw open calls for his killing</p>
-    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg adversarial" style="width:25.00%" data-label="adversarial 1"></div></div>
-    <div class="bwb-sigint-card-meta">
-      <span class="bwb-sigint-card-time">just now</span>
-      <span>4 assets</span>
-      <span>0 theaters</span>
-    </div>
-  </a>
-  <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-6b6452126096058d" data-expand="6b6452126096058d" data-count="4">Show 4 assets</button>
-  <div class="bwb-card-sources" id="sources-6b6452126096058d" hidden>
-    <ul><li class="bwb-card-source-row non-aligned">
-      <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">Al Jazeera English</span>
-      <span class="bwb-card-source-theater">QA</span>
-      <a href="https://www.aljazeera.com/news/2026/7/11/trump-threatens-iran-after-chants-for-his-death-erupted-at-khamenei-funeral?traffic_source=rss" target="_blank" rel="noopener" aria-label="Open Al Jazeera English source">↗</a>
-    </li><li class="bwb-card-source-row adversarial">
-      <span class="bwb-card-source-alignment adversarial"></span>
-      <span class="bwb-card-source-name">RT (Russia Today)</span>
-      <span class="bwb-card-source-theater">RU</span>
-      <a href="https://www.rt.com/news/642880-trump-iran-threat-1000-missiles/?utm_source=rss&utm_medium=rss&utm_campaign=RSS" target="_blank" rel="noopener" aria-label="Open RT (Russia Today) source">↗</a>
-    </li><li class="bwb-card-source-row non-aligned">
-      <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">The Hindu (India)</span>
-      <span class="bwb-card-source-theater">IN</span>
-      <a href="https://www.thehindu.com/news/international/trump-threatens-iran-after-ayatollah-ali-khameneis-funeral-saw-open-calls-for-his-killing/article71209403.ece" target="_blank" rel="noopener" aria-label="Open The Hindu (India) source">↗</a>
-    </li><li class="bwb-card-source-row non-aligned">
-      <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">ThisDay (Nigeria)</span>
-      <span class="bwb-card-source-theater">NG</span>
-      <a href="https://www.thisdaylive.com/2026/07/12/trump-threatens-to-completely-decimate-iran-over-assassination-plot/" target="_blank" rel="noopener" aria-label="Open ThisDay (Nigeria) source">↗</a>
-    </li></ul>
-  </div>
-</article><article class="bwb-sigint-card" data-alignments="" data-filters="western-dark non-aligned-absent adversarial-suppressed">
+</article><article class="bwb-sigint-card" data-alignments="non-aligned" data-filters="western-dark adversarial-suppressed non-aligned-lead">
   <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=f349dfa9f774f60c" aria-label="Read full intercept of: SSS releases journalist linked to Sowore from detention">
+    <div class="bwb-lead-image" style="background-image:url(https://picsum.photos/seed/f349dfa9f774f60c/640/360)"></div>
     <div class="bwb-sigint-card-header">
-      <span class="bwb-sigint-card-alignment non_aligned">WESTERN DARK</span><span class="bwb-sigint-card-alignment non_aligned">NON-ALIGNED ABSENT</span>
+      <span class="bwb-sigint-card-alignment non-aligned">WESTERN DARK</span><span class="bwb-sigint-card-alignment non-aligned">ADVERSARIAL SUPPRESSED</span>
       <span class="bwb-sigint-card-asset">Daily Trust (Nigeria)</span>
       <span class="bwb-sigint-card-theater">NG</span>
     </div>
     <h3 class="bwb-sigint-card-title">SSS releases journalist linked to Sowore from detention</h3>
     <p class="bwb-sigint-card-excerpt">DSS releases journalist carrying drone after IPI Nigeria’s intervention</p>
-    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg other" style="width:100%"></div></div>
+    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg non-aligned" style="width:100.00%" data-label="non-aligned 4"></div></div>
     <div class="bwb-sigint-card-meta">
       <span class="bwb-sigint-card-time">just now</span>
-      <span>4 assets</span>
-      <span>0 theaters</span>
+      <span>3 assets</span>
+      <span>1 theaters</span>
     </div>
   </a>
   <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-f349dfa9f774f60c" data-expand="f349dfa9f774f60c" data-count="4">Show 4 assets</button>
@@ -700,39 +752,41 @@
       <a href="https://www.thisdaylive.com/2026/07/12/after-ipi-nigerias-intervention-dss-releases-journalist-arrested-for-possession-of-drone/" target="_blank" rel="noopener" aria-label="Open ThisDay (Nigeria) source">↗</a>
     </li></ul>
   </div>
-</article><article class="bwb-sigint-card" data-alignments="" data-filters="western-dark non-aligned-absent adversarial-suppressed">
-  <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=81a2b2206531f405" aria-label="Read full intercept of: China successfully tests sea-based rocket booster recovery system">
+</article><article class="bwb-sigint-card" data-alignments="non-aligned" data-filters="western-dark adversarial-suppressed non-aligned-lead">
+  <a class="bwb-sigint-card-link" href="/botwavebomba/sigint.html?id=c97a4b41467efc91" aria-label="Read full intercept of: Apple sues OpenAI for trade secret theft in pivotal case">
+    <div class="bwb-lead-image" style="background-image:url(https://picsum.photos/seed/c97a4b41467efc91/640/360)"></div>
     <div class="bwb-sigint-card-header">
-      <span class="bwb-sigint-card-alignment non_aligned">WESTERN DARK</span><span class="bwb-sigint-card-alignment non_aligned">NON-ALIGNED ABSENT</span>
-      <span class="bwb-sigint-card-asset">Dawn (Pakistan)</span>
-      <span class="bwb-sigint-card-theater">PK</span>
+      <span class="bwb-sigint-card-alignment non-aligned">WESTERN DARK</span><span class="bwb-sigint-card-alignment non-aligned">ADVERSARIAL SUPPRESSED</span>
+      <span class="bwb-sigint-card-asset">Japan Times</span>
+      <span class="bwb-sigint-card-theater">JP</span>
     </div>
-    <h3 class="bwb-sigint-card-title">China successfully tests sea-based rocket booster recovery system</h3>
-    <p class="bwb-sigint-card-excerpt">China successfully tests sea-based rocket booster recovery system</p>
-    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg other" style="width:100%"></div></div>
+    <h3 class="bwb-sigint-card-title">Apple sues OpenAI for trade secret theft in pivotal case</h3>
+    <p class="bwb-sigint-card-excerpt">Apple accuses OpenAI 
+of stealing trade secrets</p>
+    <div class="bwb-alignments-bar" aria-label="Alignment mix"><div class="bwb-alignments-seg non-aligned" style="width:100.00%" data-label="non-aligned 3"></div></div>
     <div class="bwb-sigint-card-meta">
       <span class="bwb-sigint-card-time">just now</span>
       <span>3 assets</span>
-      <span>0 theaters</span>
+      <span>3 theaters</span>
     </div>
   </a>
-  <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-81a2b2206531f405" data-expand="81a2b2206531f405" data-count="3">Show 3 assets</button>
-  <div class="bwb-card-sources" id="sources-81a2b2206531f405" hidden>
+  <button class="bwb-card-expand" type="button" aria-expanded="false" aria-controls="sources-c97a4b41467efc91" data-expand="c97a4b41467efc91" data-count="3">Show 3 assets</button>
+  <div class="bwb-card-sources" id="sources-c97a4b41467efc91" hidden>
     <ul><li class="bwb-card-source-row non-aligned">
-      <span class="bwb-card-source-alignment non-aligned"></span>
-      <span class="bwb-card-source-name">Dawn (Pakistan)</span>
-      <span class="bwb-card-source-theater">PK</span>
-      <a href="https://www.dawn.com/news/2014393/china-successfully-tests-sea-based-rocket-booster-recovery-system" target="_blank" rel="noopener" aria-label="Open Dawn (Pakistan) source">↗</a>
-    </li><li class="bwb-card-source-row non-aligned">
       <span class="bwb-card-source-alignment non-aligned"></span>
       <span class="bwb-card-source-name">Japan Times</span>
       <span class="bwb-card-source-theater">JP</span>
-      <a href="https://www.japantimes.co.jp/news/2026/07/10/world/china-rocket-booster-recovery/" target="_blank" rel="noopener" aria-label="Open Japan Times source">↗</a>
+      <a href="https://www.japantimes.co.jp/business/2026/07/11/tech/apple-sues-openai-secret-theft/" target="_blank" rel="noopener" aria-label="Open Japan Times source">↗</a>
+    </li><li class="bwb-card-source-row non-aligned">
+      <span class="bwb-card-source-alignment non-aligned"></span>
+      <span class="bwb-card-source-name">Rappler (Philippines)</span>
+      <span class="bwb-card-source-theater">PH</span>
+      <a href="https://www.rappler.com/technology/apple-sues-openai-former-employees-trade-secrets-theft/" target="_blank" rel="noopener" aria-label="Open Rappler (Philippines) source">↗</a>
     </li><li class="bwb-card-source-row non-aligned">
       <span class="bwb-card-source-alignment non-aligned"></span>
       <span class="bwb-card-source-name">Taipei Times</span>
       <span class="bwb-card-source-theater">TW</span>
-      <a href="https://www.taipeitimes.com/News/front/archives/2026/07/11/2003860566" target="_blank" rel="noopener" aria-label="Open Taipei Times source">↗</a>
+      <a href="https://www.taipeitimes.com/News/biz/archives/2026/07/12/2003860593" target="_blank" rel="noopener" aria-label="Open Taipei Times source">↗</a>
     </li></ul>
   </div>
 </article></div>
@@ -741,15 +795,54 @@
 
   <footer class="bwb-site-footer" role="contentinfo">
     <div class="bwb-footer-inner">
-      <div class="bwb-footer-brand">BOTWAVEBOMBA</div>
-      <nav aria-label="Footer">
-        <a href="/botwavebomba/sitrep.html">SITREP</a>
-        <a href="/botwavebomba/tradecraft.html">TRADECRAFT</a>
-        <a href="/botwavebomba/asset-registry.html">ASSET REGISTRY</a>
-        <a href="/botwavebomba/errata.html">ERRATA</a>
-        <a href="/botwavebomba/pro.html">PRO</a>
-      </nav>
-      <p class="bwb-footer-tagline">Not Left/Right. Who Owns The Story.</p>
+      <div class="bwb-footer-col bwb-footer-col-brand">
+        <div class="bwb-footer-wordmark">BOTWAVE<span>BOMBA</span></div>
+        <p class="bwb-footer-tagline">Not Left/Right.<br>Who Owns The Story.</p>
+        <p class="bwb-footer-meta">Built 2026-07-14 · Build 260714162947<br>31 intercepts · 0 funders · 16 theaters</p>
+      </div>
+      <div class="bwb-footer-col">
+        <h4 class="bwb-footer-h">SECTIONS</h4>
+        <ul>
+          <li><a href="/botwavebomba/">PORTADA</a></li>
+          <li><a href="/botwavebomba/black-site.html">BLACK SITE</a></li>
+          <li><a href="/botwavebomba/radar.html">RADAR</a></li>
+          <li><a href="/botwavebomba/refraction.html">REFRACTION</a></li>
+          <li><a href="/botwavebomba/spool.html">SPOOL</a></li>
+          <li><a href="/botwavebomba/numbers-station.html">NUMBERS STATION</a></li>
+        </ul>
+      </div>
+      <div class="bwb-footer-col">
+        <h4 class="bwb-footer-h">REGISTRIES</h4>
+        <ul>
+          <li><a href="/botwavebomba/asset-registry.html">ASSET REGISTRY</a></li>
+          <li><a href="/botwavebomba/asset-transparency.html">ASSET TRANSPARENCY</a></li>
+          <li><a href="/botwavebomba/tradecraft.html">TRADECRAFT</a></li>
+          <li><a href="/botwavebomba/sitrep.html">SITREP</a></li>
+          <li><a href="/botwavebomba/dead-drop.html">DEAD DROP</a></li>
+        </ul>
+      </div>
+      <div class="bwb-footer-col">
+        <h4 class="bwb-footer-h">METHODS</h4>
+        <ul>
+          <li><a href="/botwavebomba/methodology.html">METHODOLOGY</a></li>
+          <li><a href="/botwavebomba/errata.html">ERRATA</a></li>
+          <li><a href="/botwavebomba/pro.html">PRO</a></li>
+          <li><a href="/sitemap.xml">SITEMAP</a></li>
+        </ul>
+      </div>
+      <div class="bwb-footer-col bwb-footer-col-contact">
+        <h4 class="bwb-footer-h">CONTACT</h4>
+        <ul>
+          <li><a href="mailto:al@botwave.app">al@botwave.app</a></li>
+          <li><a href="mailto:botwave1904@gmail.com">botwave1904@gmail.com</a></li>
+          <li><a href="tel:+17608259781">+1 760 825 9781</a></li>
+        </ul>
+        <p class="bwb-footer-attribution">Made on Fedora · Built with bun · Hosted on GitHub Pages</p>
+      </div>
+    </div>
+    <div class="bwb-footer-bar">
+      <span>© 2026 BotwaveBomba</span>
+      <span>Every story is a function of who paid for it. We make the payer visible.</span>
     </div>
   </footer>
 
