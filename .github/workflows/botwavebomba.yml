@@ -66,17 +66,21 @@ jobs:
 
       - name: Verify build output
         run: |
-          echo "=== Build artifacts ==="
+          echo "=== Generated files ==="
           ls -la *.html | wc -l
-          echo "=== Checking required pages ==="
-          for page in index.html blindspot.html heatmap.html timeline.html for-you.html newsletter.html sources.html methodology.html brief.html corruption.html pro.html corrections.html offline.html 404.html; do
-            if [ -f "$page" ]; then
-              echo "✅ $page exists ($(wc -c < "$page") bytes)"
-            else
-              echo "❌ $page MISSING"
-              exit 1
-            fi
-          done
+          test -f index.html || (echo "index.html missing!" && exit 1)
+          test -f black-site.html || (echo "black-site.html missing!" && exit 1)
+          test -f radar.html || (echo "radar.html missing!" && exit 1)
+          test -f spool.html || (echo "spool.html missing!" && exit 1)
+          test -f dead-drop.html || (echo "dead-drop.html missing!" && exit 1)
+          test -f numbers-station.html || (echo "numbers-station.html missing!" && exit 1)
+          test -f asset-registry.html || (echo "asset-registry.html missing!" && exit 1)
+          test -f tradecraft.html || (echo "tradecraft.html missing!" && exit 1)
+          test -f sigint.html || (echo "sigint.html missing!" && exit 1)
+          test -f sports.html || (echo "sports.html missing!" && exit 1)
+          test -f tech.html || (echo "tech.html missing!" && exit 1)
+          test -f health.html || (echo "health.html missing!" && exit 1)
+          test -f science.html || (echo "science.html missing!" && exit 1)
 
       - name: Size budget check
         run: |
