@@ -156,23 +156,6 @@ jobs:
           # Fails on moderate+ vulnerabilities
 
   # ──────────────────────────────────────────────────────────────
-  # DEPLOY TO GITHUB PAGES
-  # ──────────────────────────────────────────────────────────────
-  deploy:
-    name: Deploy to GitHub Pages
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    needs: [build, audit]
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-  # ──────────────────────────────────────────────────────────────
   # RELEASE DRAFT (on tag push)
   # ──────────────────────────────────────────────────────────────
   release-draft:
