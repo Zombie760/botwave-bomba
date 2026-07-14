@@ -14,6 +14,7 @@ import {
   resolveOwnershipForSource,
   getOwnership,
   getSigintPackages,
+  extractDomain,
 } from "./lib/data.ts";
 import {
   SECTIONS,
@@ -43,15 +44,17 @@ function getSiteCounts(): { stories: number; funders: number; theaters: number }
   const stories = getSigintPackages();
   const funderSet = new Set<string>();
   const theaterSet = new Set<string>();
-  const ownership = getOwnershipByDomain();
+  // Use the real ownership registry (api/ownership.json) — not money-trail.json,
+  // which doesn't exist. The funder is the parent_company on each entry.
+  const ownership = getOwnership();
+  const seenDomains = new Set<string>();
   for (const s of stories) {
     for (const src of s.sources || []) {
-      const key = (src.url || "")
-        .replace(/^https?:\/\//, "")
-        .replace(/^www\./, "")
-        .split("/")[0]
-        .toLowerCase();
-      const owner = ownership[key];
+      const rawDomain = extractDomain(src.url || "");
+      if (!rawDomain) continue;
+      if (seenDomains.has(rawDomain)) continue;
+      seenDomains.add(rawDomain);
+      const owner = ownership[rawDomain];
       if (owner?.parent_company) funderSet.add(owner.parent_company);
       if (src.country) theaterSet.add(src.country);
     }
@@ -557,6 +560,16 @@ function renderRefractionPage(story: Story, allStories: Story[]): string {
   const sources = story.sources || [];
   const totalSources = sources.length;
 
+  // Dedupe sources by URL domain — same outlet appears N times across the cluster
+  const seenDomains = new Set<string>();
+  const dedupedSources: typeof sources = [];
+  for (const src of sources) {
+    const domain = extractDomain(src.url || "") || src.name || "?";
+    if (seenDomains.has(domain)) continue;
+    seenDomains.add(domain);
+    dedupedSources.push(src);
+  }
+
   // Group sources by bloc
   const byBloc: Record<
     string,
@@ -567,12 +580,14 @@ function renderRefractionPage(story: Story, allStories: Story[]): string {
     adversarial: [],
     other: [],
   };
-  for (const src of sources) {
+  for (const src of dedupedSources) {
     const bloc = normBloc(src.bloc);
     const own = resolveOwnershipForSource(src.url || "");
     byBloc[bloc] = byBloc[bloc] || [];
     byBloc[bloc].push({ source: src, ownership: own });
   }
+  // Use deduped count for column percentages
+  const dedupedTotal = dedupedSources.length;
 
   // Money trail summary: count sources by parent company
   const parentCounts: Record<
@@ -630,7 +645,7 @@ function renderRefractionPage(story: Story, allStories: Story[]): string {
         </div>
       </section>`;
     }
-    const pct = Math.round((entries.length / totalSources) * 100);
+    const pct = dedupedTotal > 0 ? Math.round((entries.length / dedupedTotal) * 100) : 0;
     const cards = entries
       .map(({ source, ownership }) => {
         const parent =
@@ -641,20 +656,24 @@ function renderRefractionPage(story: Story, allStories: Story[]): string {
         const motive = ownership?.motive || "Owner/motive unverified in registry.";
         const evidenceUrl = ownership?.evidence_url || null;
         const evidenceLink = evidenceUrl
-          ? `<a class="bwb-evidence-link" href="${escapeHtml(evidenceUrl)}" rel="noopener" target="_blank">${escapeHtml(evidenceUrl.length > 60 ? evidenceUrl.slice(0, 60) + "…" : evidenceUrl)} ↗</a>`
-          : `<span class="bwb-evidence-link bwb-evidence-link--unverified">No evidence URL on file</span>`;
+          ? `<a class="bwb-refraction-evidence-link" href="${escapeHtml(evidenceUrl)}" rel="noopener" target="_blank">${escapeHtml(evidenceUrl.length > 60 ? evidenceUrl.slice(0, 60) + "…" : evidenceUrl)} ↗</a>`
+          : `<span class="bwb-refraction-evidence-link bwb-refraction-evidence-link--unverified">No evidence URL on file</span>`;
+        const domain = extractDomain(source.url || "") || "?";
         return `<article class="bwb-refraction-source">
-          <header>
-            <strong>${escapeHtml(source.name || "Unknown")}</strong>
-            <span class="bwb-refraction-source-country">${escapeHtml(source.country || "??")}</span>
+          <header class="bwb-refraction-source-head">
+            <div class="bwb-refraction-source-id">
+              <strong class="bwb-refraction-source-name">${escapeHtml(source.name || "Unknown")}</strong>
+              <span class="bwb-refraction-source-country">${escapeHtml(source.country || "??")}</span>
+            </div>
+            <a class="bwb-refraction-source-domain" href="${escapeHtml(source.url || "#")}" rel="noopener" target="_blank">${escapeHtml(domain)} ↗</a>
           </header>
-          <p class="bwb-refraction-funder">
-            <span class="bwb-refraction-funder-label">FUNDER</span>
+          <div class="bwb-refraction-funder">
+            <span class="bwb-refraction-funder-label">FUNDED BY</span>
             <span class="bwb-refraction-funder-name">${escapeHtml(parent)}</span>
-            <span class="bwb-refraction-funder-type">${escapeHtml(parentType)}</span>
-          </p>
-          <p class="bwb-refraction-motive">${escapeHtml(motive)}</p>
-          <p class="bwb-refraction-evidence">${evidenceLink}</p>
+            <span class="bwb-refraction-funder-type bwb-refraction-funder-type--${escapeHtml(parentType)}">${escapeHtml(parentType.toUpperCase())}</span>
+          </div>
+          <blockquote class="bwb-refraction-motive">${escapeHtml(motive)}</blockquote>
+          <footer class="bwb-refraction-evidence">${evidenceLink}</footer>
         </article>`;
       })
       .join("");
@@ -699,11 +718,30 @@ function renderRefractionPage(story: Story, allStories: Story[]): string {
       </aside>`
     : "";
 
-  // Gaps callout
+  // Gaps callout — punchy layout
+  const representedBlocs = Object.values(byBloc).filter((b) => b.length);
+  const representedCount = representedBlocs.length;
   const gapsCallout = silentBlocs.length
     ? `<aside class="bwb-gaps-callout" aria-label="Coverage gaps">
-        <span class="bwb-gaps-callout-kicker">BLIND SPOTS</span>
-        <p>${silentBlocs.map((b) => blocLabel[b]).join(", ")} bloc${silentBlocs.length > 1 ? "s are" : " is"} silent on this story. ${totalSources} named source${totalSources === 1 ? "" : "s"} total — ${Object.values(byBloc).filter((b) => b.length).length} bloc${Object.values(byBloc).filter((b) => b.length).length === 1 ? "" : "s"} represented.</p>
+        <div class="bwb-gaps-callout-head">
+          <span class="bwb-gaps-callout-kicker">BLIND SPOTS</span>
+          <span class="bwb-gaps-callout-count">${silentBlocs.length} OF 3 BLOCS</span>
+        </div>
+        <p class="bwb-gaps-callout-lede">${silentBlocs.map((b) => blocLabel[b]).join(", ")} ${silentBlocs.length > 1 ? "outlets" : "outlet"} <strong>did not cover this story</strong> in the registry.</p>
+        <div class="bwb-gaps-callout-stats">
+          <div class="bwb-gaps-stat">
+            <span class="bwb-gaps-stat-num">${totalSources}</span>
+            <span class="bwb-gaps-stat-label">named sources</span>
+          </div>
+          <div class="bwb-gaps-stat">
+            <span class="bwb-gaps-stat-num">${dedupedTotal}</span>
+            <span class="bwb-gaps-stat-label">unique outlets</span>
+          </div>
+          <div class="bwb-gaps-stat">
+            <span class="bwb-gaps-stat-num">${representedCount}/3</span>
+            <span class="bwb-gaps-stat-label">blocs represented</span>
+          </div>
+        </div>
       </aside>`
     : "";
 
@@ -745,33 +783,54 @@ function renderRefractionPage(story: Story, allStories: Story[]): string {
 
   ${gapsCallout}
 
-  <section class="bwb-refraction-context" aria-label="Why this matters">
-    <h2>WHY REFRACTION</h2>
-    <p>The same story refracts through different ownership. The <strong>frame</strong> you see is a function of the <strong>funder</strong> behind it. BotwaveBomba surfaces the parent, the motive, and the evidence — so you can read the refraction for yourself.</p>
-    <p>Compare this refraction against the unfiltered coverage on the <a href="${sectionUrl("radar")}">RADAR</a>, the <a href="${sectionUrl("black-site")}">BLACK SITE</a> index, or browse the <a href="${sectionUrl("assets")}">asset registry</a>.</p>
-  </section>
-
   <section class="bwb-refraction-others" aria-label="More refractions">
-    <h2>OTHER REFRACTIONS</h2>
-    <ul class="bwb-refraction-others-list">
+    <header class="bwb-refraction-others-head">
+      <h2>OTHER REFRACTIONS</h2>
+      <p>Three more stories the registry follows end-to-end, with the money trail up front.</p>
+    </header>
+    <div class="bwb-refraction-others-grid">
       ${allStories
         .filter((s) => s.id !== story.id && (s.sources?.length || 0) >= 3)
-        .slice(0, 8)
+        .slice(0, 3)
         .map((s) => {
+          // Build money-trail preview: top 3 funders for this story
           const sb = s.sources || [];
+          const parents: Record<string, number> = {};
+          for (const src of sb) {
+            const own = resolveOwnershipForSource(src.url || "");
+            if (!own) continue;
+            const key = own.parent_company || own.owner || "Independent";
+            parents[key] = (parents[key] || 0) + 1;
+          }
+          const topFunder = Object.entries(parents)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 3);
           const sp = s.alignmentSpread || {};
           const st = Object.values(sp).reduce((a, b) => a + b, 0) || 1;
           const tline = Object.entries(sp)
             .sort((a, b) => b[1] - a[1])
             .map(([k, v]) => `${blocLabel[k] || k} ${Math.round((v / st) * 100)}%`)
             .join(" · ");
-          return `<li><a href="${pageUrl("refraction")}?id=${s.id}">
-            <strong>${escapeHtml((s.topHeadlines || [])[0] || "Untitled")}</strong>
-            <span>${sb.length} sources · ${escapeHtml(tline)}</span>
-          </a></li>`;
+          return `<a class="bwb-refraction-other-card" href="${pageUrl("refraction")}?id=${s.id}">
+            <span class="bwb-refraction-other-kicker">REFRACTION</span>
+            <h3>${escapeHtml((s.topHeadlines || [])[0] || "Untitled")}</h3>
+            <p class="bwb-refraction-other-summary">${escapeHtml((s.topHeadlines || [])[1] || "")}</p>
+            <div class="bwb-refraction-other-trail">
+              <span class="bwb-refraction-other-trail-label">MONEY TRAIL</span>
+              <ul>
+                ${topFunder
+                  .map(
+                    ([p, n]) =>
+                      `<li><span class="bwb-refraction-other-trail-name">${escapeHtml(p)}</span><span class="bwb-refraction-other-trail-count">${n}</span></li>`
+                  )
+                  .join("")}
+              </ul>
+            </div>
+            <footer class="bwb-refraction-other-meta">${sb.length} sources · ${escapeHtml(tline)}</footer>
+          </a>`;
         })
         .join("")}
-    </ul>
+    </div>
   </section>
   `;
 
