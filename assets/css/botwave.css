@@ -3131,3 +3131,179 @@ flex-direction: column;
   line-height: 1.5;
 }
 
+/* === The Alchemy of Impunity audit (Kyle Jimenez, 2026-07-14) === */
+
+.bwb-intel-audit {
+  background: linear-gradient(180deg, rgba(196, 48, 43, 0.04) 0%, rgba(0,0,0,0) 100%);
+  border-top: 2px solid #c4302b;
+  border-bottom: 2px solid #c4302b;
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-8);
+}
+
+.bwb-intel-audit h2 {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: var(--fs-2xl, 2rem);
+  color: #f4f5f7;
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--space-3) 0;
+}
+
+.bwb-intel-audit h3 {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: var(--fs-lg, 1.2rem);
+  color: #E86A3C;
+  margin: var(--space-6) 0 var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border, #2a2a2a);
+  padding-bottom: var(--space-2);
+}
+
+.bwb-intel-audit-dek {
+  font-size: var(--fs-md, 1rem);
+  color: var(--color-text-muted, #b5b8bf);
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+  font-style: italic;
+}
+
+.bwb-intel-audit-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-3);
+  margin: var(--space-6) 0;
+  padding: var(--space-4);
+  background: var(--color-bg-inset, #0e1014);
+  border-left: 4px solid #c4302b;
+  border-radius: 2px;
+}
+
+.bwb-intel-audit-stats > div {
+  text-align: center;
+  border-right: 1px solid var(--color-border, #2a2a2a);
+  padding: 0 var(--space-2);
+}
+
+.bwb-intel-audit-stats > div:last-child {
+  border-right: none;
+}
+
+.bwb-intel-audit-stats strong {
+  display: block;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: var(--fs-xl, 1.4rem);
+  color: #c4302b;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: var(--space-1);
+}
+
+.bwb-intel-audit-stats span {
+  display: block;
+  font-family: var(--font-mono, monospace);
+  font-size: var(--fs-xs, 0.7rem);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted, #8a8e96);
+  line-height: 1.3;
+}
+
+.bwb-intel-audit-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-4) 0 var(--space-6) 0;
+  font-size: var(--fs-sm, 0.85rem);
+  font-family: var(--font-mono, monospace);
+  background: var(--color-bg-elevated, #1a1d23);
+  border: 1px solid var(--color-border, #2a2a2a);
+}
+
+.bwb-intel-audit-table thead th {
+  background: var(--color-bg-inset, #0e1014);
+  color: var(--color-accent, #E86A3C);
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  padding: var(--space-2) var(--space-3);
+  text-align: left;
+  border-bottom: 2px solid #c4302b;
+}
+
+.bwb-intel-audit-table tbody td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border, #2a2a2a);
+  color: var(--color-text, #d4d6da);
+}
+
+.bwb-intel-audit-table tbody tr:hover td {
+  background: rgba(196, 48, 43, 0.05);
+}
+
+.bwb-intel-audit-table .bwb-intel-audit-total td {
+  background: rgba(196, 48, 43, 0.08);
+  border-top: 2px solid #c4302b;
+  color: #f4f5f7;
+  font-weight: 700;
+}
+
+.bwb-intel-audit-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-3) 0 var(--space-5) 0;
+}
+
+.bwb-intel-audit-list li {
+  position: relative;
+  padding-left: var(--space-5);
+  margin-bottom: var(--space-2);
+  font-size: var(--fs-sm, 0.9rem);
+  line-height: 1.6;
+  color: var(--color-text, #d4d6da);
+}
+
+.bwb-intel-audit-list li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #c4302b;
+  font-weight: 700;
+}
+
+.bwb-intel-audit-list strong {
+  color: var(--color-text-strong, #f4f5f7);
+}
+
+.bwb-intel-audit-foot {
+  margin-top: var(--space-6);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-bg-inset, #0e1014);
+  border-left: 3px solid #c4302b;
+  font-size: var(--fs-sm, 0.9rem);
+  color: var(--color-text-muted, #b5b8bf);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.bwb-intel-audit-source {
+  font-family: var(--font-mono, monospace);
+  font-size: var(--fs-xs, 0.75rem);
+  color: var(--color-text-muted, #8a8e96);
+  margin-top: var(--space-3);
+}
+
+.bwb-intel-audit-source code {
+  background: var(--color-bg-inset, #0e1014);
+  padding: 1px 4px;
+  border-radius: 2px;
+  color: var(--color-accent, #E86A3C);
+  font-size: 0.7rem;
+}
+
+@media (max-width: 600px) {
+  .bwb-intel-audit-stats { grid-template-columns: repeat(2, 1fr); }
+  .bwb-intel-audit-table { font-size: 0.75rem; }
+  .bwb-intel-audit-table thead th,
+  .bwb-intel-audit-table tbody td { padding: 4px 6px; }
+}
+
