@@ -142,17 +142,12 @@ function readJson<T>(filePath: string, fallback?: T): T {
 function normalizePackage(raw: any): SigintPackage {
   const sources: Asset[] = (raw.sources || []).map((s: any) => ({
     ...s,
-    alignment: (s.alignment || s.bloc || "other")
-      .toString()
-      .toLowerCase()
-      .replace(/_/g, "-"),
+    alignment: (s.alignment || s.bloc || "other").toString().toLowerCase().replace(/_/g, "-"),
     bloc: s.bloc || s.alignment,
   }));
 
   // Derive theaters from sources (unique country set) when countries[] is missing or sparse.
-  const fromSources = Array.from(
-    new Set(sources.map((s) => s.country).filter(Boolean))
-  );
+  const fromSources = Array.from(new Set(sources.map((s) => s.country).filter(Boolean)));
   const theaters: string[] =
     raw.theaters && raw.theaters.length
       ? raw.theaters

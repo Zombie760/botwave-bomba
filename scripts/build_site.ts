@@ -33,7 +33,9 @@ const ROOT = `${import.meta.dir}/..`;
 // Build-time constants — used in chrome() utility bar and footer
 const BUILD_GENERATED_AT = new Date().toISOString();
 const BUILD_DATE_LABEL = new Date().toISOString().slice(0, 10);
-const BUILD_HASH = (BUILD_GENERATED_AT.replace(/[^0-9]/g, "").slice(2, 14)).toUpperCase();
+const BUILD_HASH = BUILD_GENERATED_AT.replace(/[^0-9]/g, "")
+  .slice(2, 14)
+  .toUpperCase();
 
 let _siteCounts: { stories: number; funders: number; theaters: number } | null = null;
 function getSiteCounts(): { stories: number; funders: number; theaters: number } {
@@ -44,7 +46,11 @@ function getSiteCounts(): { stories: number; funders: number; theaters: number }
   const ownership = getOwnershipByDomain();
   for (const s of stories) {
     for (const src of s.sources || []) {
-      const key = (src.url || "").replace(/^https?:\/\//, "").replace(/^www\./, "").split("/")[0].toLowerCase();
+      const key = (src.url || "")
+        .replace(/^https?:\/\//, "")
+        .replace(/^www\./, "")
+        .split("/")[0]
+        .toLowerCase();
       const owner = ownership[key];
       if (owner?.parent_company) funderSet.add(owner.parent_company);
       if (src.country) theaterSet.add(src.country);
@@ -552,7 +558,10 @@ function renderRefractionPage(story: Story, allStories: Story[]): string {
   const totalSources = sources.length;
 
   // Group sources by bloc
-  const byBloc: Record<string, { source: any; ownership: ReturnType<typeof resolveOwnershipForSource> }[]> = {
+  const byBloc: Record<
+    string,
+    { source: any; ownership: ReturnType<typeof resolveOwnershipForSource> }[]
+  > = {
     western: [],
     "non-aligned": [],
     adversarial: [],
@@ -566,7 +575,10 @@ function renderRefractionPage(story: Story, allStories: Story[]): string {
   }
 
   // Money trail summary: count sources by parent company
-  const parentCounts: Record<string, { count: number; type: string; motive: string; evidence: string; name: string }> = {};
+  const parentCounts: Record<
+    string,
+    { count: number; type: string; motive: string; evidence: string; name: string }
+  > = {};
   for (const bloc of Object.keys(byBloc)) {
     for (const { source, ownership } of byBloc[bloc]) {
       if (!ownership) continue;
@@ -621,7 +633,10 @@ function renderRefractionPage(story: Story, allStories: Story[]): string {
     const pct = Math.round((entries.length / totalSources) * 100);
     const cards = entries
       .map(({ source, ownership }) => {
-        const parent = ownership?.parent_company || ownership?.owner || "Independent (no controlling owner in registry)";
+        const parent =
+          ownership?.parent_company ||
+          ownership?.owner ||
+          "Independent (no controlling owner in registry)";
         const parentType = ownership?.owner_type || "unverified";
         const motive = ownership?.motive || "Owner/motive unverified in registry.";
         const evidenceUrl = ownership?.evidence_url || null;
@@ -765,7 +780,10 @@ function renderRefractionPage(story: Story, allStories: Story[]): string {
   </div></div>`;
 }
 
-function renderFilters(stories: Story[], activeFilter = "all"): { html: string; counts: Record<string, number> } {
+function renderFilters(
+  stories: Story[],
+  activeFilter = "all"
+): { html: string; counts: Record<string, number> } {
   const filters = [
     { id: "all", label: "ALL" },
     { id: "black-site", label: "BLACK SITE" },
@@ -774,7 +792,13 @@ function renderFilters(stories: Story[], activeFilter = "all"): { html: string; 
     { id: "global", label: "GLOBAL" },
   ];
   // Count matching packages per filter, matching the client-side filter logic in botwave.js
-  const counts: Record<string, number> = { all: stories.length, "black-site": 0, "non-aligned-lead": 0, "adversarial-heavy": 0, global: 0 };
+  const counts: Record<string, number> = {
+    all: stories.length,
+    "black-site": 0,
+    "non-aligned-lead": 0,
+    "adversarial-heavy": 0,
+    global: 0,
+  };
   for (const s of stories) {
     const total = s.assetCount || s.sources.length || 1;
     const spread = s.alignmentSpread || s.bloc_spread || {};
@@ -818,7 +842,10 @@ function renderAlignmentMixBar(stories: Story[]): string {
   ];
   const segs = segments
     .filter((s) => s.val > 0)
-    .map((s) => `<div class="bwb-alignments-seg ${s.cls}" style="width:${((s.val / total) * 100).toFixed(2)}%" data-label="${s.cls} ${s.val}"></div>`)
+    .map(
+      (s) =>
+        `<div class="bwb-alignments-seg ${s.cls}" style="width:${((s.val / total) * 100).toFixed(2)}%" data-label="${s.cls} ${s.val}"></div>`
+    )
     .join("");
   return `<div class="bwb-sidebar-section">
     <h3 class="bwb-sidebar-title">ALIGNMENT MIX</h3>
@@ -1728,14 +1755,16 @@ function generate() {
       "@context": "https://schema.org",
       "@type": "AnalysisNewsArticle",
       headline: `Refraction: ${defaultRefractionStory.topHeadlines?.[0] || "Money Trail"}`,
-      description: "Per-bloc coverage comparison with ownership trail. The frame you see is a function of the funder behind it.",
+      description:
+        "Per-bloc coverage comparison with ownership trail. The frame you see is a function of the funder behind it.",
       url: pageUrl("refraction"),
     };
     write(
       "refraction.html",
       chrome("refraction", refractionBody, {
         title: `Refraction: ${defaultRefractionStory.topHeadlines?.[0] || "Money Trail"} — BotwaveBomba`,
-        description: "Per-bloc coverage comparison with ownership trail. The frame you see is a function of the funder behind it.",
+        description:
+          "Per-bloc coverage comparison with ownership trail. The frame you see is a function of the funder behind it.",
         canonical: pageUrl("refraction"),
         jsonLd: refractionLd,
         context: `${defaultRefractionStory.topHeadlines?.[0] || "Money Trail"} · ${(defaultRefractionStory.sources || []).length} sources · ${Object.keys(defaultRefractionStory.alignmentSpread || {}).length} blocs`,

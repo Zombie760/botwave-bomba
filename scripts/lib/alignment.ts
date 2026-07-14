@@ -108,11 +108,34 @@ export function getActiveFrequencies(packages?: SigintPackage[]): {
   topHeadlines: { id: string; headline: string; url: string; timeAgo: string }[];
 }[] {
   const topics: { id: string; label: string; keywords: RegExp }[] = [
-    { id: "iran-us", label: "IRAN / US", keywords: /\b(iran|tehran|khamenei|irgc|ceasefire|strait of hormuz|trump.*iran|iran.*trump|hezbollah)\b/i },
-    { id: "middle-east", label: "MIDDLE EAST", keywords: /\b(israeli|israel|gaza|hamas|netanyahu|khan younis|rafah|qatar|emirates|khalifa|sheikh hamad|thani)\b/i },
-    { id: "africa", label: "AFRICA", keywords: /\b(nigeria|oyo|shettima|tinubu|abuja|lagos|naija|kinshasa|johannesburg|kenya|ethiopia|lagos|african union)\b/i },
-    { id: "china", label: "CHINA WATCH", keywords: /\b(china|chinese|beijing|xi jinping|pla|ccp|hong kong|taiwan(?!\sstrait))\b/i },
-    { id: "spain-fires", label: "SPAIN FIRES", keywords: /\b(spain|spanish|madrid|wildfire|valencia|andalusia)\b/i },
+    {
+      id: "iran-us",
+      label: "IRAN / US",
+      keywords:
+        /\b(iran|tehran|khamenei|irgc|ceasefire|strait of hormuz|trump.*iran|iran.*trump|hezbollah)\b/i,
+    },
+    {
+      id: "middle-east",
+      label: "MIDDLE EAST",
+      keywords:
+        /\b(israeli|israel|gaza|hamas|netanyahu|khan younis|rafah|qatar|emirates|khalifa|sheikh hamad|thani)\b/i,
+    },
+    {
+      id: "africa",
+      label: "AFRICA",
+      keywords:
+        /\b(nigeria|oyo|shettima|tinubu|abuja|lagos|naija|kinshasa|johannesburg|kenya|ethiopia|lagos|african union)\b/i,
+    },
+    {
+      id: "china",
+      label: "CHINA WATCH",
+      keywords: /\b(china|chinese|beijing|xi jinping|pla|ccp|hong kong|taiwan(?!\sstrait))\b/i,
+    },
+    {
+      id: "spain-fires",
+      label: "SPAIN FIRES",
+      keywords: /\b(spain|spanish|madrid|wildfire|valencia|andalusia)\b/i,
+    },
   ];
   const pkgs = packages || getSigintPackages();
   const now = Date.now();
@@ -131,7 +154,9 @@ export function getActiveFrequencies(packages?: SigintPackage[]): {
         });
       const topHeadlines = matches.slice(0, 3).map((p) => {
         const headline = (p.topHeadlines || p.top_headlines || [])[0] || "Untitled";
-        const ageMin = p.lastUpdated ? Math.max(0, Math.round((now - new Date(p.lastUpdated).getTime()) / 60000)) : 0;
+        const ageMin = p.lastUpdated
+          ? Math.max(0, Math.round((now - new Date(p.lastUpdated).getTime()) / 60000))
+          : 0;
         const timeAgo =
           ageMin < 1
             ? "just now"
