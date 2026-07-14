@@ -41,7 +41,8 @@
     "format:check": "prettier --check \"scripts/**/*.ts\" \"*.md\" \".github/**/*.yml\" --ignore-path .prettierignore",
     "format:write": "prettier --write \"scripts/**/*.ts\" \"*.md\" \".github/**/*.yml\" --ignore-path .prettierignore",
     "test": "bun test",
-    "typecheck": "tsc --noEmit",
+    "audit": "bun audit --level=moderate",
+    "audit:fix": "bun audit --fix",
     "docs:dev": "mkdocs serve -f docs/mkdocs.yml",
     "docs:build": "mkdocs build -f docs/mkdocs.yml --site-dir ../docs-site",
     "docs:deploy": "mkdocs gh-deploy -f docs/mkdocs.yml --force"
