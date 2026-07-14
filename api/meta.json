@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-14T03:57:11.481Z",
+  "generated_at": "2026-07-14T04:52:32.670Z",
   "story_count": 31,
   "source_count_total": 302,
   "source_registry_count": 104,
@@ -29,6 +29,7 @@
     "asset-registry",
     "tradecraft",
     "sitrep",
+    "sigint",
     "tradecraft",
     "pro",
     "errata",
@@ -43,6 +44,6 @@
     "tradecraft"
   ],
   "section_count": 11,
-  "total_page_count": 29,
+  "total_page_count": 30,
   "sector_count": 8
 }

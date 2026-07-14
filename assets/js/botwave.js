@@ -129,7 +129,7 @@
         return;
       }
       searchResults.innerHTML = matches.map(m => `
-        <a class="bwb-search-result" href="${url('/story.html?id=' + encodeURIComponent(m.id))}">
+        <a class="bwb-search-result" href="${url('/sigint.html?id=' + encodeURIComponent(m.id))}">
           <h4>${escapeHtml(m.title)}</h4>
           <p>${escapeHtml(m.source || m.section || '')} · ${escapeHtml(m.excerpt || '').slice(0, 120)}</p>
         </a>

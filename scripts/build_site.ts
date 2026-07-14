@@ -23,18 +23,42 @@ import { detectBlackSites, getTopBlackSites, formatSilentSector } from "./lib/bl
 import { scanRadar, getCountryRadar, normalizeIntensity } from "./lib/radar.ts";
 import { spoolChronos, groupChronosByDate, formatChronosDate } from "./lib/spool.ts";
 import { broadcastNumbersStation } from "./lib/numbers-station.ts";
-import { getPackagesBySector } from "./lib/sector.ts";
+import { getPackagesBySector, classifySector } from "./lib/sector.ts";
 
 const ROOT = `${import.meta.dir}/..`;
 const VERTICALS = [
   { id: "world", label: "WORLD", description: "Global signals without a fixed theater filter." },
-  { id: "sports", label: "SPORTS", description: "Live intercepts from the pitch, court, and arena." },
+  {
+    id: "sports",
+    label: "SPORTS",
+    description: "Live intercepts from the pitch, court, and arena.",
+  },
   { id: "tech", label: "TECH", description: "Silicon, chips, AI, cyber, and space launches." },
-  { id: "health", label: "HEALTH", description: "Medical, outbreak, research, and public health intercepts." },
-  { id: "science", label: "SCIENCE", description: "Climate, space, research, and natural phenomena." },
-  { id: "business", label: "BUSINESS", description: "Trade, markets, energy, sanctions, and central bank moves." },
-  { id: "conflict", label: "CONFLICT", description: "War, clashes, ceasefires, and security incidents." },
-  { id: "politics", label: "POLITICS", description: "Elections, governments, policy, and diplomacy." },
+  {
+    id: "health",
+    label: "HEALTH",
+    description: "Medical, outbreak, research, and public health intercepts.",
+  },
+  {
+    id: "science",
+    label: "SCIENCE",
+    description: "Climate, space, research, and natural phenomena.",
+  },
+  {
+    id: "business",
+    label: "BUSINESS",
+    description: "Trade, markets, energy, sanctions, and central bank moves.",
+  },
+  {
+    id: "conflict",
+    label: "CONFLICT",
+    description: "War, clashes, ceasefires, and security incidents.",
+  },
+  {
+    id: "politics",
+    label: "POLITICS",
+    description: "Elections, governments, policy, and diplomacy.",
+  },
 ];
 
 function sectionUrl(id: string): string {
@@ -55,6 +79,7 @@ const EXISTING_CONTENT: Record<string, { title: string; desc: string; body: stri
     "errata.html",
     "sin-senal.html",
     "perdido.html",
+    "sigint.html",
   ]) {
     try {
       const text = readFileSync(`${ROOT}/${page}`, "utf8");
@@ -182,6 +207,10 @@ function chrome(
     { id: "numbers-station", label: "NUMBERS STATION", href: sectionUrl("numbers-station") },
     { id: "asset-registry", label: "ASSETS", href: sectionUrl("asset-registry") },
     { id: "tradecraft", label: "TRADECRAFT", href: sectionUrl("tradecraft") },
+    { id: "sports", label: "SPORTS", href: sectionUrl("sports") },
+    { id: "tech", label: "TECH", href: sectionUrl("tech") },
+    { id: "health", label: "HEALTH", href: sectionUrl("health") },
+    { id: "science", label: "SCIENCE", href: sectionUrl("science") },
   ];
   const deskItems = [
     { id: "sports", label: "SPORTS", href: sectionUrl("sports") },
@@ -442,7 +471,10 @@ function renderPortada(stories: Story[]): string {
 </div>`;
 }
 
-function renderVerticalPage(vertical: { id: string; label: string; description: string }, stories: Story[]): string {
+function renderVerticalPage(
+  vertical: { id: string; label: string; description: string },
+  stories: Story[]
+): string {
   const sectorStories = getPackagesBySector(stories)[vertical.id] || [];
   return `<div class="bwb-layout" style="grid-template-columns:1fr;">
 <div class="bwb-main">
@@ -569,8 +601,49 @@ function generate() {
     publicPages.push({ page: section.id, title, desc });
   }
 
+  // SIGINT detail page
+  function renderSigintDetail(pkg: Story): string {
+    const card = renderSigintCard(pkg);
+    const sources = pkg.sources
+      .map((s) => {
+        const alignment = normBloc(s.bloc);
+        const domain = getDomain(s.url);
+        return `<li class="bwb-card-source-row ${alignment}">
+      <span class="bwb-card-source-alignment ${alignment}"></span>
+      <span class="bwb-card-source-name">${escapeHtml(s.name)}</span>
+      <span class="bwb-card-source-theater">${escapeHtml(s.country)}</span>
+      <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener" aria-label="Open ${escapeHtml(s.name)} intercept">${escapeHtml(domain)} ↗</a>
+    </li>`;
+      })
+      .join("");
+    const alignmentBar = renderAlignmentsBar(card.alignmentCounts);
+    const sectors = classifySector(pkg)
+      .map((id) => `<a href="${sectionUrl(id)}">${escapeHtml(id)}</a>`)
+      .join(" · ");
+    return `<div class="bwb-layout" style="grid-template-columns:1fr;">
+  <div class="bwb-main">
+    <div class="bwb-section-header">
+      <span class="bwb-section-kicker">SIGINT PACKAGE</span>
+      <h1>${escapeHtml(card.headline)}</h1>
+      <p>${escapeHtml(card.excerpt)}</p>
+    </div>
+    <div class="bwb-sigint-meta-bar">
+      <span>${card.assetCount} assets</span>
+      <span>${card.theaterCount} theaters</span>
+      <span>${card.countryCount} countries</span>
+      <span class="bwb-sigint-card-time">${escapeHtml(card.timeAgo)}</span>
+      ${sectors ? `<span class="bwb-sigint-sectors">Desks: ${sectors}</span>` : ""}
+    </div>
+    ${alignmentBar}
+    <h2 class="bwb-section-kicker" style="margin-top:var(--space-6);">INTERCEPTS</h2>
+    <ul class="bwb-card-sources-list">${sources}</ul>
+  </div>
+</div>`;
+  }
+
   // Static / content pages
   const staticPages = [
+    "sigint.html",
     "tradecraft.html",
     "pro.html",
     "errata.html",
@@ -578,13 +651,53 @@ function generate() {
     "perdido.html",
   ];
   for (const page of staticPages) {
+    const id = page.replace(".html", "");
+    const navId = id === "perdido" ? "home" : id;
+    // If this is the sigint detail page, render it once and route all IDs to the same HTML
+    if (page === "sigint.html") {
+      const e = EXISTING_CONTENT[page] || {
+        title: "SIGINT Package",
+        desc: "Detailed intercept package across sources.",
+        body: "",
+      };
+      const body = e.body
+        ? `\u003cdiv class="bwb-layout" style="grid-template-columns:1fr;"\u003e\u003cdiv class="bwb-main"\u003e${e.body}\u003c/div\u003e\u003c/div\u003e`
+        : renderSigintDetail(stories[0]);
+      const ld = {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            name: e.title,
+            url: `${DOMAIN}${BASE}/${page}`,
+            description: e.desc,
+          },
+          {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "PORTADA", item: pageUrl("index") },
+              { "@type": "ListItem", position: 2, name: e.title },
+            ],
+          },
+        ],
+      };
+      write(
+        page,
+        chrome("sigint", body, {
+          title: e.title,
+          description: e.desc,
+          canonical: `${DOMAIN}${BASE}/${page}`,
+          jsonLd: ld,
+        })
+      );
+      publicPages.push({ page: id, title: e.title, desc: e.desc });
+      continue;
+    }
     const e = EXISTING_CONTENT[page] || {
       title: page.replace(".html", "").toUpperCase(),
       desc: "BotwaveBomba",
       body: "",
     };
-    const id = page.replace(".html", "");
-    const navId = id === "perdido" ? "home" : id;
     const ld = {
       "@context": "https://schema.org",
       "@graph": [
