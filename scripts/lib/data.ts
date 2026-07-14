@@ -6,6 +6,15 @@ export interface Source {
   url: string;
   excerpt?: string;
   framing_placeholder?: string | null;
+  // Ground News parity fields
+  bias?: 'left' | 'center' | 'right';
+  factuality?: 'high' | 'mixed' | 'low';
+  tone?: 'neutral' | 'sensationalist' | 'opinion';
+  funding?: string;
+  independence?: string;
+  paywall?: string;
+  language?: string;
+  ownership?: string;
 }
 
 export interface Story {
@@ -18,6 +27,12 @@ export interface Story {
   top_headlines: string[];
   primary_urls: string[];
   sources: Source[];
+  // Ground News parity: narrative framing per source
+  framing?: Record<string, string>;
+  // Timeline support
+  first_seen?: string;
+  last_updated?: string;
+  peak_coverage?: string;
 }
 
 export interface OwnershipEntry {
@@ -40,6 +55,37 @@ export interface Meta {
   coverage_gap_headline: string;
 }
 
+// Ground News parity: Blindspot story
+export interface BlindspotStory extends Story {
+  missing_bloc: string;
+  coverage_ratio: number;
+}
+
+// Ground News parity: Topic for personalization
+export interface Topic {
+  id: string;
+  label: string;
+  story_ids: string[];
+  follower_count?: number;
+}
+
+// Ground News parity: Newsletter issue
+export interface NewsletterIssue {
+  id: string;
+  date: string;
+  title: string;
+  story_ids: string[];
+  read_time_min: number;
+}
+
+// Ground News parity: Coverage heatmap cell
+export interface HeatmapCell {
+  country: string;
+  bloc: string;
+  story_count: number;
+  source_count: number;
+}
+
 import { readFileSync } from "node:fs";
 
 const ROOT = `${import.meta.dir}/../..`;
@@ -59,7 +105,8 @@ export function getSources(): Source[] {
 }
 
 export function getOwnership(): OwnershipEntry[] {
-  return readJson<OwnershipEntry[]>(`${ROOT}/api/ownership.json`);
+  const data = readJson<{ entries?: OwnershipEntry[] }>(`${ROOT}/api/ownership.json`);
+  return data.entries || [];
 }
 
 export function getOwnershipByDomain(): Record<string, OwnershipEntry> {

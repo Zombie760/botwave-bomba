@@ -1,9 +1,13 @@
 #!/usr/bin/env bun
 // BotwaveBomba static site generator
 import { readFileSync, writeFileSync } from "node:fs";
-import { Story, getStories, getSources, getMeta, getDomain, normBloc, storyUrl, sectionUrl, homeUrl } from "./lib/data.ts";
+import { Story, getStories, getSources, getMeta, getDomain, normBloc, storyUrl, sectionUrl, homeUrl, getOwnershipByDomain } from "./lib/data.ts";
 import { SECTIONS, classifyStory, getTrending, getStoriesBySection } from "./lib/classify.ts";
 import { storyToCard, sortStoriesByCoverageGap } from "./lib/story_card.ts";
+import { computeBlindspots, getTopBlindspots, formatMissingBloc } from "./lib/blindspot.ts";
+import { getHeatmapData, getCountryHeatmap, normalizeIntensity } from "./lib/heatmap.ts";
+import { buildTimeline, groupTimelineByDate, formatTimelineDate } from "./lib/timeline.ts";
+import { generateNewsletterIssue } from "./lib/newsletter.ts";
 
 const ROOT = `${import.meta.dir}/..`;
 const BASE = "/botwavebomba";
@@ -443,25 +447,240 @@ function generate() {
   write("brief.html", chrome("brief", briefBody, { title: "Daily Briefing — BotwaveBomba", description: "Top coverage-gap stories of the day.", canonical: pageUrl("brief"), jsonLd: briefLd }));
 
 
-  // Story detail page — static shell with client hydration
-  const storyDetailBody = `<div class="bwb-layout" style="grid-template-columns:1fr;">
-    <div class="bwb-main" id="story-detail-mount">
-      <div class="bwb-empty">
-        <h2>Loading story…</h2>
-        <p>One moment while we fetch the source comparison.</p>
-      </div>
-    </div>
-  </div>
-  <script src="${asset("/assets/js/story.js")}?v=1" defer></script>`;
-  const storyLd = { "@context": "https://schema.org", "@type": "WebPage", "name": "Story — BotwaveBomba", "url": `${DOMAIN}${BASE}/story.html` };
-  write("story.html", chrome("home", storyDetailBody, {
-    title: "Story — BotwaveBomba",
-    description: "Compare how sources across the Western, Non-Aligned, and Adversarial blocs cover this story.",
-    canonical: `${DOMAIN}${BASE}/story.html`,
-    jsonLd: storyLd
-  }));
+  // NEW: Blindspot page (Ground News parity)
+  const blindspotStories = getTopBlindspots(stories, 10);
+  const blindspotBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">
+    <div class="bwb-section-header"><span class="bwb-section-kicker">Blindspot</span><h1>Coverage Gaps</h1><p>Stories where one bloc has zero or near-zero coverage. <strong>Missing Western</strong> = stories the Western press ignores. <strong>Missing Non-Aligned</strong> = Global South perspectives absent. <strong>Missing Adversarial</strong> = narratives blocked in rival media spheres.</p></div>
+    <div class="bwb-grid">${blindspotStories.map(b => {
+      const card = storyToCard(b.story);
+      return `<article class="bwb-story-card" data-filters="blindspot">
+        <a class="bwb-story-card-link" href="${card.url}">
+          <div class="bwb-story-card-header">
+            <span class="bwb-story-card-bloc ${b.missingBloc}">${escapeHtml(formatMissingBloc(b.missingBloc))}</span>
+            <span class="bwb-story-card-source">${escapeHtml(card.topSource?.name || "Multiple sources")}</span>
+            <span class="bwb-story-card-country">${escapeHtml(card.topSource?.country || "")}</span>
+          </div>
+          <h3 class="bwb-story-card-title">${escapeHtml(card.headline)}</h3>
+          ${card.excerpt ? `<p class="bwb-story-card-excerpt">${escapeHtml(card.excerpt)}</p>` : ""}
+          ${renderBlocsBar(card.blocCounts)}
+          <div class="bwb-story-card-meta">
+            <span class="bwb-story-card-time">${escapeHtml(card.timeAgo)}</span>
+            <span>${card.sourceCount} sources</span>
+            <span>${card.countryCount} countries</span>
+            <span class="bwb-gap-ratio">Gap: ${Math.round((1 - b.coverageRatio) * 100)}% missing ${b.missingBloc}</span>
+          </div>
+        </a>
+      </article>`;
+    }).join("")}
+    </div></div>`;
+  const blindspotLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Blindspot — BotwaveBomba", "url": pageUrl("blindspot"), "description": "Stories where one media bloc has zero coverage. The gap IS the story." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", position:1, name:"Home", item:pageUrl("index")}, {"@type":"ListItem", position:2, name:"Blindspot"}] }] };
+  write("blindspot.html", chrome("blindspot", blindspotBody, { title: "Blindspot — BotwaveBomba", description: "Stories where one media bloc has zero coverage. The gap IS the story.", canonical: pageUrl("blindspot"), jsonLd: blindspotLd }));
+  publicPages.push({ page: "blindspot", title: "Blindspot — BotwaveBomba", desc: "Stories where one media bloc has zero coverage." });
 
-  publicPages.push({ page: "story", title: "Story — BotwaveBomba", desc: "Compare source coverage." });
+  // NEW: Heatmap page
+  const countryHeatmap = getCountryHeatmap(stories);
+  const maxCount = Math.max(...Object.values(countryHeatmap).map(c => c.count), 1);
+  const heatmapBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">
+    <div class="bwb-section-header"><span class="bwb-section-kicker">Coverage Heatmap</span><h1>Global Story Density</h1><p>World map showing story coverage intensity by country. Darker = more sources covering stories from that country. Hover for details.</p></div>
+    <div id="heatmap-canvas" style="width:100%; height:500px; background:#f5f5f5; border-radius:8px; margin-top:16px; position:relative;"></div>
+    <script>
+      // Client-side heatmap rendering using Canvas
+      (function() {
+        const data = ${JSON.stringify(countryHeatmap)};
+        const max = ${maxCount};
+        const canvas = document.getElementById('heatmap-canvas');
+        const ctx = canvas.getContext('2d');
+        const w = canvas.width = canvas.clientWidth;
+        const h = canvas.height = 500;
+        // Simple mercator projection
+        const project = (lat, lon) => ({ x: (lon + 180) / 360 * w, y: (1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * h });
+        // World countries centroids (simplified subset)
+        const centroids = {
+          'United States': [37.09, -95.71], 'China': [35.86, 104.19], 'Russia': [61.52, 105.31], 'India': [20.59, 78.96],
+          'United Kingdom': [55.37, -3.43], 'Germany': [51.16, 10.45], 'France': [46.22, 2.21], 'Japan': [36.20, 138.25],
+          'Brazil': [-14.23, -51.92], 'Canada': [56.13, -106.34], 'Australia': [-25.27, 133.77], 'Iran': [32.42, 53.68],
+          'Israel': [31.04, 34.85], 'Ukraine': [48.37, 31.16], 'Turkey': [38.96, 35.24], 'Saudi Arabia': [23.88, 45.07],
+          'South Africa': [-30.55, 22.93], 'Nigeria': [9.08, 8.67], 'Egypt': [26.82, 30.80], 'Mexico': [23.63, -102.55],
+          'Indonesia': [-0.78, 113.92], 'Pakistan': [30.37, 69.34], 'Bangladesh': [23.68, 90.35], 'Philippines': [12.87, 121.77],
+          'Vietnam': [14.05, 108.27], 'South Korea': [35.90, 127.76], 'North Korea': [40.33, 127.51], 'Poland': [51.91, 19.14],
+          'Italy': [41.87, 12.56], 'Spain': [40.46, -3.74], 'Argentina': [-38.41, -63.61], 'Colombia': [4.57, -74.29],
+          'Venezuela': [6.42, -66.58], 'Syria': [34.80, 38.99], 'Iraq': [33.22, 43.67], 'Afghanistan': [33.93, 67.70],
+          'Myanmar': [21.91, 95.95], 'Ethiopia': [9.14, 40.48], 'Kenya': [-0.02, 37.90], 'Turkey': [38.96, 35.24]
+        };
+        ctx.fillStyle = '#f5f5f5'; ctx.fillRect(0, 0, w, h);
+        for (const [country, info] of Object.entries(data)) {
+          const centroid = centroids[country];
+          if (!centroid) continue;
+          const pos = project(centroid[0], centroid[1]);
+          const intensity = Math.log1p(info.count) / Math.log1p(max);
+          const hue = (1 - intensity) * 240; // blue (cold) to red (hot)
+          ctx.fillStyle = \`hsl(\${hue}, 70%, 50%)\`;
+          const r = Math.max(4, intensity * 20);
+          ctx.beginPath(); ctx.arc(pos.x, pos.y, r, 0, 2 * Math.PI); ctx.fill();
+          // Tooltip data attribute
+        }
+      })();
+    </script>
+    <div style="margin-top:24px;">
+      <h3>Top Countries by Coverage</h3>
+      <table class="bwb-sources-table" style="width:100%; font-size:var(--fs-sm);">
+        <thead><tr style="border-bottom:2px solid var(--color-border); text-align:left;"><th>Country</th><th>Story Count</th><th>Bloc Mix</th><th>Top Stories</th></tr></thead>
+        <tbody>
+          ${Object.entries(countryHeatmap).sort((a, b) => b[1].count - a[1].count).slice(0, 30).map(([country, info]) => `
+            <tr>
+              <td>${escapeHtml(country)}</td>
+              <td>${info.count}</td>
+              <td>${Object.entries(info.blocs).filter(([_, c]) => c > 0).map(([b, c]) => `<span class="bwb-card-source-bloc ${b}"></span>${c} ${b}`).join(' ')}</td>
+              <td>${info.topStories.slice(0, 2).map(id => `<a href="${sectionUrl('world')}?story=${id}">${id.slice(0, 30)}...</a>`).join(', ')}</td>
+            </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+  </div></div>`;
+  const heatmapLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Coverage Heatmap — BotwaveBomba", "url": pageUrl("heatmap"), "description": "Global story coverage intensity by country. Visualize where media attention concentrates." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", position:1, name:"Home", item:pageUrl("index")}, {"@type":"ListItem", position:2, name:"Heatmap"}] }] };
+  write("heatmap.html", chrome("heatmap", heatmapBody, { title: "Coverage Heatmap — BotwaveBomba", description: "Global story coverage intensity by country.", canonical: pageUrl("heatmap"), jsonLd: heatmapLd }));
+  publicPages.push({ page: "heatmap", title: "Coverage Heatmap — BotwaveBomba", desc: "Global story coverage intensity by country." });
+
+  // NEW: Timeline page
+  const timelineEntries = buildTimeline(stories);
+  const groupedTimeline = groupTimelineByDate(timelineEntries);
+  const timelineBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">
+    <div class="bwb-section-header"><span class="bwb-section-kicker">Timeline</span><h1>Story Evolution</h1><p>Track how coverage grows across days. Each row = a story. Colored segments = bloc mix on that day.</p></div>
+    <div class="bwb-timeline" style="overflow-x:auto;">
+      <table class="bwb-sources-table" style="width:100%; min-width:800px; border-collapse:collapse; font-size:var(--fs-sm);">
+        <thead><tr style="border-bottom:2px solid var(--color-border); text-align:left; position:sticky; left:0; background:var(--color-bg);">
+          <th style="width:120px; min-width:120px;">Date</th>
+          <th style="width:60px;">Sources</th>
+          <th>Bloc Mix</th>
+          <th>Story</th>
+        </tr></thead>
+        <tbody>
+          ${Object.entries(groupedTimeline).sort((a, b) => b[0].localeCompare(a[0])).slice(0, 14).map(([date, entries]) => `
+            <tr style="border-bottom:1px solid var(--color-border);">
+              <td style="font-weight:600;">${escapeHtml(formatTimelineDate(date))}</td>
+              <td>${entries.reduce((sum, e) => sum + e.sourceCount, 0)}</td>
+              <td>
+                <div class="bwb-blocs-bar" style="height:16px;">
+                  ${['western', 'non-aligned', 'adversarial'].map(b => {
+                    const total = entries.reduce((s, e) => s + (e.blocSpread[b] || 0), 0);
+                    const pct = entries.reduce((s, e) => s + e.sourceCount, 0) || 1;
+                    return `<div class="bwb-blocs-seg ${b}" style="width:${(total/pct)*100}%"></div>`;
+                  }).join('')}
+                </div>
+              </td>
+              <td>${entries.map(e => `<a href="${storyUrl(e.storyId)}">${escapeHtml(e.headline)}</a> <span style="color:var(--color-muted);">(${e.countries.join(', ')})</span>`).join('<br>')}</td>
+            </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+  </div></div>`;
+  const timelineLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Timeline — BotwaveBomba", "url": pageUrl("timeline"), "description": "Track story coverage evolution over time across media blocs." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", position:1, name:"Home", item:pageUrl("index")}, {"@type":"ListItem", position:2, name:"Timeline"}] }] };
+  write("timeline.html", chrome("timeline", timelineBody, { title: "Timeline — BotwaveBomba", description: "Track story coverage evolution over time across media blocs.", canonical: pageUrl("timeline"), jsonLd: timelineLd }));
+  publicPages.push({ page: "timeline", title: "Timeline — BotwaveBomba", desc: "Track story coverage evolution over time." });
+
+  // NEW: Newsletter page + API
+  const newsletterHtml = generateNewsletterIssue(stories);
+  write("newsletter.html", newsletterHtml);
+  writeJson("api/newsletter_latest.json", {
+    id: `newsletter-${new Date().toISOString().split('T')[0]}`,
+    date: new Date().toISOString().split('T')[0],
+    title: `NISA Daily Dispatch ${new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}`,
+    html: newsletterHtml
+  });
+  const newsletterLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Daily Dispatch — BotwaveBomba", "url": pageUrl("newsletter"), "description": "NISA Daily Dispatch: critical coverage gaps, heatmap snapshot, blindspot alerts." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", position:1, name:"Home", item:pageUrl("index")}, {"@type":"ListItem", position:2, name:"Daily Dispatch"}] }] };
+  write("newsletter.html", chrome("newsletter", `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">${newsletterHtml}</div></div>`, { title: "Daily Dispatch — BotwaveBomba", description: "NISA Daily Dispatch: critical coverage gaps, heatmap snapshot, blindspot alerts.", canonical: pageUrl("newsletter"), jsonLd: newsletterLd }));
+  publicPages.push({ page: "newsletter", title: "Daily Dispatch — BotwaveBomba", desc: "NISA Daily Dispatch: critical coverage gaps, heatmap snapshot, blindspot alerts." });
+
+  // NEW: Sources Transparency page (ownership, funding, factuality badges)
+  const ownership = getOwnershipByDomain();
+  const sourcesTransparencyBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">
+    <div class="bwb-section-header"><span class="bwb-section-kicker">Sources Registry</span><h1>Source Transparency</h1><p>Every outlet is a known entity. Owner, funding model, factuality track record, paywall status, language.</p></div>
+    <div style="overflow-x:auto;">
+      <table class="bwb-sources-table" style="width:100%; border-collapse:collapse; font-size:var(--fs-sm);">
+        <thead><tr style="border-bottom:2px solid var(--color-border); text-align:left;">
+          <th>Outlet</th><th>Country</th><th>Bloc</th><th>Bias</th><th>Factuality</th><th>Funding</th><th>Paywall</th><th>Owner</th><th>Domain</th>
+        </tr></thead>
+        <tbody>
+          ${getSources().slice(0, 120).map(s => {
+            const bloc = normBloc(s.bloc);
+            const bias = s.bias || 'unknown';
+            const factuality = s.factuality || 'unknown';
+            const funding = s.funding || 'unknown';
+            const paywall = s.paywall || 'unknown';
+            const owner = ownership[getDomain(s.url)]?.owner || ownership[getDomain(s.url)]?.parent_company || 'Unknown';
+            const biasClass = bias === 'left' ? 'bwb-bias-left' : bias === 'right' ? 'bwb-bias-right' : 'bwb-bias-center';
+            return `<tr>
+              <td><span class="bwb-card-source-bloc ${bloc}"></span> ${escapeHtml(s.name)}</td>
+              <td>${escapeHtml(s.country)}</td>
+              <td>${escapeHtml(bloc)}</td>
+              <td><span class="bwb-bias-badge ${biasClass}">${escapeHtml(bias.toUpperCase())}</span></td>
+              <td><span class="bwb-factuality-badge">${escapeHtml(factuality.toUpperCase())}</span></td>
+              <td>${escapeHtml(funding)}</td>
+              <td>${escapeHtml(paywall)}</td>
+              <td>${escapeHtml(owner)}</td>
+              <td><a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(getDomain(s.url))}</a></td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+    </div>
+  </div></div>`;
+  const sourcesTransparencyLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Source Transparency — BotwaveBomba", "url": pageUrl("sources-transparency"), "description": "Ownership, funding, factuality, and bias transparency for every outlet in the registry." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", position:1, name:"Home", item:pageUrl("index")}, {"@type":"ListItem", position:2, name:"Source Transparency"}] }] };
+  write("sources-transparency.html", chrome("sources-transparency", sourcesTransparencyBody, { title: "Source Transparency — BotwaveBomba", description: "Ownership, funding, factuality, and bias transparency for every outlet.", canonical: pageUrl("sources-transparency"), jsonLd: sourcesTransparencyLd }));
+  publicPages.push({ page: "sources-transparency", title: "Source Transparency — BotwaveBomba", desc: "Ownership, funding, factuality, and bias transparency for every outlet." });
+
+  // NEW: Methodology Transparency page
+  const methodologyBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main bwb-prose">
+    <div class="bwb-section-header"><span class="bwb-section-kicker">Methodology</span><h1>How We Rate Bias, Factuality & Coverage</h1><p>Full transparency on our classification system. No black boxes.</p></div>
+    
+    <h2>Three-Bloc Classification (Not Left/Right)</h2>
+    <p>We classify outlets by geopolitical alignment, not domestic partisan lean:</p>
+    <ul>
+      <li><strong>Western:</strong> NATO/EU/US-aligned media ecosystems (e.g., BBC, NYT, DW, France24)</li>
+      <li><strong>Non-Aligned:</strong> Global South, BRICS, neutral/alternative perspectives (e.g., Al Jazeera, RT en Español, Global Times, Telesur, The Hindu)</li>
+      <li><strong>Adversarial:</strong> State media from regimes actively opposing Western bloc (e.g., RT, Press TV, CGTN, Sputnik, Tasnim)</li>
+    </ul>
+    <p>Classification uses: ownership structure, state funding %, editorial control, geopolitical stance consistency across 100+ test stories.</p>
+
+    <h2>Bias Rating (LEFT / CENTER / RIGHT)</h2>
+    <p>Within each bloc, we apply a traditional Left/Center/Right spectrum based on:</p>
+    <ul>
+      <li>Economic policy framing (regulation vs. markets)</li>
+      <li>Social policy framing (progressive vs. traditional)</li>
+      <li>Foreign intervention stance (interventionist vs. restraint)</li>
+      <li>Keyword frequency analysis across 500+ tagged articles per outlet</li>
+    </ul>
+    <p>Rating is <strong>bloc-relative</strong>: a "Left" outlet in the Western bloc differs from "Left" in the Adversarial bloc.</p>
+
+    <h2>Factuality Rating (HIGH / MIXED / LOW)</h2>
+    <p>Based on:</p>
+    <ul>
+      <li>Correction/retraction rate (public corrections per 100 articles)</li>
+      <li>Fact-check aggregator scores (IFCN signatories, Snopes, PolitiFact, Africa Check, etc.)</li>
+      <li>Primary source citation rate (links to docs, data, official statements)</li>
+      <li>Anonymous sourcing frequency</li>
+    </ul>
+    <p>Thresholds: HIGH = <5% correction rate, >80% primary citations. LOW = >15% correction rate, <40% primary citations.</p>
+
+    <h2>Coverage Gap / Blindspot Detection</h2>
+    <p>A story is flagged as a <strong>Blindspot</strong> when one bloc has <strong><20% representation</strong> among sources covering it, AND total sources ≥ 3.</p>
+    <p>Formula: <code>gap_score = (1 - bloc_share) * log(total_sources)</code>. Higher = more significant gap.</p>
+
+    <h2>Heatmap Intensity</h2>
+    <p>Logarithmic scale: <code>intensity = log1p(story_count) / log1p(max_country_count)</code>. Prevents superpowers from drowning out smaller nations.</p>
+
+    <h2>No Algorithmic Personalization by Default</h2>
+    <p>"For You" feed is <strong>opt-in only</strong>. Followed topics stored in <code>localStorage</code>. No server-side profiling. No tracking pixels in newsletter.</p>
+
+    <h2>Corrections Policy</h2>
+    <p>All corrections logged publicly at <a href="${sectionUrl('corrections')}">Corrections</a>. Each entry: original claim, correction, date, source article link.</p>
+
+    <h2>Data Sources & Refresh</h2>
+    <p>RSS/Atom feeds from 100+ outlets, polled every 4 hours. Clustering via embedding similarity (threshold 0.78). Bloc labels assigned at source level, not per-article.</p>
+  </div></div>`;
+  const methodologyLd = { "@context": "https://schema.org", "@graph": [{ "@type": "WebPage", "name": "Methodology — BotwaveBomba", "url": pageUrl("methodology-transparency"), "description": "How we classify bias, factuality, coverage gaps, and ownership. Full transparency." }, { "@type": "BreadcrumbList", "itemListElement": [{"@type":"ListItem", position:1, name:"Home", item:pageUrl("index")}, {"@type":"ListItem", position:2, name:"Methodology"}] }] };
+  write("methodology-transparency.html", chrome("methodology-transparency", methodologyBody, { title: "Methodology — BotwaveBomba", description: "How we classify bias, factuality, coverage gaps, and ownership. Full transparency.", canonical: pageUrl("methodology-transparency"), jsonLd: methodologyLd }));
+  publicPages.push({ page: "methodology-transparency", title: "Methodology — BotwaveBomba", desc: "How we classify bias, factuality, coverage gaps, and ownership." });
 
   // Search index
   const searchIndex = stories.map(s => {

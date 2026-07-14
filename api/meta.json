@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-13T19:40:12.677Z",
+  "generated_at": "2026-07-14T00:00:56.918Z",
   "story_count": 31,
   "source_count_total": 302,
   "source_registry_count": 104,
@@ -30,8 +30,13 @@
     "offline",
     "404",
     "sources",
-    "story"
+    "blindspot",
+    "heatmap",
+    "timeline",
+    "newsletter",
+    "sources-transparency",
+    "methodology-transparency"
   ],
   "section_count": 11,
-  "total_page_count": 19
+  "total_page_count": 24
 }
