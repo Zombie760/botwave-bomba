@@ -2628,7 +2628,7 @@ function generate() {
     </section>
 
     ${(intel.models_reference?.items?.length) ? `
-    <section class="bwb-intel-section">
+    <section class="bwb-intel-section bwb-intel-models">
       <span class="bwb-section-kicker">3D PRINT MODELS · FREE TO MAKE</span>
       <h2>Hold the receipts in your hand</h2>
       <p class="bwb-intel-lede">${escapeHtml(intel.models_reference.note)}</p>
@@ -2637,6 +2637,8 @@ function generate() {
           <article class="bwb-intel-model-card">
             <h3>${escapeHtml(mod.name)}</h3>
             <p>${escapeHtml(mod.note)}</p>
+            ${mod.format ? `<p class="bwb-intel-model-format">${escapeHtml(mod.format)}</p>` : ''}
+            ${mod.download ? `<p class="bwb-intel-model-download"><a href="${escapeHtml(mod.download)}" download>Download .3mf &darr;</a></p>` : ''}
           </article>
         `).join("")}
       </div>

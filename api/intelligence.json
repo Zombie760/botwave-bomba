@@ -492,17 +492,21 @@
     ]
   },
   "models_reference": {
-    "title": "Free 3D Print Models",
+    "title": "Free 3D Print Models — Physical Receipts",
     "items": [
       {
-        "name": "Little Saint James Chapel (.3mf + .stl)",
-        "note": "30x30x30mm, white concrete, blue stripes, gold dome"
+        "name": "Little Saint James Chapel",
+        "note": "30x30x30 cube — windowless white concrete, blue structural stripes, painted optical-illusion door. As-built geometry per DOJ 2010-2014 survey. Ready for Bambu A1 Mini.",
+        "format": ".3mf · 145 KB · 9,719 facets",
+        "download": "/assets/intel-art/3mf/little_saint_james_chapel.3mf"
       },
       {
-        "name": "Zorro Ranch Mansion (.3mf + .stl)",
-        "note": "80x60x10mm tan hacienda with dim-gray underground basement"
+        "name": "Zorro Ranch Compound & Excavated Sub-Level",
+        "note": "18,000 sq ft hacienda + verified excavated basement with massage room / jacuzzi / exercise suite, 7-bay garage, Santa Fe railroad caboose. Five separate printable volumes. As-built geometry per DOJ Risk Management Records.",
+        "format": ".3mf · 2.9 KB · 5 volumes",
+        "download": "/assets/intel-art/3mf/zorro_ranch_compound.3mf"
       }
     ],
-    "note": "Buildable on Bambu A1 Mini. Source: /var/home/gringo/Downloads/epstein/cad/prompt.txt"
+    "note": "Buildable on Bambu A1 Mini or any FDM printer. Source: /var/home/gringo/Downloads/epstein/cad/{ZorroRanchCompound,LittleSaintJamesTemple}.txt — OpenSCAD source. The receipts, in your hand."
   }
 }
