@@ -1,0 +1,116 @@
+{
+  "generated_at": "2026-07-14",
+  "sources": [
+    {
+      "id": "pacer",
+      "label": "PACER",
+      "url": "https://pacer.uscourts.gov",
+      "category": "court_records",
+      "description": "Public Access to Court Electronic Records. Federal court filings, dockets, case documents. SDNY 1:25-cv-08520 (Doe v. Bank of America) is the active Wexner-Epstein-MBS litigation.",
+      "status": "stub",
+      "next_run": "manual",
+      "yields": ["docket entries", "filings", "court orders"]
+    },
+    {
+      "id": "federal_register",
+      "label": "Federal Register",
+      "url": "https://www.federalregister.gov",
+      "category": "executive_orders",
+      "description": "Executive orders, proclamations, agency rules, federal notices. The Bush Vesting Order 248 (Vol 7, p 9097, 1942-10-20) was filed here. Trump 278e (2025-06-13) and Bush 41-era orders are searchable.",
+      "status": "stub",
+      "next_run": "manual",
+      "yields": ["executive orders", "agency rules", "proclamations"]
+    },
+    {
+      "id": "courtlistener",
+      "label": "CourtListener",
+      "url": "https://www.courtlistener.com",
+      "category": "case_law",
+      "description": "Free searchable database of U.S. court opinions. Hasbajrami v. United States, 945 F.3d 641 (11th Cir. 2020) is on file. NAACP v. Trump (emoluments), Doe v. BofA (Wexner-Epstein) all searchable.",
+      "status": "stub",
+      "next_run": "manual",
+      "yields": ["case opinions", "dockets", "oral arguments"]
+    },
+    {
+      "id": "opensecrets",
+      "label": "OpenSecrets",
+      "url": "https://www.opensecrets.org",
+      "category": "campaign_finance",
+      "description": "FEC filings, lobbying disclosures, dark money flow, politician net worth. The donor-class spine on the INTELLIGENCE page is the political layer of this. AIPAC, Saban, Bloomberg, Steyer, Soros, Koch all queryable here.",
+      "status": "stub",
+      "next_run": "manual",
+      "yields": ["FEC filings", "lobbying disclosures", "527/501(c)(4) flow"]
+    },
+    {
+      "id": "usaspending",
+      "label": "USAspending.gov",
+      "url": "https://www.usaspending.gov",
+      "category": "federal_spending",
+      "description": "Federal contract awards, grants, loans, direct payments. Carlyle Group / United Defense / BAE Systems defense contracts are queryable. TARP bailout recipients per institution. Recovery Act / IRA funds by recipient.",
+      "status": "stub",
+      "next_run": "manual",
+      "yields": ["federal contracts", "grants", "TARP payouts"]
+    },
+    {
+      "id": "fec",
+      "label": "FEC.gov",
+      "url": "https://www.fec.gov",
+      "category": "campaign_finance_raw",
+      "description": "Raw FEC filings: Form 3 (House), Form 3P (Presidential), Schedule A (contributions), Schedule B (disbursements). The rawest layer of the donor-class spine.",
+      "status": "stub",
+      "next_run": "manual",
+      "yields": ["F1 / F2 / F3 / F3P filings", "Schedule A/B", "independent expenditures"]
+    },
+    {
+      "id": "doj_oig",
+      "label": "DOJ Office of Inspector General",
+      "url": "https://oig.justice.gov",
+      "category": "oversight",
+      "description": "DOJ OIG reports on FBI/DOJ conduct. Epstein death investigation 466-page report (Dec 2023) and follow-up reports filed here. Watchdog source for prosecutorial apparatus.",
+      "status": "stub",
+      "next_run": "manual",
+      "yields": ["OIG reports", "management advisories", "semiannual reports"]
+    },
+    {
+      "id": "un_ohchr",
+      "label": "UN OHCHR",
+      "url": "https://www.ohchr.org",
+      "category": "international",
+      "description": "UN Human Rights Council + Office of the High Commissioner. Libya slave markets 2017, Khashoggi murder 2018, drone strike civilian casualty reporting. Non-Aligned bloc source.",
+      "status": "stub",
+      "next_run": "manual",
+      "yields": ["treaty body reports", "special rapporteur statements", "press releases"]
+    },
+    {
+      "id": "congress_gov",
+      "label": "Congress.gov",
+      "url": "https://www.congress.gov",
+      "category": "legislation",
+      "description": "Public Law 119-48 (Epstein Files Transparency Act, signed Nov 19 2025), H.R. 4405, 28 Pages declassified July 15 2016, JASTA PL 114-222, all searchable here.",
+      "status": "stub",
+      "next_run": "manual",
+      "yields": ["public laws", "bills", "committee reports", "roll call votes"]
+    },
+    {
+      "id": "whitehouse_briefing",
+      "label": "White House Briefing Room",
+      "url": "https://www.whitehouse.gov/briefing-room",
+      "category": "executive_actions",
+      "description": "Executive orders, proclamations, press briefings, fact sheets. Bondi→Patel letter (DOJ-OGR-23494, Feb 27 2025) is the trigger for the current EFTA release. Trump 278e (2025-06-13) filed here.",
+      "status": "stub",
+      "next_run": "manual",
+      "yields": ["executive orders", "proclamations", "fact sheets"]
+    }
+  ],
+  "scrape_targets": {
+    "high_priority": [
+      "PACER SDNY 1:25-cv-08520 (Doe v. Bank of America) — active Wexner-Epstein-MBS litigation",
+      "CourtListener Hasbajrami 945 F.3d 641 — 11th Cir NSA Section 215 unlawful",
+      "OpenSecrets AIPAC 2024 cycle — donor-class spine validation",
+      "USAspending TARP bailout recipients 2008-2010 — Bush-Obama-Carlyle pipeline",
+      "FEC Schedule B Bloomberg / Steyer / Soros / Saban — top 100 individual disbursements"
+    ],
+    "next_scrape": "manual until cron-staged",
+    "rate_limits": "varies per source, see individual source notes"
+  }
+}

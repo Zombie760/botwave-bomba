@@ -3524,3 +3524,214 @@ flex-direction: column;
   border-top: 1px solid var(--color-border, #2a2a2a);
   padding-top: var(--space-6);
 }
+
+
+/* === Live OSINT Pipeline Grid === */
+.bwb-intel-osint-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.bwb-intel-osint-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4);
+  background: var(--color-bg-elevated, #1a1d23);
+  border: 1px solid var(--color-border, #2a2a2a);
+  border-left: 3px solid var(--color-accent, #f1c457);
+  border-radius: 3px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.bwb-intel-osint-card:hover {
+  transform: translateY(-1px);
+  border-left-color: #ffd66b;
+}
+
+.bwb-intel-osint-card h3 {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 1.1rem;
+  color: var(--color-text-strong, #f4f5f7);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.bwb-intel-osint-card p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--color-text-muted, #b5b8bf);
+  margin: 0 0 var(--space-2) 0;
+  flex-grow: 1;
+}
+
+.bwb-intel-osint-cat {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  color: var(--color-accent, #f1c457);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: auto;
+}
+
+
+/* === Public Research Mirror / LIVE OSINT === */
+.bwb-intel-osint-stats {
+  display: flex;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  padding: var(--space-4) 0;
+  margin: var(--space-3) 0 var(--space-5) 0;
+  border-top: 1px solid var(--color-border, #2a2a2a);
+  border-bottom: 1px solid var(--color-border, #2a2a2a);
+}
+
+.bwb-intel-osint-stats > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.bwb-intel-osint-stats strong {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 1.8rem;
+  color: var(--color-accent, #f1c457);
+  line-height: 1.1;
+}
+
+.bwb-intel-osint-stats span {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  color: var(--color-text-muted, #b5b8bf);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.2rem;
+}
+
+.bwb-intel-note {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--color-text-muted, #b5b8bf);
+  margin: 0 0 var(--space-3) 0;
+  font-style: italic;
+}
+
+.bwb-intel-signal-entities {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-3);
+  margin: var(--space-3) 0 var(--space-5) 0;
+}
+
+.bwb-intel-signal-entity {
+  background: var(--color-bg-elevated, #1a1d23);
+  border: 1px solid var(--color-border, #2a2a2a);
+  border-left: 3px solid var(--color-accent, #f1c457);
+  border-radius: 3px;
+  padding: var(--space-3);
+}
+
+.bwb-intel-signal-entity h4 {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 1rem;
+  color: var(--color-text-strong, #f4f5f7);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.bwb-intel-signal-pt {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  color: var(--color-accent, #f1c457);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 var(--space-1) 0;
+}
+
+.bwb-intel-signal-oc {
+  font-size: 0.8rem;
+  color: var(--color-text-muted, #b5b8bf);
+  margin: 0 0 var(--space-1) 0;
+  min-height: 1.5em;
+}
+
+.bwb-intel-signal-mn {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  color: var(--color-text, #d4d6db);
+  margin: 0;
+}
+
+.bwb-intel-signal-rels,
+.bwb-intel-signal-dts,
+.bwb-intel-signal-hvd {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-3) 0 var(--space-5) 0;
+}
+
+.bwb-intel-signal-rels li,
+.bwb-intel-signal-dts li,
+.bwb-intel-signal-hvd li {
+  padding: var(--space-2) 0;
+  border-bottom: 1px dotted var(--color-border, #2a2a2a);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--color-text, #d4d6db);
+}
+
+.bwb-intel-signal-rels li::before,
+.bwb-intel-signal-dts li::before,
+.bwb-intel-signal-hvd li::before {
+  content: "→ ";
+  color: var(--color-accent, #f1c457);
+  font-weight: 600;
+  margin-right: 0.3em;
+}
+
+.bwb-intel-signal-rel-a,
+.bwb-intel-signal-rel-b {
+  color: var(--color-text-strong, #f4f5f7);
+  font-weight: 500;
+}
+
+.bwb-intel-signal-rel-type {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  color: var(--color-accent, #f1c457);
+  font-weight: 600;
+}
+
+.bwb-intel-signal-rel-dates {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  color: var(--color-text-muted, #b5b8bf);
+  margin-left: 0.5em;
+}
+
+.bwb-intel-signal-dts code,
+.bwb-intel-signal-hvd code {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+  color: var(--color-accent, #f1c457);
+  background: rgba(241, 196, 87, 0.08);
+  padding: 0.1em 0.3em;
+  border-radius: 2px;
+}
+
+/* === How-to-reproduce / methods section === */
+.bwb-intel-osint-howto pre {
+  background: var(--color-bg-sunken, #0a0c10);
+  border: 1px solid var(--color-border, #2a2a2a);
+  border-radius: 3px;
+  padding: var(--space-3);
+  margin: var(--space-2) 0 var(--space-4) 0;
+  overflow-x: auto;
+}
+
+.bwb-intel-osint-howto pre code {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  color: var(--color-text, #d4d6db);
+  line-height: 1.5;
+}
