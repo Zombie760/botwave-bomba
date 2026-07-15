@@ -26,6 +26,7 @@ import {
   getStoriesByAlignment,
 } from "./lib/alignment.ts";
 import { renderSigintCard, sortSigintByBlackSite } from "./lib/sigint-card.ts";
+import { storyCard, factualityClass, factualityLabel } from "./lib/story-card.ts";
 import { detectBlackSites, getTopBlackSites, formatSilentSector } from "./lib/black-site.ts";
 import { scanRadar, getCountryRadar, normalizeIntensity } from "./lib/radar.ts";
 import { spoolChronos, groupChronosByDate, formatChronosDate } from "./lib/spool.ts";
@@ -283,6 +284,7 @@ function chrome(
     { id: "black-site", label: "BLACK SITE", href: sectionUrl("black-site") },
     { id: "radar", label: "RADAR", href: sectionUrl("radar") },
     { id: "intelligence", label: "INTELLIGENCE", href: sectionUrl("intelligence") },
+    { id: "watch", label: "WATCH", href: sectionUrl("watch") },
     { id: "refraction", label: "REFRACTION", href: sectionUrl("refraction") },
     { id: "spool", label: "SPOOL", href: sectionUrl("spool") },
     { id: "numbers-station", label: "NUMBERS STATION", href: sectionUrl("numbers-station") },
@@ -939,23 +941,75 @@ function renderPortada(stories: Story[]): string {
   const featured = sortSigintByBlackSite(stories)[0] || stories[0];
   const rest = stories.filter((s) => s.id !== featured?.id);
   const restCards = sortSigintByBlackSite(rest)
-    .slice(0, 12)
-    .map((s) => renderSigintCardHtml(s))
+    .slice(0, 18)
+    .map((s) => storyCard(s))
     .join("");
   const filters = renderFilters(stories);
+  // Top trending chips (ground.news style)
+  const trendingTopics = (() => {
+    const counts: Record<string, number> = {};
+    for (const s of stories.slice(0, 50)) {
+      for (const k of (s as any).keywords || []) {
+        counts[k] = (counts[k] || 0) + 1;
+      }
+      for (const t of (s as any).theaters || []) {
+        if (t) counts[t] = (counts[t] || 0) + 1;
+      }
+    }
+    return Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 12).map(([k]) => k);
+  })();
+  const trendingHtml = trendingTopics.length
+    ? `<div class="bwb-trending-strip"><span class="bwb-trending-label">TRENDING</span>${trendingTopics.map((t) => `<a class="bwb-trending-chip" href="${sectionUrl("world")}">${escapeHtml(t)} <span class="bwb-trending-follow">+</span></a>`).join("")}</div>`
+    : "";
   return `${renderHero(featured)}
 <div class="bwb-layout">
   <aside class="bwb-sidebar" aria-label="Filters">
     <div class="bwb-sidebar-section">
-      <h2 class="bwb-sidebar-title">SIGNAL</h2>
-      <div class="bwb-filter-group">${filters.html}</div>
+      <h2 class="bwb-sidebar-title">INTERESTS</h2>
+      <ul class="bwb-intel-cat-list">
+        <li><a href="${sectionUrl("black-site")}">Coverage gaps <span class="bwb-intel-cat-meta">blindspots</span></a></li>
+        <li><a href="${sectionUrl("spool")}">Story timeline <span class="bwb-intel-cat-meta">14d</span></a></li>
+        <li><a href="${sectionUrl("radar")}">Heatmap <span class="bwb-intel-cat-meta">world</span></a></li>
+        <li><a href="${sectionUrl("asset-registry")}">Source registry <span class="bwb-intel-cat-meta">104</span></a></li>
+        <li><a href="${sectionUrl("intelligence")}">EFTA intelligence <span class="bwb-intel-cat-meta">5 dynasties</span></a></li>
+        <li><a href="${sectionUrl("watch")}">Accountability ledger <span class="bwb-intel-cat-meta">108</span></a></li>
+      </ul>
     </div>
-    ${renderAlignmentMixBar(stories)}
+    <div class="bwb-sidebar-section">
+      <h2 class="bwb-sidebar-title">PEOPLE</h2>
+      <ul class="bwb-intel-cat-list">
+        <li><a href="${sectionUrl("intelligence")}#audit-trump">Donald Trump <span class="bwb-intel-cat-meta">26 flights</span></a></li>
+        <li><a href="${sectionUrl("intelligence")}#audit-bush">George Bush <span class="bwb-intel-cat-meta">1942-2008</span></a></li>
+        <li><a href="${sectionUrl("intelligence")}#audit-biden">Joe Biden <span class="bwb-intel-cat-meta">2008-2026</span></a></li>
+        <li><a href="${sectionUrl("intelligence")}#audit-clinton">Bill Clinton <span class="bwb-intel-cat-meta">26 flights</span></a></li>
+        <li><a href="${sectionUrl("intelligence")}#audit-obama">Barack Obama <span class="bwb-intel-cat-meta">$38B deal</span></a></li>
+        <li><a href="${sectionUrl("watch")}">Ghislaine Maxwell <span class="bwb-intel-cat-meta">convicted</span></a></li>
+        <li><a href="${sectionUrl("watch")}">Les Wexner <span class="bwb-intel-cat-meta">settled</span></a></li>
+        <li><a href="${sectionUrl("watch")}">Leon Black <span class="bwb-intel-cat-meta">$158M</span></a></li>
+      </ul>
+    </div>
+    <div class="bwb-sidebar-section">
+      <h2 class="bwb-sidebar-title">SOURCES</h2>
+      <ul class="bwb-intel-cat-list">
+        <li><a href="${sectionUrl("asset-registry")}">Reuters <span class="bwb-intel-cat-meta">Western</span></a></li>
+        <li><a href="${sectionUrl("asset-registry")}">AP <span class="bwb-intel-cat-meta">Western</span></a></li>
+        <li><a href="${sectionUrl("asset-registry")}">Al Jazeera <span class="bwb-intel-cat-meta">Non-aligned</span></a></li>
+        <li><a href="${sectionUrl("asset-registry")}">BBC <span class="bwb-intel-cat-meta">Western</span></a></li>
+        <li><a href="${sectionUrl("asset-registry")}">NPR <span class="bwb-intel-cat-meta">Western</span></a></li>
+        <li><a href="${sectionUrl("asset-registry")}">Wall Street Journal <span class="bwb-intel-cat-meta">Western</span></a></li>
+        <li><a href="${sectionUrl("asset-registry")}">CNN <span class="bwb-intel-cat-meta">Western</span></a></li>
+        <li><a href="${sectionUrl("asset-registry")}">Politico <span class="bwb-intel-cat-meta">Western</span></a></li>
+        <li><a href="${sectionUrl("asset-registry")}">The Hill <span class="bwb-intel-cat-meta">Western</span></a></li>
+        <li><a href="${sectionUrl("asset-registry")}">Fox News <span class="bwb-intel-cat-meta">Western</span></a></li>
+        <li><a href="${sectionUrl("asset-registry")}">Washington Post <span class="bwb-intel-cat-meta">Western</span></a></li>
+      </ul>
+    </div>
   </aside>
   <div class="bwb-main">
+    ${trendingHtml}
     ${renderSitrep(stories)}
-    <h2 class="bwb-section-kicker" style="margin-bottom:var(--space-4); font-size:var(--fs-xl); font-family:var(--font-display);">LATEST BLACK SITES</h2>
-    <div class="bwb-grid">${restCards}</div>
+    <h2 class="bwb-section-kicker" style="margin-bottom:var(--space-4); font-size:var(--fs-xl); font-family:var(--font-display);">LATEST COVERAGE</h2>
+    <div class="bwb-story-card-grid">${restCards}</div>
   </div>
 </div>`;
 }
