@@ -2000,6 +2000,14 @@ function generate() {
             <li><a href="#validation">Cross-validation <span class="bwb-intel-cat-meta">2 methods agree</span></a></li>
           </ul>
         </div>
+
+        <div class="bwb-sidebar-section">
+          <h3 class="bwb-sidebar-title">WATCH</h3>
+          <ul class="bwb-intel-cat-list">
+            <li><a href="/watch.html">Accountability ledger <span class="bwb-intel-cat-meta">108 entities</span></a></li>
+            <li><a href="/api/watch-status.json">watch-status.json <span class="bwb-intel-cat-meta">JSON</span></a></li>
+          </ul>
+        </div>
       </aside>
 
       <div class="bwb-main bwb-intel-main">
