@@ -94,7 +94,7 @@ function blocSegPct(spread: any, key: string): number {
   return 0;
 }
 
-export function storyCard(pkg: SigintPackage, allStories: Story[] = []): string {
+export function storyCard(pkg: SigintPackage): string {
   const sourceList = (pkg.sources || []).slice(0, 12);
   const lead: Asset | undefined = sourceList[0];
   const leadName = lead?.name || "Source";
