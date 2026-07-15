@@ -2067,13 +2067,7 @@ function generate() {
           </ul>
         </div>
 
-        <div class="bwb-sidebar-section">
-          <h3 class="bwb-sidebar-title">3D RECEIPTS</h3>
-          <ul class="bwb-intel-cat-list">
-            <li><a href="/assets/intel-art/3mf/little_saint_james_chapel.3mf" download>LSJ Chapel <span class="bwb-intel-cat-meta">.3mf · 145 KB</span></a></li>
-            <li><a href="/assets/intel-art/3mf/zorro_ranch_compound.3mf" download>Zorro Ranch <span class="bwb-intel-cat-meta">.3mf · 2.9 KB</span></a></li>
-          </ul>
-        </div>
+        
 
         <div class="bwb-sidebar-section">
           <h3 class="bwb-sidebar-title">PUBLIC MIRROR</h3>
