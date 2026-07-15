@@ -1,6 +1,7 @@
 #!/usr/bin/env bun
 // BotwaveBomba static site generator
 import { readFileSync, writeFileSync } from "node:fs";
+import { build } from "bun";
 import {
   Story,
   getStories,
@@ -34,6 +35,21 @@ import { broadcastNumbersStation } from "./lib/numbers-station.ts";
 import { getPackagesBySector, classifySector } from "./lib/sector.ts";
 
 const ROOT = `${import.meta.dir}/..`;
+
+// Bundle MiniSearch for client-side use
+const minisearchBuild = await build({
+  entrypoints: [`${ROOT}/node_modules/minisearch/dist/umd/index.js`],
+  outdir: `${ROOT}/assets/js`,
+  naming: 'minisearch.js',
+  minify: true,
+});
+
+if (minisearchBuild.success) {
+  console.log('[build_site] MiniSearch bundled successfully.');
+} else {
+  console.error('[build_site] Failed to bundle MiniSearch:', minisearchBuild.logs);
+  process.exit(1);
+}
 
 // Build-time constants — used in chrome() utility bar and footer
 const BUILD_GENERATED_AT = new Date().toISOString();
@@ -209,6 +225,7 @@ function headMeta(opts: {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="${asset("/assets/css/botwave.css")}?v=1">
+  <link rel="stylesheet" href="${asset("/assets/css/groundnews.css")}?v=1">
   <link rel="canonical" href="${canonical}">
   <meta property="og:type" content="${opts.ogType || "website"}">
   <meta property="og:site_name" content="BotwaveBomba">
@@ -238,6 +255,7 @@ function chrome(
     extraScripts?: string[];
   }
 ) {
+  const resolvedExtraScripts = ["/assets/js/minisearch.js", ...(opts.extraScripts || [])];
   const activeFrequencies = getActiveFrequencies();
   const counts = getSiteCounts();
   const storyCount = counts.stories;
@@ -281,30 +299,30 @@ function chrome(
     : "";
 
   const navItems = [
-    { id: "home", label: "PORTADA", href: homeUrl() },
-    { id: "black-site", label: "BLACK SITE", href: sectionUrl("black-site") },
-    { id: "radar", label: "RADAR", href: sectionUrl("radar") },
-    { id: "intelligence", label: "INTELLIGENCE", href: sectionUrl("intelligence") },
-    { id: "watch", label: "WATCH", href: sectionUrl("watch") },
-    { id: "refraction", label: "REFRACTION", href: sectionUrl("refraction") },
-    { id: "spool", label: "SPOOL", href: sectionUrl("spool") },
-    { id: "numbers-station", label: "NUMBERS STATION", href: sectionUrl("numbers-station") },
-    { id: "asset-registry", label: "ASSETS", href: sectionUrl("asset-registry") },
-    { id: "tradecraft", label: "TRADECRAFT", href: sectionUrl("tradecraft") },
-    { id: "sports", label: "SPORTS", href: sectionUrl("sports") },
-    { id: "tech", label: "TECH", href: sectionUrl("tech") },
-    { id: "health", label: "HEALTH", href: sectionUrl("health") },
-    { id: "science", label: "SCIENCE", href: sectionUrl("science") },
+    { id: "home", label: "Home", href: homeUrl() },
+    { id: "black-site", label: "Coverage Gaps", href: sectionUrl("black-site") },
+    { id: "radar", label: "Compare", href: sectionUrl("radar") },
+    { id: "intelligence", label: "Who Funds It", href: sectionUrl("intelligence") },
+    { id: "watch", label: "Accountability", href: sectionUrl("watch") },
+    { id: "refraction", label: "Lens", href: sectionUrl("refraction") },
+    { id: "spool", label: "Timeline", href: sectionUrl("spool") },
+    { id: "numbers-station", label: "Signal Feed", href: sectionUrl("numbers-station") },
+    { id: "asset-registry", label: "Sources", href: sectionUrl("asset-registry") },
+    { id: "tradecraft", label: "How We Rate", href: sectionUrl("tradecraft") },
+    { id: "sports", label: "Sports", href: sectionUrl("sports") },
+    { id: "tech", label: "Tech", href: sectionUrl("tech") },
+    { id: "health", label: "Health", href: sectionUrl("health") },
+    { id: "science", label: "Science", href: sectionUrl("science") },
   ];
   const deskItems = [
-    { id: "sports", label: "SPORTS", href: sectionUrl("sports") },
-    { id: "tech", label: "TECH", href: sectionUrl("tech") },
-    { id: "health", label: "HEALTH", href: sectionUrl("health") },
-    { id: "science", label: "SCIENCE", href: sectionUrl("science") },
-    { id: "business", label: "BUSINESS", href: sectionUrl("business") },
-    { id: "conflict", label: "CONFLICT", href: sectionUrl("conflict") },
-    { id: "politics", label: "POLITICS", href: sectionUrl("politics") },
-    { id: "world", label: "WORLD", href: sectionUrl("world") },
+    { id: "sports", label: "Sports", href: sectionUrl("sports") },
+    { id: "tech", label: "Tech", href: sectionUrl("tech") },
+    { id: "health", label: "Health", href: sectionUrl("health") },
+    { id: "science", label: "Science", href: sectionUrl("science") },
+    { id: "business", label: "Business", href: sectionUrl("business") },
+    { id: "conflict", label: "Conflict", href: sectionUrl("conflict") },
+    { id: "politics", label: "Politics", href: sectionUrl("politics") },
+    { id: "world", label: "World", href: sectionUrl("world") },
   ];
   const navHtml = navItems
     .map((n) => {
@@ -384,12 +402,12 @@ function chrome(
       <div class="bwb-footer-col">
         <h4 class="bwb-footer-h">SECTIONS</h4>
         <ul>
-          <li><a href="${homeUrl()}">PORTADA</a></li>
-          <li><a href="${sectionUrl("black-site")}">BLACK SITE</a></li>
-          <li><a href="${sectionUrl("radar")}">RADAR</a></li>
-          <li><a href="${sectionUrl("refraction")}">REFRACTION</a></li>
-          <li><a href="${sectionUrl("spool")}">SPOOL</a></li>
-          <li><a href="${sectionUrl("numbers-station")}">NUMBERS STATION</a></li>
+          <li><a href="${homeUrl()}">Home</a></li>
+          <li><a href="${sectionUrl("black-site")}">Coverage Gaps</a></li>
+          <li><a href="${sectionUrl("radar")}">Compare</a></li>
+          <li><a href="${sectionUrl("refraction")}">Lens</a></li>
+          <li><a href="${sectionUrl("spool")}">Timeline</a></li>
+          <li><a href="${sectionUrl("numbers-station")}">Signal Feed</a></li>
         </ul>
       </div>
       <div class="bwb-footer-col">
@@ -397,7 +415,7 @@ function chrome(
         <ul>
           <li><a href="${sectionUrl("asset-registry")}">ASSET REGISTRY</a></li>
           <li><a href="${sectionUrl("asset-transparency")}">ASSET TRANSPARENCY</a></li>
-          <li><a href="${sectionUrl("tradecraft")}">TRADECRAFT</a></li>
+          <li><a href="${sectionUrl("tradecraft")}">How We Rate</a></li>
           <li><a href="${sectionUrl("sitrep")}">SITREP</a></li>
           <li><a href="${sectionUrl("dead-drop")}">DEAD DROP</a></li>
         </ul>
@@ -426,7 +444,7 @@ function chrome(
     </div>
   </footer>
 
-  ${(opts.extraScripts || []).map((s) => `<script src="${asset(s)}?v=1" defer></script>`).join("\n  ")}
+  ${resolvedExtraScripts.map((s) => `<script src="${asset(s)}?v=1" defer></script>`).join("\n  ")}
   <script src="${asset("/assets/js/botwave.js")}?v=1" defer></script>
 </body>
 </html>`;
@@ -932,7 +950,7 @@ function renderSigintGrid(stories: Story[], sectionId: string): string {
   if (!stories.length) {
     return `<div class="bwb-empty">
       <h2>No intercepts in this sector yet</h2>
-      <p>Check the <a href="${homeUrl()}">PORTADA</a> or <a href="${sectionUrl("black-site")}">BLACK SITE</a> feed for the latest packages.</p>
+      <p>Check the <a href="${homeUrl()}">Home</a> or <a href="${sectionUrl("black-site")}">Coverage Gaps</a> feed for the latest packages.</p>
     </div>`;
   }
   const cards = stories.map((s) => renderSigintCardHtml(s, [sectionId])).join("");
@@ -966,7 +984,29 @@ function renderPortada(stories: Story[]): string {
   const trendingHtml = trendingTopics.length
     ? `<div class="bwb-trending-strip"><span class="bwb-trending-label">TRENDING</span>${trendingTopics.map((t) => `<a class="bwb-trending-chip" href="${sectionUrl("world")}">${escapeHtml(t)} <span class="bwb-trending-follow">+</span></a>`).join("")}</div>`
     : "";
+  const valueBand = `
+<div class="bwb-valueband" role="region" aria-label="What this is">
+  <p class="bwb-valueband-hook"><b>BotwaveBomba</b> lines up the same story from every side — Western, Non-Aligned, and Adversarial outlets — so you can see who's spinning what. No left. No right. Just every bloc in one place.</p>
+  <div class="bwb-read-three">
+    <div class="bwb-read-col western">
+      <h3>Western</h3>
+      <p>The outlets you already read — Reuters, AP, BBC, CNN. We show what they lead with, and what they leave out.</p>
+      <a href="${sectionUrl("radar")}">See the mix →</a>
+    </div>
+    <div class="bwb-read-col non-aligned">
+      <h3>Non-Aligned</h3>
+      <p>Voices outside the Western bloc — Al Jazeera, Telesur, RT. The same story, told from a different interest.</p>
+      <a href="${sectionUrl("asset-registry")}">Browse sources →</a>
+    </div>
+    <div class="bwb-read-col adversarial">
+      <h3>Adversarial</h3>
+      <p>State outlets openly hostile to the West. We track what they push — and what they bury.</p>
+      <a href="${sectionUrl("intelligence")}">Who funds it →</a>
+    </div>
+  </div>
+</div>`;
   return `${renderHero(featured)}
+${valueBand}
 <div class="bwb-layout">
   <aside class="bwb-sidebar" aria-label="Filters">
     <div class="bwb-sidebar-section">
@@ -976,12 +1016,12 @@ function renderPortada(stories: Story[]): string {
         <li><a href="${sectionUrl("spool")}">Story timeline <span class="bwb-intel-cat-meta">14d</span></a></li>
         <li><a href="${sectionUrl("radar")}">Heatmap <span class="bwb-intel-cat-meta">world</span></a></li>
         <li><a href="${sectionUrl("asset-registry")}">Source registry <span class="bwb-intel-cat-meta">104</span></a></li>
-        <li><a href="${sectionUrl("intelligence")}">EFTA intelligence <span class="bwb-intel-cat-meta">5 dynasties</span></a></li>
+        <li><a href="${sectionUrl("intelligence")}">Power map <span class="bwb-intel-cat-meta">5 dynasties</span></a></li>
         <li><a href="${sectionUrl("watch")}">Accountability ledger <span class="bwb-intel-cat-meta">108</span></a></li>
       </ul>
     </div>
     <div class="bwb-sidebar-section">
-      <h2 class="bwb-sidebar-title">PEOPLE</h2>
+      <h2 class="bwb-sidebar-title">Key Players</h2>
       <ul class="bwb-intel-cat-list">
         <li><a href="${sectionUrl("intelligence")}#audit-trump">Donald Trump <span class="bwb-intel-cat-meta">26 flights</span></a></li>
         <li><a href="${sectionUrl("intelligence")}#audit-bush">George Bush <span class="bwb-intel-cat-meta">1942-2008</span></a></li>
