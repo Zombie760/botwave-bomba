@@ -9,7 +9,16 @@
 (function () {
   "use strict";
 
-  const BASE = window.BWB_BASE || "/botwavebomba";
+  const BASE = window.BWB_BASE || (() => {
+    // Auto-detect base from script src or location
+    const s = document.currentScript || document.querySelector('script[src*="story.js"]');
+    if (s && s.src) {
+      // e.g. /botwavebomba/assets/js/story.js?v=1 -> /botwavebomba
+      const m = s.src.match(/^https?:\/\/[^/]+(\/[^/]+)\/assets\//);
+      if (m) return m[1];
+    }
+    return "/botwavebomba";
+  })();
   const mount = document.getElementById("story-detail-mount");
   if (!mount) return;
 
