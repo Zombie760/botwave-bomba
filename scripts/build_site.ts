@@ -407,11 +407,10 @@ function chrome(
         </ul>
       </div>
       <div class="bwb-footer-col bwb-footer-col-contact">
-        <h4 class="bwb-footer-h">CONTACT</h4>
+        <h4 class="bwb-footer-h">KYLE JIMENEZ</h4>
         <ul>
-          <li><a href="mailto:al@botwave.app">al@botwave.app</a></li>
           <li><a href="mailto:botwave1904@gmail.com">botwave1904@gmail.com</a></li>
-          <li><a href="tel:+17608259781">+1 760 825 9781</a></li>
+          <li><a href="https://zombie760.github.io">github: zombie760.github.io</a></li>
         </ul>
         <p class="bwb-footer-attribution">Made on Fedora · Built with bun · Hosted on GitHub Pages</p>
       </div>
