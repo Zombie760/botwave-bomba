@@ -956,7 +956,10 @@ function renderPortada(stories: Story[]): string {
         if (t) counts[t] = (counts[t] || 0) + 1;
       }
     }
-    return Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 12).map(([k]) => k);
+    return Object.entries(counts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 12)
+      .map(([k]) => k);
   })();
   const trendingHtml = trendingTopics.length
     ? `<div class="bwb-trending-strip"><span class="bwb-trending-label">TRENDING</span>${trendingTopics.map((t) => `<a class="bwb-trending-chip" href="${sectionUrl("world")}">${escapeHtml(t)} <span class="bwb-trending-follow">+</span></a>`).join("")}</div>`
@@ -1899,65 +1902,87 @@ function generate() {
   const intel = getIntelligence();
   const stats = intel.corpus_stats;
   const classColors: Record<string, string> = {
-    INTELLIGENCE: '#c4302b',
-    PROSECUTORIAL: '#E86A3C',
-    FINANCE: '#E8B339',
-    LEGAL: '#3FA796',
-    POLITICAL: '#5b8def',
-    OLIGARCH: '#a86ad0',
+    INTELLIGENCE: "#c4302b",
+    PROSECUTORIAL: "#E86A3C",
+    FINANCE: "#E8B339",
+    LEGAL: "#3FA796",
+    POLITICAL: "#5b8def",
+    OLIGARCH: "#a86ad0",
   };
-  const classOrder = ['INTELLIGENCE', 'PROSECUTORIAL', 'FINANCE', 'LEGAL', 'POLITICAL', 'OLIGARCH'];
+  const classOrder = ["INTELLIGENCE", "PROSECUTORIAL", "FINANCE", "LEGAL", "POLITICAL", "OLIGARCH"];
 
   // Co-occurrence bars
-  const coBars = intel.cooccurrence.slice(0, 12).map(({ a, b, count }) => {
-    const colorA = classColors[a] || '#888';
-    const colorB = classColors[b] || '#888';
-    return `<div class="bwb-intel-copair">
+  const coBars = intel.cooccurrence
+    .slice(0, 12)
+    .map(({ a, b, count }) => {
+      const colorA = classColors[a] || "#888";
+      const colorB = classColors[b] || "#888";
+      return `<div class="bwb-intel-copair">
       <div class="bwb-intel-copair-names"><span style="color:${colorA}">${a}</span> <span class="bwb-intel-copair-x">↔</span> <span style="color:${colorB}">${b}</span></div>
       <div class="bwb-intel-copair-bar"><span style="width:${Math.min(100, count * 15)}%; background:linear-gradient(90deg, ${colorA}55, ${colorB}55);"></span><strong>${count}</strong></div>
     </div>`;
-  }).join("");
+    })
+    .join("");
 
   // First-EP chain (10 dated events 1119–2019)
-  const epChain = intel.moat_framing.first_ep_chain.map(ev => `
+  const epChain = intel.moat_framing.first_ep_chain
+    .map(
+      (ev) => `
     <li class="bwb-intel-chain-item">
       <span class="bwb-intel-chain-year">${ev.year}</span>
       <span class="bwb-intel-chain-event">${escapeHtml(ev.event)}</span>
       <span class="bwb-intel-chain-mech">${escapeHtml(ev.mechanism)}</span>
-    </li>`).join("");
+    </li>`
+    )
+    .join("");
 
   // Spotlight dossiers (top 5 highest-class-coverage docs)
-  const spotlights = intel.spotlight.map((e, i) => {
-    const chips = e.classes.map(c =>
-      `<span class="bwb-intel-chip" style="background:${classColors[c] || '#888'}22; color:${classColors[c] || '#888'}; border-color:${classColors[c] || '#888'}66">${c}</span>`
-    ).join("");
-    const actorList = e.actors.length ? e.actors.slice(0, 6).map(a => escapeHtml(a)).join(" · ") : "(no actor tag)";
-    return `<article class="bwb-intel-spotlight">
+  const spotlights = intel.spotlight
+    .map((e, i) => {
+      const chips = e.classes
+        .map(
+          (c) =>
+            `<span class="bwb-intel-chip" style="background:${classColors[c] || "#888"}22; color:${classColors[c] || "#888"}; border-color:${classColors[c] || "#888"}66">${c}</span>`
+        )
+        .join("");
+      const actorList = e.actors.length
+        ? e.actors
+            .slice(0, 6)
+            .map((a) => escapeHtml(a))
+            .join(" · ")
+        : "(no actor tag)";
+      return `<article class="bwb-intel-spotlight">
       <header>
-        <span class="bwb-intel-spotlight-num">${String(i+1).padStart(2,'0')}</span>
+        <span class="bwb-intel-spotlight-num">${String(i + 1).padStart(2, "0")}</span>
         <span class="bwb-intel-spotlight-bates">${escapeHtml(e.bates)}</span>
-        ${e.year ? `<span class="bwb-intel-spotlight-year">${e.year}</span>` : ''}
+        ${e.year ? `<span class="bwb-intel-spotlight-year">${e.year}</span>` : ""}
         <span class="bwb-intel-spotlight-class">${escapeHtml(e.classification)}</span>
       </header>
       <div class="bwb-intel-spotlight-chips">${chips}</div>
       <div class="bwb-intel-spotlight-actors">${actorList}</div>
       <p class="bwb-intel-spotlight-excerpt">"${escapeHtml(e.excerpt)}"</p>
     </article>`;
-  }).join("");
+    })
+    .join("");
 
   // Entity tallies (top entities per class)
-  const tallySections = classOrder.map(cls => {
-    const ents = intel.scanner_stats[cls] || {};
-    const sorted = Object.entries(ents).sort((a, b) => b[1] - a[1]);
-    const max = sorted[0]?.[1] || 1;
-    const rows = sorted.map(([name, ct]) =>
-      `<li><span class="bwb-intel-tally-bar"><span style="width:${Math.min(100, ct / max * 100)}%; background:${classColors[cls]}"></span></span><span class="bwb-intel-tally-name">${escapeHtml(name)}</span><span class="bwb-intel-tally-num">${ct.toLocaleString()}</span></li>`
-    ).join("");
-    return `<div class="bwb-intel-tally-block">
+  const tallySections = classOrder
+    .map((cls) => {
+      const ents = intel.scanner_stats[cls] || {};
+      const sorted = Object.entries(ents).sort((a, b) => b[1] - a[1]);
+      const max = sorted[0]?.[1] || 1;
+      const rows = sorted
+        .map(
+          ([name, ct]) =>
+            `<li><span class="bwb-intel-tally-bar"><span style="width:${Math.min(100, (ct / max) * 100)}%; background:${classColors[cls]}"></span></span><span class="bwb-intel-tally-name">${escapeHtml(name)}</span><span class="bwb-intel-tally-num">${ct.toLocaleString()}</span></li>`
+        )
+        .join("");
+      return `<div class="bwb-intel-tally-block">
       <h3 style="color:${classColors[cls]}">${cls}</h3>
       <ul>${rows}</ul>
     </div>`;
-  }).join("");
+    })
+    .join("");
 
   // Hero
   const mechanismQuote = `
@@ -1982,9 +2007,12 @@ function generate() {
     </div>`;
 
   // Mechanism cycle (6 steps)
-  const cycle = intel.mechanism.cycle.map((step, i) =>
-    `<li><span class="bwb-intel-cycle-num">${i+1}</span><span class="bwb-intel-cycle-text">${escapeHtml(step)}</span></li>`
-  ).join("");
+  const cycle = intel.mechanism.cycle
+    .map(
+      (step, i) =>
+        `<li><span class="bwb-intel-cycle-num">${i + 1}</span><span class="bwb-intel-cycle-text">${escapeHtml(step)}</span></li>`
+    )
+    .join("");
 
   const intelligenceBody = `<div class="bwb-layout bwb-intel-shell" style="grid-template-columns: 280px 1fr;">
 
@@ -3369,14 +3397,18 @@ https://epstein-data.com/knowledge_graph/relationships.json?_size=2500&amp;_shap
       <h2>The current chain of obstruction</h2>
       <p class="bwb-intel-lede">Officials and adjacent figures with documented entanglement in the EFTA corpus or active obstruction of release. These are the names to ask, in alphabetical order by office.</p>
       <div class="bwb-intel-class-grid">
-        ${(intel.class_of_2025?.members || []).map(m => `
+        ${(intel.class_of_2025?.members || [])
+          .map(
+            (m) => `
           <article class="bwb-intel-class-card">
             <h3>${escapeHtml(m.name)}</h3>
             <p class="bwb-intel-class-role">${escapeHtml(m.role)}</p>
             <p><strong>Receipt:</strong> ${escapeHtml(m.receipt)}</p>
             <p><strong>Holdup:</strong> ${escapeHtml(m.block)}</p>
           </article>
-        `).join("")}
+        `
+          )
+          .join("")}
       </div>
     </section>
 
@@ -3385,12 +3417,16 @@ https://epstein-data.com/knowledge_graph/relationships.json?_size=2500&amp;_shap
       <h2>Named in the corpus, not alleged in headlines</h2>
       <p class="bwb-intel-lede">Every name below is tied to a primary source — EFTA bates, flight log, subcorpus file, or memo. The tier reflects the strength of the document chain, not the seriousness of the allegation.</p>
       <div class="bwb-intel-orbit-grid">
-        ${(intel.trump_orbit?.members || []).map(m => `
+        ${(intel.trump_orbit?.members || [])
+          .map(
+            (m) => `
           <article class="bwb-intel-orbit-card bwb-intel-orbit-${m.tier.toLowerCase()}">
             <h3>${escapeHtml(m.name)} <span class="bwb-intel-orbit-tier">${escapeHtml(m.tier)}</span></h3>
             <p>${escapeHtml(m.receipt)}</p>
           </article>
-        `).join("")}
+        `
+          )
+          .join("")}
       </div>
     </section>
 
@@ -3399,12 +3435,16 @@ https://epstein-data.com/knowledge_graph/relationships.json?_size=2500&amp;_shap
       <h2>The money behind the gate</h2>
       <p class="bwb-intel-lede">From <em>Donor_Class_Bible_Deep_State_2026.pdf</em>. Direct = documented payment or hand-off. Structural = financial conduit or ownership chain.</p>
       <div class="bwb-intel-donor-grid">
-        ${(intel.donor_class?.members || []).map(m => `
+        ${(intel.donor_class?.members || [])
+          .map(
+            (m) => `
           <article class="bwb-intel-donor-card bwb-intel-donor-${m.tier.toLowerCase()}">
-            <h3>${escapeHtml(m.name)}${m.amount ? ` <span class="bwb-intel-donor-amount">${escapeHtml(m.amount)}</span>` : ''}</h3>
+            <h3>${escapeHtml(m.name)}${m.amount ? ` <span class="bwb-intel-donor-amount">${escapeHtml(m.amount)}</span>` : ""}</h3>
             <p><span class="bwb-intel-donor-tier">${escapeHtml(m.tier)}</span> ${escapeHtml(m.receipt)}</p>
           </article>
-        `).join("")}
+        `
+          )
+          .join("")}
       </div>
     </section>
 
@@ -3438,7 +3478,8 @@ https://epstein-data.com/knowledge_graph/relationships.json?_size=2500&amp;_shap
     "intelligence.html",
     chrome("intelligence", intelligenceBody, {
       title: "Intelligence — BotwaveBomba",
-      description: "The mechanism. The cycle. The exempt-person network exposed in 10,715 primary documents.",
+      description:
+        "The mechanism. The cycle. The exempt-person network exposed in 10,715 primary documents.",
       canonical: pageUrl("intelligence"),
       jsonLd: intelligenceLd,
     })
@@ -3451,7 +3492,18 @@ https://epstein-data.com/knowledge_graph/relationships.json?_size=2500&amp;_shap
 
   // === Watch page (Stage 4) — Epstein accountability tracker ===
   const watch = getWatchStatus();
-  const STATUS_ORDER: WatchStatusType[] = ["convicted", "charged", "arrested", "cooperating", "settled", "civil_suit", "no_action", "cleared", "deceased", "unknown"];
+  const STATUS_ORDER: WatchStatusType[] = [
+    "convicted",
+    "charged",
+    "arrested",
+    "cooperating",
+    "settled",
+    "civil_suit",
+    "no_action",
+    "cleared",
+    "deceased",
+    "unknown",
+  ];
   const STATUS_COLOR: Record<WatchStatusType, string> = {
     arrested: "var(--status-error, #c4302b)",
     charged: "var(--status-error, #c4302b)",
@@ -3465,7 +3517,7 @@ https://epstein-data.com/knowledge_graph/relationships.json?_size=2500&amp;_shap
     unknown: "#5a5d65",
   };
   const statusPill = (s: WatchStatusType) =>
-    `<span class="bwb-watch-pill" style="background: ${STATUS_COLOR[s]};">${s.replace(/_/g, ' ').toUpperCase()}</span>`;
+    `<span class="bwb-watch-pill" style="background: ${STATUS_COLOR[s]};">${s.replace(/_/g, " ").toUpperCase()}</span>`;
   const statBlock = (label: string, n: number, color: string) =>
     `<div class="bwb-watch-stat"><strong style="color: ${color}">${n}</strong><span>${label}</span></div>`;
   const watchStats = `
@@ -3477,29 +3529,35 @@ https://epstein-data.com/knowledge_graph/relationships.json?_size=2500&amp;_shap
       ${statBlock("DECEASED", watch.status_counts.deceased || 0, STATUS_COLOR.deceased)}
       ${statBlock("TRACKED", watch.status_counts.unknown || 0, STATUS_COLOR.unknown)}
     </div>`;
-  const renderEntityCard = (e: typeof watch.all[number]) => `
+  const renderEntityCard = (e: (typeof watch.all)[number]) => `
     <article class="bwb-watch-card" data-status="${e.status}">
       <header class="bwb-watch-card-head">
         <h3>${escapeHtml(e.name)}</h3>
         ${statusPill(e.status)}
       </header>
       <p class="bwb-watch-card-meta">
-        <span class="bwb-watch-card-type">${escapeHtml((e.person_type || 'unknown').replace(/_/g, ' '))}</span>
-        ${e.occupation ? ` · <span class="bwb-watch-card-occ">${escapeHtml(e.occupation.slice(0, 80))}</span>` : ''}
-        ${e.ds10_mention_count ? ` · <span class="bwb-watch-card-mn">${e.ds10_mention_count.toLocaleString()} mentions</span>` : ''}
+        <span class="bwb-watch-card-type">${escapeHtml((e.person_type || "unknown").replace(/_/g, " "))}</span>
+        ${e.occupation ? ` · <span class="bwb-watch-card-occ">${escapeHtml(e.occupation.slice(0, 80))}</span>` : ""}
+        ${e.ds10_mention_count ? ` · <span class="bwb-watch-card-mn">${e.ds10_mention_count.toLocaleString()} mentions</span>` : ""}
       </p>
-      <p class="bwb-watch-card-sum">${escapeHtml(e.summary.slice(0, 280))}${e.summary.length > 280 ? '…' : ''}</p>
+      <p class="bwb-watch-card-sum">${escapeHtml(e.summary.slice(0, 280))}${e.summary.length > 280 ? "…" : ""}</p>
       <ul class="bwb-watch-card-sources">
-        ${e.sources.slice(0, 3).map((s) => `<li><a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(s.name)}</a></li>`).join('')}
+        ${e.sources
+          .slice(0, 3)
+          .map(
+            (s) =>
+              `<li><a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(s.name)}</a></li>`
+          )
+          .join("")}
       </ul>
     </article>`;
   const groupSection = (label: string, entities: typeof watch.all) => {
-    if (!entities.length) return '';
+    if (!entities.length) return "";
     return `
       <section class="bwb-watch-group">
         <h2>${label} <span class="bwb-watch-group-count">${entities.length}</span></h2>
-        <div class="bwb-watch-grid">${entities.slice(0, 24).map(renderEntityCard).join('')}</div>
-        ${entities.length > 24 ? `<p class="bwb-watch-group-more">+ ${entities.length - 24} more — see JSON API for full list</p>` : ''}
+        <div class="bwb-watch-grid">${entities.slice(0, 24).map(renderEntityCard).join("")}</div>
+        ${entities.length > 24 ? `<p class="bwb-watch-group-more">+ ${entities.length - 24} more — see JSON API for full list</p>` : ""}
       </section>`;
   };
   const watchBody = `
@@ -3519,7 +3577,7 @@ https://epstein-data.com/knowledge_graph/relationships.json?_size=2500&amp;_shap
         <div class="bwb-sidebar-section">
           <h3 class="bwb-sidebar-title">SOURCES</h3>
           <ul class="bwb-intel-cat-list">
-            ${watch.sources_used.map((s) => `<li><a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(s.name)}</a></li>`).join('')}
+            ${watch.sources_used.map((s) => `<li><a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(s.name)}</a></li>`).join("")}
           </ul>
         </div>
         <div class="bwb-sidebar-section">
@@ -3540,12 +3598,32 @@ https://epstein-data.com/knowledge_graph/relationships.json?_size=2500&amp;_shap
           <p class="bwb-intel-note"><strong>Last scrape:</strong> ${escapeHtml(watch.generated_at)} &middot; <strong>Sources:</strong> ${watch.sources_used.length} primary registries (knowledge graph, SDNY dockets, DOJ press, VI AG)</p>
           ${watchStats}
         </section>
-        ${groupSection("Perpetrators & Co-Conspirators (convicted / charged / arrested)", watch.all.filter((e) => ["convicted", "charged", "arrested", "cooperating"].includes(e.status)))}
-        ${groupSection("Settled (paid their way out — no admission of guilt)", watch.all.filter((e) => e.status === "settled"))}
-        ${groupSection("Civil suits pending", watch.all.filter((e) => e.status === "civil_suit"))}
-        ${groupSection("No action — walking free", watch.all.filter((e) => e.status === "no_action" || e.status === "cleared"))}
-        ${groupSection("Deceased (case closed by death)", watch.all.filter((e) => e.status === "deceased"))}
-        ${groupSection("Tracked — status unknown or under investigation", watch.all.filter((e) => e.status === "unknown"))}
+        ${groupSection(
+          "Perpetrators & Co-Conspirators (convicted / charged / arrested)",
+          watch.all.filter((e) =>
+            ["convicted", "charged", "arrested", "cooperating"].includes(e.status)
+          )
+        )}
+        ${groupSection(
+          "Settled (paid their way out — no admission of guilt)",
+          watch.all.filter((e) => e.status === "settled")
+        )}
+        ${groupSection(
+          "Civil suits pending",
+          watch.all.filter((e) => e.status === "civil_suit")
+        )}
+        ${groupSection(
+          "No action — walking free",
+          watch.all.filter((e) => e.status === "no_action" || e.status === "cleared")
+        )}
+        ${groupSection(
+          "Deceased (case closed by death)",
+          watch.all.filter((e) => e.status === "deceased")
+        )}
+        ${groupSection(
+          "Tracked — status unknown or under investigation",
+          watch.all.filter((e) => e.status === "unknown")
+        )}
         <section class="bwb-intel-section">
           <h2>How this updates</h2>
           <p class="bwb-intel-note">The watch list is the seed file at <code>api/watch-status.json</code>. A private ingest pipeline (CourtListener dockets, DOJ press releases, Federal Register, USAspending, OpenFEC, OpenSecrets, Google News RSS, GDELT, Wikipedia events) updates the underlying <code>api/scraper.db</code> every 30 minutes. Each scrape records the source URL, the fetch timestamp, and the content hash. A daily derivation run re-emits <code>api/watch-status.json</code> with the latest status. Public API: <a href="/api/watch-status.json" target="_blank" rel="noopener">/api/watch-status.json</a>. Public mirror of substrate: <a href="https://epstein-data.com" target="_blank" rel="noopener">epstein-data.com</a> (1.4M documents / 2.7M pages / 524 entities / 2,096 typed relationships).</p>
@@ -3559,7 +3637,8 @@ https://epstein-data.com/knowledge_graph/relationships.json?_size=2500&amp;_shap
         "@type": "WebPage",
         name: "Watch — BotwaveBomba",
         url: pageUrl("watch"),
-        description: "Accountability tracker. Who is being held accountable, who paid their way out, who walked free, and who is still being tracked.",
+        description:
+          "Accountability tracker. Who is being held accountable, who paid their way out, who walked free, and who is still being tracked.",
       },
       {
         "@type": "BreadcrumbList",
@@ -3574,7 +3653,8 @@ https://epstein-data.com/knowledge_graph/relationships.json?_size=2500&amp;_shap
     "watch.html",
     chrome("watch", watchBody, {
       title: "Watch — BotwaveBomba",
-      description: "Epstein accountability ledger. Convicted, settled, walking free, deceased, tracked. Each status a filed claim with a public source.",
+      description:
+        "Epstein accountability ledger. Convicted, settled, walking free, deceased, tracked. Each status a filed claim with a public source.",
       canonical: pageUrl("watch"),
       jsonLd: watchLd,
     })

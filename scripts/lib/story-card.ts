@@ -4,7 +4,9 @@
 // + expand button for full source list
 import type { SigintPackage, Asset } from "./data.ts";
 
-export function normBloc(b: string | undefined | null): "western" | "non-aligned" | "adversarial" | "other" {
+export function normBloc(
+  b: string | undefined | null
+): "western" | "non-aligned" | "adversarial" | "other" {
   if (!b) return "other";
   const x = String(b).toLowerCase();
   if (x.includes("western") || x === "w" || x === "us" || x === "eu") return "western";
@@ -30,19 +32,26 @@ export function factualityClass(f: string | undefined | null): string {
 
 export function factualityLabel(f: string | undefined | null): string {
   const c = factualityClass(f);
-  return ({
-    "very-high": "Very high factuality",
-    "high": "High factuality",
-    "mixed": "Mixed factuality",
-    "low": "Low factuality",
-    "very-low": "Very low factuality",
-    "unknown": "Unknown factuality",
-  } as Record<string, string>)[c] ?? "Unknown factuality";
+  return (
+    (
+      {
+        "very-high": "Very high factuality",
+        high: "High factuality",
+        mixed: "Mixed factuality",
+        low: "Low factuality",
+        "very-low": "Very low factuality",
+        unknown: "Unknown factuality",
+      } as Record<string, string>
+    )[c] ?? "Unknown factuality"
+  );
 }
 
 function getDomain(url: string): string {
   try {
-    return url.replace(/^https?:\/\//, "").split("/")[0].replace(/^www\./, "");
+    return url
+      .replace(/^https?:\/\//, "")
+      .split("/")[0]
+      .replace(/^www\./, "");
   } catch {
     return "";
   }
@@ -95,8 +104,10 @@ export function storyCard(pkg: SigintPackage): string {
   const countries: string[] = pkg.countries || pkg.theaters || [];
   const headlines: string[] = pkg.top_headlines || pkg.topHeadlines || [];
   const title = headlines[0] || `Coverage across ${sourceList.length} sources`;
-  const snippet = (pkg.refraction && (pkg.refraction["headline"] || pkg.refraction["summary"])) ||
-                  (lead && lead.excerpt) || "";
+  const snippet =
+    (pkg.refraction && (pkg.refraction["headline"] || pkg.refraction["summary"])) ||
+    (lead && lead.excerpt) ||
+    "";
   const leadIdx = 0;
   const wPct = blocSegPct(blocSpread, "western");
   const nPct = blocSegPct(blocSpread, "non-aligned");
@@ -108,28 +119,30 @@ export function storyCard(pkg: SigintPackage): string {
   const isMonoFrame = (wPct > 85 || nPct > 85) && totalSources >= 3;
   const isBlackout = aPct > 50 && wPct < 15;
 
-  const sourceRows = sourceList.map((src, i) => {
-    const url = src.url || "";
-    const country = src.country || "";
-    const bloc = normBloc(src.bloc || src.alignment);
-    const owner = src.owner || "";
-    const domain = getDomain(url);
-    return `<li class="bwb-card-source-row">
+  const sourceRows = sourceList
+    .map((src, i) => {
+      const url = src.url || "";
+      const country = src.country || "";
+      const bloc = normBloc(src.bloc || src.alignment);
+      const owner = src.owner || "";
+      const domain = getDomain(url);
+      return `<li class="bwb-card-source-row">
       <span class="bwb-card-source-bloc ${bloc}"></span>
       <span class="bwb-card-source-name">${escapeHtml(src.name)}</span>
       <span class="bwb-card-source-country">${escapeHtml(country)}</span>
       <span class="bwb-card-source-owner">${escapeHtml(owner || domain)}</span>
       <a class="bwb-card-source-link" href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(domain)} &nearr;</a>
     </li>`;
-  }).join("");
+    })
+    .join("");
 
   const cardId = `card-${escapeHtml(pkg.id)}`;
   return `<article class="bwb-story-card" data-pkg="${escapeHtml(pkg.id)}">
-    <a class="bwb-story-card-link" href="${escapeHtml(leadUrl || '#')}" aria-label="Read coverage: ${escapeHtml(title)}">
+    <a class="bwb-story-card-link" href="${escapeHtml(leadUrl || "#")}" aria-label="Read coverage: ${escapeHtml(title)}">
       <div class="bwb-story-card-header">
         <div class="bwb-story-card-logo">
           <img src="https://logo.clearbit.com/${escapeHtml(getDomain(leadUrl))}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
-          <span class="bwb-story-card-logo-fallback">${escapeHtml((leadName.match(/[A-Z]/g) || ['S']).slice(0, 2).join(""))}</span>
+          <span class="bwb-story-card-logo-fallback">${escapeHtml((leadName.match(/[A-Z]/g) || ["S"]).slice(0, 2).join(""))}</span>
         </div>
         <span class="bwb-story-card-source-name">${escapeHtml(leadName)}</span>
         <span class="${blocClass(leadBloc)}">${leadBloc.replace("-", " ")}</span>
@@ -152,10 +165,14 @@ export function storyCard(pkg: SigintPackage): string {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             ${totalSources} ${totalSources === 1 ? "source" : "sources"}
           </span>
-          ${countries.length ? `<span class="bwb-story-card-count" title="Countries">
+          ${
+            countries.length
+              ? `<span class="bwb-story-card-count" title="Countries">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
             ${countries.length} ${countries.length === 1 ? "country" : "countries"}
-          </span>` : ""}
+          </span>`
+              : ""
+          }
         </div>
         <div class="bwb-story-card-badges">
           ${isCoverageGap ? '<span class="bwb-signal-badge blindspot">Coverage gap</span>' : ""}
