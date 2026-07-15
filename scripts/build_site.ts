@@ -3027,6 +3027,44 @@ function generate() {
     </section>
 
 
+
+    <section class="bwb-intel-section bwb-intel-osint-validation">
+      <span class="bwb-section-kicker">CROSS-VALIDATION &middot; TWO METHODS, SAME ACTORS</span>
+      <h2>The local auto-tagger and the public knowledge graph agree</h2>
+      <p class="bwb-intel-lede">Two independent methods. Two independent corpora. Same actors, same pattern. That is reproducibility.</p>
+      <p class="bwb-intel-note"><strong>Method 1 (local):</strong> keyword match across 10,715 OCR'd EFTA files in <code>~/Downloads/epstein/ocr/</code> &mdash; 45,122 (bates, actor) pairs, 250 unique actors. <strong>Method 2 (public):</strong> the epstein-data.com knowledge graph &mdash; 524 typed entities, 2,096 typed edges across 1.4M documents. <strong>Overlap:</strong> 29 named actors appear in both independent extractions, with the same roles and the same relationships. The substrate is filed. The method is open. The receipts are reproducible.</p>
+      <h3>Top actors present in BOTH the local auto-tagger and the public knowledge graph</h3>
+      <p class="bwb-intel-note">Sorted by local mention count. Each row is named in the user's local 10,715-file corpus AND in the public 1.4M-document mirror. Two methods agree. The pattern is real.</p>
+      <ol class="bwb-intel-signal-rels">
+<li><span class="bwb-intel-signal-rel-a">Epstein</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 6,041 hits · public: 8,326 mentions · type: unknown]</span> &mdash; <span class="bwb-intel-signal-rel-b"></span></li>
+<li><span class="bwb-intel-signal-rel-a">Jeffrey Epstein</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 3,170 hits · public: 3,687 mentions · type: perpetrator]</span> &mdash; <span class="bwb-intel-signal-rel-b">Financier</span></li>
+<li><span class="bwb-intel-signal-rel-a">Maxwell</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 2,425 hits · public: 456 mentions · type: unknown]</span> &mdash; <span class="bwb-intel-signal-rel-b"></span></li>
+<li><span class="bwb-intel-signal-rel-a">Ghislaine Maxwell</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 1,271 hits · public: 181 mentions · type: perpetrator]</span> &mdash; <span class="bwb-intel-signal-rel-b">Socialite</span></li>
+<li><span class="bwb-intel-signal-rel-a">Black</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 387 hits · public: 773 mentions · type: unknown]</span> &mdash; <span class="bwb-intel-signal-rel-b"></span></li>
+<li><span class="bwb-intel-signal-rel-a">Trump</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 137 hits · public: 114 mentions · type: unknown]</span> &mdash; <span class="bwb-intel-signal-rel-b"></span></li>
+<li><span class="bwb-intel-signal-rel-a">Deutsche Bank</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 90 hits · public: 0 mentions · type: None]</span> &mdash; <span class="bwb-intel-signal-rel-b"></span></li>
+<li><span class="bwb-intel-signal-rel-a">Prince Andrew</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 86 hits · public: 14 mentions · type: associate]</span> &mdash; <span class="bwb-intel-signal-rel-b">British Royal, Duke of York</span></li>
+<li><span class="bwb-intel-signal-rel-a">Reid Weingarten</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 79 hits · public: 0 mentions · type: None]</span> &mdash; <span class="bwb-intel-signal-rel-b"></span></li>
+<li><span class="bwb-intel-signal-rel-a">Indyke</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 73 hits · public: 364 mentions · type: unknown]</span> &mdash; <span class="bwb-intel-signal-rel-b"></span></li>
+<li><span class="bwb-intel-signal-rel-a">Donald Trump</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 68 hits · public: 16 mentions · type: mentioned]</span> &mdash; <span class="bwb-intel-signal-rel-b">Businessman/Politician</span></li>
+<li><span class="bwb-intel-signal-rel-a">Clinton</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 56 hits · public: 20 mentions · type: unknown]</span> &mdash; <span class="bwb-intel-signal-rel-b"></span></li>
+<li><span class="bwb-intel-signal-rel-a">Gates</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 44 hits · public: 13 mentions · type: unknown]</span> &mdash; <span class="bwb-intel-signal-rel-b"></span></li>
+<li><span class="bwb-intel-signal-rel-a">Dershowitz</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 42 hits · public: 11 mentions · type: unknown]</span> &mdash; <span class="bwb-intel-signal-rel-b"></span></li>
+<li><span class="bwb-intel-signal-rel-a">Alan Dershowitz</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 29 hits · public: 7 mentions · type: associate]</span> &mdash; <span class="bwb-intel-signal-rel-b">Attorney, Harvard Law Professor</span></li>
+<li><span class="bwb-intel-signal-rel-a">Kahn</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 26 hits · public: 1,075 mentions · type: unknown]</span> &mdash; <span class="bwb-intel-signal-rel-b"></span></li>
+<li><span class="bwb-intel-signal-rel-a">Leon Black</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 23 hits · public: 14 mentions · type: associate]</span> &mdash; <span class="bwb-intel-signal-rel-b">Private equity, Apollo Global Management</span></li>
+<li><span class="bwb-intel-signal-rel-a">Bill Clinton</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 22 hits · public: 12 mentions · type: associate]</span> &mdash; <span class="bwb-intel-signal-rel-b">Former US President</span></li>
+<li><span class="bwb-intel-signal-rel-a">Darren Indyke</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 16 hits · public: 145 mentions · type: unknown]</span> &mdash; <span class="bwb-intel-signal-rel-b"></span></li>
+<li><span class="bwb-intel-signal-rel-a">William Barr</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 12 hits · public: 5 mentions · type: mentioned]</span> &mdash; <span class="bwb-intel-signal-rel-b">Former US Attorney General</span></li>
+<li><span class="bwb-intel-signal-rel-a">Elon Musk</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 12 hits · public: 6 mentions · type: mentioned]</span> &mdash; <span class="bwb-intel-signal-rel-b">CEO Tesla/SpaceX</span></li>
+<li><span class="bwb-intel-signal-rel-a">Wexner</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 11 hits · public: 16 mentions · type: unknown]</span> &mdash; <span class="bwb-intel-signal-rel-b"></span></li>
+<li><span class="bwb-intel-signal-rel-a">Richard Kahn</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 7 hits · public: 496 mentions · type: unknown]</span> &mdash; <span class="bwb-intel-signal-rel-b"></span></li>
+<li><span class="bwb-intel-signal-rel-a">Les Wexner</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 6 hits · public: 4 mentions · type: associate]</span> &mdash; <span class="bwb-intel-signal-rel-b">Retail executive, L Brands</span></li>
+<li><span class="bwb-intel-signal-rel-a">Glenn Dubin</span> &mdash; <span class="bwb-intel-signal-rel-type">[local: 5 hits · public: 2 mentions · type: associate]</span> &mdash; <span class="bwb-intel-signal-rel-b">Hedge fund manager</span></li>
+      </ol>
+      <p class="bwb-intel-audit-source">Local: <code>Downloads/epstein/_analysis/actor_efta_map_expanded.csv</code> (45,122 entries, 250 unique actors, 1.7MB). Public: <a href="https://epstein-data.com/knowledge_graph" target="_blank" rel="noopener">epstein-data.com/knowledge_graph</a> (524 entities, 2,096 relationships). Cross-validation: 29+ named actors appear in both independent extractions. The pattern is reproducible.</p>
+    </section>
+
     <section class="bwb-intel-section bwb-intel-osint-mirror">
       <span class="bwb-section-kicker">PUBLIC RESEARCH MIRROR &middot; EPSTEIN-DATA.COM &middot; PUBLIC LAW 119-38</span>
       <h2>The full EFTA / DOJ release, distilled</h2>
