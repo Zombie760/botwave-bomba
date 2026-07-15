@@ -3420,3 +3420,107 @@ flex-direction: column;
   letter-spacing: 0.05em;
   text-align: right;
 }
+
+
+/* === INTELLIGENCE page front door === */
+.bwb-intel-frontdoor {
+  border-bottom: 2px solid var(--color-accent, #f1c457);
+  padding-bottom: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.bwb-intel-claim {
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--color-text-strong, #f4f5f7);
+  max-width: 880px;
+  font-weight: 500;
+}
+
+.bwb-intel-claim-sub {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-text-muted, #b5b8bf);
+  max-width: 880px;
+  margin-top: var(--space-3);
+}
+
+/* === 5-Dynasty Entry Grid === */
+.bwb-intel-entry-grid {
+  border-top: 1px solid var(--color-border, #2a2a2a);
+  padding-top: var(--space-6);
+}
+
+.bwb-intel-dynasty-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.bwb-intel-dynasty-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5);
+  background: var(--color-bg-elevated, #1a1d23);
+  border: 1px solid var(--color-border, #2a2a2a);
+  border-top: 3px solid var(--color-accent, #f1c457);
+  border-radius: 4px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  position: relative;
+}
+
+.bwb-intel-dynasty-card:hover {
+  transform: translateY(-2px);
+  border-top-color: #ffd66b;
+  background: #1f2329;
+}
+
+.bwb-intel-dynasty-num {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  color: var(--color-accent, #f1c457);
+  letter-spacing: 0.15em;
+  margin-bottom: var(--space-2);
+}
+
+.bwb-intel-dynasty-card h3 {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 1.5rem;
+  color: var(--color-text-strong, #f4f5f7);
+  margin: 0 0 0.2rem 0;
+  letter-spacing: -0.01em;
+}
+
+.bwb-intel-dynasty-years {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  color: var(--color-text-muted, #b5b8bf);
+  letter-spacing: 0.05em;
+  margin: 0 0 var(--space-3) 0;
+}
+
+.bwb-intel-dynasty-summary {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--color-text, #d4d6db);
+  flex-grow: 1;
+  margin: 0 0 var(--space-3) 0;
+}
+
+.bwb-intel-dynasty-cta {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  color: var(--color-accent, #f1c457);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: auto;
+}
+
+/* === Physical Receipts / 3D === */
+.bwb-intel-receipts-3d {
+  border-top: 1px solid var(--color-border, #2a2a2a);
+  padding-top: var(--space-6);
+}
