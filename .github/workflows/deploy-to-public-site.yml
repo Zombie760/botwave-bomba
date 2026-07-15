@@ -49,6 +49,10 @@ jobs:
       - name: Copy build into public site
         run: |
           mkdir -p public-site/botwavebomba
+          # Remove previously-deployed files that no longer exist in the new build
+          # (cp -r only adds/overwrites; orphans like deleted .3mf assets would persist)
+          rm -f public-site/botwavebomba/assets/intel-art/3mf/*.3mf 2>/dev/null || true
+          rmdir public-site/botwavebomba/assets/intel-art/3mf 2>/dev/null || true
           # Core chrome + verticals — keep in sync with bun run build output
           cp -r \
             index.html black-site.html radar.html refraction.html spool.html dead-drop.html \
