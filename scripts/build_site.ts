@@ -1930,7 +1930,78 @@ function generate() {
     `<li><span class="bwb-intel-cycle-num">${i+1}</span><span class="bwb-intel-cycle-text">${escapeHtml(step)}</span></li>`
   ).join("");
 
-  const intelligenceBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">
+  const intelligenceBody = `<div class="bwb-layout bwb-intel-shell" style="grid-template-columns: 280px 1fr;">
+
+    <div class="bwb-layout bwb-intel-shell">
+      <aside class="bwb-sidebar bwb-intel-sidebar" aria-label="Categories">
+
+        <div class="bwb-sidebar-section">
+          <h3 class="bwb-sidebar-title">DYNASTIES</h3>
+          <ul class="bwb-intel-cat-list">
+            <li><a href="#audit-trump"><span class="bwb-intel-cat-num">01</span> Trump <span class="bwb-intel-cat-meta">1986-2026</span></a></li>
+            <li><a href="#audit-bush"><span class="bwb-intel-cat-num">02</span> Bush <span class="bwb-intel-cat-meta">1942-2008</span></a></li>
+            <li><a href="#audit-biden"><span class="bwb-intel-cat-num">03</span> Biden <span class="bwb-intel-cat-meta">2008-2026</span></a></li>
+            <li><a href="#audit-clinton"><span class="bwb-intel-cat-num">04</span> Clinton <span class="bwb-intel-cat-meta">1978-2024</span></a></li>
+            <li><a href="#audit-obama"><span class="bwb-intel-cat-num">05</span> Obama <span class="bwb-intel-cat-meta">2008-2024</span></a></li>
+          </ul>
+        </div>
+
+        <div class="bwb-sidebar-section">
+          <h3 class="bwb-sidebar-title">SUBCORPORA</h3>
+          <ul class="bwb-intel-cat-list">
+            <li><a href="#subcorpus-black"><span class="bwb-intel-cat-name">Black Book</span> <span class="bwb-intel-cat-meta">35 docs</span></a></li>
+            <li><a href="#subcorpus-border"><span class="bwb-intel-cat-name">Border Crossing</span> <span class="bwb-intel-cat-meta">8 docs</span></a></li>
+            <li><a href="#subcorpus-doj"><span class="bwb-intel-cat-name">DOJ</span> <span class="bwb-intel-cat-meta">23 docs</span></a></li>
+            <li><a href="#subcorpus-FBOP"><span class="bwb-intel-cat-name">Federal Bureau of Prisons</span> <span class="bwb-intel-cat-meta">4 docs</span></a></li>
+            <li><a href="#subcorpus-madoff"><span class="bwb-intel-cat-name">Madoff / Financial Fraud</span> <span class="bwb-intel-cat-meta">8 docs</span></a></li>
+            <li><a href="#subcorpus-melania"><span class="bwb-intel-cat-name">Melania Trump</span> <span class="bwb-intel-cat-meta">20 docs</span></a></li>
+            <li><a href="#subcorpus-musk"><span class="bwb-intel-cat-name">Musk / Tesla / SpaceX / Twitter</span> <span class="bwb-intel-cat-meta">31 docs</span></a></li>
+            <li><a href="#subcorpus-NATIVES"><span class="bwb-intel-cat-name">Native Media Files</span> <span class="bwb-intel-cat-meta">0 docs</span></a></li>
+            <li><a href="#subcorpus-_analysis"><span class="bwb-intel-cat-name">Analysis Substrate</span> <span class="bwb-intel-cat-meta">0 docs</span></a></li>
+            <li><a href="#subcorpus-cad"><span class="bwb-intel-cat-name">CAD Files (3D Evidence)</span> <span class="bwb-intel-cat-meta">0 docs</span></a></li>
+          </ul>
+        </div>
+
+        <div class="bwb-sidebar-section">
+          <h3 class="bwb-sidebar-title">MECHANISM ARMS</h3>
+          <ul class="bwb-intel-cat-list">
+            <li><a href="#arm-aipac">AIPAC <span class="bwb-intel-cat-meta">$450M+ / 5 dynasties</span></a></li>
+            <li><a href="#arm-bones">Skull &amp; Bones <span class="bwb-intel-cat-meta">4 of 5 in roster</span></a></li>
+            <li><a href="#arm-wexner">Wexner / Epstein / Maxwell <span class="bwb-intel-cat-meta">$3.4B settled</span></a></li>
+            <li><a href="#arm-vatican">Vatican <span class="bwb-intel-cat-meta">All 5 dynasties</span></a></li>
+            <li><a href="#arm-mic">MIC + CIA <span class="bwb-intel-cat-meta">$200M+ / 5 dynasties</span></a></li>
+          </ul>
+        </div>
+
+        <div class="bwb-sidebar-section">
+          <h3 class="bwb-sidebar-title">3D RECEIPTS</h3>
+          <ul class="bwb-intel-cat-list">
+            <li><a href="/assets/intel-art/3mf/little_saint_james_chapel.3mf" download>LSJ Chapel <span class="bwb-intel-cat-meta">.3mf · 145 KB</span></a></li>
+            <li><a href="/assets/intel-art/3mf/zorro_ranch_compound.3mf" download>Zorro Ranch <span class="bwb-intel-cat-meta">.3mf · 2.9 KB</span></a></li>
+          </ul>
+        </div>
+
+        <div class="bwb-sidebar-section">
+          <h3 class="bwb-sidebar-title">PUBLIC MIRROR</h3>
+          <ul class="bwb-intel-cat-list">
+            <li><a href="https://epstein-data.com" target="_blank" rel="noopener">epstein-data.com <span class="bwb-intel-cat-meta">1.4M docs</span></a></li>
+            <li><a href="https://github.com/Zombie760/botwave-bomba/tree/main/api/epstein-data-mirror" target="_blank" rel="noopener">refresh.sh <span class="bwb-intel-cat-meta">12s re-pull</span></a></li>
+            <li><a href="https://github.com/Zombie760/botwave-bomba/blob/main/api/epstein-data-mirror/README.md" target="_blank" rel="noopener">README <span class="bwb-intel-cat-meta">methods</span></a></li>
+          </ul>
+        </div>
+
+        <div class="bwb-sidebar-section">
+          <h3 class="bwb-sidebar-title">METHODS</h3>
+          <ul class="bwb-intel-cat-list">
+            <li><a href="#howto">6 steps to reproduce <span class="bwb-intel-cat-meta">read &darr;</span></a></li>
+            <li><a href="#live-osint">11 databases <span class="bwb-intel-cat-meta">public</span></a></li>
+            <li><a href="#validation">Cross-validation <span class="bwb-intel-cat-meta">2 methods agree</span></a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <div class="bwb-main bwb-intel-main">
+      <div class="bwb-main bwb-intel-main">
     <div class="bwb-section-header bwb-intel-frontdoor">
       <span class="bwb-section-kicker">EPSTEIN FILES FOIA · PRIMARY SOURCES</span>
       <h1>INTELLIGENCE</h1>
