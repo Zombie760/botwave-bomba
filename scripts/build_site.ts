@@ -2074,26 +2074,6 @@ function generate() {
       </div>
     </section>
 
-    <section class="bwb-intel-section bwb-intel-receipts-3d">
-      <span class="bwb-section-kicker">PHYSICAL RECEIPTS · 3D-PRINTABLE EVIDENCE</span>
-      <h2>Hold the evidence in your hand</h2>
-      <p class="bwb-intel-lede">Two .3mf models rendered from OpenSCAD source at <code>/var/home/gringo/Downloads/epstein/cad/</code>. Geometry verified against DOJ-filed records. Print on any FDM printer (Bambu A1 Mini or equivalent). The receipts, in plastic.</p>
-      <div class="bwb-intel-models-grid">
-        <article class="bwb-intel-model-card">
-          <h3>Little Saint James Chapel</h3>
-          <p>30&times;30&times;30 cube &mdash; windowless white concrete, blue structural stripes, painted optical-illusion door. As-built geometry per DOJ 2010&ndash;2014 survey.</p>
-          <p class="bwb-intel-model-format">.3mf &middot; 145 KB &middot; 9,719 facets</p>
-          <p class="bwb-intel-model-download"><a href="/assets/intel-art/3mf/little_saint_james_chapel.3mf" download>Download .3mf &darr;</a></p>
-        </article>
-        <article class="bwb-intel-model-card">
-          <h3>Zorro Ranch Compound &amp; Excavated Sub-Level</h3>
-          <p>18,000 sq ft hacienda + verified excavated basement (massage room, jacuzzi/exercise suite), 7-bay garage, Santa Fe railroad caboose. Five printable volumes.</p>
-          <p class="bwb-intel-model-format">.3mf &middot; 2.9 KB &middot; 5 volumes</p>
-          <p class="bwb-intel-model-download"><a href="/assets/intel-art/3mf/zorro_ranch_compound.3mf" download>Download .3mf &darr;</a></p>
-        </article>
-      </div>
-    </section>
-
     <section class="bwb-intel-section bwb-intel-audit" id="audit-trump">
       <span class="bwb-section-kicker">PRIMARY SOURCE · KYLE JIMENEZ · 2026-07-14</span>
       <h2>The Alchemy of Impunity</h2>
@@ -3373,24 +3353,6 @@ https://epstein-data.com/knowledge_graph/relationships.json?_size=2500&amp;_shap
         `).join("")}
       </div>
     </section>
-
-    ${(intel.models_reference?.items?.length) ? `
-    <section class="bwb-intel-section bwb-intel-models">
-      <span class="bwb-section-kicker">3D PRINT MODELS · FREE TO MAKE</span>
-      <h2>Hold the receipts in your hand</h2>
-      <p class="bwb-intel-lede">${escapeHtml(intel.models_reference.note)}</p>
-      <div class="bwb-intel-models-grid">
-        ${intel.models_reference.items.map(mod => `
-          <article class="bwb-intel-model-card">
-            <h3>${escapeHtml(mod.name)}</h3>
-            <p>${escapeHtml(mod.note)}</p>
-            ${mod.format ? `<p class="bwb-intel-model-format">${escapeHtml(mod.format)}</p>` : ''}
-            ${mod.download ? `<p class="bwb-intel-model-download"><a href="${escapeHtml(mod.download)}" download>Download .3mf &darr;</a></p>` : ''}
-          </article>
-        `).join("")}
-      </div>
-    </section>
-    ` : ''}
 
     <section class="bwb-intel-section">
       <span class="bwb-section-kicker">METHOD</span>

@@ -325,7 +325,7 @@ export interface Intelligence {
   };
   models_reference?: {
     title: string;
-    items: Array<{ name: string; note: string }>;
+    items: Array<{ name: string; note: string; format?: string; download?: string }>;
     note: string;
   };
   mechanism: {
