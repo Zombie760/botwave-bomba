@@ -36,21 +36,6 @@ import { getPackagesBySector, classifySector } from "./lib/sector.ts";
 
 const ROOT = `${import.meta.dir}/..`;
 
-// Bundle MiniSearch for client-side use
-const minisearchBuild = await build({
-  entrypoints: [`${ROOT}/node_modules/minisearch/dist/umd/index.js`],
-  outdir: `${ROOT}/assets/js`,
-  naming: 'minisearch.js',
-  minify: true,
-});
-
-if (minisearchBuild.success) {
-  console.log('[build_site] MiniSearch bundled successfully.');
-} else {
-  console.error('[build_site] Failed to bundle MiniSearch:', minisearchBuild.logs);
-  process.exit(1);
-}
-
 // Build-time constants — used in chrome() utility bar and footer
 const BUILD_GENERATED_AT = new Date().toISOString();
 const BUILD_DATE_LABEL = new Date().toISOString().slice(0, 10);
@@ -255,7 +240,7 @@ function chrome(
     extraScripts?: string[];
   }
 ) {
-  const resolvedExtraScripts = ["/assets/js/minisearch.js", ...(opts.extraScripts || [])];
+  const resolvedExtraScripts = [...(opts.extraScripts || [])];
   const activeFrequencies = getActiveFrequencies();
   const counts = getSiteCounts();
   const storyCount = counts.stories;
