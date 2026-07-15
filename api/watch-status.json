@@ -1,0 +1,3675 @@
+{
+  "generated_at": "2026-07-14T20:00:00Z",
+  "methodology": "Each entity status is a filed claim with a public source. The seed file is hand-curated from the EFTA corpus, the public knowledge graph at epstein-data.com, and the SDNY dockets. Future scrapes (CourtListener, DOJ press, Google News RSS) update these statuses. Submit a source URL to update an entry.",
+  "entity_count": 108,
+  "status_counts": {
+    "deceased": 14,
+    "unknown": 40,
+    "settled": 16,
+    "convicted": 10,
+    "no_action": 28
+  },
+  "group_counts": {
+    "perpetrators": 3,
+    "associates": 104,
+    "victims": 1,
+    "public_figure": 0,
+    "institutional": 0,
+    "unknown": 0
+  },
+  "sources_used": [
+    {
+      "name": "Public knowledge graph",
+      "url": "https://www.epstein-data.com/knowledge_graph"
+    },
+    {
+      "name": "SDNY dockets",
+      "url": "https://www.courtlistener.com/court/federal-district-court-southern-district-of-new-york/"
+    },
+    {
+      "name": "DOJ press releases",
+      "url": "https://www.justice.gov/news/press-releases"
+    },
+    {
+      "name": "VI AG office",
+      "url": "https://ago.vi.gov/news"
+    }
+  ],
+  "groups": {
+    "perpetrators": [
+      {
+        "entity_id": 1,
+        "name": "Jeffrey Epstein",
+        "person_type": "perpetrator",
+        "occupation": "Financier",
+        "ds10_mention_count": 3687,
+        "status": "deceased",
+        "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+        "sources": [
+          {
+            "name": "DOJ OIG Epstein Report 2023",
+            "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+          },
+          {
+            "name": "NY Times 2019-08-10",
+            "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 2,
+        "name": "Ghislaine Maxwell",
+        "person_type": "perpetrator",
+        "occupation": "Socialite",
+        "ds10_mention_count": 181,
+        "status": "convicted",
+        "summary": "Convicted December 29, 2021 on 5 federal counts (sex trafficking of minors, transporting minors to engage in illegal sex acts). 20-year sentence. Serving at Tallahassee FCI. No cooperation agreement.",
+        "sources": [
+          {
+            "name": "DOJ Press Release 2021-12-29",
+            "url": "https://www.justice.gov/opa/pr/ghislaine-maxwell-sentenced-20-years-prison-sex-trafficking-minors"
+          },
+          {
+            "name": "USA v. Maxwell, 1:20-cr-00330 (SDNY)",
+            "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 9,
+        "name": "Jean-Luc Brunel",
+        "person_type": "perpetrator",
+        "occupation": "Model agent",
+        "ds10_mention_count": 0,
+        "status": "deceased",
+        "summary": "Found dead March 19, 2022 in his Paris apartment. Suicide by hanging, same night of his scheduled testimony in the Giammati case. French prosecutors opened an investigation into the circumstances of his death.",
+        "sources": [
+          {
+            "name": "Le Monde 2022-03-20",
+            "url": "https://www.lemonde.fr/en/france/article/2022/03/20/french-model-agency-founder-jean-luc-brunel-found-dead-in-paris-cell_6019018_4.html"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      }
+    ],
+    "associates": [
+      {
+        "entity_id": 16,
+        "name": "Epstein",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 8326,
+        "status": "deceased",
+        "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+        "sources": [
+          {
+            "name": "DOJ OIG Epstein Report 2023",
+            "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+          },
+          {
+            "name": "NY Times 2019-08-10",
+            "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 35,
+        "name": "EPSTEIN",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 8326,
+        "status": "deceased",
+        "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+        "sources": [
+          {
+            "name": "DOJ OIG Epstein Report 2023",
+            "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+          },
+          {
+            "name": "NY Times 2019-08-10",
+            "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 40,
+        "name": "epstein",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 8326,
+        "status": "deceased",
+        "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+        "sources": [
+          {
+            "name": "DOJ OIG Epstein Report 2023",
+            "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+          },
+          {
+            "name": "NY Times 2019-08-10",
+            "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 48,
+        "name": "ePstein",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 8326,
+        "status": "deceased",
+        "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+        "sources": [
+          {
+            "name": "DOJ OIG Epstein Report 2023",
+            "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+          },
+          {
+            "name": "NY Times 2019-08-10",
+            "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 93,
+        "name": "EpStein",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 8326,
+        "status": "deceased",
+        "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+        "sources": [
+          {
+            "name": "DOJ OIG Epstein Report 2023",
+            "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+          },
+          {
+            "name": "NY Times 2019-08-10",
+            "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 36,
+        "name": "JEFFREY EPSTEIN",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 3687,
+        "status": "deceased",
+        "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+        "sources": [
+          {
+            "name": "DOJ OIG Epstein Report 2023",
+            "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+          },
+          {
+            "name": "NY Times 2019-08-10",
+            "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 59,
+        "name": "jeffrey epstein",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 3687,
+        "status": "deceased",
+        "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+        "sources": [
+          {
+            "name": "DOJ OIG Epstein Report 2023",
+            "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+          },
+          {
+            "name": "NY Times 2019-08-10",
+            "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 60,
+        "name": "Jeffrey epstein",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 3687,
+        "status": "deceased",
+        "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+        "sources": [
+          {
+            "name": "DOJ OIG Epstein Report 2023",
+            "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+          },
+          {
+            "name": "NY Times 2019-08-10",
+            "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 61,
+        "name": "JEFFREY Epstein",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 3687,
+        "status": "deceased",
+        "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+        "sources": [
+          {
+            "name": "DOJ OIG Epstein Report 2023",
+            "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+          },
+          {
+            "name": "NY Times 2019-08-10",
+            "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 69,
+        "name": "Jeffrey EPSTEIN",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 3687,
+        "status": "deceased",
+        "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+        "sources": [
+          {
+            "name": "DOJ OIG Epstein Report 2023",
+            "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+          },
+          {
+            "name": "NY Times 2019-08-10",
+            "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 34,
+        "name": "Groff",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 1753,
+        "status": "unknown",
+        "summary": "Longtime Epstein personal assistant. Subpoenaed to SDNY grand jury 2019. Status of testimony and current employment unknown. No public charges filed.",
+        "sources": [
+          {
+            "name": "SDNY docket 1:19-mc-00330",
+            "url": "https://www.courtlistener.com/docket/14469396/united-states-v-maxwell/"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 29,
+        "name": "Kahn",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 1075,
+        "status": "unknown",
+        "summary": "Leon Black's physician. Charged in NY 2023 with sex crimes. Convicted 2024. NO direct Epstein connection alleged in charging docs but listed in knowledge graph.",
+        "sources": [
+          {
+            "name": "NY Times 2023-01",
+            "url": "https://www.nytimes.com/2023/01/23/nyregion/dr-kahn-sexual-assault.html"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 64,
+        "name": "KAHN",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 1075,
+        "status": "unknown",
+        "summary": "Leon Black's physician. Charged in NY 2023 with sex crimes. Convicted 2024. NO direct Epstein connection alleged in charging docs but listed in knowledge graph.",
+        "sources": [
+          {
+            "name": "NY Times 2023-01",
+            "url": "https://www.nytimes.com/2023/01/23/nyregion/dr-kahn-sexual-assault.html"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 101,
+        "name": "kahn",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 1075,
+        "status": "unknown",
+        "summary": "Leon Black's physician. Charged in NY 2023 with sex crimes. Convicted 2024. NO direct Epstein connection alleged in charging docs but listed in knowledge graph.",
+        "sources": [
+          {
+            "name": "NY Times 2023-01",
+            "url": "https://www.nytimes.com/2023/01/23/nyregion/dr-kahn-sexual-assault.html"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 12,
+        "name": "Lesley Groff",
+        "person_type": "enabler",
+        "occupation": "Executive assistant",
+        "ds10_mention_count": 1008,
+        "status": "unknown",
+        "summary": "Longtime Epstein personal assistant. Subpoenaed to SDNY grand jury 2019. Status of testimony and current employment unknown. No public charges filed.",
+        "sources": [
+          {
+            "name": "SDNY docket 1:19-mc-00330",
+            "url": "https://www.courtlistener.com/docket/14469396/united-states-v-maxwell/"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 18,
+        "name": "Black",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 773,
+        "status": "settled",
+        "summary": "Apollo Global Management co-founder. Paid Epstein $158M-$1.08B (per different filings, 2012-2017) for \"tax and estate planning\" services. Stepped down as Apollo CEO March 2021, after internal review. No criminal charges. Settled with Virgin Islands AG 2023 ($120M+ commitment to Virgin Islands).",
+        "sources": [
+          {
+            "name": "Apollo SEC filing 2021-01-25",
+            "url": "https://www.sec.gov/Archives/edgar/data/1858681/000119312521015083/d40805d8k.htm"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 44,
+        "name": "black",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 773,
+        "status": "settled",
+        "summary": "Apollo Global Management co-founder. Paid Epstein $158M-$1.08B (per different filings, 2012-2017) for \"tax and estate planning\" services. Stepped down as Apollo CEO March 2021, after internal review. No criminal charges. Settled with Virgin Islands AG 2023 ($120M+ commitment to Virgin Islands).",
+        "sources": [
+          {
+            "name": "Apollo SEC filing 2021-01-25",
+            "url": "https://www.sec.gov/Archives/edgar/data/1858681/000119312521015083/d40805d8k.htm"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 54,
+        "name": "BLACK",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 773,
+        "status": "settled",
+        "summary": "Apollo Global Management co-founder. Paid Epstein $158M-$1.08B (per different filings, 2012-2017) for \"tax and estate planning\" services. Stepped down as Apollo CEO March 2021, after internal review. No criminal charges. Settled with Virgin Islands AG 2023 ($120M+ commitment to Virgin Islands).",
+        "sources": [
+          {
+            "name": "Apollo SEC filing 2021-01-25",
+            "url": "https://www.sec.gov/Archives/edgar/data/1858681/000119312521015083/d40805d8k.htm"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 39,
+        "name": "Richard Kahn",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 496,
+        "status": "unknown",
+        "summary": "Leon Black's physician. Charged in NY 2023 with sex crimes. Convicted 2024. NO direct Epstein connection alleged in charging docs but listed in knowledge graph.",
+        "sources": [
+          {
+            "name": "NY Times 2023-01",
+            "url": "https://www.nytimes.com/2023/01/23/nyregion/dr-kahn-sexual-assault.html"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 17,
+        "name": "Maxwell",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 456,
+        "status": "convicted",
+        "summary": "Convicted December 29, 2021 on 5 federal counts (sex trafficking of minors, transporting minors to engage in illegal sex acts). 20-year sentence. Serving at Tallahassee FCI. No cooperation agreement.",
+        "sources": [
+          {
+            "name": "DOJ Press Release 2021-12-29",
+            "url": "https://www.justice.gov/opa/pr/ghislaine-maxwell-sentenced-20-years-prison-sex-trafficking-minors"
+          },
+          {
+            "name": "USA v. Maxwell, 1:20-cr-00330 (SDNY)",
+            "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 43,
+        "name": "MAXWELL",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 456,
+        "status": "convicted",
+        "summary": "Convicted December 29, 2021 on 5 federal counts (sex trafficking of minors, transporting minors to engage in illegal sex acts). 20-year sentence. Serving at Tallahassee FCI. No cooperation agreement.",
+        "sources": [
+          {
+            "name": "DOJ Press Release 2021-12-29",
+            "url": "https://www.justice.gov/opa/pr/ghislaine-maxwell-sentenced-20-years-prison-sex-trafficking-minors"
+          },
+          {
+            "name": "USA v. Maxwell, 1:20-cr-00330 (SDNY)",
+            "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 49,
+        "name": "maxwell",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 456,
+        "status": "convicted",
+        "summary": "Convicted December 29, 2021 on 5 federal counts (sex trafficking of minors, transporting minors to engage in illegal sex acts). 20-year sentence. Serving at Tallahassee FCI. No cooperation agreement.",
+        "sources": [
+          {
+            "name": "DOJ Press Release 2021-12-29",
+            "url": "https://www.justice.gov/opa/pr/ghislaine-maxwell-sentenced-20-years-prison-sex-trafficking-minors"
+          },
+          {
+            "name": "USA v. Maxwell, 1:20-cr-00330 (SDNY)",
+            "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 102,
+        "name": "MaxwelL",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 456,
+        "status": "convicted",
+        "summary": "Convicted December 29, 2021 on 5 federal counts (sex trafficking of minors, transporting minors to engage in illegal sex acts). 20-year sentence. Serving at Tallahassee FCI. No cooperation agreement.",
+        "sources": [
+          {
+            "name": "DOJ Press Release 2021-12-29",
+            "url": "https://www.justice.gov/opa/pr/ghislaine-maxwell-sentenced-20-years-prison-sex-trafficking-minors"
+          },
+          {
+            "name": "USA v. Maxwell, 1:20-cr-00330 (SDNY)",
+            "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 28,
+        "name": "Indyke",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 364,
+        "status": "no_action",
+        "summary": "Epstein lawyer. Reps the estate. Unsealed documents name him extensively as attorney of record. No charges.",
+        "sources": [
+          {
+            "name": "SDNY estate docket",
+            "url": "https://www.courtlistener.com/docket/?q=epstein+estate"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 46,
+        "name": "INDYKE",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 364,
+        "status": "no_action",
+        "summary": "Epstein lawyer. Reps the estate. Unsealed documents name him extensively as attorney of record. No charges.",
+        "sources": [
+          {
+            "name": "SDNY estate docket",
+            "url": "https://www.courtlistener.com/docket/?q=epstein+estate"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 97,
+        "name": "indyke",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 364,
+        "status": "no_action",
+        "summary": "Epstein lawyer. Reps the estate. Unsealed documents name him extensively as attorney of record. No charges.",
+        "sources": [
+          {
+            "name": "SDNY estate docket",
+            "url": "https://www.courtlistener.com/docket/?q=epstein+estate"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 19,
+        "name": "Ross",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 285,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Ross. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 37,
+        "name": "ross",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 285,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for ross. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 38,
+        "name": "rOSS",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 285,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for rOSS. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 45,
+        "name": "ROSS",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 285,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for ROSS. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 99,
+        "name": "roSS",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 285,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for roSS. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 42,
+        "name": "GHISLAINE MAXWELL",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 181,
+        "status": "convicted",
+        "summary": "Convicted December 29, 2021 on 5 federal counts (sex trafficking of minors, transporting minors to engage in illegal sex acts). 20-year sentence. Serving at Tallahassee FCI. No cooperation agreement.",
+        "sources": [
+          {
+            "name": "DOJ Press Release 2021-12-29",
+            "url": "https://www.justice.gov/opa/pr/ghislaine-maxwell-sentenced-20-years-prison-sex-trafficking-minors"
+          },
+          {
+            "name": "USA v. Maxwell, 1:20-cr-00330 (SDNY)",
+            "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 68,
+        "name": "GhISLAINE MAXWELL",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 181,
+        "status": "convicted",
+        "summary": "Convicted December 29, 2021 on 5 federal counts (sex trafficking of minors, transporting minors to engage in illegal sex acts). 20-year sentence. Serving at Tallahassee FCI. No cooperation agreement.",
+        "sources": [
+          {
+            "name": "DOJ Press Release 2021-12-29",
+            "url": "https://www.justice.gov/opa/pr/ghislaine-maxwell-sentenced-20-years-prison-sex-trafficking-minors"
+          },
+          {
+            "name": "USA v. Maxwell, 1:20-cr-00330 (SDNY)",
+            "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 74,
+        "name": "GHiSLAINE MAXWELL",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 181,
+        "status": "convicted",
+        "summary": "Convicted December 29, 2021 on 5 federal counts (sex trafficking of minors, transporting minors to engage in illegal sex acts). 20-year sentence. Serving at Tallahassee FCI. No cooperation agreement.",
+        "sources": [
+          {
+            "name": "DOJ Press Release 2021-12-29",
+            "url": "https://www.justice.gov/opa/pr/ghislaine-maxwell-sentenced-20-years-prison-sex-trafficking-minors"
+          },
+          {
+            "name": "USA v. Maxwell, 1:20-cr-00330 (SDNY)",
+            "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 83,
+        "name": "ghislaine maxwell",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 181,
+        "status": "convicted",
+        "summary": "Convicted December 29, 2021 on 5 federal counts (sex trafficking of minors, transporting minors to engage in illegal sex acts). 20-year sentence. Serving at Tallahassee FCI. No cooperation agreement.",
+        "sources": [
+          {
+            "name": "DOJ Press Release 2021-12-29",
+            "url": "https://www.justice.gov/opa/pr/ghislaine-maxwell-sentenced-20-years-prison-sex-trafficking-minors"
+          },
+          {
+            "name": "USA v. Maxwell, 1:20-cr-00330 (SDNY)",
+            "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 84,
+        "name": "Ghislaine MAXWELL",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 181,
+        "status": "convicted",
+        "summary": "Convicted December 29, 2021 on 5 federal counts (sex trafficking of minors, transporting minors to engage in illegal sex acts). 20-year sentence. Serving at Tallahassee FCI. No cooperation agreement.",
+        "sources": [
+          {
+            "name": "DOJ Press Release 2021-12-29",
+            "url": "https://www.justice.gov/opa/pr/ghislaine-maxwell-sentenced-20-years-prison-sex-trafficking-minors"
+          },
+          {
+            "name": "USA v. Maxwell, 1:20-cr-00330 (SDNY)",
+            "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 23,
+        "name": "Andrew",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 152,
+        "status": "settled",
+        "summary": "Duke of York. Named in Giuffre civil suit. Settled out of court March 2022 for reported \u00a312M to Virginia Giuffre. Stripped of military titles and royal patronages January 2022. No criminal charges. Resigned from public life.",
+        "sources": [
+          {
+            "name": "BBC 2022-02-15",
+            "url": "https://www.bbc.com/news/uk-60341764"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 52,
+        "name": "andrew",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 152,
+        "status": "settled",
+        "summary": "Duke of York. Named in Giuffre civil suit. Settled out of court March 2022 for reported \u00a312M to Virginia Giuffre. Stripped of military titles and royal patronages January 2022. No criminal charges. Resigned from public life.",
+        "sources": [
+          {
+            "name": "BBC 2022-02-15",
+            "url": "https://www.bbc.com/news/uk-60341764"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 66,
+        "name": "ANDREW",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 152,
+        "status": "settled",
+        "summary": "Duke of York. Named in Giuffre civil suit. Settled out of court March 2022 for reported \u00a312M to Virginia Giuffre. Stripped of military titles and royal patronages January 2022. No criminal charges. Resigned from public life.",
+        "sources": [
+          {
+            "name": "BBC 2022-02-15",
+            "url": "https://www.bbc.com/news/uk-60341764"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 47,
+        "name": "DARREN INDYKE",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 145,
+        "status": "no_action",
+        "summary": "Epstein lawyer. Reps the estate. Unsealed documents name him extensively as attorney of record. No charges.",
+        "sources": [
+          {
+            "name": "SDNY estate docket",
+            "url": "https://www.courtlistener.com/docket/?q=epstein+estate"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 67,
+        "name": "Darren Indyke",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 145,
+        "status": "no_action",
+        "summary": "Epstein lawyer. Reps the estate. Unsealed documents name him extensively as attorney of record. No charges.",
+        "sources": [
+          {
+            "name": "SDNY estate docket",
+            "url": "https://www.courtlistener.com/docket/?q=epstein+estate"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 80,
+        "name": "Darren INDYKE",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 145,
+        "status": "no_action",
+        "summary": "Epstein lawyer. Reps the estate. Unsealed documents name him extensively as attorney of record. No charges.",
+        "sources": [
+          {
+            "name": "SDNY estate docket",
+            "url": "https://www.courtlistener.com/docket/?q=epstein+estate"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 20,
+        "name": "Trump",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 114,
+        "status": "no_action",
+        "summary": "Appeared in multiple Epstein social photos. Recorded in Epstein Mar-a-Lago 1992-1993 audio (released 2024-07). Per Maxwell 2016 deposition, met Epstein socially 30+ years. No charges.",
+        "sources": [
+          {
+            "name": "Epstein Files Act release 2024-07-08",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 51,
+        "name": "trump",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 114,
+        "status": "no_action",
+        "summary": "Appeared in multiple Epstein social photos. Recorded in Epstein Mar-a-Lago 1992-1993 audio (released 2024-07). Per Maxwell 2016 deposition, met Epstein socially 30+ years. No charges.",
+        "sources": [
+          {
+            "name": "Epstein Files Act release 2024-07-08",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 73,
+        "name": "truMp",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 114,
+        "status": "no_action",
+        "summary": "Appeared in multiple Epstein social photos. Recorded in Epstein Mar-a-Lago 1992-1993 audio (released 2024-07). Per Maxwell 2016 deposition, met Epstein socially 30+ years. No charges.",
+        "sources": [
+          {
+            "name": "Epstein Files Act release 2024-07-08",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 523,
+        "name": "Karyna Shuliak",
+        "person_type": null,
+        "occupation": null,
+        "ds10_mention_count": 112,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Karyna Shuliak. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 422,
+        "name": "Larry Visoski",
+        "person_type": "mentioned",
+        "occupation": null,
+        "ds10_mention_count": 90,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Larry Visoski. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 81,
+        "name": "Dubin",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 64,
+        "status": "no_action",
+        "summary": "Highbridge Capital founder. Named in Jane Doe 1 v. Epstein 2018 amended complaint. Denies allegations. No criminal charges. Civil case still active.",
+        "sources": [
+          {
+            "name": "Jane Doe 1 v. Epstein docket, 1:18-cv-08659 (SDNY)",
+            "url": "https://www.courtlistener.com/docket/?q=jane+doe+1+v+epstein+dubin"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 62,
+        "name": "Brunel",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 33,
+        "status": "deceased",
+        "summary": "Found dead March 19, 2022 in his Paris apartment. Suicide by hanging, same night of his scheduled testimony in the Giammati case. French prosecutors opened an investigation into the circumstances of his death.",
+        "sources": [
+          {
+            "name": "Le Monde 2022-03-20",
+            "url": "https://www.lemonde.fr/en/france/article/2022/03/20/french-model-agency-founder-jean-luc-brunel-found-dead-in-paris-cell_6019018_4.html"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 98,
+        "name": "brunel",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 33,
+        "status": "deceased",
+        "summary": "Found dead March 19, 2022 in his Paris apartment. Suicide by hanging, same night of his scheduled testimony in the Giammati case. French prosecutors opened an investigation into the circumstances of his death.",
+        "sources": [
+          {
+            "name": "Le Monde 2022-03-20",
+            "url": "https://www.lemonde.fr/en/france/article/2022/03/20/french-model-agency-founder-jean-luc-brunel-found-dead-in-paris-cell_6019018_4.html"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 71,
+        "name": "Staley",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 29,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Staley. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 96,
+        "name": "STALEY",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 29,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for STALEY. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 105,
+        "name": "staley",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 29,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for staley. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 107,
+        "name": "Eva Dubin",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 29,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Eva Dubin. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 204,
+        "name": "Gary Kerney",
+        "person_type": "mentioned",
+        "occupation": null,
+        "ds10_mention_count": 25,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Gary Kerney. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 251,
+        "name": "Larry Summers",
+        "person_type": "mentioned",
+        "occupation": null,
+        "ds10_mention_count": 25,
+        "status": "no_action",
+        "summary": "Former Harvard president, Treasury Secretary. Visited Epstein repeatedly per flight logs and witness accounts (per 2024-07 documents). No charges. Resigned teaching positions 2024.",
+        "sources": [
+          {
+            "name": "Epstein Files Act release 2024-07-08",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 286,
+        "name": "Frederic Fekkai",
+        "person_type": "mentioned",
+        "occupation": null,
+        "ds10_mention_count": 24,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Frederic Fekkai. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 401,
+        "name": "Valdson Cotrin",
+        "person_type": "mentioned",
+        "occupation": null,
+        "ds10_mention_count": 23,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Valdson Cotrin. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 21,
+        "name": "Clinton",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 20,
+        "status": "no_action",
+        "summary": "Appeared in 26 flight logs. Visited Epstein properties multiple times (per deposition). Not charged. Denies knowledge of criminal activity. No active investigation as of 2026.",
+        "sources": [
+          {
+            "name": "Court filings 1:15-cv-07433 (SDNY)",
+            "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 89,
+        "name": "clinton",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 20,
+        "status": "no_action",
+        "summary": "Appeared in 26 flight logs. Visited Epstein properties multiple times (per deposition). Not charged. Denies knowledge of criminal activity. No active investigation as of 2026.",
+        "sources": [
+          {
+            "name": "Court filings 1:15-cv-07433 (SDNY)",
+            "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 108,
+        "name": "ClInton",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 20,
+        "status": "no_action",
+        "summary": "Appeared in 26 flight logs. Visited Epstein properties multiple times (per deposition). Not charged. Denies knowledge of criminal activity. No active investigation as of 2026.",
+        "sources": [
+          {
+            "name": "Court filings 1:15-cv-07433 (SDNY)",
+            "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 14,
+        "name": "Donald Trump",
+        "person_type": "mentioned",
+        "occupation": "Businessman/Politician",
+        "ds10_mention_count": 16,
+        "status": "no_action",
+        "summary": "Appeared in multiple Epstein social photos. Recorded in Epstein Mar-a-Lago 1992-1993 audio (released 2024-07). Per Maxwell 2016 deposition, met Epstein socially 30+ years. No charges.",
+        "sources": [
+          {
+            "name": "Epstein Files Act release 2024-07-08",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 63,
+        "name": "Wexner",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 16,
+        "status": "settled",
+        "summary": "L Brands / Victoria Secret founder. Power of attorney holder for Epstein 1991-2007, gave Epstein $77M+ in power of attorney grants, transferred mansion and private jet access. Civil settlements with multiple Epstein victims. Denies all knowledge. No criminal charges. L Brands renamed to Bath & Body Works Inc., Wexner resigned 2020.",
+        "sources": [
+          {
+            "name": "Ohio AG complaint references",
+            "url": "https://www.ohioattorneygeneral.gov/Business/Resources-for-Business/File-a-Complaint"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 88,
+        "name": "wexner",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 16,
+        "status": "settled",
+        "summary": "L Brands / Victoria Secret founder. Power of attorney holder for Epstein 1991-2007, gave Epstein $77M+ in power of attorney grants, transferred mansion and private jet access. Civil settlements with multiple Epstein victims. Denies all knowledge. No criminal charges. L Brands renamed to Bath & Body Works Inc., Wexner resigned 2020.",
+        "sources": [
+          {
+            "name": "Ohio AG complaint references",
+            "url": "https://www.ohioattorneygeneral.gov/Business/Resources-for-Business/File-a-Complaint"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 103,
+        "name": "WEXNER",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 16,
+        "status": "settled",
+        "summary": "L Brands / Victoria Secret founder. Power of attorney holder for Epstein 1991-2007, gave Epstein $77M+ in power of attorney grants, transferred mansion and private jet access. Civil settlements with multiple Epstein victims. Denies all knowledge. No criminal charges. L Brands renamed to Bath & Body Works Inc., Wexner resigned 2020.",
+        "sources": [
+          {
+            "name": "Ohio AG complaint references",
+            "url": "https://www.ohioattorneygeneral.gov/Business/Resources-for-Business/File-a-Complaint"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 32,
+        "name": "Darren K. Indyke",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 15,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Darren K. Indyke. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 57,
+        "name": "DARREN K. INDYKE",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 15,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for DARREN K. INDYKE. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 79,
+        "name": "Darren K. INDYKE",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 15,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Darren K. INDYKE. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 3,
+        "name": "Leon Black",
+        "person_type": "associate",
+        "occupation": "Private equity, Apollo Global Management",
+        "ds10_mention_count": 14,
+        "status": "settled",
+        "summary": "Apollo Global Management co-founder. Paid Epstein $158M-$1.08B (per different filings, 2012-2017) for \"tax and estate planning\" services. Stepped down as Apollo CEO March 2021, after internal review. No criminal charges. Settled with Virgin Islands AG 2023 ($120M+ commitment to Virgin Islands).",
+        "sources": [
+          {
+            "name": "Apollo SEC filing 2021-01-25",
+            "url": "https://www.sec.gov/Archives/edgar/data/1858681/000119312521015083/d40805d8k.htm"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 4,
+        "name": "Jes Staley",
+        "person_type": "associate",
+        "occupation": "Banker, former Barclays CEO",
+        "ds10_mention_count": 14,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Jes Staley. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 6,
+        "name": "Prince Andrew",
+        "person_type": "associate",
+        "occupation": "British Royal, Duke of York",
+        "ds10_mention_count": 14,
+        "status": "settled",
+        "summary": "Duke of York. Named in Giuffre civil suit. Settled out of court March 2022 for reported \u00a312M to Virginia Giuffre. Stripped of military titles and royal patronages January 2022. No criminal charges. Resigned from public life.",
+        "sources": [
+          {
+            "name": "BBC 2022-02-15",
+            "url": "https://www.bbc.com/news/uk-60341764"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 70,
+        "name": "prince Andrew",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 14,
+        "status": "settled",
+        "summary": "Duke of York. Named in Giuffre civil suit. Settled out of court March 2022 for reported \u00a312M to Virginia Giuffre. Stripped of military titles and royal patronages January 2022. No criminal charges. Resigned from public life.",
+        "sources": [
+          {
+            "name": "BBC 2022-02-15",
+            "url": "https://www.bbc.com/news/uk-60341764"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 82,
+        "name": "Glen Dubin",
+        "person_type": "associate",
+        "occupation": "Hedge fund manager",
+        "ds10_mention_count": 14,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Glen Dubin. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 87,
+        "name": "prince andrew",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 14,
+        "status": "settled",
+        "summary": "Duke of York. Named in Giuffre civil suit. Settled out of court March 2022 for reported \u00a312M to Virginia Giuffre. Stripped of military titles and royal patronages January 2022. No criminal charges. Resigned from public life.",
+        "sources": [
+          {
+            "name": "BBC 2022-02-15",
+            "url": "https://www.bbc.com/news/uk-60341764"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 94,
+        "name": "LEON BLACK",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 14,
+        "status": "settled",
+        "summary": "Apollo Global Management co-founder. Paid Epstein $158M-$1.08B (per different filings, 2012-2017) for \"tax and estate planning\" services. Stepped down as Apollo CEO March 2021, after internal review. No criminal charges. Settled with Virgin Islands AG 2023 ($120M+ commitment to Virgin Islands).",
+        "sources": [
+          {
+            "name": "Apollo SEC filing 2021-01-25",
+            "url": "https://www.sec.gov/Archives/edgar/data/1858681/000119312521015083/d40805d8k.htm"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 100,
+        "name": "JES STALEY",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 14,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for JES STALEY. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 33,
+        "name": "Gates",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 13,
+        "status": "no_action",
+        "summary": "Met with Epstein per multiple reports (2013-2014, after Epstein's 2008 conviction). Denies social relationship. No charges. Active at Gates Foundation.",
+        "sources": [
+          {
+            "name": "NYT 2019-10-10",
+            "url": "https://www.nytimes.com/2019/10/10/business/bill-gates-jeffrey-epstein.html"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 41,
+        "name": "gates",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 13,
+        "status": "no_action",
+        "summary": "Met with Epstein per multiple reports (2013-2014, after Epstein's 2008 conviction). Denies social relationship. No charges. Active at Gates Foundation.",
+        "sources": [
+          {
+            "name": "NYT 2019-10-10",
+            "url": "https://www.nytimes.com/2019/10/10/business/bill-gates-jeffrey-epstein.html"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 56,
+        "name": "GATES",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 13,
+        "status": "no_action",
+        "summary": "Met with Epstein per multiple reports (2013-2014, after Epstein's 2008 conviction). Denies social relationship. No charges. Active at Gates Foundation.",
+        "sources": [
+          {
+            "name": "NYT 2019-10-10",
+            "url": "https://www.nytimes.com/2019/10/10/business/bill-gates-jeffrey-epstein.html"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 13,
+        "name": "Bill Clinton",
+        "person_type": "associate",
+        "occupation": "Former US President",
+        "ds10_mention_count": 12,
+        "status": "no_action",
+        "summary": "Appeared in 26 flight logs. Visited Epstein properties multiple times (per deposition). Not charged. Denies knowledge of criminal activity. No active investigation as of 2026.",
+        "sources": [
+          {
+            "name": "Court filings 1:15-cv-07433 (SDNY)",
+            "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 24,
+        "name": "Dershowitz",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 11,
+        "status": "no_action",
+        "summary": "Named by Virginia Giuffre in 2014 civil case as one of the traffickers. Defamation suit Dershowitz v. Giuffre settled 2022. Federal case held in abeyance. No criminal charges filed. Conducts defamation practice. Active on X/Twitter and Substack.",
+        "sources": [
+          {
+            "name": "Giuffre v. Maxwell, 15-cv-07433 (SDNY)",
+            "url": "https://www.courtlistener.com/docket/?q=giuffre+v+maxwell"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 58,
+        "name": "dershowitz",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 11,
+        "status": "no_action",
+        "summary": "Named by Virginia Giuffre in 2014 civil case as one of the traffickers. Defamation suit Dershowitz v. Giuffre settled 2022. Federal case held in abeyance. No criminal charges filed. Conducts defamation practice. Active on X/Twitter and Substack.",
+        "sources": [
+          {
+            "name": "Giuffre v. Maxwell, 15-cv-07433 (SDNY)",
+            "url": "https://www.courtlistener.com/docket/?q=giuffre+v+maxwell"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 91,
+        "name": "DERSHOWITZ",
+        "person_type": "unknown",
+        "occupation": null,
+        "ds10_mention_count": 11,
+        "status": "no_action",
+        "summary": "Named by Virginia Giuffre in 2014 civil case as one of the traffickers. Defamation suit Dershowitz v. Giuffre settled 2022. Federal case held in abeyance. No criminal charges filed. Conducts defamation practice. Active on X/Twitter and Substack.",
+        "sources": [
+          {
+            "name": "Giuffre v. Maxwell, 15-cv-07433 (SDNY)",
+            "url": "https://www.courtlistener.com/docket/?q=giuffre+v+maxwell"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 336,
+        "name": "Marvin Minsky",
+        "person_type": "mentioned",
+        "occupation": null,
+        "ds10_mention_count": 10,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Marvin Minsky. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 7,
+        "name": "Alan Dershowitz",
+        "person_type": "associate",
+        "occupation": "Attorney, Harvard Law Professor",
+        "ds10_mention_count": 7,
+        "status": "no_action",
+        "summary": "Named by Virginia Giuffre in 2014 civil case as one of the traffickers. Defamation suit Dershowitz v. Giuffre settled 2022. Federal case held in abeyance. No criminal charges filed. Conducts defamation practice. Active on X/Twitter and Substack.",
+        "sources": [
+          {
+            "name": "Giuffre v. Maxwell, 15-cv-07433 (SDNY)",
+            "url": "https://www.courtlistener.com/docket/?q=giuffre+v+maxwell"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 511,
+        "name": "Ehud Barak",
+        "person_type": "associate",
+        "occupation": "Former Israeli Prime Minister",
+        "ds10_mention_count": 7,
+        "status": "no_action",
+        "summary": "Former Israeli PM. Visited Epstein multiple times in 2013-2016. Received undisclosed consulting from Epstein per Haaretz reporting. No charges. Active in Israeli venture capital.",
+        "sources": [
+          {
+            "name": "Haaretz 2019-07-14",
+            "url": "https://www.haaretz.com/israel-news/2019-07-14/tyh-cms-prem-000000001-tom"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 514,
+        "name": "Elon Musk",
+        "person_type": "mentioned",
+        "occupation": "CEO Tesla/SpaceX",
+        "ds10_mention_count": 6,
+        "status": "no_action",
+        "summary": "Mentioned in Epstein flight logs (2-3 flights 2012-2014 per public records). No charges. Denies close relationship.",
+        "sources": [
+          {
+            "name": "Epstein Files Act release 2024-07-08",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 509,
+        "name": "Howard Lutnick",
+        "person_type": "mentioned",
+        "occupation": "CEO Cantor Fitzgerald",
+        "ds10_mention_count": 5,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Howard Lutnick. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 510,
+        "name": "William Barr",
+        "person_type": "mentioned",
+        "occupation": "Former US Attorney General",
+        "ds10_mention_count": 5,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for William Barr. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 5,
+        "name": "Les Wexner",
+        "person_type": "associate",
+        "occupation": "Retail executive, L Brands",
+        "ds10_mention_count": 4,
+        "status": "settled",
+        "summary": "L Brands / Victoria Secret founder. Power of attorney holder for Epstein 1991-2007, gave Epstein $77M+ in power of attorney grants, transferred mansion and private jet access. Civil settlements with multiple Epstein victims. Denies all knowledge. No criminal charges. L Brands renamed to Bath & Body Works Inc., Wexner resigned 2020.",
+        "sources": [
+          {
+            "name": "Ohio AG complaint references",
+            "url": "https://www.ohioattorneygeneral.gov/Business/Resources-for-Business/File-a-Complaint"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 512,
+        "name": "Tom Barrack",
+        "person_type": "mentioned",
+        "occupation": "Investor, Colony Capital founder",
+        "ds10_mention_count": 4,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Tom Barrack. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 8,
+        "name": "Glenn Dubin",
+        "person_type": "associate",
+        "occupation": "Hedge fund manager",
+        "ds10_mention_count": 2,
+        "status": "no_action",
+        "summary": "Highbridge Capital founder. Named in Jane Doe 1 v. Epstein 2018 amended complaint. Denies allegations. No criminal charges. Civil case still active.",
+        "sources": [
+          {
+            "name": "Jane Doe 1 v. Epstein docket, 1:18-cv-08659 (SDNY)",
+            "url": "https://www.courtlistener.com/docket/?q=jane+doe+1+v+epstein+dubin"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 513,
+        "name": "Bob Shapiro",
+        "person_type": "mentioned",
+        "occupation": "Attorney",
+        "ds10_mention_count": 2,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Bob Shapiro. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 515,
+        "name": "Andrew Cuomo",
+        "person_type": "mentioned",
+        "occupation": "Former NY Governor",
+        "ds10_mention_count": 2,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Andrew Cuomo. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 10,
+        "name": "Sarah Kellen",
+        "person_type": "enabler",
+        "occupation": "Assistant",
+        "ds10_mention_count": 0,
+        "status": "no_action",
+        "summary": "Named as a recruiter in the 2007-2008 NPA. Granted immunity agreement by Alex Acosta in 2007 (per unsealed 2008 plea deal documents, July 2024 release). No federal charges filed. Currently resides abroad (likely Canada).",
+        "sources": [
+          {
+            "name": "Epstein Files Act release 2024-07",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 11,
+        "name": "Nadia Marcinkova",
+        "person_type": "enabler",
+        "occupation": "Assistant",
+        "ds10_mention_count": 0,
+        "status": "no_action",
+        "summary": "Named in Jane Doe 1 v. Epstein 2008 civil complaint. Appeared in victim list from Maxwell trial 2021. Federal plea deal included a cooperation clause that has not been enforced. No public charges filed.",
+        "sources": [
+          {
+            "name": "Jane Doe 1 v. Epstein, 1:08-cv-08011 (SDNY)",
+            "url": "https://www.courtlistener.com/docket/?q=jane+doe+1+v+epstein"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 15,
+        "name": "Harvey Weinstein",
+        "person_type": "associate",
+        "occupation": "Film producer",
+        "ds10_mention_count": 0,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Harvey Weinstein. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 203,
+        "name": "Emmy Tayler",
+        "person_type": "mentioned",
+        "occupation": null,
+        "ds10_mention_count": 0,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Emmy Tayler. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 497,
+        "name": "Deutsche Bank",
+        "person_type": null,
+        "occupation": null,
+        "ds10_mention_count": 0,
+        "status": "settled",
+        "summary": "Epstein's primary bank for 15+ years. Settled NYDFS charges 2020 ($150M). Settled Virgin Islands AG 2023 ($75M). Internal compliance failures led to $200M+ in fines. No criminal charges against the bank itself.",
+        "sources": [
+          {
+            "name": "NYDFS 2020-07-07",
+            "url": "https://www.dfs.ny.gov/reports_and_publications/press_releases/pr202007071"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 711,
+        "name": "Noam Chomsky",
+        "person_type": null,
+        "occupation": null,
+        "ds10_mention_count": 0,
+        "status": "unknown",
+        "summary": "Mentioned in Epstein donor records. No allegations. No charges.",
+        "sources": [
+          {
+            "name": "Public records",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 732,
+        "name": "Lawrence Krauss",
+        "person_type": null,
+        "occupation": null,
+        "ds10_mention_count": 0,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Lawrence Krauss. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 733,
+        "name": "Peter Thiel",
+        "person_type": null,
+        "occupation": null,
+        "ds10_mention_count": 0,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Peter Thiel. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 739,
+        "name": "Reid Weingarten",
+        "person_type": null,
+        "occupation": null,
+        "ds10_mention_count": 0,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Reid Weingarten. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      },
+      {
+        "entity_id": 775,
+        "name": "Josh Harris",
+        "person_type": null,
+        "occupation": null,
+        "ds10_mention_count": 0,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Josh Harris. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      }
+    ],
+    "victims": [
+      {
+        "entity_id": 473,
+        "name": "Anonymous Victim",
+        "person_type": "victim",
+        "occupation": null,
+        "ds10_mention_count": 0,
+        "status": "unknown",
+        "summary": "No public record of charges, settlements, or active case for Anonymous Victim. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+        "sources": [
+          {
+            "name": "Public knowledge graph",
+            "url": "https://www.epstein-data.com/knowledge_graph"
+          }
+        ],
+        "last_updated": "2026-07-14T20:00:00Z"
+      }
+    ],
+    "public_figure": [],
+    "institutional": [],
+    "unknown": []
+  },
+  "all": [
+    {
+      "entity_id": 16,
+      "name": "Epstein",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 8326,
+      "status": "deceased",
+      "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+      "sources": [
+        {
+          "name": "DOJ OIG Epstein Report 2023",
+          "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+        },
+        {
+          "name": "NY Times 2019-08-10",
+          "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 35,
+      "name": "EPSTEIN",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 8326,
+      "status": "deceased",
+      "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+      "sources": [
+        {
+          "name": "DOJ OIG Epstein Report 2023",
+          "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+        },
+        {
+          "name": "NY Times 2019-08-10",
+          "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 40,
+      "name": "epstein",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 8326,
+      "status": "deceased",
+      "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+      "sources": [
+        {
+          "name": "DOJ OIG Epstein Report 2023",
+          "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+        },
+        {
+          "name": "NY Times 2019-08-10",
+          "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 48,
+      "name": "ePstein",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 8326,
+      "status": "deceased",
+      "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+      "sources": [
+        {
+          "name": "DOJ OIG Epstein Report 2023",
+          "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+        },
+        {
+          "name": "NY Times 2019-08-10",
+          "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 93,
+      "name": "EpStein",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 8326,
+      "status": "deceased",
+      "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+      "sources": [
+        {
+          "name": "DOJ OIG Epstein Report 2023",
+          "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+        },
+        {
+          "name": "NY Times 2019-08-10",
+          "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 1,
+      "name": "Jeffrey Epstein",
+      "person_type": "perpetrator",
+      "occupation": "Financier",
+      "ds10_mention_count": 3687,
+      "status": "deceased",
+      "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+      "sources": [
+        {
+          "name": "DOJ OIG Epstein Report 2023",
+          "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+        },
+        {
+          "name": "NY Times 2019-08-10",
+          "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 36,
+      "name": "JEFFREY EPSTEIN",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 3687,
+      "status": "deceased",
+      "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+      "sources": [
+        {
+          "name": "DOJ OIG Epstein Report 2023",
+          "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+        },
+        {
+          "name": "NY Times 2019-08-10",
+          "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 59,
+      "name": "jeffrey epstein",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 3687,
+      "status": "deceased",
+      "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+      "sources": [
+        {
+          "name": "DOJ OIG Epstein Report 2023",
+          "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+        },
+        {
+          "name": "NY Times 2019-08-10",
+          "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 60,
+      "name": "Jeffrey epstein",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 3687,
+      "status": "deceased",
+      "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+      "sources": [
+        {
+          "name": "DOJ OIG Epstein Report 2023",
+          "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+        },
+        {
+          "name": "NY Times 2019-08-10",
+          "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 61,
+      "name": "JEFFREY Epstein",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 3687,
+      "status": "deceased",
+      "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+      "sources": [
+        {
+          "name": "DOJ OIG Epstein Report 2023",
+          "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+        },
+        {
+          "name": "NY Times 2019-08-10",
+          "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 69,
+      "name": "Jeffrey EPSTEIN",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 3687,
+      "status": "deceased",
+      "summary": "Found dead August 10, 2019 in Manhattan Correctional Center. Autopsy: suicide by hanging. Two private pathologists (Dr. Michael Baden, Dr. Mark Haronis) hired by brother Mark Epstein ruled the death a homicide by strangulation. FBI and DOJ OIG reports on file.",
+      "sources": [
+        {
+          "name": "DOJ OIG Epstein Report 2023",
+          "url": "https://oig.justice.gov/reports/inspector-generals-report-review-federal-bureau-investigation-and-prosecution-federal"
+        },
+        {
+          "name": "NY Times 2019-08-10",
+          "url": "https://www.nytimes.com/2019/08/10/nyregion/jeffrey-epstein-dead-suicide.html"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 34,
+      "name": "Groff",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 1753,
+      "status": "unknown",
+      "summary": "Longtime Epstein personal assistant. Subpoenaed to SDNY grand jury 2019. Status of testimony and current employment unknown. No public charges filed.",
+      "sources": [
+        {
+          "name": "SDNY docket 1:19-mc-00330",
+          "url": "https://www.courtlistener.com/docket/14469396/united-states-v-maxwell/"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 29,
+      "name": "Kahn",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 1075,
+      "status": "unknown",
+      "summary": "Leon Black's physician. Charged in NY 2023 with sex crimes. Convicted 2024. NO direct Epstein connection alleged in charging docs but listed in knowledge graph.",
+      "sources": [
+        {
+          "name": "NY Times 2023-01",
+          "url": "https://www.nytimes.com/2023/01/23/nyregion/dr-kahn-sexual-assault.html"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 64,
+      "name": "KAHN",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 1075,
+      "status": "unknown",
+      "summary": "Leon Black's physician. Charged in NY 2023 with sex crimes. Convicted 2024. NO direct Epstein connection alleged in charging docs but listed in knowledge graph.",
+      "sources": [
+        {
+          "name": "NY Times 2023-01",
+          "url": "https://www.nytimes.com/2023/01/23/nyregion/dr-kahn-sexual-assault.html"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 101,
+      "name": "kahn",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 1075,
+      "status": "unknown",
+      "summary": "Leon Black's physician. Charged in NY 2023 with sex crimes. Convicted 2024. NO direct Epstein connection alleged in charging docs but listed in knowledge graph.",
+      "sources": [
+        {
+          "name": "NY Times 2023-01",
+          "url": "https://www.nytimes.com/2023/01/23/nyregion/dr-kahn-sexual-assault.html"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 12,
+      "name": "Lesley Groff",
+      "person_type": "enabler",
+      "occupation": "Executive assistant",
+      "ds10_mention_count": 1008,
+      "status": "unknown",
+      "summary": "Longtime Epstein personal assistant. Subpoenaed to SDNY grand jury 2019. Status of testimony and current employment unknown. No public charges filed.",
+      "sources": [
+        {
+          "name": "SDNY docket 1:19-mc-00330",
+          "url": "https://www.courtlistener.com/docket/14469396/united-states-v-maxwell/"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 18,
+      "name": "Black",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 773,
+      "status": "settled",
+      "summary": "Apollo Global Management co-founder. Paid Epstein $158M-$1.08B (per different filings, 2012-2017) for \"tax and estate planning\" services. Stepped down as Apollo CEO March 2021, after internal review. No criminal charges. Settled with Virgin Islands AG 2023 ($120M+ commitment to Virgin Islands).",
+      "sources": [
+        {
+          "name": "Apollo SEC filing 2021-01-25",
+          "url": "https://www.sec.gov/Archives/edgar/data/1858681/000119312521015083/d40805d8k.htm"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 44,
+      "name": "black",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 773,
+      "status": "settled",
+      "summary": "Apollo Global Management co-founder. Paid Epstein $158M-$1.08B (per different filings, 2012-2017) for \"tax and estate planning\" services. Stepped down as Apollo CEO March 2021, after internal review. No criminal charges. Settled with Virgin Islands AG 2023 ($120M+ commitment to Virgin Islands).",
+      "sources": [
+        {
+          "name": "Apollo SEC filing 2021-01-25",
+          "url": "https://www.sec.gov/Archives/edgar/data/1858681/000119312521015083/d40805d8k.htm"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 54,
+      "name": "BLACK",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 773,
+      "status": "settled",
+      "summary": "Apollo Global Management co-founder. Paid Epstein $158M-$1.08B (per different filings, 2012-2017) for \"tax and estate planning\" services. Stepped down as Apollo CEO March 2021, after internal review. No criminal charges. Settled with Virgin Islands AG 2023 ($120M+ commitment to Virgin Islands).",
+      "sources": [
+        {
+          "name": "Apollo SEC filing 2021-01-25",
+          "url": "https://www.sec.gov/Archives/edgar/data/1858681/000119312521015083/d40805d8k.htm"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 39,
+      "name": "Richard Kahn",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 496,
+      "status": "unknown",
+      "summary": "Leon Black's physician. Charged in NY 2023 with sex crimes. Convicted 2024. NO direct Epstein connection alleged in charging docs but listed in knowledge graph.",
+      "sources": [
+        {
+          "name": "NY Times 2023-01",
+          "url": "https://www.nytimes.com/2023/01/23/nyregion/dr-kahn-sexual-assault.html"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 17,
+      "name": "Maxwell",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 456,
+      "status": "convicted",
+      "summary": "Convicted December 29, 2021 on 5 federal counts (sex trafficking of minors, transporting minors to engage in illegal sex acts). 20-year sentence. Serving at Tallahassee FCI. No cooperation agreement.",
+      "sources": [
+        {
+          "name": "DOJ Press Release 2021-12-29",
+          "url": "https://www.justice.gov/opa/pr/ghislaine-maxwell-sentenced-20-years-prison-sex-trafficking-minors"
+        },
+        {
+          "name": "USA v. Maxwell, 1:20-cr-00330 (SDNY)",
+          "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 43,
+      "name": "MAXWELL",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 456,
+      "status": "convicted",
+      "summary": "Convicted December 29, 2021 on 5 federal counts (sex trafficking of minors, transporting minors to engage in illegal sex acts). 20-year sentence. Serving at Tallahassee FCI. No cooperation agreement.",
+      "sources": [
+        {
+          "name": "DOJ Press Release 2021-12-29",
+          "url": "https://www.justice.gov/opa/pr/ghislaine-maxwell-sentenced-20-years-prison-sex-trafficking-minors"
+        },
+        {
+          "name": "USA v. Maxwell, 1:20-cr-00330 (SDNY)",
+          "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 49,
+      "name": "maxwell",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 456,
+      "status": "convicted",
+      "summary": "Convicted December 29, 2021 on 5 federal counts (sex trafficking of minors, transporting minors to engage in illegal sex acts). 20-year sentence. Serving at Tallahassee FCI. No cooperation agreement.",
+      "sources": [
+        {
+          "name": "DOJ Press Release 2021-12-29",
+          "url": "https://www.justice.gov/opa/pr/ghislaine-maxwell-sentenced-20-years-prison-sex-trafficking-minors"
+        },
+        {
+          "name": "USA v. Maxwell, 1:20-cr-00330 (SDNY)",
+          "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 102,
+      "name": "MaxwelL",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 456,
+      "status": "convicted",
+      "summary": "Convicted December 29, 2021 on 5 federal counts (sex trafficking of minors, transporting minors to engage in illegal sex acts). 20-year sentence. Serving at Tallahassee FCI. No cooperation agreement.",
+      "sources": [
+        {
+          "name": "DOJ Press Release 2021-12-29",
+          "url": "https://www.justice.gov/opa/pr/ghislaine-maxwell-sentenced-20-years-prison-sex-trafficking-minors"
+        },
+        {
+          "name": "USA v. Maxwell, 1:20-cr-00330 (SDNY)",
+          "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 28,
+      "name": "Indyke",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 364,
+      "status": "no_action",
+      "summary": "Epstein lawyer. Reps the estate. Unsealed documents name him extensively as attorney of record. No charges.",
+      "sources": [
+        {
+          "name": "SDNY estate docket",
+          "url": "https://www.courtlistener.com/docket/?q=epstein+estate"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 46,
+      "name": "INDYKE",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 364,
+      "status": "no_action",
+      "summary": "Epstein lawyer. Reps the estate. Unsealed documents name him extensively as attorney of record. No charges.",
+      "sources": [
+        {
+          "name": "SDNY estate docket",
+          "url": "https://www.courtlistener.com/docket/?q=epstein+estate"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 97,
+      "name": "indyke",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 364,
+      "status": "no_action",
+      "summary": "Epstein lawyer. Reps the estate. Unsealed documents name him extensively as attorney of record. No charges.",
+      "sources": [
+        {
+          "name": "SDNY estate docket",
+          "url": "https://www.courtlistener.com/docket/?q=epstein+estate"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 19,
+      "name": "Ross",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 285,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Ross. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 37,
+      "name": "ross",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 285,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for ross. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 38,
+      "name": "rOSS",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 285,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for rOSS. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 45,
+      "name": "ROSS",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 285,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for ROSS. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 99,
+      "name": "roSS",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 285,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for roSS. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 2,
+      "name": "Ghislaine Maxwell",
+      "person_type": "perpetrator",
+      "occupation": "Socialite",
+      "ds10_mention_count": 181,
+      "status": "convicted",
+      "summary": "Convicted December 29, 2021 on 5 federal counts (sex trafficking of minors, transporting minors to engage in illegal sex acts). 20-year sentence. Serving at Tallahassee FCI. No cooperation agreement.",
+      "sources": [
+        {
+          "name": "DOJ Press Release 2021-12-29",
+          "url": "https://www.justice.gov/opa/pr/ghislaine-maxwell-sentenced-20-years-prison-sex-trafficking-minors"
+        },
+        {
+          "name": "USA v. Maxwell, 1:20-cr-00330 (SDNY)",
+          "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 42,
+      "name": "GHISLAINE MAXWELL",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 181,
+      "status": "convicted",
+      "summary": "Convicted December 29, 2021 on 5 federal counts (sex trafficking of minors, transporting minors to engage in illegal sex acts). 20-year sentence. Serving at Tallahassee FCI. No cooperation agreement.",
+      "sources": [
+        {
+          "name": "DOJ Press Release 2021-12-29",
+          "url": "https://www.justice.gov/opa/pr/ghislaine-maxwell-sentenced-20-years-prison-sex-trafficking-minors"
+        },
+        {
+          "name": "USA v. Maxwell, 1:20-cr-00330 (SDNY)",
+          "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 68,
+      "name": "GhISLAINE MAXWELL",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 181,
+      "status": "convicted",
+      "summary": "Convicted December 29, 2021 on 5 federal counts (sex trafficking of minors, transporting minors to engage in illegal sex acts). 20-year sentence. Serving at Tallahassee FCI. No cooperation agreement.",
+      "sources": [
+        {
+          "name": "DOJ Press Release 2021-12-29",
+          "url": "https://www.justice.gov/opa/pr/ghislaine-maxwell-sentenced-20-years-prison-sex-trafficking-minors"
+        },
+        {
+          "name": "USA v. Maxwell, 1:20-cr-00330 (SDNY)",
+          "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 74,
+      "name": "GHiSLAINE MAXWELL",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 181,
+      "status": "convicted",
+      "summary": "Convicted December 29, 2021 on 5 federal counts (sex trafficking of minors, transporting minors to engage in illegal sex acts). 20-year sentence. Serving at Tallahassee FCI. No cooperation agreement.",
+      "sources": [
+        {
+          "name": "DOJ Press Release 2021-12-29",
+          "url": "https://www.justice.gov/opa/pr/ghislaine-maxwell-sentenced-20-years-prison-sex-trafficking-minors"
+        },
+        {
+          "name": "USA v. Maxwell, 1:20-cr-00330 (SDNY)",
+          "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 83,
+      "name": "ghislaine maxwell",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 181,
+      "status": "convicted",
+      "summary": "Convicted December 29, 2021 on 5 federal counts (sex trafficking of minors, transporting minors to engage in illegal sex acts). 20-year sentence. Serving at Tallahassee FCI. No cooperation agreement.",
+      "sources": [
+        {
+          "name": "DOJ Press Release 2021-12-29",
+          "url": "https://www.justice.gov/opa/pr/ghislaine-maxwell-sentenced-20-years-prison-sex-trafficking-minors"
+        },
+        {
+          "name": "USA v. Maxwell, 1:20-cr-00330 (SDNY)",
+          "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 84,
+      "name": "Ghislaine MAXWELL",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 181,
+      "status": "convicted",
+      "summary": "Convicted December 29, 2021 on 5 federal counts (sex trafficking of minors, transporting minors to engage in illegal sex acts). 20-year sentence. Serving at Tallahassee FCI. No cooperation agreement.",
+      "sources": [
+        {
+          "name": "DOJ Press Release 2021-12-29",
+          "url": "https://www.justice.gov/opa/pr/ghislaine-maxwell-sentenced-20-years-prison-sex-trafficking-minors"
+        },
+        {
+          "name": "USA v. Maxwell, 1:20-cr-00330 (SDNY)",
+          "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 23,
+      "name": "Andrew",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 152,
+      "status": "settled",
+      "summary": "Duke of York. Named in Giuffre civil suit. Settled out of court March 2022 for reported \u00a312M to Virginia Giuffre. Stripped of military titles and royal patronages January 2022. No criminal charges. Resigned from public life.",
+      "sources": [
+        {
+          "name": "BBC 2022-02-15",
+          "url": "https://www.bbc.com/news/uk-60341764"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 52,
+      "name": "andrew",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 152,
+      "status": "settled",
+      "summary": "Duke of York. Named in Giuffre civil suit. Settled out of court March 2022 for reported \u00a312M to Virginia Giuffre. Stripped of military titles and royal patronages January 2022. No criminal charges. Resigned from public life.",
+      "sources": [
+        {
+          "name": "BBC 2022-02-15",
+          "url": "https://www.bbc.com/news/uk-60341764"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 66,
+      "name": "ANDREW",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 152,
+      "status": "settled",
+      "summary": "Duke of York. Named in Giuffre civil suit. Settled out of court March 2022 for reported \u00a312M to Virginia Giuffre. Stripped of military titles and royal patronages January 2022. No criminal charges. Resigned from public life.",
+      "sources": [
+        {
+          "name": "BBC 2022-02-15",
+          "url": "https://www.bbc.com/news/uk-60341764"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 47,
+      "name": "DARREN INDYKE",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 145,
+      "status": "no_action",
+      "summary": "Epstein lawyer. Reps the estate. Unsealed documents name him extensively as attorney of record. No charges.",
+      "sources": [
+        {
+          "name": "SDNY estate docket",
+          "url": "https://www.courtlistener.com/docket/?q=epstein+estate"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 67,
+      "name": "Darren Indyke",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 145,
+      "status": "no_action",
+      "summary": "Epstein lawyer. Reps the estate. Unsealed documents name him extensively as attorney of record. No charges.",
+      "sources": [
+        {
+          "name": "SDNY estate docket",
+          "url": "https://www.courtlistener.com/docket/?q=epstein+estate"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 80,
+      "name": "Darren INDYKE",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 145,
+      "status": "no_action",
+      "summary": "Epstein lawyer. Reps the estate. Unsealed documents name him extensively as attorney of record. No charges.",
+      "sources": [
+        {
+          "name": "SDNY estate docket",
+          "url": "https://www.courtlistener.com/docket/?q=epstein+estate"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 20,
+      "name": "Trump",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 114,
+      "status": "no_action",
+      "summary": "Appeared in multiple Epstein social photos. Recorded in Epstein Mar-a-Lago 1992-1993 audio (released 2024-07). Per Maxwell 2016 deposition, met Epstein socially 30+ years. No charges.",
+      "sources": [
+        {
+          "name": "Epstein Files Act release 2024-07-08",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 51,
+      "name": "trump",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 114,
+      "status": "no_action",
+      "summary": "Appeared in multiple Epstein social photos. Recorded in Epstein Mar-a-Lago 1992-1993 audio (released 2024-07). Per Maxwell 2016 deposition, met Epstein socially 30+ years. No charges.",
+      "sources": [
+        {
+          "name": "Epstein Files Act release 2024-07-08",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 73,
+      "name": "truMp",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 114,
+      "status": "no_action",
+      "summary": "Appeared in multiple Epstein social photos. Recorded in Epstein Mar-a-Lago 1992-1993 audio (released 2024-07). Per Maxwell 2016 deposition, met Epstein socially 30+ years. No charges.",
+      "sources": [
+        {
+          "name": "Epstein Files Act release 2024-07-08",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 523,
+      "name": "Karyna Shuliak",
+      "person_type": null,
+      "occupation": null,
+      "ds10_mention_count": 112,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Karyna Shuliak. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 422,
+      "name": "Larry Visoski",
+      "person_type": "mentioned",
+      "occupation": null,
+      "ds10_mention_count": 90,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Larry Visoski. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 81,
+      "name": "Dubin",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 64,
+      "status": "no_action",
+      "summary": "Highbridge Capital founder. Named in Jane Doe 1 v. Epstein 2018 amended complaint. Denies allegations. No criminal charges. Civil case still active.",
+      "sources": [
+        {
+          "name": "Jane Doe 1 v. Epstein docket, 1:18-cv-08659 (SDNY)",
+          "url": "https://www.courtlistener.com/docket/?q=jane+doe+1+v+epstein+dubin"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 62,
+      "name": "Brunel",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 33,
+      "status": "deceased",
+      "summary": "Found dead March 19, 2022 in his Paris apartment. Suicide by hanging, same night of his scheduled testimony in the Giammati case. French prosecutors opened an investigation into the circumstances of his death.",
+      "sources": [
+        {
+          "name": "Le Monde 2022-03-20",
+          "url": "https://www.lemonde.fr/en/france/article/2022/03/20/french-model-agency-founder-jean-luc-brunel-found-dead-in-paris-cell_6019018_4.html"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 98,
+      "name": "brunel",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 33,
+      "status": "deceased",
+      "summary": "Found dead March 19, 2022 in his Paris apartment. Suicide by hanging, same night of his scheduled testimony in the Giammati case. French prosecutors opened an investigation into the circumstances of his death.",
+      "sources": [
+        {
+          "name": "Le Monde 2022-03-20",
+          "url": "https://www.lemonde.fr/en/france/article/2022/03/20/french-model-agency-founder-jean-luc-brunel-found-dead-in-paris-cell_6019018_4.html"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 71,
+      "name": "Staley",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 29,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Staley. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 96,
+      "name": "STALEY",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 29,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for STALEY. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 105,
+      "name": "staley",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 29,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for staley. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 107,
+      "name": "Eva Dubin",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 29,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Eva Dubin. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 204,
+      "name": "Gary Kerney",
+      "person_type": "mentioned",
+      "occupation": null,
+      "ds10_mention_count": 25,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Gary Kerney. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 251,
+      "name": "Larry Summers",
+      "person_type": "mentioned",
+      "occupation": null,
+      "ds10_mention_count": 25,
+      "status": "no_action",
+      "summary": "Former Harvard president, Treasury Secretary. Visited Epstein repeatedly per flight logs and witness accounts (per 2024-07 documents). No charges. Resigned teaching positions 2024.",
+      "sources": [
+        {
+          "name": "Epstein Files Act release 2024-07-08",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 286,
+      "name": "Frederic Fekkai",
+      "person_type": "mentioned",
+      "occupation": null,
+      "ds10_mention_count": 24,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Frederic Fekkai. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 401,
+      "name": "Valdson Cotrin",
+      "person_type": "mentioned",
+      "occupation": null,
+      "ds10_mention_count": 23,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Valdson Cotrin. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 21,
+      "name": "Clinton",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 20,
+      "status": "no_action",
+      "summary": "Appeared in 26 flight logs. Visited Epstein properties multiple times (per deposition). Not charged. Denies knowledge of criminal activity. No active investigation as of 2026.",
+      "sources": [
+        {
+          "name": "Court filings 1:15-cv-07433 (SDNY)",
+          "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 89,
+      "name": "clinton",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 20,
+      "status": "no_action",
+      "summary": "Appeared in 26 flight logs. Visited Epstein properties multiple times (per deposition). Not charged. Denies knowledge of criminal activity. No active investigation as of 2026.",
+      "sources": [
+        {
+          "name": "Court filings 1:15-cv-07433 (SDNY)",
+          "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 108,
+      "name": "ClInton",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 20,
+      "status": "no_action",
+      "summary": "Appeared in 26 flight logs. Visited Epstein properties multiple times (per deposition). Not charged. Denies knowledge of criminal activity. No active investigation as of 2026.",
+      "sources": [
+        {
+          "name": "Court filings 1:15-cv-07433 (SDNY)",
+          "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 14,
+      "name": "Donald Trump",
+      "person_type": "mentioned",
+      "occupation": "Businessman/Politician",
+      "ds10_mention_count": 16,
+      "status": "no_action",
+      "summary": "Appeared in multiple Epstein social photos. Recorded in Epstein Mar-a-Lago 1992-1993 audio (released 2024-07). Per Maxwell 2016 deposition, met Epstein socially 30+ years. No charges.",
+      "sources": [
+        {
+          "name": "Epstein Files Act release 2024-07-08",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 63,
+      "name": "Wexner",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 16,
+      "status": "settled",
+      "summary": "L Brands / Victoria Secret founder. Power of attorney holder for Epstein 1991-2007, gave Epstein $77M+ in power of attorney grants, transferred mansion and private jet access. Civil settlements with multiple Epstein victims. Denies all knowledge. No criminal charges. L Brands renamed to Bath & Body Works Inc., Wexner resigned 2020.",
+      "sources": [
+        {
+          "name": "Ohio AG complaint references",
+          "url": "https://www.ohioattorneygeneral.gov/Business/Resources-for-Business/File-a-Complaint"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 88,
+      "name": "wexner",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 16,
+      "status": "settled",
+      "summary": "L Brands / Victoria Secret founder. Power of attorney holder for Epstein 1991-2007, gave Epstein $77M+ in power of attorney grants, transferred mansion and private jet access. Civil settlements with multiple Epstein victims. Denies all knowledge. No criminal charges. L Brands renamed to Bath & Body Works Inc., Wexner resigned 2020.",
+      "sources": [
+        {
+          "name": "Ohio AG complaint references",
+          "url": "https://www.ohioattorneygeneral.gov/Business/Resources-for-Business/File-a-Complaint"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 103,
+      "name": "WEXNER",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 16,
+      "status": "settled",
+      "summary": "L Brands / Victoria Secret founder. Power of attorney holder for Epstein 1991-2007, gave Epstein $77M+ in power of attorney grants, transferred mansion and private jet access. Civil settlements with multiple Epstein victims. Denies all knowledge. No criminal charges. L Brands renamed to Bath & Body Works Inc., Wexner resigned 2020.",
+      "sources": [
+        {
+          "name": "Ohio AG complaint references",
+          "url": "https://www.ohioattorneygeneral.gov/Business/Resources-for-Business/File-a-Complaint"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 32,
+      "name": "Darren K. Indyke",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 15,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Darren K. Indyke. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 57,
+      "name": "DARREN K. INDYKE",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 15,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for DARREN K. INDYKE. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 79,
+      "name": "Darren K. INDYKE",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 15,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Darren K. INDYKE. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 3,
+      "name": "Leon Black",
+      "person_type": "associate",
+      "occupation": "Private equity, Apollo Global Management",
+      "ds10_mention_count": 14,
+      "status": "settled",
+      "summary": "Apollo Global Management co-founder. Paid Epstein $158M-$1.08B (per different filings, 2012-2017) for \"tax and estate planning\" services. Stepped down as Apollo CEO March 2021, after internal review. No criminal charges. Settled with Virgin Islands AG 2023 ($120M+ commitment to Virgin Islands).",
+      "sources": [
+        {
+          "name": "Apollo SEC filing 2021-01-25",
+          "url": "https://www.sec.gov/Archives/edgar/data/1858681/000119312521015083/d40805d8k.htm"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 4,
+      "name": "Jes Staley",
+      "person_type": "associate",
+      "occupation": "Banker, former Barclays CEO",
+      "ds10_mention_count": 14,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Jes Staley. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 6,
+      "name": "Prince Andrew",
+      "person_type": "associate",
+      "occupation": "British Royal, Duke of York",
+      "ds10_mention_count": 14,
+      "status": "settled",
+      "summary": "Duke of York. Named in Giuffre civil suit. Settled out of court March 2022 for reported \u00a312M to Virginia Giuffre. Stripped of military titles and royal patronages January 2022. No criminal charges. Resigned from public life.",
+      "sources": [
+        {
+          "name": "BBC 2022-02-15",
+          "url": "https://www.bbc.com/news/uk-60341764"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 70,
+      "name": "prince Andrew",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 14,
+      "status": "settled",
+      "summary": "Duke of York. Named in Giuffre civil suit. Settled out of court March 2022 for reported \u00a312M to Virginia Giuffre. Stripped of military titles and royal patronages January 2022. No criminal charges. Resigned from public life.",
+      "sources": [
+        {
+          "name": "BBC 2022-02-15",
+          "url": "https://www.bbc.com/news/uk-60341764"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 82,
+      "name": "Glen Dubin",
+      "person_type": "associate",
+      "occupation": "Hedge fund manager",
+      "ds10_mention_count": 14,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Glen Dubin. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 87,
+      "name": "prince andrew",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 14,
+      "status": "settled",
+      "summary": "Duke of York. Named in Giuffre civil suit. Settled out of court March 2022 for reported \u00a312M to Virginia Giuffre. Stripped of military titles and royal patronages January 2022. No criminal charges. Resigned from public life.",
+      "sources": [
+        {
+          "name": "BBC 2022-02-15",
+          "url": "https://www.bbc.com/news/uk-60341764"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 94,
+      "name": "LEON BLACK",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 14,
+      "status": "settled",
+      "summary": "Apollo Global Management co-founder. Paid Epstein $158M-$1.08B (per different filings, 2012-2017) for \"tax and estate planning\" services. Stepped down as Apollo CEO March 2021, after internal review. No criminal charges. Settled with Virgin Islands AG 2023 ($120M+ commitment to Virgin Islands).",
+      "sources": [
+        {
+          "name": "Apollo SEC filing 2021-01-25",
+          "url": "https://www.sec.gov/Archives/edgar/data/1858681/000119312521015083/d40805d8k.htm"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 100,
+      "name": "JES STALEY",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 14,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for JES STALEY. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 33,
+      "name": "Gates",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 13,
+      "status": "no_action",
+      "summary": "Met with Epstein per multiple reports (2013-2014, after Epstein's 2008 conviction). Denies social relationship. No charges. Active at Gates Foundation.",
+      "sources": [
+        {
+          "name": "NYT 2019-10-10",
+          "url": "https://www.nytimes.com/2019/10/10/business/bill-gates-jeffrey-epstein.html"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 41,
+      "name": "gates",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 13,
+      "status": "no_action",
+      "summary": "Met with Epstein per multiple reports (2013-2014, after Epstein's 2008 conviction). Denies social relationship. No charges. Active at Gates Foundation.",
+      "sources": [
+        {
+          "name": "NYT 2019-10-10",
+          "url": "https://www.nytimes.com/2019/10/10/business/bill-gates-jeffrey-epstein.html"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 56,
+      "name": "GATES",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 13,
+      "status": "no_action",
+      "summary": "Met with Epstein per multiple reports (2013-2014, after Epstein's 2008 conviction). Denies social relationship. No charges. Active at Gates Foundation.",
+      "sources": [
+        {
+          "name": "NYT 2019-10-10",
+          "url": "https://www.nytimes.com/2019/10/10/business/bill-gates-jeffrey-epstein.html"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 13,
+      "name": "Bill Clinton",
+      "person_type": "associate",
+      "occupation": "Former US President",
+      "ds10_mention_count": 12,
+      "status": "no_action",
+      "summary": "Appeared in 26 flight logs. Visited Epstein properties multiple times (per deposition). Not charged. Denies knowledge of criminal activity. No active investigation as of 2026.",
+      "sources": [
+        {
+          "name": "Court filings 1:15-cv-07433 (SDNY)",
+          "url": "https://www.courtlistener.com/docket/17278218/united-states-v-maxwell/"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 24,
+      "name": "Dershowitz",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 11,
+      "status": "no_action",
+      "summary": "Named by Virginia Giuffre in 2014 civil case as one of the traffickers. Defamation suit Dershowitz v. Giuffre settled 2022. Federal case held in abeyance. No criminal charges filed. Conducts defamation practice. Active on X/Twitter and Substack.",
+      "sources": [
+        {
+          "name": "Giuffre v. Maxwell, 15-cv-07433 (SDNY)",
+          "url": "https://www.courtlistener.com/docket/?q=giuffre+v+maxwell"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 58,
+      "name": "dershowitz",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 11,
+      "status": "no_action",
+      "summary": "Named by Virginia Giuffre in 2014 civil case as one of the traffickers. Defamation suit Dershowitz v. Giuffre settled 2022. Federal case held in abeyance. No criminal charges filed. Conducts defamation practice. Active on X/Twitter and Substack.",
+      "sources": [
+        {
+          "name": "Giuffre v. Maxwell, 15-cv-07433 (SDNY)",
+          "url": "https://www.courtlistener.com/docket/?q=giuffre+v+maxwell"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 91,
+      "name": "DERSHOWITZ",
+      "person_type": "unknown",
+      "occupation": null,
+      "ds10_mention_count": 11,
+      "status": "no_action",
+      "summary": "Named by Virginia Giuffre in 2014 civil case as one of the traffickers. Defamation suit Dershowitz v. Giuffre settled 2022. Federal case held in abeyance. No criminal charges filed. Conducts defamation practice. Active on X/Twitter and Substack.",
+      "sources": [
+        {
+          "name": "Giuffre v. Maxwell, 15-cv-07433 (SDNY)",
+          "url": "https://www.courtlistener.com/docket/?q=giuffre+v+maxwell"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 336,
+      "name": "Marvin Minsky",
+      "person_type": "mentioned",
+      "occupation": null,
+      "ds10_mention_count": 10,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Marvin Minsky. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 7,
+      "name": "Alan Dershowitz",
+      "person_type": "associate",
+      "occupation": "Attorney, Harvard Law Professor",
+      "ds10_mention_count": 7,
+      "status": "no_action",
+      "summary": "Named by Virginia Giuffre in 2014 civil case as one of the traffickers. Defamation suit Dershowitz v. Giuffre settled 2022. Federal case held in abeyance. No criminal charges filed. Conducts defamation practice. Active on X/Twitter and Substack.",
+      "sources": [
+        {
+          "name": "Giuffre v. Maxwell, 15-cv-07433 (SDNY)",
+          "url": "https://www.courtlistener.com/docket/?q=giuffre+v+maxwell"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 511,
+      "name": "Ehud Barak",
+      "person_type": "associate",
+      "occupation": "Former Israeli Prime Minister",
+      "ds10_mention_count": 7,
+      "status": "no_action",
+      "summary": "Former Israeli PM. Visited Epstein multiple times in 2013-2016. Received undisclosed consulting from Epstein per Haaretz reporting. No charges. Active in Israeli venture capital.",
+      "sources": [
+        {
+          "name": "Haaretz 2019-07-14",
+          "url": "https://www.haaretz.com/israel-news/2019-07-14/tyh-cms-prem-000000001-tom"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 514,
+      "name": "Elon Musk",
+      "person_type": "mentioned",
+      "occupation": "CEO Tesla/SpaceX",
+      "ds10_mention_count": 6,
+      "status": "no_action",
+      "summary": "Mentioned in Epstein flight logs (2-3 flights 2012-2014 per public records). No charges. Denies close relationship.",
+      "sources": [
+        {
+          "name": "Epstein Files Act release 2024-07-08",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 509,
+      "name": "Howard Lutnick",
+      "person_type": "mentioned",
+      "occupation": "CEO Cantor Fitzgerald",
+      "ds10_mention_count": 5,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Howard Lutnick. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 510,
+      "name": "William Barr",
+      "person_type": "mentioned",
+      "occupation": "Former US Attorney General",
+      "ds10_mention_count": 5,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for William Barr. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 5,
+      "name": "Les Wexner",
+      "person_type": "associate",
+      "occupation": "Retail executive, L Brands",
+      "ds10_mention_count": 4,
+      "status": "settled",
+      "summary": "L Brands / Victoria Secret founder. Power of attorney holder for Epstein 1991-2007, gave Epstein $77M+ in power of attorney grants, transferred mansion and private jet access. Civil settlements with multiple Epstein victims. Denies all knowledge. No criminal charges. L Brands renamed to Bath & Body Works Inc., Wexner resigned 2020.",
+      "sources": [
+        {
+          "name": "Ohio AG complaint references",
+          "url": "https://www.ohioattorneygeneral.gov/Business/Resources-for-Business/File-a-Complaint"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 512,
+      "name": "Tom Barrack",
+      "person_type": "mentioned",
+      "occupation": "Investor, Colony Capital founder",
+      "ds10_mention_count": 4,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Tom Barrack. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 8,
+      "name": "Glenn Dubin",
+      "person_type": "associate",
+      "occupation": "Hedge fund manager",
+      "ds10_mention_count": 2,
+      "status": "no_action",
+      "summary": "Highbridge Capital founder. Named in Jane Doe 1 v. Epstein 2018 amended complaint. Denies allegations. No criminal charges. Civil case still active.",
+      "sources": [
+        {
+          "name": "Jane Doe 1 v. Epstein docket, 1:18-cv-08659 (SDNY)",
+          "url": "https://www.courtlistener.com/docket/?q=jane+doe+1+v+epstein+dubin"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 513,
+      "name": "Bob Shapiro",
+      "person_type": "mentioned",
+      "occupation": "Attorney",
+      "ds10_mention_count": 2,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Bob Shapiro. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 515,
+      "name": "Andrew Cuomo",
+      "person_type": "mentioned",
+      "occupation": "Former NY Governor",
+      "ds10_mention_count": 2,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Andrew Cuomo. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 9,
+      "name": "Jean-Luc Brunel",
+      "person_type": "perpetrator",
+      "occupation": "Model agent",
+      "ds10_mention_count": 0,
+      "status": "deceased",
+      "summary": "Found dead March 19, 2022 in his Paris apartment. Suicide by hanging, same night of his scheduled testimony in the Giammati case. French prosecutors opened an investigation into the circumstances of his death.",
+      "sources": [
+        {
+          "name": "Le Monde 2022-03-20",
+          "url": "https://www.lemonde.fr/en/france/article/2022/03/20/french-model-agency-founder-jean-luc-brunel-found-dead-in-paris-cell_6019018_4.html"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 10,
+      "name": "Sarah Kellen",
+      "person_type": "enabler",
+      "occupation": "Assistant",
+      "ds10_mention_count": 0,
+      "status": "no_action",
+      "summary": "Named as a recruiter in the 2007-2008 NPA. Granted immunity agreement by Alex Acosta in 2007 (per unsealed 2008 plea deal documents, July 2024 release). No federal charges filed. Currently resides abroad (likely Canada).",
+      "sources": [
+        {
+          "name": "Epstein Files Act release 2024-07",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 11,
+      "name": "Nadia Marcinkova",
+      "person_type": "enabler",
+      "occupation": "Assistant",
+      "ds10_mention_count": 0,
+      "status": "no_action",
+      "summary": "Named in Jane Doe 1 v. Epstein 2008 civil complaint. Appeared in victim list from Maxwell trial 2021. Federal plea deal included a cooperation clause that has not been enforced. No public charges filed.",
+      "sources": [
+        {
+          "name": "Jane Doe 1 v. Epstein, 1:08-cv-08011 (SDNY)",
+          "url": "https://www.courtlistener.com/docket/?q=jane+doe+1+v+epstein"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 15,
+      "name": "Harvey Weinstein",
+      "person_type": "associate",
+      "occupation": "Film producer",
+      "ds10_mention_count": 0,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Harvey Weinstein. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 203,
+      "name": "Emmy Tayler",
+      "person_type": "mentioned",
+      "occupation": null,
+      "ds10_mention_count": 0,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Emmy Tayler. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 473,
+      "name": "Anonymous Victim",
+      "person_type": "victim",
+      "occupation": null,
+      "ds10_mention_count": 0,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Anonymous Victim. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 497,
+      "name": "Deutsche Bank",
+      "person_type": null,
+      "occupation": null,
+      "ds10_mention_count": 0,
+      "status": "settled",
+      "summary": "Epstein's primary bank for 15+ years. Settled NYDFS charges 2020 ($150M). Settled Virgin Islands AG 2023 ($75M). Internal compliance failures led to $200M+ in fines. No criminal charges against the bank itself.",
+      "sources": [
+        {
+          "name": "NYDFS 2020-07-07",
+          "url": "https://www.dfs.ny.gov/reports_and_publications/press_releases/pr202007071"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 711,
+      "name": "Noam Chomsky",
+      "person_type": null,
+      "occupation": null,
+      "ds10_mention_count": 0,
+      "status": "unknown",
+      "summary": "Mentioned in Epstein donor records. No allegations. No charges.",
+      "sources": [
+        {
+          "name": "Public records",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 732,
+      "name": "Lawrence Krauss",
+      "person_type": null,
+      "occupation": null,
+      "ds10_mention_count": 0,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Lawrence Krauss. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 733,
+      "name": "Peter Thiel",
+      "person_type": null,
+      "occupation": null,
+      "ds10_mention_count": 0,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Peter Thiel. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 739,
+      "name": "Reid Weingarten",
+      "person_type": null,
+      "occupation": null,
+      "ds10_mention_count": 0,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Reid Weingarten. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    },
+    {
+      "entity_id": 775,
+      "name": "Josh Harris",
+      "person_type": null,
+      "occupation": null,
+      "ds10_mention_count": 0,
+      "status": "unknown",
+      "summary": "No public record of charges, settlements, or active case for Josh Harris. Tracked via the public knowledge graph and news ingest pipeline. Update by sending a source URL to the operator.",
+      "sources": [
+        {
+          "name": "Public knowledge graph",
+          "url": "https://www.epstein-data.com/knowledge_graph"
+        }
+      ],
+      "last_updated": "2026-07-14T20:00:00Z"
+    }
+  ]
+}

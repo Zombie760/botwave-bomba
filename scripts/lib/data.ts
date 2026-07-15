@@ -246,6 +246,47 @@ export function getErrata() {
   return readJson<{ corrections?: any[] }>("api/errata.json", { corrections: [] });
 }
 
+// === Watch (Stage 4 — Epstein Watch, accountability tracker) ===
+export type WatchStatus =
+  | "arrested" | "charged" | "convicted" | "settled" | "civil_suit"
+  | "cooperating" | "no_action" | "cleared" | "deceased" | "unknown";
+
+export interface WatchEntity {
+  entity_id: string;
+  name: string;
+  person_type: string;
+  occupation: string;
+  ds10_mention_count: number;
+  status: WatchStatus;
+  summary: string;
+  sources: { name: string; url: string }[];
+  last_updated: string;
+}
+
+export interface WatchStatusFile {
+  generated_at: string;
+  methodology: string;
+  entity_count: number;
+  status_counts: Partial<Record<WatchStatus, number>>;
+  group_counts: Record<string, number>;
+  sources_used: { name: string; url: string }[];
+  groups: Record<string, WatchEntity[]>;
+  all: WatchEntity[];
+}
+
+export function getWatchStatus(): WatchStatusFile {
+  return readJson<WatchStatusFile>("api/watch-status.json", {
+    generated_at: new Date(0).toISOString(),
+    methodology: "watch-status.json missing — run scripts/build_watch_status.py",
+    entity_count: 0,
+    status_counts: {},
+    group_counts: {},
+    sources_used: [],
+    groups: {},
+    all: [],
+  });
+}
+
 export interface IntelligenceEntry {
   bates: string;
   year: number | null;

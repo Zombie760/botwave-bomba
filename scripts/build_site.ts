@@ -16,7 +16,9 @@ import {
   getSigintPackages,
   extractDomain,
   getIntelligence,
+  getWatchStatus,
 } from "./lib/data.ts";
+import type { WatchStatus as WatchStatusType } from "./lib/data.ts";
 import {
   SECTIONS,
   classifyAlignment,
@@ -3421,6 +3423,142 @@ https://epstein-data.com/knowledge_graph/relationships.json?_size=2500&amp;_shap
     page: "intelligence",
     title: "Intelligence — BotwaveBomba",
     desc: "Epstein-Files mechanism registry. The CIA does not work for the people. It works for the people who own the banks.",
+  });
+
+  // === Watch page (Stage 4) — Epstein accountability tracker ===
+  const watch = getWatchStatus();
+  const STATUS_ORDER: WatchStatusType[] = ["convicted", "charged", "arrested", "cooperating", "settled", "civil_suit", "no_action", "cleared", "deceased", "unknown"];
+  const STATUS_COLOR: Record<WatchStatusType, string> = {
+    arrested: "var(--status-error, #c4302b)",
+    charged: "var(--status-error, #c4302b)",
+    convicted: "var(--status-error, #c4302b)",
+    cooperating: "var(--status-info, #5b8def)",
+    settled: "var(--status-warning, #E8B339)",
+    civil_suit: "var(--status-warning, #E8B339)",
+    no_action: "var(--status-positive, #3FA796)",
+    cleared: "var(--status-positive, #3FA796)",
+    deceased: "#8a8d95",
+    unknown: "#5a5d65",
+  };
+  const statusPill = (s: WatchStatusType) =>
+    `<span class="bwb-watch-pill" style="background: ${STATUS_COLOR[s]};">${s.replace(/_/g, ' ').toUpperCase()}</span>`;
+  const statBlock = (label: string, n: number, color: string) =>
+    `<div class="bwb-watch-stat"><strong style="color: ${color}">${n}</strong><span>${label}</span></div>`;
+  const watchStats = `
+    <div class="bwb-watch-stats">
+      ${statBlock("CONVICTED", watch.status_counts.convicted || 0, STATUS_COLOR.convicted)}
+      ${statBlock("CHARGED", watch.status_counts.charged || 0, STATUS_COLOR.charged)}
+      ${statBlock("SETTLED", watch.status_counts.settled || 0, STATUS_COLOR.settled)}
+      ${statBlock("NO ACTION", watch.status_counts.no_action || 0, STATUS_COLOR.no_action)}
+      ${statBlock("DECEASED", watch.status_counts.deceased || 0, STATUS_COLOR.deceased)}
+      ${statBlock("TRACKED", watch.status_counts.unknown || 0, STATUS_COLOR.unknown)}
+    </div>`;
+  const renderEntityCard = (e: typeof watch.all[number]) => `
+    <article class="bwb-watch-card" data-status="${e.status}">
+      <header class="bwb-watch-card-head">
+        <h3>${escapeHtml(e.name)}</h3>
+        ${statusPill(e.status)}
+      </header>
+      <p class="bwb-watch-card-meta">
+        <span class="bwb-watch-card-type">${escapeHtml((e.person_type || 'unknown').replace(/_/g, ' '))}</span>
+        ${e.occupation ? ` · <span class="bwb-watch-card-occ">${escapeHtml(e.occupation.slice(0, 80))}</span>` : ''}
+        ${e.ds10_mention_count ? ` · <span class="bwb-watch-card-mn">${e.ds10_mention_count.toLocaleString()} mentions</span>` : ''}
+      </p>
+      <p class="bwb-watch-card-sum">${escapeHtml(e.summary.slice(0, 280))}${e.summary.length > 280 ? '…' : ''}</p>
+      <ul class="bwb-watch-card-sources">
+        ${e.sources.slice(0, 3).map((s) => `<li><a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(s.name)}</a></li>`).join('')}
+      </ul>
+    </article>`;
+  const groupSection = (label: string, entities: typeof watch.all) => {
+    if (!entities.length) return '';
+    return `
+      <section class="bwb-watch-group">
+        <h2>${label} <span class="bwb-watch-group-count">${entities.length}</span></h2>
+        <div class="bwb-watch-grid">${entities.slice(0, 24).map(renderEntityCard).join('')}</div>
+        ${entities.length > 24 ? `<p class="bwb-watch-group-more">+ ${entities.length - 24} more — see JSON API for full list</p>` : ''}
+      </section>`;
+  };
+  const watchBody = `
+    <div class="bwb-layout bwb-intel-shell" style="grid-template-columns: 280px 1fr;">
+      <aside class="bwb-sidebar bwb-intel-sidebar" aria-label="Watch navigation">
+        <div class="bwb-sidebar-section">
+          <h3 class="bwb-sidebar-title">WATCH</h3>
+          <ul class="bwb-intel-cat-list">
+            <li><a href="#watch-ledger">Ledger <span class="bwb-intel-cat-meta">${watch.entity_count} entities</span></a></li>
+            <li><a href="#watch-convicted">Convicted <span class="bwb-intel-cat-meta">${watch.status_counts.convicted || 0}</span></a></li>
+            <li><a href="#watch-settled">Settled <span class="bwb-intel-cat-meta">${watch.status_counts.settled || 0}</span></a></li>
+            <li><a href="#watch-no_action">No action <span class="bwb-intel-cat-meta">${watch.status_counts.no_action || 0}</span></a></li>
+            <li><a href="#watch-deceased">Deceased <span class="bwb-intel-cat-meta">${watch.status_counts.deceased || 0}</span></a></li>
+            <li><a href="#watch-tracked">Tracked <span class="bwb-intel-cat-meta">${watch.status_counts.unknown || 0}</span></a></li>
+          </ul>
+        </div>
+        <div class="bwb-sidebar-section">
+          <h3 class="bwb-sidebar-title">SOURCES</h3>
+          <ul class="bwb-intel-cat-list">
+            ${watch.sources_used.map((s) => `<li><a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(s.name)}</a></li>`).join('')}
+          </ul>
+        </div>
+        <div class="bwb-sidebar-section">
+          <h3 class="bwb-sidebar-title">API</h3>
+          <ul class="bwb-intel-cat-list">
+            <li><a href="/api/watch-status.json" target="_blank" rel="noopener">watch-status.json <span class="bwb-intel-cat-meta">JSON</span></a></li>
+            <li><a href="/api/news-feed.json" target="_blank" rel="noopener">news-feed.json <span class="bwb-intel-cat-meta">JSON</span></a></li>
+            <li><a href="/intelligence.html">INTELLIGENCE <span class="bwb-intel-cat-meta">full audit</span></a></li>
+          </ul>
+        </div>
+      </aside>
+      <div class="bwb-main bwb-intel-main">
+        <section class="bwb-intel-section bwb-watch-section" id="watch-ledger">
+          <span class="bwb-section-kicker">ACCOUNTABILITY LEDGER</span>
+          <h1>Who is being held accountable?</h1>
+          <p class="bwb-intel-lede">${watch.entity_count.toLocaleString()} named entities from the public knowledge graph. ${watch.status_counts.convicted || 0} convicted. ${watch.status_counts.settled || 0} settled. ${watch.status_counts.no_action || 0} walked free. ${watch.status_counts.deceased || 0} are dead. ${watch.status_counts.unknown || 0} still being tracked. Each status is a filed claim with a public source. To update an entry, submit a source URL to the operator.</p>
+          <p class="bwb-intel-note"><strong>Methodology:</strong> ${escapeHtml(watch.methodology)}</p>
+          <p class="bwb-intel-note"><strong>Last scrape:</strong> ${escapeHtml(watch.generated_at)} &middot; <strong>Sources:</strong> ${watch.sources_used.length} primary registries (knowledge graph, SDNY dockets, DOJ press, VI AG)</p>
+          ${watchStats}
+        </section>
+        ${groupSection("Perpetrators & Co-Conspirators (convicted / charged / arrested)", watch.all.filter((e) => ["convicted", "charged", "arrested", "cooperating"].includes(e.status)))}
+        ${groupSection("Settled (paid their way out — no admission of guilt)", watch.all.filter((e) => e.status === "settled"))}
+        ${groupSection("Civil suits pending", watch.all.filter((e) => e.status === "civil_suit"))}
+        ${groupSection("No action — walking free", watch.all.filter((e) => e.status === "no_action" || e.status === "cleared"))}
+        ${groupSection("Deceased (case closed by death)", watch.all.filter((e) => e.status === "deceased"))}
+        ${groupSection("Tracked — status unknown or under investigation", watch.all.filter((e) => e.status === "unknown"))}
+        <section class="bwb-intel-section">
+          <h2>How this updates</h2>
+          <p class="bwb-intel-note">The watch list is the seed file at <code>api/watch-status.json</code>. A private ingest pipeline (CourtListener dockets, DOJ press releases, Federal Register, USAspending, OpenFEC, OpenSecrets, Google News RSS, GDELT, Wikipedia events) updates the underlying <code>api/scraper.db</code> every 30 minutes. Each scrape records the source URL, the fetch timestamp, and the content hash. A daily derivation run re-emits <code>api/watch-status.json</code> with the latest status. Public API: <a href="/api/watch-status.json" target="_blank" rel="noopener">/api/watch-status.json</a>. Public mirror of substrate: <a href="https://epstein-data.com" target="_blank" rel="noopener">epstein-data.com</a> (1.4M documents / 2.7M pages / 524 entities / 2,096 typed relationships).</p>
+        </section>
+      </div>
+    </div>`;
+  const watchLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        name: "Watch — BotwaveBomba",
+        url: pageUrl("watch"),
+        description: "Accountability tracker. Who is being held accountable, who paid their way out, who walked free, and who is still being tracked.",
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "PORTADA", item: pageUrl("index") },
+          { "@type": "ListItem", position: 2, name: "Watch" },
+        ],
+      },
+    ],
+  };
+  write(
+    "watch.html",
+    chrome("watch", watchBody, {
+      title: "Watch — BotwaveBomba",
+      description: "Epstein accountability ledger. Convicted, settled, walking free, deceased, tracked. Each status a filed claim with a public source.",
+      canonical: pageUrl("watch"),
+      jsonLd: watchLd,
+    })
+  );
+  publicPages.push({
+    page: "watch",
+    title: "Watch — BotwaveBomba",
+    desc: "Accountability tracker. Who is being held accountable, who paid their way out, who walked free, and who is still being tracked.",
   });
 
   // Sitemap
