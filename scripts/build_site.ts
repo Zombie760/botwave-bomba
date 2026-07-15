@@ -235,6 +235,7 @@ function chrome(
     ogType?: string;
     jsonLd?: object;
     context?: string;
+    extraScripts?: string[];
   }
 ) {
   const activeFrequencies = getActiveFrequencies();
@@ -425,6 +426,7 @@ function chrome(
     </div>
   </footer>
 
+  ${(opts.extraScripts || []).map((s) => `<script src="${asset(s)}?v=1" defer></script>`).join("\n  ")}
   <script src="${asset("/assets/js/botwave.js")}?v=1" defer></script>
 </body>
 </html>`;
@@ -1203,12 +1205,19 @@ function generate() {
     if (page === "sigint.html") {
       const e = EXISTING_CONTENT[page] || {
         title: "SIGINT Package",
-        desc: "Detailed intercept package across sources.",
+        desc: "Source comparison across all reporting on this story.",
         body: "",
       };
-      const body = e.body
-        ? `\u003cdiv class="bwb-layout" style="grid-template-columns:1fr;"\u003e\u003cdiv class="bwb-main"\u003e${e.body}\u003c/div\u003e\u003c/div\u003e`
-        : renderSigintDetail(stories[0]);
+      // Client-side renders the story detail from ?id= via story.js
+      const body = `<div class="bwb-layout" style="grid-template-columns:1fr;">
+  <div class="bwb-main">
+    <div id="story-detail-mount" data-loading="true">
+      <div class="bwb-story-loading">
+        <p>Loading source comparison…</p>
+      </div>
+    </div>
+  </div>
+</div>`;
       const ld = {
         "@context": "https://schema.org",
         "@graph": [
@@ -1234,7 +1243,8 @@ function generate() {
           description: e.desc,
           canonical: `${DOMAIN}${BASE}/${page}`,
           jsonLd: ld,
-        })
+          extraScripts: ["/assets/js/story.js"],
+        }),
       );
       publicPages.push({ page: id, title: e.title, desc: e.desc });
       continue;

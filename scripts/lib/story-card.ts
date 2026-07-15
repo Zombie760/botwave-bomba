@@ -4,6 +4,8 @@
 // + expand button for full source list
 import type { SigintPackage, Asset } from "./data.ts";
 
+const CARD_LINK_BASE = "/botwavebomba";
+
 export function normBloc(
   b: string | undefined | null
 ): "western" | "non-aligned" | "adversarial" | "other" {
@@ -137,8 +139,9 @@ export function storyCard(pkg: SigintPackage): string {
     .join("");
 
   const cardId = `card-${escapeHtml(pkg.id)}`;
+  const cardLink = `${CARD_LINK_BASE}/sigint.html?id=${encodeURIComponent(pkg.id)}`;
   return `<article class="bwb-story-card" data-pkg="${escapeHtml(pkg.id)}">
-    <a class="bwb-story-card-link" href="${escapeHtml(leadUrl || "#")}" aria-label="Read coverage: ${escapeHtml(title)}">
+    <a class="bwb-story-card-link" href="${escapeHtml(cardLink)}" aria-label="Read coverage: ${escapeHtml(title)}">
       <div class="bwb-story-card-header">
         <div class="bwb-story-card-logo">
           <img src="https://logo.clearbit.com/${escapeHtml(getDomain(leadUrl))}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">

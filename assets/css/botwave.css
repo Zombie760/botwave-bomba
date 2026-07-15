@@ -4159,3 +4159,91 @@ flex-direction: column;
   color: var(--color-accent, #f1c457);
   font-weight: 600;
 }
+
+
+/* === Story detail page — ground.news split-screen source comparison === */
+.bwb-story-detail {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-4) var(--space-7);
+  display: grid;
+  gap: var(--space-5);
+}
+
+.bwb-story-back { font-family: var(--font-mono, monospace); font-size: 0.78rem; }
+.bwb-story-back a { color: var(--color-text-muted, #b5b8bf); text-decoration: none; }
+.bwb-story-back a:hover { color: var(--color-accent, #f1c457); }
+
+.bwb-story-detail-head { display: flex; flex-direction: column; gap: var(--space-3); padding-bottom: var(--space-4); border-bottom: 1px solid var(--color-border, #2a2a2a); }
+.bwb-story-detail-kicker { font-family: var(--font-mono, monospace); font-size: 0.75rem; color: var(--color-accent, #f1c457); letter-spacing: 0.15em; text-transform: uppercase; }
+.bwb-story-detail-title { font-family: var(--font-display, Georgia, serif); font-size: clamp(1.5rem, 3.5vw, 2.4rem); font-weight: 700; line-height: 1.15; color: var(--color-text-strong, #f4f5f7); margin: 0; letter-spacing: -0.02em; }
+.bwb-story-detail-meta { display: flex; flex-wrap: wrap; gap: var(--space-4); font-family: var(--font-mono, monospace); font-size: 0.85rem; color: var(--color-text-muted, #b5b8bf); }
+.bwb-story-detail-meta strong { color: var(--color-text-strong, #f4f5f7); }
+.bwb-story-detail-time { color: var(--color-text-subtle, #8a8d95); }
+.bwb-story-signals { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+.bwb-story-section-kicker { font-family: var(--font-mono, monospace); font-size: 0.72rem; color: var(--color-text-muted, #b5b8bf); letter-spacing: 0.15em; text-transform: uppercase; margin: 0 0 var(--space-2); }
+.bwb-story-ribbon { display: flex; flex-direction: column; gap: var(--space-2); }
+.bwb-factuality-bar { display: flex; height: 32px; border-radius: 999px; overflow: hidden; background: var(--color-bg-sunken, #0a0c10); }
+.bwb-factuality-seg { height: 100%; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono, monospace); font-size: 11px; font-weight: 700; color: #fff; }
+.bwb-factuality-seg.very-high { background: #1a7a6c; }
+.bwb-factuality-seg.high { background: #3FA796; }
+.bwb-factuality-seg.mixed { background: #E8B339; color: #1a1d23; }
+.bwb-factuality-seg.low { background: #d36a3d; }
+.bwb-factuality-seg.very-low { background: #c4302b; }
+.bwb-factuality-seg.unknown { background: #4a4d55; }
+
+.bwb-story-comparison { display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
+@media (min-width: 720px) { .bwb-story-comparison { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .bwb-story-comparison { grid-template-columns: repeat(3, 1fr); } }
+
+.bwb-story-col { background: var(--color-bg-elevated, #1a1d23); border: 1px solid var(--color-border, #2a2a2a); border-radius: 12px; padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-3); }
+.bwb-story-col.western { border-top: 3px solid #5b8def; }
+.bwb-story-col.non-aligned { border-top: 3px solid #3FA796; }
+.bwb-story-col.adversarial { border-top: 3px solid #a86ad0; }
+
+.bwb-story-col-head { display: flex; align-items: center; gap: var(--space-2); padding-bottom: var(--space-2); border-bottom: 1px solid var(--color-border, #2a2a2a); }
+.bwb-story-col-bloc { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.bwb-story-col-bloc.western { background: #5b8def; }
+.bwb-story-col-bloc.non-aligned { background: #3FA796; }
+.bwb-story-col-bloc.adversarial { background: #a86ad0; }
+.bwb-story-col-bloc.other { background: #8a8d95; }
+.bwb-story-col-title { font-family: var(--font-ui, system-ui); font-size: 0.95rem; font-weight: 700; color: var(--color-text-strong, #f4f5f7); margin: 0; flex-grow: 1; }
+.bwb-story-col-count { font-family: var(--font-mono, monospace); font-size: 0.7rem; color: var(--color-text-muted, #b5b8bf); }
+.bwb-story-col-empty { font-family: var(--font-ui, system-ui); font-size: 0.85rem; color: var(--color-text-muted, #b5b8bf); text-align: center; padding: var(--space-4) 0; font-style: italic; }
+
+.bwb-story-source-card { background: var(--color-bg, #14171c); border: 1px solid var(--color-border, #2a2a2a); border-radius: 10px; padding: var(--space-3); display: flex; flex-direction: column; gap: var(--space-2); transition: transform 120ms, border-color 120ms; }
+.bwb-story-source-card:hover { transform: translateY(-1px); border-color: var(--color-text-muted, #b5b8bf); }
+.bwb-story-source-head { display: grid; grid-template-columns: 40px 1fr auto; gap: var(--space-2); align-items: center; }
+.bwb-story-source-logo { width: 40px; height: 40px; border-radius: 8px; overflow: hidden; background: var(--color-bg-sunken, #0a0c10); display: grid; place-items: center; }
+.bwb-story-source-logo img { width: 100%; height: 100%; object-fit: cover; }
+.bwb-story-source-logo-fb { font-family: var(--font-display, Georgia, serif); font-size: 0.95rem; font-weight: 700; color: var(--color-text-strong, #f4f5f7); text-transform: uppercase; }
+.bwb-story-source-name { font-family: var(--font-ui, system-ui); font-size: 0.85rem; font-weight: 600; color: var(--color-text-strong, #f4f5f7); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bwb-story-source-country { font-family: var(--font-mono, monospace); font-size: 0.7rem; color: var(--color-text-muted, #b5b8bf); }
+.bwb-story-source-bloc { font-family: var(--font-mono, monospace); font-size: 0.6rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 6px; border-radius: 999px; color: #fff; }
+.bwb-story-source-bloc.western { background: #5b8def; }
+.bwb-story-source-bloc.non-aligned { background: #3FA796; }
+.bwb-story-source-bloc.adversarial { background: #a86ad0; }
+.bwb-story-source-bloc.other { background: #8a8d95; }
+
+.bwb-story-source-headline { font-family: var(--font-ui, system-ui); font-size: 0.95rem; font-weight: 600; line-height: 1.35; color: var(--color-text-strong, #f4f5f7); margin: 0; }
+.bwb-story-source-excerpt { font-family: var(--font-ui, system-ui); font-size: 0.8rem; line-height: 1.5; color: var(--color-text-muted, #b5b8bf); margin: 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.bwb-story-source-foot { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; padding-top: var(--space-2); border-top: 1px solid var(--color-border, #2a2a2a); font-family: var(--font-mono, monospace); font-size: 0.7rem; }
+.bwb-story-source-factuality { padding: 2px 6px; border-radius: 999px; font-weight: 600; }
+.bwb-story-source-factuality.very-high { background: rgba(26, 122, 108, 0.2); color: #3FA796; }
+.bwb-story-source-factuality.high { background: rgba(63, 167, 150, 0.18); color: #3FA796; }
+.bwb-story-source-factuality.mixed { background: rgba(232, 179, 57, 0.18); color: #E8B339; }
+.bwb-story-source-factuality.low { background: rgba(211, 106, 61, 0.2); color: #d36a3d; }
+.bwb-story-source-factuality.very-low { background: rgba(196, 48, 43, 0.2); color: #c4302b; }
+.bwb-story-source-factuality.unknown { background: var(--color-bg-sunken, #0a0c10); color: var(--color-text-muted, #b5b8bf); }
+.bwb-story-source-bias, .bwb-story-source-tone, .bwb-story-source-paywall { padding: 2px 6px; border-radius: 999px; background: var(--color-bg-sunken, #0a0c10); color: var(--color-text-muted, #b5b8bf); }
+.bwb-story-source-link { margin-left: auto; color: var(--color-accent, #f1c457); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; padding: 0 var(--space-2); }
+.bwb-story-source-link:hover { color: var(--color-accent-hover, #ffd878); }
+
+.bwb-story-comparison-extra { display: flex; flex-direction: column; gap: var(--space-3); }
+.bwb-story-extra-grid { display: grid; gap: var(--space-3); grid-template-columns: 1fr; }
+@media (min-width: 720px) { .bwb-story-extra-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .bwb-story-extra-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.bwb-story-detail-foot { padding-top: var(--space-5); border-top: 1px solid var(--color-border, #2a2a2a); }
+.bwb-story-method-note { font-family: var(--font-ui, system-ui); font-size: 0.85rem; line-height: 1.6; color: var(--color-text-muted, #b5b8bf); font-style: italic; }
