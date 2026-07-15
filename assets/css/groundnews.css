@@ -1,0 +1,75 @@
+/*
+ * BotwaveBomba — Ground-News-style first-glance pass (additive override).
+ * Loaded AFTER botwave.css. Adds breathing room + a jargon-free hook.
+ * Does NOT remove or rename any existing rule; only adds / gently re-skins.
+ */
+
+/* ---- Whitespace & calm first impression ---- */
+.bwb-hero {
+  padding: clamp(2.5rem, 6vw, 5rem) var(--gutter);
+  background: linear-gradient(135deg, color-mix(in oklch, var(--color-accent) 5%, var(--color-bg)) 0%, var(--color-bg) 100%);
+}
+.bwb-hero-text { max-width: 820px; }
+
+/* Friendly plain-language hook above the intercept (added in markup) */
+.bwb-hero-hook {
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 2.4vw, 1.4rem);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-loose);
+  color: var(--color-text-strong);
+  margin: 0 0 var(--space-5);
+  max-width: 60ch;
+}
+.bwb-hero-hook b { color: var(--color-accent); font-weight: var(--fw-semibold); }
+
+/* Three-bloc reader strip — surfaces the Western/Non-Aligned/Adversarial
+   substance in friendly Ground-News-style columns (added in markup) */
+.bwb-read-three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin: var(--space-6) 0 0;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+.bwb-read-three .bwb-read-col {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+}
+.bwb-read-three .bwb-read-col h3 {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 var(--space-2);
+  color: var(--color-text-muted);
+}
+.bwb-read-three .bwb-read-col.western { border-top: 4px solid var(--color-western); }
+.bwb-read-three .bwb-read-col.non-aligned { border-top: 4px solid var(--color-non-aligned); }
+.bwb-read-three .bwb-read-col.adversarial { border-top: 4px solid var(--color-adversarial); }
+.bwb-read-three .bwb-read-col p {
+  margin: 0;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-normal);
+  color: var(--color-text-muted);
+}
+.bwb-read-three .bwb-read-col a {
+  display: inline-block;
+  margin-top: var(--space-3);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.bwb-read-three .bwb-read-col a:hover { text-decoration: underline; }
+
+/* Card grid: a touch more air so the page reads calmer at first glance */
+.bwb-layout { gap: var(--space-5); }
+.bwb-main { gap: var(--space-5); }
+
+@media (max-width: 720px) {
+  .bwb-read-three { grid-template-columns: 1fr; }
+}
