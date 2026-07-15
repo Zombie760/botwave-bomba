@@ -248,8 +248,16 @@ export function getErrata() {
 
 // === Watch (Stage 4 — Epstein Watch, accountability tracker) ===
 export type WatchStatus =
-  | "arrested" | "charged" | "convicted" | "settled" | "civil_suit"
-  | "cooperating" | "no_action" | "cleared" | "deceased" | "unknown";
+  | "arrested"
+  | "charged"
+  | "convicted"
+  | "settled"
+  | "civil_suit"
+  | "cooperating"
+  | "no_action"
+  | "cleared"
+  | "deceased"
+  | "unknown";
 
 export interface WatchEntity {
   entity_id: string;
@@ -360,7 +368,12 @@ export function getIntelligence(): Intelligence {
     generated_at: new Date().toISOString(),
     source_corpus: "EFTA corpus (fallback: empty)",
     method: "",
-    corpus_stats: { total_docs: 0, ocr_processed: 0, hand_tagged_actor_docs: 0, entries_with_body_hits: 0 },
+    corpus_stats: {
+      total_docs: 0,
+      ocr_processed: 0,
+      hand_tagged_actor_docs: 0,
+      entries_with_body_hits: 0,
+    },
     class_of_2025: { headline: "", summary: "", members: [] },
     trump_orbit: { headline: "", summary: "", members: [] },
     donor_class: { headline: "", summary: "", members: [] },

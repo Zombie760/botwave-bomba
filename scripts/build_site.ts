@@ -1286,7 +1286,7 @@ function generate() {
           canonical: `${DOMAIN}${BASE}/${page}`,
           jsonLd: ld,
           extraScripts: ["/assets/js/story.js"],
-        }),
+        })
       );
       publicPages.push({ page: id, title: e.title, desc: e.desc });
       continue;
@@ -1638,7 +1638,8 @@ function generate() {
         "@type": "WebPage",
         name: "Search — BotwaveBomba",
         url: pageUrl("search"),
-        description: "Region-aware full-text search across all BotwaveBomba intercepts, assets, and theaters.",
+        description:
+          "Region-aware full-text search across all BotwaveBomba intercepts, assets, and theaters.",
       },
       {
         "@type": "BreadcrumbList",
