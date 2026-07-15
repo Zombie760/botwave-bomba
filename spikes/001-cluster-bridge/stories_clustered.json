@@ -1,0 +1,278 @@
+{
+  "generated_at": "2026-07-15T14:16:36.367713+00:00",
+  "in_count": 34,
+  "clustered_count": 25,
+  "unclustered": 9,
+  "stories_count": 2,
+  "stories": [
+    {
+      "id": "687e1cd9afdb6d",
+      "size": 23,
+      "assetCount": 23,
+      "source_count": 23,
+      "bloc_spread": {
+        "western": 23
+      },
+      "bloc_source": "derived",
+      "countries": [
+        "GB"
+      ],
+      "theaters": [
+        "GB"
+      ],
+      "top_headlines": [
+        "Briton tells of surviving Spain wildfire in car as wife and friends died trying to run to safety",
+        "Bangkok fire investigation finds locked doors and flammable decor as deaths climb to 30",
+        "Rastafarians in Kenya fail in bid to get cannabis legalised for religious purposes",
+        "From Wimbledon towels to Scotch: What India-UK trade deal could mean for shoppers",
+        "Trump pays writer E Jean Carroll $5m in damages over sexual abuse and defamation"
+      ],
+      "topHeadlines": [
+        "Briton tells of surviving Spain wildfire in car as wife and friends died trying to run to safety",
+        "Bangkok fire investigation finds locked doors and flammable decor as deaths climb to 30",
+        "Rastafarians in Kenya fail in bid to get cannabis legalised for religious purposes",
+        "From Wimbledon towels to Scotch: What India-UK trade deal could mean for shoppers",
+        "Trump pays writer E Jean Carroll $5m in damages over sexual abuse and defamation"
+      ],
+      "primary_urls": [
+        "https://www.bbc.co.uk/news/articles/c9323zgq6wvo?at_medium=RSS&at_campaign=rss",
+        "https://www.bbc.co.uk/news/articles/crele3r8j19o?at_medium=RSS&at_campaign=rss",
+        "https://www.bbc.co.uk/news/articles/cwy0ydn033yo?at_medium=RSS&at_campaign=rss",
+        "https://www.bbc.co.uk/news/articles/c1kykx3vnyyo?at_medium=RSS&at_campaign=rss",
+        "https://www.bbc.co.uk/news/articles/c0lyl5ryyr4o?at_medium=RSS&at_campaign=rss"
+      ],
+      "sources": [
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/articles/c9323zgq6wvo?at_medium=RSS&at_campaign=rss",
+          "excerpt": "US President Donald Trump vowed to strike Iran's bridges and power plants next week if the country does not return to talks.",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/articles/crele3r8j19o?at_medium=RSS&at_campaign=rss",
+          "excerpt": "The abrupt about-face from the US president was the latest twist in a conflict that has now lasted more than four months.",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/articles/cwy0ydn033yo?at_medium=RSS&at_campaign=rss",
+          "excerpt": "Control of the waterway has become a key point of contention between the US and Iran, as a ceasefire deal falters.",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/articles/c1kykx3vnyyo?at_medium=RSS&at_campaign=rss",
+          "excerpt": "The defeat triggered opposition calls for Meloni to resign ahead of next year's general election.",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/articles/c0lyl5ryyr4o?at_medium=RSS&at_campaign=rss",
+          "excerpt": "The court acknowledged the need for a broader national debate on cannabis policy in Kenya.",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/articles/c1eye5320g5o?at_medium=RSS&at_campaign=rss",
+          "excerpt": "The opposition says the aim of the talks is to strengthen the democratic institutions and the electoral system.",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/articles/cd959x4edy8o?at_medium=RSS&at_campaign=rss",
+          "excerpt": "Weak demand domestically and the impact of the Iran war on oil prices overshadowed the country's strong exports.",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/articles/c1dydw0r246o?at_medium=RSS&at_campaign=rss",
+          "excerpt": "Delivery riders in Milan, Bologna and Florence want to protect their health and their wages.",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/articles/cjrgrgx2d9qo?at_medium=RSS&at_campaign=rss",
+          "excerpt": "The crash killed 260 people, including 241 on board, with only one passenger surviving.",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/articles/cp8l87784ngo?at_medium=RSS&at_campaign=rss",
+          "excerpt": "Twelve of the 13 victims were foreign nationals, Spanish authorities said on Tuesday.",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/articles/cqx1xdn3g4eo?at_medium=RSS&at_campaign=rss",
+          "excerpt": "Chen Youlin's family says he has been wrongfully detained for nearly two years on spying charges.",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/articles/cqj1jqeyl5ro?at_medium=RSS&at_campaign=rss",
+          "excerpt": "A senior officer in the Hamas-run police force was among those killed in the strike, which Israel's military says targeted \"terrorists\".",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/articles/c2dydj1wp93o?at_medium=RSS&at_campaign=rss",
+          "excerpt": "The president had sought to delay the payment as he tried to persuade the Supreme Court to overturn the judgement.",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/articles/cz9l9venjd8o?at_medium=RSS&at_campaign=rss",
+          "excerpt": "The House of Representatives passed a Trump-backed bill that would end decades of Americans having to reset their clocks twice a year.",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/articles/clyxyzlp9p2o?at_medium=RSS&at_campaign=rss",
+          "excerpt": "Survivors and first responders reported locked doors and a lack of signage marking emergency exits.",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/articles/c0kymrz0vkgo?at_medium=RSS&at_campaign=rss",
+          "excerpt": "The free trade agreement between the world's fifth and sixth largest economies has come into effect - can it deliver?",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/articles/cp9ld3p324jo?at_medium=RSS&at_campaign=rss",
+          "excerpt": "Malcolm Timbrell's wife and their friends are thought to have died when a devastating wildfire tore through their village in Spain.",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/articles/cwydz60j3eno?at_medium=RSS&at_campaign=rss",
+          "excerpt": "It is hoped that free movement between the UK territory and Spain will provide an economic boost.",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/videos/cpd3d0d6zqzo?at_medium=RSS&at_campaign=rss",
+          "excerpt": "The symbolic midnight ceremony was followed by large crowds crossing between Gibraltar and Spain without border checks.",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/videos/cx2425dmpl3o?at_medium=RSS&at_campaign=rss",
+          "excerpt": "The BBC's Barbara Plett Usher examines the latest tensions over the key international shipping channel.",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/videos/c1jy64065ylo?at_medium=RSS&at_campaign=rss",
+          "excerpt": "The Fontainebleau forest blaze, described by officials as of 'exceptional scale', continues to rage for the second day.",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/videos/cy5vx2e45xdo?at_medium=RSS&at_campaign=rss",
+          "excerpt": "At least 28 people have died and 25 are critically injured after a fire tore through a bar in a popular Bangkok district.",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/videos/clyrd9nwn9wo?at_medium=RSS&at_campaign=rss",
+          "excerpt": "The BBC’s South East Asia correspondent visits the site where at least 27 people were killed during a bar fire in Thailand.",
+          "framing_placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "5c9cd4cacfed16",
+      "size": 2,
+      "assetCount": 2,
+      "source_count": 2,
+      "bloc_spread": {
+        "western": 2
+      },
+      "bloc_source": "derived",
+      "countries": [
+        "GB"
+      ],
+      "theaters": [
+        "GB"
+      ],
+      "top_headlines": [
+        "'If we die, we die together': Wife of man nearly sucked out of Ryanair plane speaks of ordeal",
+        "Wife describes moment husband nearly sucked out of Ryanair plane"
+      ],
+      "topHeadlines": [
+        "'If we die, we die together': Wife of man nearly sucked out of Ryanair plane speaks of ordeal",
+        "Wife describes moment husband nearly sucked out of Ryanair plane"
+      ],
+      "primary_urls": [
+        "https://www.bbc.co.uk/news/articles/cly8yjnw822o?at_medium=RSS&at_campaign=rss",
+        "https://www.bbc.co.uk/news/videos/cd959ygx8g7o?at_medium=RSS&at_campaign=rss"
+      ],
+      "sources": [
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/articles/cly8yjnw822o?at_medium=RSS&at_campaign=rss",
+          "excerpt": "Svetlana Grković told Serbian media that her husband is \"seriously injured and in shock\".",
+          "framing_placeholder": null
+        },
+        {
+          "name": "BBC News",
+          "bloc": "western",
+          "country": "GB",
+          "url": "https://www.bbc.co.uk/news/videos/cd959ygx8g7o?at_medium=RSS&at_campaign=rss",
+          "excerpt": "A man was nearly sucked head-first out of a cabin window mid-air on a Ryanair plane.",
+          "framing_placeholder": null
+        }
+      ]
+    }
+  ]
+}

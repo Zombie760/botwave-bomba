@@ -36,6 +36,21 @@ import { getPackagesBySector, classifySector } from "./lib/sector.ts";
 
 const ROOT = `${import.meta.dir}/..`;
 
+// Bundle MiniSearch for client-side full-text search (v7 ESM entry)
+const minisearchBuild = await build({
+  entrypoints: [`${ROOT}/node_modules/minisearch/dist/es/index.js`],
+  outdir: `${ROOT}/assets/js`,
+  naming: "minisearch.js",
+  format: "esm",
+  minify: true,
+});
+
+if (!minisearchBuild.success) {
+  console.error("[build_site] Failed to bundle MiniSearch:", minisearchBuild.logs);
+  process.exit(1);
+}
+console.log("[build_site] MiniSearch bundled to assets/js/minisearch.js");
+
 // Build-time constants — used in chrome() utility bar and footer
 const BUILD_GENERATED_AT = new Date().toISOString();
 const BUILD_DATE_LABEL = new Date().toISOString().slice(0, 10);
@@ -209,8 +224,8 @@ function headMeta(opts: {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="${asset("/assets/css/botwave.css")}?v=1">
-  <link rel="stylesheet" href="${asset("/assets/css/groundnews.css")}?v=1">
+  <link rel="stylesheet" href="${asset("/assets/css/botwave.css")}?v=2">
+  <link rel="stylesheet" href="${asset("/assets/css/groundnews.css")}?v=2">
   <link rel="canonical" href="${canonical}">
   <meta property="og:type" content="${opts.ogType || "website"}">
   <meta property="og:site_name" content="BotwaveBomba">
@@ -294,6 +309,7 @@ function chrome(
     { id: "numbers-station", label: "Signal Feed", href: sectionUrl("numbers-station") },
     { id: "asset-registry", label: "Sources", href: sectionUrl("asset-registry") },
     { id: "tradecraft", label: "How We Rate", href: sectionUrl("tradecraft") },
+    { id: "search", label: "Search", href: sectionUrl("search") },
     { id: "sports", label: "Sports", href: sectionUrl("sports") },
     { id: "tech", label: "Tech", href: sectionUrl("tech") },
     { id: "health", label: "Health", href: sectionUrl("health") },
@@ -393,6 +409,7 @@ function chrome(
           <li><a href="${sectionUrl("refraction")}">Lens</a></li>
           <li><a href="${sectionUrl("spool")}">Timeline</a></li>
           <li><a href="${sectionUrl("numbers-station")}">Signal Feed</a></li>
+          <li><a href="${sectionUrl("search")}">Search</a></li>
         </ul>
       </div>
       <div class="bwb-footer-col">
@@ -429,8 +446,8 @@ function chrome(
     </div>
   </footer>
 
-  ${resolvedExtraScripts.map((s) => `<script src="${asset(s)}?v=1" defer></script>`).join("\n  ")}
-  <script src="${asset("/assets/js/botwave.js")}?v=1" defer></script>
+  ${resolvedExtraScripts.map((s) => `<script src="${asset(s)}?v=2" defer></script>`).join("\n  ")}
+  <script src="${asset("/assets/js/botwave.js")}?v=2" defer></script>
 </body>
 </html>`;
 }
@@ -1583,6 +1600,71 @@ function generate() {
     desc: "Global signal coverage intensity by theater.",
   });
 
+  // SEARCH page — region-aware full-text search + interactive coverage map
+  const countryIndexForSearch = getCountryRadar(stories);
+  const maxCountryCount = Math.max(...Object.values(countryIndexForSearch).map((c) => c.count), 1);
+  const searchCountries = Object.keys(countryIndexForSearch).sort();
+  const searchBody = `<div class="bwb-layout" style="grid-template-columns:1fr;"><div class="bwb-main">
+    <div class="bwb-section-header"><span class="bwb-section-kicker">SEARCH</span><h1>FIND THE SIGNAL</h1><p>Full-text search across every intercept, asset, and theater. Pick a region on the map or the dropdown to narrow by geography — see who is covering what, and where the silence is.</p></div>
+
+    <div class="bwb-search-page-controls">
+      <input type="search" id="bwbSearchInput" class="bwb-search-page-input" placeholder="Search stories, assets, theaters…" autocomplete="off" aria-label="Search articles">
+      <select id="bwbRegionSelect" class="bwb-region-select" aria-label="Filter by region">
+        <option value="">All regions</option>
+        ${searchCountries.map((c) => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join("")}
+      </select>
+      <button id="bwbRegionClear" class="bwb-region-clear" type="button">Clear region</button>
+    </div>
+
+    <div class="bwb-search-map-wrap">
+      <canvas id="bwbSearchMap" class="bwb-search-map" width="1000" height="500" role="img" aria-label="World coverage map — click a country to filter by region"></canvas>
+      <p class="bwb-search-map-hint">Click a hot country to filter. Hotter = more signals from that theater.</p>
+    </div>
+
+    <div id="bwbSearchStats" class="bwb-search-stats" aria-live="polite"></div>
+    <div id="bwbSearchResults" class="bwb-search-results-grid"></div>
+    <script>
+      window.BWB_SEARCH_DATA = {
+        countries: ${JSON.stringify(countryIndexForSearch)},
+        maxCount: ${maxCountryCount},
+        searchIndexUrl: ${JSON.stringify(asset("/api/search_index.json"))}
+      };
+    </script>
+  </div></div>`;
+  const searchLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        name: "Search — BotwaveBomba",
+        url: pageUrl("search"),
+        description: "Region-aware full-text search across all BotwaveBomba intercepts, assets, and theaters.",
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: pageUrl("index") },
+          { "@type": "ListItem", position: 2, name: "Search" },
+        ],
+      },
+    ],
+  };
+  write(
+    "search.html",
+    chrome("search", searchBody, {
+      title: "Search — BotwaveBomba",
+      description: "Region-aware full-text search across all intercepts, assets, and theaters.",
+      canonical: pageUrl("search"),
+      jsonLd: searchLd,
+      extraScripts: ["/assets/js/search-page.js"],
+    })
+  );
+  publicPages.push({
+    page: "search",
+    title: "Search — BotwaveBomba",
+    desc: "Region-aware full-text search across all intercepts, assets, and theaters.",
+  });
+
   // SPOOL page
   const chronosEntries = spoolChronos(stories);
   const groupedChronos = groupChronosByDate(chronosEntries);
@@ -1868,21 +1950,27 @@ function generate() {
     desc: "How we classify alignment, vetting, coverage gaps, and ownership.",
   });
 
-  // Search index
+  // Search index — region-aware fields for client faceting
   const searchIndex = stories.map((s) => {
     const card = renderSigintCard(s);
+    const theaters = s.countries && s.countries.length ? s.countries : s.theaters || [];
     return {
       id: s.id,
       title: card.headline,
       excerpt: card.excerpt,
       asset: card.topAsset?.name || "",
-      theater: card.topAsset?.country || "",
+      country: card.topAsset?.country || theaters[0] || "",
       alignment: classifyAlignment(s)[0] || "world",
-      theaters: s.countries,
+      theaters,
       assets: s.sources.map((x) => x.name),
     };
   });
   writeJson("api/search_index.json", searchIndex);
+
+  // Country index — region -> signal density + alignment mix + top story ids
+  // Reused by the interactive map widget on /search.html
+  const countryIndex = getCountryRadar(stories);
+  writeJson("api/country_index.json", countryIndex);
 
   // Update meta
   const updatedMeta = {

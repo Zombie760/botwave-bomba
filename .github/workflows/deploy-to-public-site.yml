@@ -61,7 +61,7 @@ jobs:
             asset-transparency.html 404.html intelligence.html \
             world.html politics.html business.html conflict.html local.html \
             brief.html sources.html methodology.html methodology-transparency.html \
-            sigint.html watch.html \
+            sigint.html watch.html search.html \
             health.html science.html sports.html tech.html \
             api assets sitemap.xml service-worker.js manifest.json \
             public-site/botwavebomba/ 2>/dev/null || true

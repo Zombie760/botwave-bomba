@@ -1,6 +1,5 @@
 // BotwaveBomba shared client runtime
 (function () {
-  'use strict';
 
   const BASE = window.BWB_BASE || '/botwavebomba';
   const $ = (sel, ctx) => (ctx || document).querySelector(sel);
@@ -85,12 +84,28 @@
   const siteSearch = $('#siteSearch');
   const searchResults = $('#searchResults');
 
+  let _msModule = null;
+  let _searchIndex = null;
   async function loadIndex() {
+    if (_searchIndex) return _searchIndex;
     try {
       const res = await fetch(url('/api/search_index.json'));
-      if (!res.ok) return [];
-      return await res.json();
-    } catch (e) { return []; }
+      if (!res.ok) return null;
+      const data = await res.json();
+      if (!_msModule) _msModule = (await import(/* @vite-ignore */ url('/assets/js/minisearch.js'))).default;
+      const MiniSearch = _msModule.default || _msModule;
+      const ms = new MiniSearch({
+        fields: ['title', 'excerpt', 'asset', 'country', 'theaters', 'assets'],
+        storeFields: ['id', 'title', 'excerpt', 'asset', 'country', 'theaters', 'alignment'],
+        extractField: (doc, field) => {
+          const v = doc[field];
+          return Array.isArray(v) ? v.join(' ') : (v ?? '');
+        },
+      });
+      ms.addAll(data);
+      _searchIndex = ms;
+      return ms;
+    } catch (e) { return null; }
   }
 
   let searchIndex = null;
@@ -117,21 +132,15 @@
       const q = siteSearch.value.trim().toLowerCase();
       if (!q || !searchResults) return;
       if (!searchIndex) { searchResults.innerHTML = '<p class="bwb-search-empty">Loading search index…</p>'; return; }
-      const matches = searchIndex.filter(item =>
-        (item.title || '').toLowerCase().includes(q) ||
-        (item.excerpt || '').toLowerCase().includes(q) ||
-        (item.source || '').toLowerCase().includes(q) ||
-        (item.country || '').toLowerCase().includes(q) ||
-        (item.section || '').toLowerCase().includes(q)
-      ).slice(0, 10);
+      const matches = searchIndex.search(q, { fuzzy: 0.2, prefix: true, boost: { title: 2 } }).slice(0, 10);
       if (!matches.length) {
         searchResults.innerHTML = '<p class="bwb-search-empty">No stories found.</p>';
         return;
       }
-      searchResults.innerHTML = matches.map(m => `
+      searchResults.innerHTML = matches.map((m) => `
         <a class="bwb-search-result" href="${url('/sigint.html?id=' + encodeURIComponent(m.id))}">
           <h4>${escapeHtml(m.title)}</h4>
-          <p>${escapeHtml(m.source || m.section || '')} · ${escapeHtml(m.excerpt || '').slice(0, 120)}</p>
+          <p>${escapeHtml(m.asset || m.country || m.alignment || '')} · ${escapeHtml(m.excerpt || '').slice(0, 120)}</p>
         </a>
       `).join('');
     });

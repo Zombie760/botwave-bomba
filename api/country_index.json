@@ -1,0 +1,220 @@
+{
+  "AU": {
+    "count": 17,
+    "blocs": {
+      "western": 17,
+      "non-aligned": 0,
+      "adversarial": 0,
+      "other": 0
+    },
+    "topStories": [
+      "26cb5d81ac87d055",
+      "26cb5d81ac87d055",
+      "6b029231a42e7279"
+    ]
+  },
+  "QA": {
+    "count": 20,
+    "blocs": {
+      "western": 0,
+      "non-aligned": 20,
+      "adversarial": 0,
+      "other": 0
+    },
+    "topStories": [
+      "26cb5d81ac87d055",
+      "26cb5d81ac87d055",
+      "6b029231a42e7279"
+    ]
+  },
+  "NG": {
+    "count": 69,
+    "blocs": {
+      "western": 0,
+      "non-aligned": 69,
+      "adversarial": 0,
+      "other": 0
+    },
+    "topStories": [
+      "26cb5d81ac87d055",
+      "6b029231a42e7279",
+      "6b029231a42e7279"
+    ]
+  },
+  "PK": {
+    "count": 16,
+    "blocs": {
+      "western": 0,
+      "non-aligned": 16,
+      "adversarial": 0,
+      "other": 0
+    },
+    "topStories": [
+      "26cb5d81ac87d055",
+      "6b029231a42e7279",
+      "6b029231a42e7279"
+    ]
+  },
+  "IR": {
+    "count": 30,
+    "blocs": {
+      "western": 0,
+      "non-aligned": 0,
+      "adversarial": 30,
+      "other": 0
+    },
+    "topStories": [
+      "26cb5d81ac87d055",
+      "26cb5d81ac87d055",
+      "26cb5d81ac87d055"
+    ]
+  },
+  "JP": {
+    "count": 12,
+    "blocs": {
+      "western": 0,
+      "non-aligned": 12,
+      "adversarial": 0,
+      "other": 0
+    },
+    "topStories": [
+      "26cb5d81ac87d055",
+      "26cb5d81ac87d055",
+      "6b029231a42e7279"
+    ]
+  },
+  "GH": {
+    "count": 18,
+    "blocs": {
+      "western": 0,
+      "non-aligned": 18,
+      "adversarial": 0,
+      "other": 0
+    },
+    "topStories": [
+      "26cb5d81ac87d055",
+      "26cb5d81ac87d055",
+      "6b029231a42e7279"
+    ]
+  },
+  "GB": {
+    "count": 7,
+    "blocs": {
+      "western": 7,
+      "non-aligned": 0,
+      "adversarial": 0,
+      "other": 0
+    },
+    "topStories": [
+      "26cb5d81ac87d055",
+      "26cb5d81ac87d055",
+      "f8b3b175c123edbf"
+    ]
+  },
+  "PH": {
+    "count": 8,
+    "blocs": {
+      "western": 0,
+      "non-aligned": 8,
+      "adversarial": 0,
+      "other": 0
+    },
+    "topStories": [
+      "26cb5d81ac87d055",
+      "26cb5d81ac87d055",
+      "3fd9b77adb3fde98"
+    ]
+  },
+  "RU": {
+    "count": 24,
+    "blocs": {
+      "western": 0,
+      "non-aligned": 0,
+      "adversarial": 24,
+      "other": 0
+    },
+    "topStories": [
+      "26cb5d81ac87d055",
+      "26cb5d81ac87d055",
+      "26cb5d81ac87d055"
+    ]
+  },
+  "NZ": {
+    "count": 26,
+    "blocs": {
+      "western": 26,
+      "non-aligned": 0,
+      "adversarial": 0,
+      "other": 0
+    },
+    "topStories": [
+      "26cb5d81ac87d055",
+      "26cb5d81ac87d055",
+      "26cb5d81ac87d055"
+    ]
+  },
+  "TW": {
+    "count": 7,
+    "blocs": {
+      "western": 0,
+      "non-aligned": 7,
+      "adversarial": 0,
+      "other": 0
+    },
+    "topStories": [
+      "26cb5d81ac87d055",
+      "8901e063660a0309",
+      "01ef7709578f190c"
+    ]
+  },
+  "IN": {
+    "count": 45,
+    "blocs": {
+      "western": 0,
+      "non-aligned": 45,
+      "adversarial": 0,
+      "other": 0
+    },
+    "topStories": [
+      "26cb5d81ac87d055",
+      "26cb5d81ac87d055",
+      "26cb5d81ac87d055"
+    ]
+  },
+  "KR": {
+    "count": 1,
+    "blocs": {
+      "western": 0,
+      "non-aligned": 1,
+      "adversarial": 0,
+      "other": 0
+    },
+    "topStories": [
+      "26cb5d81ac87d055"
+    ]
+  },
+  "US": {
+    "count": 1,
+    "blocs": {
+      "western": 1,
+      "non-aligned": 0,
+      "adversarial": 0,
+      "other": 0
+    },
+    "topStories": [
+      "3fd9b77adb3fde98"
+    ]
+  },
+  "MZ": {
+    "count": 1,
+    "blocs": {
+      "western": 0,
+      "non-aligned": 1,
+      "adversarial": 0,
+      "other": 0
+    },
+    "topStories": [
+      "983c332e05666567"
+    ]
+  }
+}

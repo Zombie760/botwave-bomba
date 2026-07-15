@@ -94,7 +94,7 @@ function blocSegPct(spread: any, key: string): number {
   return 0;
 }
 
-export function storyCard(pkg: SigintPackage): string {
+export function storyCard(pkg: SigintPackage, allStories: Story[] = []): string {
   const sourceList = (pkg.sources || []).slice(0, 12);
   const lead: Asset | undefined = sourceList[0];
   const leadName = lead?.name || "Source";
@@ -148,7 +148,9 @@ export function storyCard(pkg: SigintPackage): string {
           <span class="bwb-story-card-logo-fallback">${escapeHtml((leadName.match(/[A-Z]/g) || ["S"]).slice(0, 2).join(""))}</span>
         </div>
         <span class="bwb-story-card-source-name">${escapeHtml(leadName)}</span>
-        <span class="${blocClass(leadBloc)}">${leadBloc.replace("-", " ")}</span>
+        <a href="/botwavebomba/tradecraft.html#rating" class="bwb-bloc-badge-link">
+          <span class="${blocClass(leadBloc)}">${leadBloc.replace("-", " ")}</span>
+        </a>
         <span class="bwb-story-card-factuality ${leadFactuality}">${escapeHtml(factualityLabel(leadFactuality))}</span>
       </div>
       <h3 class="bwb-story-card-title">${escapeHtml(title)}</h3>

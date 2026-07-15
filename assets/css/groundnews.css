@@ -115,3 +115,80 @@
   .bwb-read-three { grid-template-columns: 1fr; }
   .bwb-valueband-hook { text-align: left; }
 }
+
+/* ---- SEARCH PAGE (region-aware search + coverage map) ---- */
+.bwb-search-page-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: var(--space-4) 0;
+}
+.bwb-search-page-input {
+  flex: 1 1 320px;
+  padding: 0.7rem 0.9rem;
+  font-size: var(--fs-base);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+.bwb-region-select,
+.bwb-region-clear {
+  padding: 0.7rem 0.9rem;
+  font-size: var(--fs-sm);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+}
+.bwb-region-clear:hover { background: color-mix(in oklch, var(--color-accent) 10%, var(--color-bg)); }
+
+.bwb-search-map-wrap { margin: var(--space-4) 0; }
+.bwb-search-map {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  display: block;
+  cursor: crosshair;
+}
+.bwb-search-map-hint {
+  font-size: var(--fs-xs);
+  color: var(--color-muted);
+  margin-top: var(--space-2);
+}
+
+.bwb-search-stats {
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+  margin: var(--space-3) 0;
+  font-weight: var(--fw-semibold);
+}
+.bwb-search-results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+.bwb-search-card {
+  display: block;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-bg);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.bwb-search-card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+.bwb-search-card h4 { margin: 0 0 var(--space-2); font-size: var(--fs-base); }
+.bwb-search-card-meta { font-size: var(--fs-xs); color: var(--color-muted); margin: 0 0 var(--space-2); }
+.bwb-search-card-excerpt { font-size: var(--fs-sm); color: var(--color-text); margin: 0; line-height: var(--lh-snug); }
+.bwb-search-empty { color: var(--color-muted); font-style: italic; }
+
+@media (max-width: 720px) {
+  .bwb-search-results-grid { grid-template-columns: 1fr; }
+}

@@ -4,7 +4,7 @@
     "title": "Shipping through Strait of Hormuz declines as US-Iran hostilities resume",
     "excerpt": "Trump: U.S. has told Iran ceasefire is 'over' despite agreement to continue talks",
     "asset": "ABC News Australia",
-    "theater": "AU",
+    "country": "AU",
     "alignment": "western",
     "theaters": [
       "AU",
@@ -66,7 +66,7 @@
     "title": "How an Egypt-Argentina World Cup game became a referendum on Palestine",
     "excerpt": "Pride despite defeat as Morocco’s World Cup run ends",
     "asset": "ABC News Australia",
-    "theater": "AU",
+    "country": "AU",
     "alignment": "western",
     "theaters": [
       "AU",
@@ -148,7 +148,7 @@
     "title": "US Senator Lindsey Graham passes away",
     "excerpt": "Warhawk US Senator Lindsey Graham dies",
     "asset": "ABC News Australia",
-    "theater": "AU",
+    "country": "AU",
     "alignment": "western",
     "theaters": [
       "AU",
@@ -183,7 +183,7 @@
     "title": "How the absence of Iran’s new supreme leader is becoming a liability for Tehran",
     "excerpt": "Ayatollah Khamenei hails ‘historic’ funeral turnout, vows revenge for martyred Leader",
     "asset": "ABC News Australia",
-    "theater": "AU",
+    "country": "AU",
     "alignment": "western",
     "theaters": [
       "AU",
@@ -217,7 +217,7 @@
     "title": "PM Modi in New Zealand LIVE: India, New Zealand elevate ties to strategic partnership",
     "excerpt": "New Zealand and India form ‘strategic partnership’",
     "asset": "Al Jazeera English",
-    "theater": "QA",
+    "country": "QA",
     "alignment": "western",
     "theaters": [
       "GH",
@@ -262,7 +262,7 @@
     "title": "Former emir of Qatar, Sheikh Hamad bin Khalifa Al Thani, dies at 74",
     "excerpt": "Sheikh Hamad bin Khalifa Al Thani, architect of modern Qatar",
     "asset": "Al Jazeera English",
-    "theater": "QA",
+    "country": "QA",
     "alignment": "western",
     "theaters": [
       "IN",
@@ -290,7 +290,7 @@
     "title": "Former Tory minister Ann Widdecombe dies at 78",
     "excerpt": "Markapuram police arrest habitual offender",
     "asset": "ABC News Australia",
-    "theater": "AU",
+    "country": "AU",
     "alignment": "western",
     "theaters": [
       "AU",
@@ -323,7 +323,7 @@
     "title": "Breaking: All Kidnapped Oyo School Children, Teachers Rescued",
     "excerpt": "BREAKING: Kidnapped Oyo pupils, teachers regain freedom",
     "asset": "Al Jazeera English",
-    "theater": "QA",
+    "country": "QA",
     "alignment": "non-aligned",
     "theaters": [
       "GH",
@@ -369,7 +369,7 @@
     "title": "10 Palestinians injured in Israeli occupier, army attacks in occupied West Bank",
     "excerpt": "US Democrat Ro Khanna detained by Israeli settlers during West Bank visit",
     "asset": "Dawn (Pakistan)",
-    "theater": "PK",
+    "country": "PK",
     "alignment": "western",
     "theaters": [
       "GB",
@@ -397,7 +397,7 @@
     "title": "At least 11 dead and 19 missing in wildfire in southern Spain",
     "excerpt": "Eleven dead, 19 missing as Spain wildfire roars through village",
     "asset": "Japan Times",
-    "theater": "JP",
+    "country": "JP",
     "alignment": "western",
     "theaters": [
       "GH",
@@ -419,7 +419,7 @@
     "title": "New York Times journalists issued subpoenas over Air Force One reporting",
     "excerpt": "NYT reporters subpoenaed over Air Force One security concerns stories",
     "asset": "ABC News Australia",
-    "theater": "AU",
+    "country": "AU",
     "alignment": "western",
     "theaters": [
       "AU",
@@ -442,7 +442,7 @@
     "title": "One of Spain's deadliest wildfires has killed at least 11 people, with 19 others missing",
     "excerpt": "One of Spain's deadliest wildfires has killed at least 12 people, with 23 others missing",
     "asset": "Club of Mozambique",
-    "theater": "MZ",
+    "country": "MZ",
     "alignment": "western",
     "theaters": [
       "GH",
@@ -462,7 +462,7 @@
     "title": "Iran will respond in kind to attack on its infrastructure: Security official",
     "excerpt": "Iran’s security chief warns any attack on infrastructure will be retaliated",
     "asset": "IRNA (Iran)",
-    "theater": "IR",
+    "country": "IR",
     "alignment": "western",
     "theaters": [
       "GB",
@@ -481,7 +481,7 @@
     "title": "JUST IN: APC retains Shettima as Tinubu’s running mate ahead of 2027 election",
     "excerpt": "2027: Tinubu retains Shettima as running mate",
     "asset": "Daily Trust (Nigeria)",
-    "theater": "NG",
+    "country": "NG",
     "alignment": "non-aligned",
     "theaters": [
       "NG"
@@ -500,7 +500,7 @@
     "title": "Teen arrested after remains found in search for missing 13-year-old girl",
     "excerpt": "Teen boy charged with murder after missing 13-year-old girl found dead in Australia",
     "asset": "ABC News Australia",
-    "theater": "AU",
+    "country": "AU",
     "alignment": "western",
     "theaters": [
       "AU",
@@ -522,7 +522,7 @@
     "title": "US demands Iran publicly state the Strait of Hormuz is open, and ships won’t be attacked, officials say",
     "excerpt": "US demands Iran publicly announce intention against attacking vessels in Strait of Hormuz",
     "asset": "RT (Russia Today)",
-    "theater": "RU",
+    "country": "RU",
     "alignment": "western",
     "theaters": [
       "IN",
@@ -541,7 +541,7 @@
     "title": "Trump threatens to ‘destroy’ Iran over assassination fears",
     "excerpt": "Trump threatens Iran after Ayatollah Ali Khamenei's funeral saw open calls for his killing",
     "asset": "Al Jazeera English",
-    "theater": "QA",
+    "country": "QA",
     "alignment": "non-aligned",
     "theaters": [
       "IN",
@@ -561,7 +561,7 @@
     "title": "IRGC chief vows justice for martyred Leader, says resistance path will endure",
     "excerpt": "Iran will continue on martyred Leader’s path of steadfastness: Army chief",
     "asset": "IRNA (Iran)",
-    "theater": "IR",
+    "country": "IR",
     "alignment": "adversarial",
     "theaters": [
       "IR"
@@ -581,7 +581,7 @@
     "title": "China successfully tests sea-based rocket booster recovery system",
     "excerpt": "China successfully tests sea-based rocket booster recovery system",
     "asset": "Dawn (Pakistan)",
-    "theater": "PK",
+    "country": "PK",
     "alignment": "non-aligned",
     "theaters": [
       "JP",
@@ -599,7 +599,7 @@
     "title": "Israel bans Jerusalem’s grand mufti from Al-Aqsa Mosque for one week",
     "excerpt": "Israel detains Jerusalem grand mufti, bars him from Al-Aqsa Mosque for 1 week",
     "asset": "Al Jazeera English",
-    "theater": "QA",
+    "country": "QA",
     "alignment": "western",
     "theaters": [
       "GB",
@@ -617,7 +617,7 @@
     "title": "Fubara Presents N1.85trn 2026 Budget to Rivers Assembly",
     "excerpt": "Fubara Presents N1.854trn 2026 Appropriation Bill to Rivers Assembly",
     "asset": "Daily Trust (Nigeria)",
-    "theater": "NG",
+    "country": "NG",
     "alignment": "non-aligned",
     "theaters": [
       "NG"
@@ -633,7 +633,7 @@
     "title": "SSS releases journalist linked to Sowore from detention",
     "excerpt": "DSS releases journalist carrying drone after IPI Nigeria’s intervention",
     "asset": "Daily Trust (Nigeria)",
-    "theater": "NG",
+    "country": "NG",
     "alignment": "non-aligned",
     "theaters": [
       "NG"
@@ -650,7 +650,7 @@
     "title": "Apple sues OpenAI for trade secret theft in pivotal case",
     "excerpt": "Apple accuses OpenAI \nof stealing trade secrets",
     "asset": "Japan Times",
-    "theater": "JP",
+    "country": "JP",
     "alignment": "non-aligned",
     "theaters": [
       "JP",
@@ -668,7 +668,7 @@
     "title": "Japan successfully launches and lands reusable rocket",
     "excerpt": "Japan’s JAXA successfully launches, lands reusable rocket",
     "asset": "Japan Times",
-    "theater": "JP",
+    "country": "JP",
     "alignment": "non-aligned",
     "theaters": [
       "IN",
@@ -686,7 +686,7 @@
     "title": "Live: Wallabies aiming to rebound against France in Nations Championship",
     "excerpt": "Wallabies v France — Nations Championship",
     "asset": "ABC News Australia",
-    "theater": "AU",
+    "country": "AU",
     "alignment": "western",
     "theaters": [
       "AU",
@@ -707,7 +707,7 @@
     "title": "Federation Cup Final PREVIEW: Ikorodu City chase history, El-Kanemi eye fourth title",
     "excerpt": "President Federation Cup: El-Kanemi Warriors edge Ikorodu City to win fourth title",
     "asset": "Daily Trust (Nigeria)",
-    "theater": "NG",
+    "country": "NG",
     "alignment": "non-aligned",
     "theaters": [
       "NG"
@@ -725,7 +725,7 @@
     "title": "On World Population Day, govt pledges 'responsible' planning to tackle alarming demographic boom",
     "excerpt": "Andhra University observes World Population Day",
     "asset": "Dawn (Pakistan)",
-    "theater": "PK",
+    "country": "PK",
     "alignment": "non-aligned",
     "theaters": [
       "IN",
@@ -743,7 +743,7 @@
     "title": "Iran tripled drone production output during US–Israeli aggression: Caretaker Defense Minister",
     "excerpt": "Iran: Production of drones tripled during US-Israeli war of aggression",
     "asset": "IRNA (Iran)",
-    "theater": "IR",
+    "country": "IR",
     "alignment": "adversarial",
     "theaters": [
       "IR"
@@ -759,7 +759,7 @@
     "title": "Linda Noskova survives Karolina Muchova fightback to win Wimbledon",
     "excerpt": "Noskova Holds off Muchova’s Fightback to Win Maiden Grand Slam",
     "asset": "ABC News Australia",
-    "theater": "AU",
+    "country": "AU",
     "alignment": "western",
     "theaters": [
       "AU",
@@ -777,7 +777,7 @@
     "title": "PH, 13 countries urge Beijing: Abide by 2016 South China Sea Arbitral award",
     "excerpt": "U.S., U.K., and 12 other nations reaffirm 2016 ruling invalidating China’s claims in South China Sea",
     "asset": "Rappler (Philippines)",
-    "theater": "PH",
+    "country": "PH",
     "alignment": "western",
     "theaters": [
       "IN",
@@ -795,7 +795,7 @@
     "title": "2 dead and 3 wounded in shooting near Toronto street festival, police say",
     "excerpt": "At least two killed in Toronto street festival shooting",
     "asset": "Joy Online (Ghana)",
-    "theater": "GH",
+    "country": "GH",
     "alignment": "non-aligned",
     "theaters": [
       "GH",
