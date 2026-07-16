@@ -11,6 +11,8 @@ export interface Asset {
   bias?: string;
   factuality?: string;
   owner?: string;
+  ownership?: string;
+  fact_check_status?: "verified" | "disputed" | "unverified";
   // Tradecraft fields
   lean?: "left" | "center" | "right";
   vetting?: "high" | "mixed" | "low";

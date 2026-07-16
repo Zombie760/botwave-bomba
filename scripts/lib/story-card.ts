@@ -130,7 +130,7 @@ export function storyCard(pkg: SigintPackage): string {
       const domain = getDomain(url);
       return `<li class="bwb-card-source-row">
       <span class="bwb-card-source-bloc ${bloc}"></span>
-      <span class="bwb-card-source-name">${escapeHtml(src.name)}</span>
+      <span class="bwb-card-source-name" title="Ownership: ${escapeHtml(owner || "unknown")}">${escapeHtml(src.name)}</span>
       <span class="bwb-card-source-country">${escapeHtml(country)}</span>
       <span class="bwb-card-source-owner">${escapeHtml(owner || domain)}</span>
       <a class="bwb-card-source-link" href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(domain)} &nearr;</a>
@@ -151,7 +151,10 @@ export function storyCard(pkg: SigintPackage): string {
         <a href="/botwavebomba/tradecraft.html#rating" class="bwb-bloc-badge-link">
           <span class="${blocClass(leadBloc)}">${leadBloc.replace("-", " ")}</span>
         </a>
+        <span class="bwb-story-card-political-bias ${lead?.political_bias || "unknown"}" title="Political bias: ${escapeHtml(lead?.political_bias || "unknown")}">${escapeHtml(lead?.political_bias || "?")}</span>
         <span class="bwb-story-card-factuality ${leadFactuality}">${escapeHtml(factualityLabel(leadFactuality))}</span>
+        <span class="bwb-story-card-fact-check ${lead?.fact_check_status || "unverified"}" title="Fact-check status: ${escapeHtml(lead?.fact_check_status || "unverified")}">${escapeHtml(lead?.fact_check_status || "unverified")}</span>
+        <span class="bwb-story-card-funding" title="Funding: ${escapeHtml(lead?.funders?.join(", ") || "unknown")}">${escapeHtml(lead?.funders ? lead.funders.slice(0, 2).map(f => f.split(" ")[0]).join("/") + (lead.funders.length > 2 ? "…" : "") : "?")}</span>
       </div>
       <h3 class="bwb-story-card-title">${escapeHtml(title)}</h3>
       <p class="bwb-story-card-excerpt">${escapeHtml(snippet)}</p>

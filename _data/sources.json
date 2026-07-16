@@ -1,0 +1,269 @@
+{
+  "aljazeera.com": {
+    "name": "Al Jazeera English",
+    "bloc": "non-aligned",
+    "country": "QA",
+    "factuality": "high",
+    "political_bias": "center",
+    "ownership": "Qatar Media Corporation (state-funded)",
+    "funding": "Qatar government",
+    "fact_check_status": "verified",
+    "logo": "https://logo.clearbit.com/aljazeera.com"
+  },
+  "dailytrust.com": {
+    "name": "Daily Trust (Nigeria)",
+    "bloc": "non-aligned",
+    "country": "NG",
+    "factuality": "medium",
+    "political_bias": "center",
+    "ownership": "Media Trust Group (private, Nigeria)",
+    "fact_check_status": "unverified",
+    "logo": "https://logo.clearbit.com/dailytrust.com"
+  },
+  "japantimes.co.jp": {
+    "name": "Japan Times",
+    "bloc": "non-aligned",
+    "country": "JP",
+    "factuality": "high",
+    "political_bias": "center",
+    "ownership": "News2u Holdings (private, Japan)",
+    "fact_check_status": "verified",
+    "logo": "https://logo.clearbit.com/japantimes.co.jp"
+  },
+  "myjoyonline.com": {
+    "name": "Joy Online (Ghana)",
+    "bloc": "non-aligned",
+    "country": "GH",
+    "factuality": "medium",
+    "political_bias": "center",
+    "ownership": "Graphic Communications Group (state-influenced, Ghana)",
+    "fact_check_status": "unverified",
+    "logo": "https://logo.clearbit.com/myjoyonline.com"
+  },
+  "premiumtimesng.com": {
+    "name": "Premium Times (Nigeria)",
+    "bloc": "non-aligned",
+    "country": "NG",
+    "factuality": "high",
+    "political_bias": "center-left",
+    "ownership": "Premium Times Services Ltd (private, Nigeria)",
+    "fact_check_status": "verified",
+    "logo": "https://logo.clearbit.com/premiumtimesng.com"
+  },
+  "punchng.com": {
+    "name": "Punch (Nigeria)",
+    "bloc": "non-aligned",
+    "country": "NG",
+    "factuality": "medium",
+    "political_bias": "center-right",
+    "ownership": "Punch Nigeria Ltd (private, Nigeria)",
+    "fact_check_status": "unverified",
+    "logo": "https://logo.clearbit.com/punchng.com"
+  },
+  "reuters.com": {
+    "name": "Reuters",
+    "bloc": "western",
+    "country": "US",
+    "factuality": "high",
+    "political_bias": "center",
+    "ownership": "Thomson Reuters (public, Canada)",
+    "fact_check_status": "verified",
+    "logo": "https://logo.clearbit.com/reuters.com"
+  },
+  "apnews.com": {
+    "name": "AP",
+    "bloc": "western",
+    "country": "US",
+    "factuality": "high",
+    "political_bias": "center",
+    "ownership": "The Associated Press (nonprofit cooperative, US)",
+    "fact_check_status": "verified",
+    "logo": "https://logo.clearbit.com/apnews.com"
+  },
+  "bbc.com": {
+    "name": "BBC",
+    "bloc": "western",
+    "country": "GB",
+    "factuality": "high",
+    "political_bias": "center",
+    "ownership": "BBC (public, UK)",
+    "fact_check_status": "verified",
+    "logo": "https://logo.clearbit.com/bbc.com"
+  },
+  "npr.org": {
+    "name": "NPR",
+    "bloc": "western",
+    "country": "US",
+    "factuality": "high",
+    "political_bias": "center-left",
+    "ownership": "NPR (nonprofit, US)",
+    "fact_check_status": "verified",
+    "logo": "https://logo.clearbit.com/npr.org"
+  },
+  "wsj.com": {
+    "name": "Wall Street Journal",
+    "bloc": "western",
+    "country": "US",
+    "factuality": "high",
+    "political_bias": "center-right",
+    "ownership": "News Corp (public, US)",
+    "fact_check_status": "verified",
+    "logo": "https://logo.clearbit.com/wsj.com"
+  },
+  "cnn.com": {
+    "name": "CNN",
+    "bloc": "western",
+    "country": "US",
+    "factuality": "medium",
+    "political_bias": "left",
+    "ownership": "Warner Bros. Discovery (public, US)",
+    "fact_check_status": "disputed",
+    "logo": "https://logo.clearbit.com/cnn.com"
+  },
+  "politico.com": {
+    "name": "Politico",
+    "bloc": "western",
+    "country": "US",
+    "factuality": "medium",
+    "political_bias": "center-left",
+    "ownership": "Axel Springer (private, Germany)",
+    "fact_check_status": "verified",
+    "logo": "https://logo.clearbit.com/politico.com"
+  },
+  "thehill.com": {
+    "name": "The Hill",
+    "bloc": "western",
+    "country": "US",
+    "factuality": "medium",
+    "political_bias": "center",
+    "ownership": "Nexstar Media Group (public, US)",
+    "fact_check_status": "unverified",
+    "logo": "https://logo.clearbit.com/thehill.com"
+  },
+  "foxnews.com": {
+    "name": "Fox News",
+    "bloc": "western",
+    "country": "US",
+    "factuality": "low",
+    "political_bias": "right",
+    "ownership": "Fox Corporation (public, US)",
+    "funders": ["Koch Industries", "Zionist donor networks"],
+    "fact_check_status": "disputed",
+    "logo": "https://logo.clearbit.com/foxnews.com"
+  },
+  "washingtonpost.com": {
+    "name": "Washington Post",
+    "bloc": "western",
+    "country": "US",
+    "factuality": "high",
+    "political_bias": "center-left",
+    "ownership": "Nash Holdings (private, Jeff Bezos)",
+    "fact_check_status": "verified",
+    "logo": "https://logo.clearbit.com/washingtonpost.com"
+  },
+  "theguardian.com": {
+    "name": "The Guardian",
+    "bloc": "western",
+    "country": "GB",
+    "factuality": "high",
+    "political_bias": "left",
+    "ownership": "Guardian Media Group (Scott Trust)",
+    "funders": ["Scott Trust", "Open Society Foundations (historical)"],
+    "fact_check_status": "verified",
+    "logo": "https://logo.clearbit.com/theguardian.com"
+  },
+  "rt.com": {
+    "name": "RT",
+    "bloc": "adversarial",
+    "country": "RU",
+    "factuality": "low",
+    "political_bias": "right",
+    "ownership": "Russian government (state-funded)",
+    "fact_check_status": "disputed",
+    "logo": "https://logo.clearbit.com/rt.com"
+  },
+  "sputniknews.com": {
+    "name": "Sputnik",
+    "bloc": "adversarial",
+    "country": "RU",
+    "factuality": "low",
+    "political_bias": "right",
+    "ownership": "Russian government (state-funded)",
+    "fact_check_status": "disputed",
+    "logo": "https://logo.clearbit.com/sputniknews.com"
+  },
+  "taipeitimes.com": {
+    "name": "Taipei Times",
+    "bloc": "non-aligned",
+    "country": "TW",
+    "factuality": "medium",
+    "political_bias": "center-left",
+    "ownership": "Liberty Times Group (private, Taiwan)",
+    "fact_check_status": "unverified",
+    "logo": "https://logo.clearbit.com/taipeitimes.com"
+  },
+  "newsinfo.inquirer.net": {
+    "name": "Philippine Daily Inquirer",
+    "bloc": "non-aligned",
+    "country": "PH",
+    "factuality": "high",
+    "political_bias": "center-left",
+    "ownership": "Inquirer Group (private, Philippines)",
+    "fact_check_status": "verified",
+    "logo": "https://logo.clearbit.com/inquirer.net"
+  },
+  "stuff.co.nz": {
+    "name": "Stuff (New Zealand)",
+    "bloc": "western",
+    "country": "NZ",
+    "factuality": "high",
+    "political_bias": "center",
+    "ownership": "Stuff Ltd (private, NZ)",
+    "fact_check_status": "verified",
+    "logo": "https://logo.clearbit.com/stuff.co.nz"
+  },
+  "jta.org": {
+    "name": "Jewish Telegraphic Agency",
+    "bloc": "western",
+    "country": "US",
+    "factuality": "medium",
+    "political_bias": "right",
+    "ownership": "70 Faces Media (nonprofit, US)",
+    "funders": ["AIPAC", "Zionist donor networks"],
+    "fact_check_status": "unverified",
+    "logo": "https://logo.clearbit.com/jta.org"
+  },
+  "nypost.com": {
+    "name": "New York Post",
+    "bloc": "western",
+    "country": "US",
+    "factuality": "low",
+    "political_bias": "right",
+    "ownership": "News Corp (Rupert Murdoch)",
+    "funders": ["Koch Industries", "Zionist donor networks"],
+    "fact_check_status": "disputed",
+    "logo": "https://logo.clearbit.com/nypost.com"
+  },
+  "cbsnews.com": {
+    "name": "CBS News",
+    "bloc": "western",
+    "country": "US",
+    "factuality": "medium",
+    "political_bias": "center-left",
+    "ownership": "ViacomCBS (public, US)",
+    "funders": ["Corporate (ad revenue)", "Zionist donor networks (historical)"],
+    "fact_check_status": "disputed",
+    "logo": "https://logo.clearbit.com/cbsnews.com"
+  },
+  "btselem.org": {
+    "name": "B'Tselem",
+    "bloc": "western",
+    "country": "IL",
+    "factuality": "high",
+    "political_bias": "left",
+    "ownership": "Independent (nonprofit, Israel)",
+    "funders": ["Open Society Foundations (Soros)", "EU grants"],
+    "fact_check_status": "verified",
+    "logo": "https://logo.clearbit.com/btselem.org"
+  }
+}
