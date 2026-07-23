@@ -1,0 +1,11 @@
+node_modules/
+.venv/
+*.pyc
+__pycache__/
+logs/
+data/
+.env
+node_modules/
+*.log
+botwave-bomba/
+.DS_Store
