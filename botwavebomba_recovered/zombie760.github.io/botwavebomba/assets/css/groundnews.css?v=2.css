@@ -1,0 +1,194 @@
+/*
+ * BotwaveBomba — first-glance pass (additive override, loaded AFTER botwave.css).
+ * Goal: read more like Ground News / Notion at cold open — calm, plain-language,
+ * generous whitespace, one clear value prop, friendly nav. No features added,
+ * no existing structure removed. Hooks are emitted by scripts/build_site.ts so
+ * they survive `bun run build`.
+ */
+
+/* ---- Primary nav: title-case, calmer, less of a wall ---- */
+.bwb-primary-nav { gap: var(--space-1); }
+.bwb-primary-nav a {
+  text-transform: none;            /* drop the ALL-CAPS wall */
+  letter-spacing: normal;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-muted);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius);
+}
+.bwb-primary-nav a:hover { color: var(--color-text); background: var(--color-bg-inset); }
+.bwb-primary-nav a[aria-current="page"] {
+  color: var(--color-accent);
+  background: color-mix(in oklch, var(--color-accent) 8%, transparent);
+  font-weight: var(--fw-semibold);
+}
+
+/* ---- Value-prop band (injected on home, above the layout) ---- */
+.bwb-valueband {
+  max-width: var(--content-max, 1200px);
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 3.5rem) var(--gutter) 0;
+}
+.bwb-valueband-hook {
+  font-family: var(--font-body);
+  font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-loose);
+  color: var(--color-text-strong);
+  margin: 0 auto var(--space-6);
+  max-width: 62ch;
+  text-align: center;
+}
+.bwb-valueband-hook b {
+  color: var(--color-accent);
+  font-weight: var(--fw-semibold);
+}
+
+/* ---- Three-column "how it works" strip (Ground-News-style) ---- */
+.bwb-read-three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+.bwb-read-three .bwb-read-col {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.bwb-read-three .bwb-read-col:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  transform: translateY(-2px);
+}
+.bwb-read-three .bwb-read-col h3 {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+  text-transform: none;
+  letter-spacing: normal;
+  margin: 0 0 var(--space-2);
+  color: var(--color-text);
+}
+.bwb-read-three .bwb-read-col.western { border-top: 4px solid var(--color-western); }
+.bwb-read-three .bwb-read-col.non-aligned { border-top: 4px solid var(--color-non-aligned); }
+.bwb-read-three .bwb-read-col.adversarial { border-top: 4px solid var(--color-adversarial); }
+.bwb-read-three .bwb-read-col p {
+  margin: 0;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-normal);
+  color: var(--color-text-muted);
+}
+.bwb-read-three .bwb-read-col a {
+  display: inline-block;
+  margin-top: var(--space-3);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.bwb-read-three .bwb-read-col a:hover { text-decoration: underline; }
+
+/* ---- Hero: more air, softer, friendlier first impression ---- */
+.bwb-hero {
+  padding: clamp(2.5rem, 6vw, 5rem) var(--gutter);
+  background: linear-gradient(135deg,
+    color-mix(in oklch, var(--color-accent) 5%, var(--color-bg)) 0%,
+    var(--color-bg) 100%);
+}
+.bwb-hero-text { max-width: 820px; }
+.bwb-hero-kicker {
+  text-transform: none;
+  letter-spacing: 0.04em;
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-sm);
+}
+.bwb-hero-lead { max-width: 60ch; line-height: var(--lh-loose); }
+
+/* ---- Layout: a touch more breathing room so the page reads calmer ---- */
+.bwb-layout { gap: var(--space-5); margin-top: var(--space-4); }
+.bwb-main { gap: var(--space-5); }
+
+/* ---- Responsive: stack the reader strip on small screens ---- */
+@media (max-width: 720px) {
+  .bwb-read-three { grid-template-columns: 1fr; }
+  .bwb-valueband-hook { text-align: left; }
+}
+
+/* ---- SEARCH PAGE (region-aware search + coverage map) ---- */
+.bwb-search-page-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: var(--space-4) 0;
+}
+.bwb-search-page-input {
+  flex: 1 1 320px;
+  padding: 0.7rem 0.9rem;
+  font-size: var(--fs-base);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+.bwb-region-select,
+.bwb-region-clear {
+  padding: 0.7rem 0.9rem;
+  font-size: var(--fs-sm);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+}
+.bwb-region-clear:hover { background: color-mix(in oklch, var(--color-accent) 10%, var(--color-bg)); }
+
+.bwb-search-map-wrap { margin: var(--space-4) 0; }
+.bwb-search-map {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  display: block;
+  cursor: crosshair;
+}
+.bwb-search-map-hint {
+  font-size: var(--fs-xs);
+  color: var(--color-muted);
+  margin-top: var(--space-2);
+}
+
+.bwb-search-stats {
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+  margin: var(--space-3) 0;
+  font-weight: var(--fw-semibold);
+}
+.bwb-search-results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+.bwb-search-card {
+  display: block;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-bg);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.bwb-search-card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+.bwb-search-card h4 { margin: 0 0 var(--space-2); font-size: var(--fs-base); }
+.bwb-search-card-meta { font-size: var(--fs-xs); color: var(--color-muted); margin: 0 0 var(--space-2); }
+.bwb-search-card-excerpt { font-size: var(--fs-sm); color: var(--color-text); margin: 0; line-height: var(--lh-snug); }
+.bwb-search-empty { color: var(--color-muted); font-style: italic; }
+
+@media (max-width: 720px) {
+  .bwb-search-results-grid { grid-template-columns: 1fr; }
+}
